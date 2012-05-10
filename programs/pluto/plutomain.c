@@ -8,6 +8,7 @@
  * Copyright (C) 2009 Avesh Agarwal <avagarwa@redhat.com>
  * Copyright (C) 2009-2010 Tuomo Soini <tis@foobar.fi>
  * Copyright (C) 2012 Paul Wouters <pwouters@redhat.com>
+ * Copyright (C) 2012 Paul Wouters <paul@libreswan.org>
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -97,15 +98,13 @@
 #define IPSECDIR "/etc/ipsec.d"
 #endif
 
-#ifdef HAVE_LIBNSS
-# include <nss.h>
-# include <nspr.h>
-# ifdef FIPS_CHECK
-#  include <fipscheck.h>
-   /* hardcoded path needs fixing! */
-#  define IPSECLIBDIR "/usr/libexec/ipsec"
-#  define IPSECSBINDIR "/usr/sbin"
-# endif
+#include <nss.h>
+#include <nspr.h>
+#ifdef FIPS_CHECK
+# include <fipscheck.h>
+  /* hardcoded path needs fixing! */
+# define IPSECLIBDIR "/usr/libexec/ipsec"
+# define IPSECSBINDIR "/usr/sbin"
 #endif
 
 #ifdef HAVE_LIBCAP_NG
@@ -860,7 +859,6 @@ main(int argc, char **argv)
     init_constants();
     pluto_init_log();
 
-#ifdef HAVE_LIBNSS
 	char buf[100];
 	snprintf(buf, sizeof(buf), "%s",oco->confddir);
 	loglog(RC_LOG_SERIOUS,"nss directory plutomain: %s",buf);
@@ -920,7 +918,6 @@ main(int argc, char **argv)
 #endif
 
       }
-#endif
 
     /* Note: some scripts may look for this exact message -- don't change
      * ipsec barf was one, but it no longer does.
@@ -935,11 +932,9 @@ main(int argc, char **argv)
 	openswan_log("Starting Pluto (Openswan Version %s%s) pid:%u"
 		     , vc, compile_time_interop_options, getpid());
 #endif
-#ifdef HAVE_LIBNSS
 	if(Pluto_IsFIPS()) {
 		openswan_log("Pluto is running in FIPS mode");
 	}
-#endif
 
 	if((vc[0]=='c' && vc[1]=='v' && vc[2]=='s') ||
 	   (vc[2]=='g' && vc[3]=='i' && vc[4]=='t')) {
@@ -1011,11 +1006,7 @@ main(int argc, char **argv)
     }
 #endif
 
-#ifdef HAVE_LIBNSS
-	openswan_log("NSS support [enabled]");
-#else
-	openswan_log("NSS support [disabled]");
-#endif
+	openswan_log("NSS crypto used");
 
 #ifdef HAVE_STATSD
 	openswan_log("HAVE_STATSD notification via /bin/openswan-statsd enabled");
@@ -1056,7 +1047,7 @@ main(int argc, char **argv)
 #endif
 
     init_virtual_ip(virtual_private);
-    init_rnd_pool();
+    /* obsoletd by nss code init_rnd_pool(); */
     init_timer();
     init_secret();
     init_states();
@@ -1091,10 +1082,8 @@ main(int argc, char **argv)
     /* loading attribute certificates (experimental) */
     load_acerts();
 
-#ifdef HAVE_LIBNSS
     /*Loading CA certs from NSS DB*/
     load_authcerts_from_nss("CA cert",  AUTH_CA);
-#endif
 
 #ifdef HAVE_LABELED_IPSEC
     init_avc();
@@ -1146,9 +1135,7 @@ exit_pluto(int status)
     free_ifaces();          /* free interface list from memory */
     stop_adns();            /* Stop async DNS process (if running) */
     free_md_pool();         /* free the md pool */
-#ifdef HAVE_LIBNSS
     NSS_Shutdown();
-#endif
     delete_lock();          /* delete any lock files */
 #ifdef LEAK_DETECTIVE
     report_leaks();         /* report memory leaks now, after all free()s */

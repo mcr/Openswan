@@ -1,6 +1,7 @@
 # Openswan library
 # Copyright (C) 1998-2001  Henry Spencer.
 # Copyright (C) 2003, 2004 Xelerance Corporation
+# Copyright (C) 2012 Paul Wouters <paul@libreswan.org>
 # 
 # This program is free software; you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by the
@@ -13,11 +14,11 @@
 # for more details.
 
 
+
 OPENSWANSRCDIR?=$(shell cd ../..; pwd)
 
 include ${OPENSWANSRCDIR}/Makefile.inc
 include ${OPENSWANSRCDIR}/Makefile.ver
-
 
 MANDIR=$(MANTREE)/man3
 
@@ -36,6 +37,8 @@ LIB=libwhack.a
 # Original flags
 INCLUDES=-I. -I${KLIPSSRCDIR} -I${KLIPSD} -I${OPENSWANSRCDIR}
 INCLUDES+=-I${OPENSWANSRCDIR}/include 
+INCLUDES+=-I/usr/include/nspr4 -I/usr/include/nss3
+
 CFLAGS+=${PORTINCLUDE} ${INCLUDES} 
 CFLAGS+=-DDEBUG
 CFLAGS+= $(USERCOMPILE)

@@ -3,6 +3,7 @@
  * Copyright (C) 2003-2008 Michael C. Richardson <mcr@xelerance.com>
  * Copyright (C) 2003-2009 Paul Wouters <paul@xelerance.com>
  * Copyright (C) 2009 Avesh Agarwal <avagarwa@redhat.com>
+ * Copyright (C) 2012 Paul Wouters <paul@libreswan.org>
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -41,9 +42,7 @@
 
 #include "oswcrypto.h"
 
-#ifdef HAVE_LIBNSS
-# include "pem.h"
-#endif
+#include "pem.h"
 
 /* moduli and generator. */
 
@@ -356,22 +355,7 @@ do_3des(u_int8_t *buf, size_t buf_len
 {
     passert(key != NULL);
 
-#ifdef HAVE_LIBNSS
 	do_3des_nss(buf, buf_len, key, key_size, iv, enc);
-#else
-
-    des_key_schedule ks[3];
-
-    passert(key_size==(DES_CBC_BLOCK_SIZE * 3));
-
-    (void) oswcrypto.des_set_key((des_cblock *)key + 0, ks[0]);
-    (void) oswcrypto.des_set_key((des_cblock *)key + 1, ks[1]);
-    (void) oswcrypto.des_set_key((des_cblock *)key + 2, ks[2]);
-
-    oswcrypto.des_ede3_cbc_encrypt((des_cblock *)buf, (des_cblock *)buf, buf_len,
-                         ks[0], ks[1], ks[2],
-                         (des_cblock *)iv, enc);
-#endif
 }
 
 /* hash and prf routines */
