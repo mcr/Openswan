@@ -285,7 +285,7 @@ const char *const sa_policy_bit_names[] = {
 	"GROUP",
 	"GROUTED",
 	"UP",
-	"dummy1(XAUTH)",
+	"XAUTH",
 	"MODECFGPULL",
 	"AGGRESSIVE",
 	"PERHOST",
