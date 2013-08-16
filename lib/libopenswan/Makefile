@@ -56,7 +56,7 @@ PFKEYV2_SRCS+=pfkey_v2_build.c pfkey_v2_ext_bits.c pfkey_v2_parse.c
 PFKEYV2_SRCS+=pfkey_v2_debug.c
 endif
 
-CFLAGS+=-I/usr/include/nspr -I/usr/include/nss
+CFLAGS+=-I/usr/include/nspr4 -I/usr/include/nss3
 CFLAGS+=-DUSE_SHA2
 CFLAGS+=-I${OPENSWANSRCDIR}/lib/libcrypto/libsha2
 
