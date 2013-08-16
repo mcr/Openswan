@@ -1,8 +1,13 @@
 /*
  * @(#) pfkey version 2 debugging messages
  *
+<<<<<<< HEAD
  * Copyright (C) 2001  Richard Guy Briggs  <rgb@openswan.org>
  *                 and Michael Richardson  <mcr@openswan.org>
+=======
+ * Copyright (C) 2001  Richard Guy Briggs  <rgb@freeswan.org>
+ *                 and Michael Richardson  <mcr@freeswan.org>
+>>>>>>> 976935a... * Fixup some credits. Remove merged contrib code for selinux
  * Copyright (C) 2012 Paul Wouters <paul@libreswan.org>
  *
  * This program is free software; you can redistribute it and/or modify it
