@@ -4,15 +4,10 @@ srcdir?=./
 include ${OPENSWANSRCDIR}/Makefile.inc
 include ${OPENSWANSRCDIR}/Makefile.ver
 
-OBJS := md5.o
+OBJS := md2.o
 
-ONEFILE=md5.c
-LIBRARY=crypto/libmd5
-LIB=libmd5.a
-
-ifeq ($(USE_LIBNSS),true)
-CFLAGS+=-DHAVE_LIBNSS
-CFLAGS+=-I/usr/include/nspr4 -I/usr/include/nss3
-endif
+ONEFILE=md2.c
+LIBRARY=crypto/libmd2
+LIB=libmd2.a
 
 include ${srcdir}../../Makefile.library

@@ -1,6 +1,5 @@
 # Makefile for pluto/userspace crypto libraries
 # Copyright (C) 2005 Michael Richardson <mcr@xelerance.com>
-# Copyright (C) 2012 Paul Wouters <paul@libreswan.org>
 # 
 # This program is free software; you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by the
@@ -16,7 +15,7 @@ OPENSWANSRCDIR?=$(shell cd ../..; pwd)
 srcdir?=$(shell pwd)/
 include ${OPENSWANSRCDIR}/Makefile.inc
 
-SUBDIRS=libaes libdes libmd5 libsha1 libsha2 
+SUBDIRS=libaes libdes libmd5 libsha1 libsha2 libmd2
 
 ifeq ($(USE_EXTRACRYPTO),true)
 SUBDIRS+=libblowfish libtwofish libserpent

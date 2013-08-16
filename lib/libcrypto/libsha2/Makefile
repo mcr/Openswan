@@ -13,3 +13,7 @@ INCLUDES+=-I${srcdir}../include
 
 include ${srcdir}../../Makefile.library
 
+ifeq ($(USE_LIBNSS),true)
+CFLAGS+=-DHAVE_LIBNSS
+INCLUDES+=-I/usr/include/nspr4 -I/usr/include/nss3
+endif

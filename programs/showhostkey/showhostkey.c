@@ -8,7 +8,6 @@
  * Copyright (C) 2009 Stefan Arentz <stefan@arentz.ca>
  * Copyright (C) 2010 Tuomo Soini <tis@foobar.fi>
  * Copyright (C) 2012 Paul Wouters <pwouters@redhat.com> 
- * Copyright (C) 2012 Paul Wouters <paul@libreswan.org>
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -52,9 +51,11 @@
 #include "secrets.h"
 #include "mpzfuncs.h"
 
-#include <nss.h>
-#include <prerror.h>
-#include <prinit.h>
+#ifdef HAVE_LIBNSS
+# include <nss.h>
+# include <prerror.h>
+# include <prinit.h>
+#endif
 
 char usage[] = "Usage: ipsec showhostkey [--ipseckey {gateway}] [--left ] [--right ]\n"
              "                         [--dump ] [--list ] [--x509self]\n"
@@ -495,6 +496,7 @@ int main(int argc, char *argv[])
     pass.prompt=showhostkey_log;
     pass.fd = 2; /* stderr */
 
+#ifdef HAVE_LIBNSS
     PRBool nss_initialized = PR_FALSE;
     SECStatus rv;
     char buf[100];
@@ -507,15 +509,18 @@ int main(int argc, char *argv[])
     }
    nss_initialized = PR_TRUE; 
    PK11_SetPasswordFunc(getNSSPassword); 
+#endif
 
     load_oswcrypto();
     osw_load_preshared_secrets(&host_secrets, verbose>0?TRUE:FALSE,
 			       secrets_file, &pass);
 
+#ifdef HAVE_LIBNSS
     if (nss_initialized) {
 	NSS_Shutdown();
     }
     PR_Cleanup();
+#endif
 
     /* options that apply to entire files */
     if(dump_flg) {

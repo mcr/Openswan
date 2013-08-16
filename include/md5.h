@@ -2,7 +2,6 @@
  * Copyright (C) 2004-2008  Michael Richardson <mcr@xelerance.com>
  * Copyright (C) 2004-2009  Paul Wouters <paul@xelerance.com>
  * Copyright (C) 2009 Avesh Agarwal <avagarwa@redhat.com>
- * Copyright (C) 2012  Paul Wouters <paul@libreswan.org>
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -80,12 +79,20 @@ These notices must be retained in any copies of any part of this
 documentation and/or software.
  */
 
-#include <nss.h>
-#include <pk11pub.h>
+#ifdef HAVE_LIBNSS
+# include <nss.h>
+# include <pk11pub.h>
+#endif
 
 /* MD5 context. */
 typedef struct {
+#ifdef HAVE_LIBNSS
   PK11Context* ctx_nss;
+#else
+  UINT4 state[4];                                   /* state (ABCD) */
+  UINT4 count[2];        /* number of bits, modulo 2^64 (lsb first) */
+  unsigned char buffer[64];                         /* input buffer */
+#endif
 } MD5_CTX;
 
 void osMD5Init PROTO_LIST ((MD5_CTX *));

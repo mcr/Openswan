@@ -15,13 +15,8 @@ OSDEP?=$(shell uname -s | tr 'A-Z' 'a-z')
 # Original flags
 INCLUDES+=-I. -I${KLIPSSRCDIR} -I${KLIPSD} -I${OPENSWANSRCDIR}
 INCLUDES+=-I${OPENSWANSRCDIR}/include 
-# nss
-INCLUDES+=-I/usr/include/nspr4 -I/usr/include/nss3
-
 CFLAGS+=${PORTINCLUDE} ${INCLUDES} ${CROSSFLAGS}
 CFLAGS+=-DDEBUG
-
-
 CFLAGS+= $(USERCOMPILE)
 ifneq ($(BUILDENV),darwin)
 CFLAGS+= -Wall

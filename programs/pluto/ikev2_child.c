@@ -998,114 +998,185 @@ ikev2_create_narrowed_con(struct connection *c
                         , struct traffic_selector *narrowed_tsr
                         , enum phase1_role role)
 {
-    unsigned int tsi_ni, tsr_ni;
-    int bestfit = -1;
-    struct end *ei, *er;
-    
-    if(role == INITIATOR) {
-	ei = &sr->this;
-	er = &sr->that;
-    } else {
-	ei = &sr->that;
-	er = &sr->this;
-    }
-	
-    DBG(DBG_CONTROLMORE,
-    {
-	char ei3[SUBNETTOT_BUF];
-	char er3[SUBNETTOT_BUF];
-	subnettot(&ei->client,  0, ei3, sizeof(ei3));
-	subnettot(&er->client,  0, er3, sizeof(er3));
-	DBG_log("  ikev2_evaluate_connection_fit evaluating our "
-		"I=%s:%s:%d/%d R=%s:%d/%d %s to their:"
-		, d->name, ei3, ei->protocol, ei->port
-		, er3, er->protocol, er->port
-		, is_virtual_connection(d) ? "(virt)" : "");
-    }
-    );
-   
-    /* compare tsi/r array to this/that, evaluating how well it fits */
-    for(tsi_ni = 0; tsi_ni < tsi_n; tsi_ni++) {
-	for(tsr_ni=0; tsr_ni<tsr_n; tsr_ni++) {
-	    /* does it fit at all? */
+        struct connection *narrowed_con=NULL;
+        struct spd_route *tmp_spd=NULL, *tmp_spd1=NULL;
+        struct traffic_selector *tmptsi=NULL, *tmptsr=NULL;
 
-	    DBG(DBG_CONTROLMORE,
-	    {
-		char lbi[ADDRTOT_BUF];
-		char hbi[ADDRTOT_BUF];
-		char lbr[ADDRTOT_BUF];
-		char hbr[ADDRTOT_BUF];
-		addrtot(&tsi[tsi_ni].low,  0, lbi, sizeof(lbi));
-		addrtot(&tsi[tsi_ni].high, 0, hbi, sizeof(hbi));
-		addrtot(&tsr[tsr_ni].low,  0, lbr, sizeof(lbr));
-		addrtot(&tsr[tsr_ni].high, 0, hbr, sizeof(hbr));
-		
-		DBG_log("    tsi[%u]=%s/%s proto=%d portrange %d-%d, tsr[%u]=%s/%s proto=%d portrange %d-%d"
-			, tsi_ni, lbi, hbi
-			,  tsi[tsi_ni].ipprotoid, tsi[tsi_ni].startport, tsi[tsi_ni].endport
-			, tsr_ni, lbr, hbr
-			,  tsr[tsr_ni].ipprotoid, tsr[tsr_ni].startport, tsr[tsr_ni].endport);
-	    }
-	    );
-	    /* do addresses fit into the policy? */
+        narrowed_con = ikev2_narrow_instantiate(c);
 
-	    /*
-	     * NOTE: Our parser/config only allows 1 CIDR, however IKEv2 ranges can be non-CIDR
-	     *       for now we really support/limit ourselves to a single CIDR
-	     */
-	    if(addrinsubnet(&tsi[tsi_ni].low, &ei->client)
-	       && addrinsubnet(&tsi[tsi_ni].high, &ei->client)
-	       && addrinsubnet(&tsr[tsr_ni].low,  &er->client)
-	       && addrinsubnet(&tsr[tsr_ni].high, &er->client)
-	       && (tsi[tsi_ni].ipprotoid == ei->protocol)
-	       && (tsr[tsr_ni].ipprotoid == er->protocol)
-	      )
-	    {
-		/*
-		 * now, how good a fit is it? --- sum of bits gives
-		 * how good a fit this is.
-		 */
-		int ts_range1 = ikev2_calc_iprangediff(tsi[tsi_ni].low
-						      , tsi[tsi_ni].high);
-		int maskbits1 = ei->client.maskbits;
-		int fitbits1  = maskbits1 + ts_range1;
+        /* setup spds for narrowed connection*/
+        tmp_spd1 = NULL;
+        tmp_spd = &narrowed_con->spd;
+        tmptsi = narrowed_tsi;
 
-		int ts_range2 = ikev2_calc_iprangediff(tsr[tsr_ni].low
-						      , tsr[tsr_ni].high);
-		int maskbits2 = er->client.maskbits;
-		int fitbits2  = maskbits2 + ts_range2;
-		int fitbits = (fitbits1 << 8) + fitbits2;
+        while(tmptsi != NULL) {
+                ip_subnet tmpsubneti;
+                rangetosubnet(&tmptsi->low, &tmptsi->high, &tmpsubneti);
+                tmptsr = narrowed_tsr;
 
-		/*
-		 * comparing for ports
-		 * for finding better local polcy
-		 */
-		DBG(DBG_CONTROL,DBG_log("ei->port %d  tsi[tsi_ni].startport %d  tsi[tsi_ni].endport %d",
-			ei->port , tsi[tsi_ni].startport, tsi[tsi_ni].endport));
-		if( ei->port && (tsi[tsi_ni].startport == ei->port && tsi[tsi_ni].endport == ei->port)) {
-		fitbits = fitbits << 1;
-		}
+                while(tmptsr != NULL ) {
+                        ip_subnet tmpsubnetr;
+                        rangetosubnet(&tmptsr->low, &tmptsr->high, &tmpsubnetr);
 
-		if( er->port && (tsr[tsr_ni].startport == er->port && tsr[tsr_ni].endport == er->port)) {
-		fitbits = fitbits << 1;
-		}
+                        if(tmp_spd == NULL) {
+                                struct spd_route *tmp_spd2 = clone_thing(narrowed_con->spd, "spds from narrowed ts");
+                                tmp_spd = tmp_spd2;
+                                tmp_spd->next = NULL;
 
-		DBG(DBG_CONTROLMORE,
-		{
-		    DBG_log("      has ts_range1=%u maskbits1=%u ts_range2=%u maskbits2=%u fitbits=%d <> %d"
-			    , ts_range1, maskbits1, ts_range2, maskbits2
-			    , fitbits, bestfit);
-		}
-		);
+                                if(tmp_spd1!= NULL){
+                                        tmp_spd1->next = tmp_spd;
+                                }
 
-		if(fitbits > bestfit) {
-		    bestfit = fitbits;
-		}
-	    }
-	}
-    }
+                                if(tmp_spd != &narrowed_con->spd) {
+                                tmp_spd->this.id.name.ptr = NULL;
+                                tmp_spd->this.id.name.len = 0;
+                                    tmp_spd->that.id.name.ptr = NULL;
+                                    tmp_spd->that.id.name.len = 0;
 
-    return bestfit;
+                                tmp_spd->this.host_addr_name = NULL;
+                                tmp_spd->that.host_addr_name = NULL;
+
+                                tmp_spd->this.updown = clone_str(tmp_spd->this.updown, "updown");
+                                tmp_spd->that.updown = clone_str(tmp_spd->that.updown, "updown");
+
+                                tmp_spd->this.cert_filename = NULL;
+                                tmp_spd->that.cert_filename = NULL;
+
+                                tmp_spd->this.cert.type = 0;
+                                tmp_spd->that.cert.type = 0;
+
+                                tmp_spd->this.ca.ptr = NULL;
+                                tmp_spd->that.ca.ptr = NULL;
+
+                                tmp_spd->this.groups = NULL;
+                                tmp_spd->that.groups = NULL;
+
+                                tmp_spd->this.virt = NULL;
+                                tmp_spd->that.virt = NULL;
+                                }
+                        }
+
+                        if(role == INITIATOR) {
+                                tmp_spd->this.client = tmpsubneti;
+                                tmp_spd->this.port = tmptsi->startport;
+                                tmp_spd->this.protocol = tmptsi->ipprotoid;
+                                if( subnetishost(&tmp_spd->this.client) && addrinsubnet(&tmp_spd->this.host_addr, &tmp_spd->this.client)) {
+                                tmp_spd->this.has_client = FALSE;
+                                }
+                                else {
+                                tmp_spd->this.has_client = TRUE;
+                                }
+                                tmp_spd->this.has_client_wildcard =  FALSE;
+                                tmp_spd->this.has_port_wildcard = FALSE;
+                                setportof(htons(tmp_spd->this.port), &tmp_spd->this.host_addr);
+                                setportof(htons(tmp_spd->this.port), &tmp_spd->this.client.addr);
+
+                                tmp_spd->that.client = tmpsubnetr;
+                                tmp_spd->that.port = tmptsr->startport;
+                                tmp_spd->that.protocol = tmptsr->ipprotoid;
+                                if( subnetishost(&tmp_spd->that.client) && addrinsubnet(&tmp_spd->that.host_addr, &tmp_spd->that.client)) {
+                                tmp_spd->that.has_client = FALSE;
+                                }
+                                else {
+                                tmp_spd->that.has_client = TRUE;
+                                }
+                                tmp_spd->that.has_client_wildcard =  FALSE;
+                                tmp_spd->that.has_port_wildcard = FALSE;
+                                setportof(htons(tmp_spd->that.port), &tmp_spd->that.host_addr);
+                                setportof(htons(tmp_spd->that.port), &tmp_spd->that.client.addr);
+                        }
+                        else {
+                                tmp_spd->this.client = tmpsubnetr;
+                                tmp_spd->this.port = tmptsr->startport;
+                                tmp_spd->this.protocol = tmptsr->ipprotoid;
+                                if( subnetishost(&tmp_spd->this.client) && addrinsubnet(&tmp_spd->this.host_addr, &tmp_spd->this.client)) {
+                                tmp_spd->this.has_client = FALSE;
+                                }
+                                else {
+                                tmp_spd->this.has_client = TRUE;
+                                }
+                                tmp_spd->this.has_client_wildcard =  FALSE;
+                                tmp_spd->this.has_port_wildcard = FALSE;
+                                setportof(htons(tmp_spd->this.port), &tmp_spd->this.host_addr);
+                                setportof(htons(tmp_spd->this.port), &tmp_spd->this.client.addr);
+
+                                tmp_spd->that.client = tmpsubneti;
+                                tmp_spd->that.port = tmptsi->startport;
+                                tmp_spd->that.protocol = tmptsi->ipprotoid;
+                                if( subnetishost(&tmp_spd->that.client) && addrinsubnet(&tmp_spd->that.host_addr, &tmp_spd->that.client)) {
+                                tmp_spd->that.has_client = FALSE;
+                                }
+                                else {
+                                tmp_spd->that.has_client = TRUE;
+                                }
+                                tmp_spd->that.has_client_wildcard =  FALSE;
+                                tmp_spd->that.has_port_wildcard = FALSE;
+                                setportof(htons(tmp_spd->that.port), &tmp_spd->that.host_addr);
+                                setportof(htons(tmp_spd->that.port), &tmp_spd->that.client.addr);
+                        }
+
+                tmp_spd1 = tmp_spd;
+                tmp_spd = tmp_spd1->next;
+                tmptsr = tmptsr->next;
+                }
+        tmptsi = tmptsi->next;
+        }
+
+                    char buftest[ADDRTOT_BUF];
+                    tmp_spd = &narrowed_con->spd;
+                    int count_spd=0;
+                    do {
+                        DBG(DBG_CONTROLMORE, DBG_log("spd route number: %d", ++count_spd));
+
+                        /**that info**/
+                        DBG(DBG_CONTROLMORE, DBG_log("that id kind: %d",tmp_spd->that.id.kind));
+                        DBG(DBG_CONTROLMORE,
+                                DBG_log("that id ipaddr: %s", (addrtot(&tmp_spd->that.id.ip_addr, 0, buftest, sizeof(buftest)), buftest)));
+
+                        if (tmp_spd->that.id.name.ptr != NULL) {
+                        DBG(DBG_CONTROLMORE, DBG_dump_chunk("that id name",tmp_spd->that.id.name));
+                        }
+
+                        DBG(DBG_CONTROLMORE,
+                            DBG_log("that host_addr: %s", (addrtot(&tmp_spd->that.host_addr, 0, buftest, sizeof(buftest)), buftest)));
+                        DBG(DBG_CONTROLMORE,
+                            DBG_log("that nexthop: %s", (addrtot(&tmp_spd->that.host_nexthop, 0, buftest, sizeof(buftest)), buftest)));
+                        DBG(DBG_CONTROLMORE,
+                            DBG_log("that srcip: %s", (addrtot(&tmp_spd->that.host_srcip, 0, buftest, sizeof(buftest)), buftest)));
+                        DBG(DBG_CONTROLMORE,
+                            DBG_log("that client_addr: %s, maskbits:%d", (addrtot(&tmp_spd->that.client.addr, 0,
+                                                        buftest, sizeof(buftest)), buftest),tmp_spd->that.client.maskbits));
+                        DBG(DBG_CONTROLMORE, DBG_log("that has_client: %d", tmp_spd->that.has_client));
+                        DBG(DBG_CONTROLMORE, DBG_log("that has_client_wildcard: %d", tmp_spd->that.has_client_wildcard));
+                        DBG(DBG_CONTROLMORE, DBG_log("that has_port_wildcard: %d", tmp_spd->that.has_port_wildcard));
+                        DBG(DBG_CONTROLMORE, DBG_log("that has_id_wildcards: %d", tmp_spd->that.has_id_wildcards));
+
+                        /**this info**/
+                        DBG(DBG_CONTROLMORE, DBG_log("this id kind: %d",tmp_spd->this.id.kind));
+                        DBG(DBG_CONTROLMORE,
+                            DBG_log("this id ipaddr: %s", (addrtot(&tmp_spd->this.id.ip_addr, 0, buftest, sizeof(buftest)), buftest)));
+
+                        if (tmp_spd->this.id.name.ptr != NULL) {
+                        DBG_dump_chunk("this id name",tmp_spd->this.id.name);
+                        }
+
+                        DBG(DBG_CONTROLMORE,
+                            DBG_log("this host_addr: %s", (addrtot(&tmp_spd->this.host_addr, 0, buftest, sizeof(buftest)), buftest)));
+                        DBG(DBG_CONTROLMORE,
+                            DBG_log("this nexthop: %s", (addrtot(&tmp_spd->this.host_nexthop, 0, buftest, sizeof(buftest)), buftest)));
+                        DBG(DBG_CONTROLMORE,
+                            DBG_log("this srcip: %s", (addrtot(&tmp_spd->this.host_srcip, 0, buftest, sizeof(buftest)), buftest)));
+                        DBG(DBG_CONTROLMORE, DBG_log("this client_addr: %s, maskbits:%d", (addrtot(&tmp_spd->this.client.addr,
+                                                                0, buftest, sizeof(buftest)), buftest),tmp_spd->this.client.maskbits));
+                        DBG(DBG_CONTROLMORE, DBG_log("this has_client: %d", tmp_spd->this.has_client));
+                        DBG(DBG_CONTROLMORE, DBG_log("this has_client_wildcard: %d", tmp_spd->this.has_client_wildcard));
+                        DBG(DBG_CONTROLMORE, DBG_log("this has_port_wildcard: %d", tmp_spd->this.has_port_wildcard));
+                        DBG(DBG_CONTROLMORE, DBG_log("this has_id_wildcards: %d", tmp_spd->this.has_id_wildcards));
+
+                        tmp_spd = tmp_spd->next;
+                    } while(tmp_spd!=NULL);
+
+        return narrowed_con;
 }
 
 stf_status ikev2_child_sa_respond(struct msg_digest *md

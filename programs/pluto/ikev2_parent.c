@@ -2126,22 +2126,34 @@ stf_status ikev2parent_inR2(struct msg_digest *md)
     }
 
     {
-			int bestfit_n, bestfit_p;
-			unsigned int best_tsi_i ,  best_tsr_i;
-			bestfit_n = -1;
-			bestfit_p = -1;
+        struct payload_digest *const tsi_pd = md->chain[ISAKMP_NEXT_v2TSi];
+        struct payload_digest *const tsr_pd = md->chain[ISAKMP_NEXT_v2TSr];
 
-			/* Check TSi/TSr http://tools.ietf.org/html/rfc5996#section-2.9 */
-			DBG(DBG_CONTROLMORE,DBG_log(" check narrowing - we are responding to I2"));
+        /* parse traffic selector */
 
-			struct payload_digest *const tsi_pd = md->chain[ISAKMP_NEXT_v2TSi];
-			struct payload_digest *const tsr_pd = md->chain[ISAKMP_NEXT_v2TSr];
-			struct traffic_selector tsi[16], tsr[16];
-#if 0
-			bool instantiate = FALSE;
-			ip_subnet tsi_subnet, tsr_subnet;
-			const char *oops;
-#endif
+        tsi_n = ikev2_parse_ts(tsi_pd, tsi, 16);
+        tsr_n = ikev2_parse_ts(tsr_pd, tsr, 16);
+
+        /* verify if the received traffic selectors are
+         * really same/or a subset of what we sent
+         */
+        if(ikev2_verify_ts(tsi, tsr, tsi_n, tsr_n
+                           , &st->st_ts_this, &st->st_ts_that
+                           , md->role) == FALSE) {
+            /* mistmatch in received selectors */
+            /*only proceeding with parent SA*/
+            delete_event(st);
+            return STF_OK;
+        }
+
+    }
+
+    {
+        v2_notification_t rn;
+        struct payload_digest *const sa_pd = md->chain[ISAKMP_NEXT_v2SA];
+
+        rn = ikev2_parse_child_sa_body(&sa_pd->pbs, &sa_pd->payload.v2sa,
+                                       NULL, st, FALSE);
 
         if(rn != v2N_NOTHING_WRONG)
             return STF_FAIL + rn;

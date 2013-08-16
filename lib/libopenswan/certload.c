@@ -1,7 +1,6 @@
 /* Certificate support for IKE authentication
  * Copyright (C) 2002-2004 Andreas Steffen, Zuercher Hochschule Winterthur
  * Copyright (C) 2005-2008 Michael Richardson <mcr@xelerance.com>
- * Copyright (C) 2012 Paul Wouters <paul@libreswan.org>
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -37,9 +36,11 @@
 #include "pkcs.h"
 #include "pem.h"
 
-#include <nss.h>
-#include <pk11pub.h>
-#include <cert.h>
+#ifdef HAVE_LIBNSS
+# include <nss.h>
+# include <pk11pub.h>
+# include <cert.h>
+#endif
 
 #define ASN1_BUF_LEN		256
 
@@ -332,6 +333,7 @@ share_cert(cert_t cert)
     }
 }
 
+#ifdef HAVE_LIBNSS
 bool
 load_cert_from_nss(bool forcedtype, const char *nssHostCertNickName, int verbose,
                   const char *label, cert_t *cert)
@@ -419,6 +421,7 @@ load_authcerts_from_nss(const char *type, u_char auth_flags)
 			}
 	     }
 }
+#endif
 
 /*
  * Local Variables:
