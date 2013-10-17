@@ -1357,10 +1357,10 @@ in_struct(void *struct_ptr, struct_desc *sd
 		{
 		    if (*cur++ != 0)
 		    {
-			libreswan_log("byte %d of %s should have been zero, but was not"
+			openswan_log("byte %d of %s should have been zero, but was not"
 			    , (int) (cur - ins->cur), sd->name);
 			/*
-			 * We cannot zeroize it, it would break our hash calculation 
+			 * We cannot zeroize it, it would break our hash calculation
 			 * *cur = '\0';
 			 */
 		    }
