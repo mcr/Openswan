@@ -7,6 +7,8 @@
  * Copyright (C) 2007-2010 Paul Wouters <paul@xelerance.com>
  * Copyright (C) 2010 Avesh Agarwal <avagarwa@redhat.com>
  * Copyright (C) 2010 Tuomo Soini <tis@foobar.fi>
+ * Copyright (C) 2012 Paul Wouters <pwouters@redhat.com>
+ * Copyright (C) 2012 Panagiotis Tamtamis <tamtamis@gmail.com>
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -490,8 +492,11 @@ cannot_oppo(struct connection *c
 	return;
     }
 
-#ifdef KLIPS /* This should really be 'if opportunistic is supported' - netlink has acquires too */
-    if (b->held)
+    /*
+     * NETKEY default for level param in tmpl is required, so no traffic will
+     * transmitted until an SA is fully up
+     */
+    if (b->held && kern_interface != USE_NETKEY)
     {
 	int failure_shunt = b->failure_shunt;
 
@@ -510,7 +515,6 @@ cannot_oppo(struct connection *c
 	    , b->transport_proto
 	    , ughmsg);
     }
-#endif
 }
 
 static int initiate_ondemand_body(struct find_oppo_bundle *b
@@ -563,7 +567,6 @@ continue_oppo(struct adns_continuation *acr, err_t ugh)
      */
     whack_log_fd = whackfd;
 
-#ifdef KLIPS
     /* Discover and record whether %hold has gone away.
      * This could have happened while we were awaiting DNS.
      * We must check BEFORE any call to cannot_oppo.
@@ -571,7 +574,6 @@ continue_oppo(struct adns_continuation *acr, err_t ugh)
     if (was_held)
 	cr->b.held = has_bare_hold(&cr->b.our_client, &cr->b.peer_client
 	    , cr->b.transport_proto);
-#endif
 
 #ifdef DEBUG
     /* if we're going to ignore the error, at least note it in debugging log */
@@ -763,7 +765,7 @@ initiate_ondemand_body(struct find_oppo_bundle *b
     int work = 0;
 
     /* on klips/mast assume we will do something */
-    work = (kern_interface == USE_KLIPS || kern_interface == USE_MASTKLIPS);
+    work = (kern_interface == USE_KLIPS || kern_interface == USE_MASTKLIPS || kern_interface == USE_NETKEY);
 
     /* What connection shall we use?
      * First try for one that explicitly handles the clients.
@@ -854,13 +856,11 @@ initiate_ondemand_body(struct find_oppo_bundle *b
 	/* otherwise, there is some kind of static conn that can handle
 	 * this connection, so we initiate it */
 
-#ifdef KLIPS
-	if (b->held)
+	if (b->held && kern_interface != USE_NETKEY)
 	{
 	    /* what should we do on failure? */
 	    (void) assign_hold(c, sr, b->transport_proto, &b->our_client, &b->peer_client);
 	}
-#endif
 
 	if(!loggedit) { openswan_log("%s", demandbuf); loggedit=TRUE; }
 	ipsecdoi_initiate(b->whackfd, c, c->policy, 1
@@ -1253,7 +1253,6 @@ initiate_ondemand_body(struct find_oppo_bundle *b
 			  " between %s and %s with %s as peer"
 			, ocb, pcb, pb);
 
-#ifdef KLIPS
 		    if (b->held)
 		    {
 			/* Replace HOLD with PASS.
@@ -1266,7 +1265,6 @@ initiate_ondemand_body(struct find_oppo_bundle *b
 			    , TRUE, b->transport_proto
 			    , "no suitable connection");
 		    }
-#endif
 		}
 		else
 		{
@@ -1275,7 +1273,6 @@ initiate_ondemand_body(struct find_oppo_bundle *b
 		    passert(c->gw_info != NULL);
 		    passert(HAS_IPSEC_POLICY(c->policy));
 		    passert(LHAS(LELEM(RT_UNROUTED) | LELEM(RT_ROUTED_PROSPECTIVE), c->spd.routing));
-#ifdef KLIPS
 		    if (b->held)
 		    {
 			/* what should we do on failure? */
@@ -1283,7 +1280,6 @@ initiate_ondemand_body(struct find_oppo_bundle *b
 					   , b->transport_proto
 					   , &b->our_client, &b->peer_client);
 		    }
-#endif
 		    c->gw_info->key->last_tried_time = now();
 		    DBG(DBG_OPPO|DBG_CONTROL,
 			DBG_log("initiate on demand from %s:%d to %s:%d proto=%d state: %s because: %s"

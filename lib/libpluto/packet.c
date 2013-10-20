@@ -529,19 +529,19 @@ struct_desc isakmp_vendor_id_desc = { "ISAKMP Vendor ID Payload", isag_fields, s
 /* MODECFG */
 /*
  * From draft-dukes-ike-mode-cfg
-3.2. Attribute Payload 
-                           1                   2                   3 
-       0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 
-     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ 
-     ! Next Payload  !   RESERVED    !         Payload Length        ! 
-     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ 
-     !     Type      !   RESERVED    !           Identifier          ! 
-     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ 
-     !                                                               ! 
-     ~                           Attributes                          ~ 
-     !                                                               ! 
-     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ 
-*/    
+3.2. Attribute Payload
+                           1                   2                   3
+       0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+     ! Next Payload  !   RESERVED    !         Payload Length        !
+     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+     !     Type      !   RESERVED    !           Identifier          !
+     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+     !                                                               !
+     ~                           Attributes                          ~
+     !                                                               !
+     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+*/
 static field_desc isaattr_fields[] = {
     { ft_enum, 8/BITS_PER_BYTE, "next payload type", &payload_names },
     { ft_mbz, 8/BITS_PER_BYTE, NULL, NULL },
@@ -555,7 +555,7 @@ static field_desc isaattr_fields[] = {
 /* MODECFG */
 /* From draft-dukes-ike-mode-cfg
 3.2. Attribute Payload
-                           1                   2                   3  
+                           1                   2                   3
        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
      ! Next Payload  !   RESERVED    !         Payload Length        !
@@ -597,11 +597,19 @@ struct_desc isakmp_nat_d = { "ISAKMP NAT-D Payload", isag_fields, sizeof(struct 
  */
 static field_desc isanat_oa_fields[] = {
     { ft_enum, 8/BITS_PER_BYTE, "next payload type", &payload_names },
+#ifdef SUPPORT_BROKEN_ANDROID_ICS
     { ft_nat, 8/BITS_PER_BYTE, NULL, NULL },
+#else
+    { ft_mbz, 8/BITS_PER_BYTE, NULL, NULL },
+#endif
     { ft_len, 16/BITS_PER_BYTE, "length", NULL },
     { ft_enum, 8/BITS_PER_BYTE, "ID type", &ident_names },
-    { ft_nat, 8/BITS_PER_BYTE, NULL, NULL },
+#ifdef SUPPORT_BROKEN_ANDROID_ICS
     { ft_nat, 16/BITS_PER_BYTE, NULL, NULL },
+    { ft_nat, 8/BITS_PER_BYTE, NULL, NULL },
+#else
+    { ft_mbz, 24/BITS_PER_BYTE, NULL, NULL },
+#endif
     { ft_end, 0, NULL, NULL }
 };
 
@@ -751,7 +759,7 @@ struct_desc ikev2_trans_attr_desc = {
  *    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
  *
  *              Figure 10:  Key Exchange Payload Format
- *	
+ *
  */
 static field_desc ikev2ke_fields[] = {
     { ft_enum, 8/BITS_PER_BYTE, "next payload type", &payload_names },
@@ -835,7 +843,7 @@ static field_desc ikev2_cert_fields[] = {
 struct_desc ikev2_certificate_desc = { "IKEv2 Certificate Payload", ikev2_cert_fields, IKEV2_CERT_SIZE };
 
 /* section 3.7
- * 
+ *
  * The Certificate Request Payload is defined as follows:
  *
  *                          1                   2                   3
@@ -863,7 +871,7 @@ struct_desc ikev2_certificate_req_desc = { "IKEv2 Certificate Request Payload", 
 
 /*
  * 3.8.  Authentication Payload
- * 
+ *
  *                         1                   2                   3
  *     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
  *    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -893,9 +901,9 @@ struct_desc ikev2_a_desc = { "IKEv2 Authentication Payload",
 			     ikev2a_fields, sizeof(struct ikev2_a) };
 
 
-/* 
+/*
  * 3.9.  Nonce Payload
- * 
+ *
  * The Nonce Payload, denoted Ni and Nr in this memo for the initiator's
  * and responder's nonce respectively, contains random data used to
  * guarantee liveness during an exchange and protect against replay
@@ -920,7 +928,7 @@ struct_desc ikev2_nonce_desc = { "IKEv2 Nonce Payload",
 				 sizeof(struct ikev2_generic) };
 
 
-/*    3.10 Notify Payload  
+/*    3.10 Notify Payload
  *
  *    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
  *    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -937,7 +945,7 @@ struct_desc ikev2_nonce_desc = { "IKEv2 Nonce Payload",
  *    !                                                               !
  *    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
  *
- */ 
+ */
 static field_desc ikev2_notify_fields[] = {
   { ft_enum, 8/BITS_PER_BYTE, "next payload type", &payload_names },
   { ft_set, 8/BITS_PER_BYTE, "critical bit", critical_names},
@@ -954,7 +962,7 @@ struct_desc ikev2_notify_desc = { "IKEv2 Notify Payload",
 
 
 /* IKEv2 Delete Payload
- * layout from RFC 5996 Section 3.11 
+ * layout from RFC 5996 Section 3.11
  * This is followed by a variable length SPI.
  *
  *                      1                   2                   3
@@ -983,7 +991,7 @@ static field_desc ikev2_delete_fields[] = {
 struct_desc ikev2_delete_desc = { "IKEv2 Delete Payload",
                             ikev2_delete_fields, sizeof(struct ikev2_delete) };
 
-/* 
+/*
  * 3.12.  Vendor ID Payload
  *
  *  The Vendor ID Payload fields are defined as follows:
@@ -1061,7 +1069,7 @@ struct_desc ikev2_ts_desc = { "IKEv2 Traffic Selectors",
  */
 static field_desc ikev2ts1_fields[] = {
     { ft_enum, 8/BITS_PER_BYTE, "TS type", &ikev2_ts_type_names},
-    { ft_nat,  8/BITS_PER_BYTE, "IP Protocol ID", NULL}, 
+    { ft_nat,  8/BITS_PER_BYTE, "IP Protocol ID", NULL},
     { ft_len, 16/BITS_PER_BYTE, "length", NULL },
     { ft_nat, 16/BITS_PER_BYTE, "start port", NULL},
     { ft_nat, 16/BITS_PER_BYTE, "end port", NULL},

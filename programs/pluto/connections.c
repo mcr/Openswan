@@ -515,7 +515,7 @@ format_end(char *buf
     const char *client_sep = "";
     char protoport[sizeof(":255/65535")];
     const char *host = NULL;
-    char host_space[ADDRTOT_BUF+256];
+    char host_space[ADDRTOT_BUF+256]; /* if you change this, see below */
     bool dohost_name = FALSE;
     char host_port[sizeof(":65535")];
     char host_id[IDTOA_BUF + 2];
@@ -533,8 +533,7 @@ format_end(char *buf
     if (isanyaddr(&this->host_addr))
     {
 	if(this->host_type == KH_IPHOSTNAME) {
-	    host=host_space;
-	    strcpy(host_space, "%dns");
+	    host = strcpy(host_space, "%dns");
 	    dohost_name=TRUE;
 	} else {
 	    switch (policy & (POLICY_GROUP | POLICY_OPPO))
@@ -596,12 +595,15 @@ format_end(char *buf
 
     if(dohost_name) {
     	if(this->host_addr_name) {
-	    strncat(host_space, "<", sizeof(host_space)-1);
-	    strncat(host_space, this->host_addr_name, sizeof(host_space)-1);
-	    strncat(host_space, ">", sizeof(host_space));
+		size_t icl = strlen(host_space);
+		size_t room = sizeof(host_space) - icl - 1;
+		int needed = snprintf(host_space + icl, room, "<%s>", this->host_addr_name);
+
+		if (needed > room) {
+		   loglog(RC_BADID, "format_end: buffer too small for dohost_name - should not happen\n");
+		}
 	}
     }
-
 
     host_port[0] = '\0';
     if (this->host_port_specific)

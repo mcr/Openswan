@@ -6,7 +6,6 @@ OBJ.*
 TAGS
 UMLPOOL
 modobj26
-testing/*/OUTPUT/*
-testing/*/*/OUTPUT
+testing/
 umlsetup.sh
 osxApp/build
