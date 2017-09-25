@@ -24,7 +24,7 @@ struct ike_encr_desc {
     unsigned keydeflen;
     unsigned keymaxlen;
     unsigned keyminlen;
-    void (*do_crypt)(u_int8_t *dat
+    void (*do_crypt)(u_int8_t *dat         /* encrypts and decrypts *INPLACE */
 		     , size_t datasize
 		     , u_int8_t *key
 		     , size_t key_size
@@ -93,12 +93,11 @@ static inline struct ike_prf_desc *ikev1_crypto_get_prf(unsigned int alg)
 }
 #endif
 
+bool ikev1_alg_integ_present(int halg, unsigned int keysize);
 bool ike_alg_enc_present(int ealg, unsigned int keysize);
-bool ike_alg_hash_present(int halg);
+bool ikev2_alg_integ_present(int halg, unsigned int keysize);
 bool ike_alg_prf_present(int halg);
 
-bool ikev1_alg_integ_present(int halg, unsigned int keysize);
-bool ikev2_alg_integ_present(int halg, unsigned int keysize);
 bool ike_alg_group_present(int modpid);
 bool ike_alg_enc_ok(int ealg, unsigned key_len, struct alg_info_ike *alg_info_ike, const char **, char *, size_t);
 bool ike_alg_ok_final(int ealg, unsigned key_len, int aalg, unsigned int group, struct alg_info_ike *alg_info_ike);
@@ -113,7 +112,6 @@ int ike_alg_init(void);
 extern struct ike_alg *ike_alg_base[IKEv2_TRANS_TYPE_COUNT+1];
 int ike_alg_add(struct ike_alg *, bool quiet);
 int ike_alg_register_enc(struct ike_encr_desc *e);
-int ike_alg_register_hash(struct ike_integ_desc *e);
 int ike_alg_register_integ(struct ike_integ_desc *a);
 int ike_alg_register_prf(struct ike_prf_desc *a);
 struct ike_alg *ike_alg_ikev2_find(enum ikev2_trans_type algo_type
@@ -138,16 +136,27 @@ static __inline__ struct ike_dh_desc *ike_alg_get_dh(int alg)
 }
 const struct oakley_group_desc * ike_alg_pfsgroup(struct connection *c, lset_t policy);
 
-extern struct db_sa *oakley_alg_makedb(struct alg_info_ike *ai
-				       , struct db_sa *basic
-				       , int maxtrans);
+enum alg_desired_maximum {
+    SADB_NOLIMIT     = 1,
+    SADB_ONEPROPOSAL = 2,
+    SADB_ONEDH_ONLY  = 3,
+};
 
-extern struct db_sa *kernel_alg_makedb(lset_t policy
+extern struct db_sa *ikev2_sadb_from_alg(struct alg_info_ike *ai
+                                         ,enum alg_desired_maximum maxtrans);
+
+extern struct db_sa *ikev2_kernel_alg_makedb(lset_t policy
 				       , struct alg_info_esp *ei
 				       , bool logit);
 
+extern struct db_sa *kernel_alg_makedb(lset_t policy
+				       , struct alg_info_esp *ei
+                                       , enum phase1_role role);
+
 /* used if USE_SHA2 set, which is now default */
 extern int ike_alg_sha2_init(void);
+/* Translate from IKEv1->IKEv2 */
+extern enum ikev2_trans_type_integ ikev1toikev2integ(enum oakley_hash_t num);
 
 #endif /* _IKE_ALG_H */
 
