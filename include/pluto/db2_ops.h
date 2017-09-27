@@ -1,6 +1,6 @@
 /*	db_ops.h,v 1.1.2.1 2003/11/21 18:12:23 jjo Exp	*/
-#ifndef _DB_OPS_H
-#define _DB_OPS_H
+#ifndef _DB2_OPS_H
+#define _DB2_OPS_H
 
 #include "pluto/spdb.h"
 
@@ -20,6 +20,14 @@
  *    |     |
  *    |     +-- Transform ENCR ( Name = ENCR_AES_CBC )
  *    |     |     +-- Attribute ( Key Length = 256 )
+ *    |     |
+ *    |     +-- Transform INTEG ( Name = AUTH_HMAC_SHA1_96 )
+ *    |     +-- Transform INTEG ( Name = AUTH_AES_XCBC_96 )
+ *    |     +-- Transform ESN ( Name = ESNs )
+ *    |     +-- Transform ESN ( Name = No ESNs )
+ *    |
+ *    +--- Proposal #1 ( Proto ID = AH(2), SPI size = 4,
+ *    |     |            7 transforms,      SPI = 0x052357bb )
  *    |     |
  *    |     +-- Transform INTEG ( Name = AUTH_HMAC_SHA1_96 )
  *    |     +-- Transform INTEG ( Name = AUTH_AES_XCBC_96 )
@@ -66,26 +74,17 @@ struct db2_context * db2_prop_new(int max_conj
                                   , int max_trans
                                   , int max_attrs);
 
-/* Initialize object for proposal building  */
+/* (re-)initialize object for proposal building, returns 1 if everything okay
+ * not needed if just called db2_prop_new.
+ */
 int db2_prop_init(struct db2_context *ctx
                   , int max_conj
                   , int max_trans
                   , int max_attrs);
 
-/*	Free all resourses for this db */
+/*	Clear out a db object */
 void db2_destroy(struct db2_context *ctx);
 
-/*	Start a new transform */
-int db2_trans_add(struct db2_context *ctx, u_int8_t transid, u_int8_t value);
-
-/*	Add a new attribute by copying db_attr content */
-int db2_attr_add(struct db2_context *ctx, u_int16_t type, u_int16_t val);
-
-
-/*	Add a new attribute by value */
-int db2_attr_add_values(struct db2_context *ctx
-                       , u_int16_t type
-                       , u_int16_t val);
 
 /*	Free a db object itself, and things contained in it */
 void db2_free(struct db2_context *ctx);
@@ -96,6 +95,13 @@ int db2_prop_add(struct db2_context *ctx, u_int8_t protoid, u_int8_t spisize);
 /*      Then add an alternative to a propsal */
 int db2_prop_alternative(struct db2_context *ctx, u_int8_t protoid);
 
+/*	Start a new transform */
+int db2_trans_add(struct db2_context *ctx, u_int8_t transid, u_int8_t value);
+
+/*	Add a new attribute by value */
+int db2_attr_add(struct db2_context *ctx
+                 , u_int16_t type
+                 , u_int16_t val);
 
 /*	Start a new transform */
 void db2_prop_close(struct db2_context *ctx);
@@ -108,9 +114,11 @@ static __inline__ struct db_v2_prop *db2_prop_get(struct db2_context *ctx) {
 int db2_ops_show_status(void);
 
 extern void db2_print(struct db2_context *ctx);
+extern void sa_v2_print(struct db_sa *sa);
 
-struct alg_info;  /* forward reference */
-extern struct db2_context *alginfo2db2(struct alg_info *ai);
+struct alg_info_ike;  /* forward reference */
+struct alg_info_esp;  /* forward reference */
+extern struct db_sa *alginfo2parent_db2(struct alg_info_ike *ai);
+extern struct db_sa *alginfo2child_db2(struct alg_info_esp *ai);
 
-
-#endif /* _DB_OPS_H */
+#endif /* _DB2_OPS_H */
