@@ -52,6 +52,8 @@
 #include "constants.h"
 #include "defs.h"
 #include "id.h"
+#include "oswtime.h"
+#include "timer.h"
 #include "pluto/state.h"
 #include "pluto/connections.h"
 #include "kernel.h"
@@ -74,8 +76,6 @@ int netlink_bcast_fd = NULL_FD;
 
 /** linux_pfkey_register - Register via PFKEY our capabilities
  *
- * @param addr ip_address
- * @param xaddr xfrm_address_t - IPv[46] Address from addr is copied here.
  */
 void
 linux_pfkey_register(void)
@@ -441,7 +441,7 @@ int nat_traversal_espinudp_socket (int sk, const char *fam, u_int32_t type)
 /** init_netlink - Initialize the netlink inferface.  Opens the sockets and
  * then binds to the broadcast socket.
  */
-static void init_netlink(void)
+void init_netlink(void)
 {
     struct sockaddr_nl addr;
 
@@ -486,74 +486,6 @@ static void init_netlink(void)
      **/
     linux_pfkey_add_aead();
 #endif /* HAVE_AEAD */
-}
-
-/* netlink_get_sa - Get SA information from the kernel
- *
- * @param sa Kernel SA to be queried
- * @return bool True if successful
- */
-static bool
-netlink_get_sa(const struct kernel_sa *sa, u_int *bytes)
-{
-    struct {
-	struct nlmsghdr n;
-	struct xfrm_usersa_id id;
-    } req;
-
-    struct {
-	struct nlmsghdr n;
-	struct xfrm_usersa_info info;
-	char data[1024];
-    } rsp;
-
-     memset(&req, 0, sizeof(req));
-    req.n.nlmsg_flags = NLM_F_REQUEST;
-    req.n.nlmsg_type = XFRM_MSG_GETSA;
-
-    ip2xfrm(sa->dst, &req.id.daddr);
-
-    req.id.spi = sa->spi;
-    req.id.family = sa->src->u.v4.sin_family;
-    req.id.proto = sa->proto;
-
-    req.n.nlmsg_len = NLMSG_ALIGN(NLMSG_LENGTH(sizeof(req.id)));
-    rsp.n.nlmsg_type = XFRM_MSG_NEWSA;
-
-    if (!send_netlink_msg(&req.n, &rsp.n, sizeof(rsp), "Get SA", sa->text_said))
-	return FALSE;
-
-    *bytes = (u_int) rsp.info.curlft.bytes;
-    return TRUE;
-}
-
-static bool
-netkey_do_command(struct connection *c, const struct spd_route *sr
-                  , const char *verb, const char *verb_suffix
-                  , struct state *st)
-{
-    char cmd[2048];     /* arbitrary limit on shell command length */
-    char common_shell_out_str[2048];
-
-    if(fmt_common_shell_out(common_shell_out_str, sizeof(common_shell_out_str), c, sr, st)==-1) {
-	loglog(RC_LOG_SERIOUS, "%s%s command too long!", verb, verb_suffix);
-	return FALSE;
-    }
-
-    if (-1 == snprintf(cmd, sizeof(cmd)
-		       , "2>&1 "   /* capture stderr along with stdout */
-		       "PLUTO_VERB='%s%s' "
-		       "%s"        /* other stuff   */
-		       "%s"        /* actual script */
-		       , verb, verb_suffix
-		       , common_shell_out_str
-		       , sr->this.updown == NULL? DEFAULT_UPDOWN : sr->this.updown))
-    {
-	loglog(RC_LOG_SERIOUS, "%s%s command too long!", verb, verb_suffix);
-	return FALSE;
-    }
-
-    return invoke_command(verb, verb_suffix, cmd);
 }
 
 /* called periodically to cleanup expired bare shunts, like what
