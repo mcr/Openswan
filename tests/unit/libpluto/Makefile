@@ -76,6 +76,7 @@ UNITTESTS_R2+=lp39-h2hR2
 
 UNITTESTS_v1I1+=lp43-parentM1
 UNITTESTS_v1R1+=lp44-h2hR1-deny-ikev1
+UNITTESTS_v1R1+=lp73-parentN1
 
 UNITTESTS_R1+=lp45-h2hR1-noikev2
 UNITTESTS_I1+=lp46-rekeyikev2-I1
