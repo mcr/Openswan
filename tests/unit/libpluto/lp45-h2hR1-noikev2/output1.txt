@@ -17,7 +17,7 @@ processing whack msg time: X size: Y
 ./h2hR1-noikev2 loaded key: AD2F DDF5 7ABE 6140 14AA B39E 50EB EC76 CA12 3C8C
 | processing whack message of size: A
 processing whack msg time: X size: Y
-| Added new connection mytunnel-no-ikev2 with policy RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2Init+SAREFTRACK
+| Added new connection mytunnel-no-ikev2 with policy RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+SAREFTRACK
 ./h2hR1-noikev2 use keyid: 1:<> / 2:<>
 | counting wild cards for 192.168.1.1 is 0
 ./h2hR1-noikev2 use keyid: 1:<> / 2:<>
@@ -34,12 +34,12 @@ processing whack msg time: X size: Y
 |   concluded with <none>
 ./h2hR1-noikev2 adding connection: "mytunnel-no-ikev2"
 | 132.213.238.7...192.168.1.1
-| ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2Init+SAREFTRACK
+| ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+SAREFTRACK
 |   orient mytunnel-no-ikev2 finished with: 1 [132.213.238.7]
 RC=0 "mytunnel-no-ikev2": 132.213.238.7...192.168.1.1; unrouted; eroute owner: #0
 RC=0 "mytunnel-no-ikev2":     myip=unset; hisip=unset;
 RC=0 "mytunnel-no-ikev2":   ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1
-RC=0 "mytunnel-no-ikev2":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2Init+SAREFTRACK; prio: 32,32; interface: eth0; kind=CK_PERMANENT
+RC=0 "mytunnel-no-ikev2":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+SAREFTRACK; prio: 32,32; interface: eth0; kind=CK_PERMANENT
 |   =========== input from from h2hI1.pcap ========
 | *received 836 bytes from 192.168.1.1:500 on eth0 (port=500)
 |   80 01 02 03  04 05 06 07  00 00 00 00  00 00 00 00
@@ -119,9 +119,9 @@ RC=0 "mytunnel-no-ikev2":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2Init+S
 | find_host_pair: concluded with mytunnel-no-ikev2
 | found_host_pair_conn (find_host_connection2): 132.213.238.7:500 %address/192.168.1.1:500 -> hp:mytunnel-no-ikev2
 | searching for connection with policy = IKEv2ALLOW/-
-| found policy = RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2Init+SAREFTRACK (mytunnel-no-ikev2)
-| connection mytunnel-no-ikev2 (policy=RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2Init+SAREFTRACK) does not match desired policy IKEv2ALLOW (~ -) [withoutversion: mytunnel-no-ikev2]
-| connection mytunnel-no-ikev2 (policy=RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2Init+SAREFTRACK) would have matched, but ike version policy was wrong
+| found policy = RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+SAREFTRACK (mytunnel-no-ikev2)
+| connection mytunnel-no-ikev2 (policy=RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+SAREFTRACK) does not match desired policy IKEv2ALLOW (~ -) [withoutversion: mytunnel-no-ikev2]
+| connection mytunnel-no-ikev2 (policy=RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+SAREFTRACK) would have matched, but ike version policy was wrong
 | find_host_pair: looking for me=132.213.238.7:500 %any him=<none>:500 any-match
 | find_host_pair: comparing to me=132.213.238.7:500 %address him=192.168.1.1:500
 | find_host_pair: concluded with <none>
