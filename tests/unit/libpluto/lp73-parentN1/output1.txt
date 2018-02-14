@@ -17,102 +17,122 @@ processing whack msg time: X size: Y
 ./parentN1 loaded key: AD2F DDF5 7ABE 6140 14AA B39E 50EB EC76 CA12 3C8C
 | processing whack message of size: A
 processing whack msg time: X size: Y
-| Added new connection mytunnel-no-ikev2 with policy RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2Init+SAREFTRACK
+| Added new connection mytunnel-ikev1 with policy RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK
 ./parentN1 use keyid: 1:<> / 2:<>
 | counting wild cards for 192.168.1.1 is 0
 ./parentN1 use keyid: 1:<> / 2:<>
 | counting wild cards for 132.213.238.7 is 0
-| orient mytunnel-no-ikev2 reference sr#1 this: addr:192.168.1.1 that: addr:132.213.238.7
-| orient mytunnel-no-ikev2 checking against if: eth0 (AF_INET:132.213.238.7:4500)
-| orient mytunnel-no-ikev2 checking against if: eth0 (AF_INET:132.213.238.7:500)
+| orient mytunnel-ikev1 reference sr#1 this: addr:192.168.1.1 that: addr:132.213.238.7
+| orient mytunnel-ikev1 checking against if: eth0 (AF_INET:132.213.238.7:4500)
+| orient mytunnel-ikev1 checking against if: eth0 (AF_INET:132.213.238.7:500)
 |     orient matched on IP
-|   orient mytunnel-no-ikev2 finished with: 1 [132.213.238.7]
+|   orient mytunnel-ikev1 finished with: 1 [132.213.238.7]
 | find_host_pair: looking for me=132.213.238.7:500 %address him=192.168.1.1:500 exact-match
 | find_host_pair: concluded with <none>
 | connect_to_host_pair: 132.213.238.7:500 %address 192.168.1.1:500 -> hp:none
 | find_ID_host_pair: looking for me=132.213.238.7 him=192.168.1.1 (exact)
 |   concluded with <none>
-./parentN1 adding connection: "mytunnel-no-ikev2"
+./parentN1 adding connection: "mytunnel-ikev1"
 | 132.213.238.7...192.168.1.1
-| ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2Init+SAREFTRACK
-|   orient mytunnel-no-ikev2 finished with: 1 [132.213.238.7]
-RC=0 "mytunnel-no-ikev2": 132.213.238.7...192.168.1.1; unrouted; eroute owner: #0
-RC=0 "mytunnel-no-ikev2":     myip=unset; hisip=unset;
-RC=0 "mytunnel-no-ikev2":   ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1
-RC=0 "mytunnel-no-ikev2":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2Init+SAREFTRACK; prio: 32,32; interface: eth0; kind=CK_PERMANENT
+| ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK
+|   orient mytunnel-ikev1 finished with: 1 [132.213.238.7]
+RC=0 "mytunnel-ikev1": 132.213.238.7...192.168.1.1; unrouted; eroute owner: #0
+RC=0 "mytunnel-ikev1":     myip=unset; hisip=unset;
+RC=0 "mytunnel-ikev1":   ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1
+RC=0 "mytunnel-ikev1":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK; prio: 32,32; interface: eth0; kind=CK_PERMANENT
 |   =========== input from from parentM1.pcap ========
-| *received 252 bytes from 192.168.1.1:500 on eth0 (port=500)
+| *received 276 bytes from 192.168.1.1:500 on eth0 (port=500)
 |   80 01 02 03  04 05 06 07  00 00 00 00  00 00 00 00
-|   01 10 02 00  00 00 00 00  00 00 00 fc  0d 00 00 bc
-|   00 00 00 01  00 00 00 01  00 00 00 b0  00 01 00 06
-|   03 00 00 1c  00 01 00 00  80 0b 00 01  80 0c 0e 10
-|   80 01 00 07  80 02 00 02  80 04 00 0e  03 00 00 1c
-|   01 01 00 00  80 0b 00 01  80 0c 0e 10  80 01 00 07
-|   80 02 00 04  80 04 00 0e  03 00 00 1c  02 01 00 00
-|   80 0b 00 01  80 0c 0e 10  80 01 00 07  80 02 00 04
-|   80 04 00 05  03 00 00 1c  03 01 00 00  80 0b 00 01
-|   80 0c 0e 10  80 01 00 07  80 02 00 02  80 04 00 05
-|   03 00 00 1c  04 01 00 00  80 0b 00 01  80 0c 0e 10
-|   80 01 00 07  80 02 00 04  80 04 00 0f  00 00 00 1c
-|   05 01 00 00  80 0b 00 01  80 0c 0e 10  80 01 00 07
-|   80 02 00 02  80 04 00 0f  0d 00 00 10  4f 45 70 6c
-|   75 74 6f 75  6e 69 74 30  00 00 00 14  af ca d7 13
-|   68 a1 f1 c9  6b 86 96 fc  77 57 01 00
+|   01 10 02 00  00 00 00 00  00 00 01 14  0d 00 00 d4
+|   00 00 00 01  00 00 00 01  00 00 00 c8  00 01 00 06
+|   03 00 00 20  00 01 00 00  80 0b 00 01  80 0c 0e 10
+|   80 03 00 03  80 01 00 07  80 02 00 02  80 04 00 0e
+|   03 00 00 20  01 01 00 00  80 0b 00 01  80 0c 0e 10
+|   80 03 00 03  80 01 00 07  80 02 00 04  80 04 00 0e
+|   03 00 00 20  02 01 00 00  80 0b 00 01  80 0c 0e 10
+|   80 03 00 03  80 01 00 07  80 02 00 04  80 04 00 05
+|   03 00 00 20  03 01 00 00  80 0b 00 01  80 0c 0e 10
+|   80 03 00 03  80 01 00 07  80 02 00 02  80 04 00 05
+|   03 00 00 20  04 01 00 00  80 0b 00 01  80 0c 0e 10
+|   80 03 00 03  80 01 00 07  80 02 00 04  80 04 00 0f
+|   00 00 00 20  05 01 00 00  80 0b 00 01  80 0c 0e 10
+|   80 03 00 03  80 01 00 07  80 02 00 02  80 04 00 0f
+|   0d 00 00 10  4f 45 70 6c  75 74 6f 75  6e 69 74 30
+|   00 00 00 14  af ca d7 13  68 a1 f1 c9  6b 86 96 fc
+|   77 57 01 00
 |  processing version=1.0 packet with exchange type=ISAKMP_XCHG_IDPROT (2), msgid: 00000000
 ./parentN1 ignoring unknown Vendor ID payload [4f45706c75746f756e697430]
 ./parentN1 received Vendor ID payload [Dead Peer Detection]
 | find_host_connection2 called from main_inI1_outR1, me=132.213.238.7:500 him=192.168.1.1:500 policy=/!IKEv1
 | find_host_pair: looking for me=132.213.238.7:500 %address him=192.168.1.1:500 any-match
 | find_host_pair: comparing to me=132.213.238.7:500 %address him=192.168.1.1:500
-| find_host_pair: concluded with mytunnel-no-ikev2
-| found_host_pair_conn (find_host_connection2): 132.213.238.7:500 %address/192.168.1.1:500 -> hp:mytunnel-no-ikev2
+| find_host_pair: concluded with mytunnel-ikev1
+| found_host_pair_conn (find_host_connection2): 132.213.238.7:500 %address/192.168.1.1:500 -> hp:mytunnel-ikev1
 | searching for connection with policy = /!IKEv1
-| found policy = RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2Init+SAREFTRACK (mytunnel-no-ikev2)
-| connection mytunnel-no-ikev2 (policy=RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2Init+SAREFTRACK) does not match desired policy  (~ !IKEv1) [withoutversion: mytunnel-no-ikev2]
-| connection mytunnel-no-ikev2 (policy=RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2Init+SAREFTRACK) would have matched, but ike version policy was wrong
-| find_host_pair: looking for me=132.213.238.7:500 %any him=<none>:500 any-match
-| find_host_pair: comparing to me=132.213.238.7:500 %address him=192.168.1.1:500
-| find_host_pair: concluded with <none>
-| found_host_pair_conn (find_host_connection2): 132.213.238.7:500 %any/%any:500 -> hp:none
-| searching for connection with policy = /!IKEv1
-| find_host_connection2 returns empty (ike=mytunnel-no-ikev2/none)
-| find_host_connection2 called from main_inI1_outR1, me=132.213.238.7:500 him=%any:500 policy=/!IKEv1
-| find_host_pair: looking for me=132.213.238.7:500 %any him=<none>:500 any-match
-| find_host_pair: comparing to me=132.213.238.7:500 %address him=192.168.1.1:500
-| find_host_pair: concluded with <none>
-| found_host_pair_conn (find_host_connection2): 132.213.238.7:500 %any/%any:500 -> hp:none
-| searching for connection with policy = /!IKEv1
-| find_host_pair: looking for me=132.213.238.7:500 %any him=<none>:500 any-match
-| find_host_pair: comparing to me=132.213.238.7:500 %address him=192.168.1.1:500
-| find_host_pair: concluded with <none>
-| found_host_pair_conn (find_host_connection2): 132.213.238.7:500 %any/%any:500 -> hp:none
-| searching for connection with policy = /!IKEv1
-| find_host_connection2 returns empty (ike=none/none)
-./parentN1 initial Main Mode message received on 132.213.238.7:500 but no connection has been authorized
-| complete state transition with STF_FAIL
-RC=205 STATE_MAIN_R0: INVALID_MAJOR_VERSION
-./parentN1 sending notification INVALID_MAJOR_VERSION to 192.168.1.1:500
+| found policy = RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK (mytunnel-ikev1)
+| find_host_connection2 returns mytunnel-ikev1 (ike=none/none)
+| creating state object #1 at Z
+| ICOOKIE:  80 01 02 03  04 05 06 07
+| RCOOKIE:  de bc 58 3a  8f 40 d0 cf
+| state hash entry 28
+| inserting state object #1 bucket: 28
+./parentN1 responding to Main Mode
 | **emit ISAKMP Message:
 |    initiator cookie:
 |   80 01 02 03  04 05 06 07
 |    responder cookie:
-|   00 00 00 00  00 00 00 00
+|   de bc 58 3a  8f 40 d0 cf
 |    ISAKMP version: ISAKMP Version 1.0 (rfc2407)
-|    exchange type: ISAKMP_XCHG_INFO
+|    exchange type: ISAKMP_XCHG_IDPROT
 |    flags: none
 |    message ID:  00 00 00 00
-| ***emit ISAKMP Notification Payload:
+| ***emit ISAKMP Security Association Payload:
 |    DOI: ISAKMP_DOI_IPSEC
-|    protocol ID: 1
+| ****emit IPsec DOI SIT:
+|    IPsec DOI SIT: SIT_IDENTITY_ONLY
+| ****emit ISAKMP Proposal Payload:
+|    proposal number: 0
+|    protocol ID: PROTO_ISAKMP
 |    SPI size: 0
-|    Notify Message Type: INVALID_MAJOR_VERSION
-| emitting length of ISAKMP Notification Payload: 12
-| emitting length of ISAKMP Message: 40
-sending 40 bytes for notification packet through eth0:500 [132.213.238.7:500] to 192.168.1.1:500 (using #0)
-|   80 01 02 03  04 05 06 07  00 00 00 00  00 00 00 00
-|   0b 10 05 00  00 00 00 00  00 00 00 28  00 00 00 0c
-|   00 00 00 01  01 00 00 05
+|    number of transforms: 1
+| *****emit ISAKMP Transform Payload (ISAKMP):
+|    transform number: 0
+|    transform ID: KEY_IKE
+| emitting 24 raw bytes of attributes into ISAKMP Transform Payload (ISAKMP)
+| attributes  80 0b 00 01  80 0c 0e 10  80 03 00 03  80 01 00 07
+|   80 02 00 02  80 04 00 0e
+| emitting length of ISAKMP Transform Payload (ISAKMP): 32
+| emitting length of ISAKMP Proposal Payload: 40
+| emitting length of ISAKMP Security Association Payload: 52
+| ***emit ISAKMP Vendor ID Payload:
+| emitting 12 raw bytes of Vendor ID into ISAKMP Vendor ID Payload
+| Vendor ID  4f 53 57 55  78 7e 71 4e  44 7e 56 59
+| emitting length of ISAKMP Vendor ID Payload: 16
+| out_vendorid(): sending [Dead Peer Detection]
+| ***emit ISAKMP Vendor ID Payload:
+| emitting 16 raw bytes of V_ID into ISAKMP Vendor ID Payload
+| V_ID  af ca d7 13  68 a1 f1 c9  6b 86 96 fc  77 57 01 00
+| emitting length of ISAKMP Vendor ID Payload: 20
+| emitting length of ISAKMP Message: 116
+| complete state transition with STF_OK
+./parentN1 transition from state STATE_MAIN_R0 to state STATE_MAIN_R1
+| sending reply packet to 192.168.1.1:500 (from port 500)
+sending 116 bytes for STATE_MAIN_R0 through eth0:500 [132.213.238.7:500] to 192.168.1.1:500 (using #1)
+|   80 01 02 03  04 05 06 07  de bc 58 3a  8f 40 d0 cf
+|   01 10 02 00  00 00 00 00  00 00 00 74  0d 00 00 34
+|   00 00 00 01  00 00 00 01  00 00 00 28  00 01 00 01
+|   00 00 00 20  00 01 00 00  80 0b 00 01  80 0c 0e 10
+|   80 03 00 03  80 01 00 07  80 02 00 02  80 04 00 0e
+|   0d 00 00 10  4f 53 57 55  78 7e 71 4e  44 7e 56 59
+|   00 00 00 14  af ca d7 13  68 a1 f1 c9  6b 86 96 fc
+|   77 57 01 00
+./parentN1 STATE_MAIN_R1: sent MR1, expecting MI2
+| modecfg pull: noquirk policy:push not-client
+| phase 1 is done, looking for phase 2 to unpend
+./parentN1 deleting state #1 (STATE_MAIN_R1)
 ./parentN1 deleting connection
+| pass 0: considering CHILD SAs to delete
+| pass 1: considering PARENT SAs to delete
 ./parentN1 leak: 67 * VendorID MD5, item size: X
 ./parentN1 leak: 3 * vid->data, item size: X
 ./parentN1 leak: 15 * VendorID MD5, item size: X
