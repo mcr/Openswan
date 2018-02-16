@@ -10,7 +10,6 @@
 #include "seam_dnskey.c"
 #include "seam_ikev1_phase2.c"
 #include "seam_ikev1_crypto.c"
-#include "seam_natt_vid.c"
 #include "seam_rsa_check.c"
 
 #include "seam_host_parker.c"
@@ -31,6 +30,7 @@ static void init_fake_secrets(void)
 }
 
 bool no_cr_send = FALSE;
+
 
 #include "../lp02-parentI1/parentI1_main.c"
 

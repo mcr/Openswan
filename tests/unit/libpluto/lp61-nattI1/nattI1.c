@@ -1,5 +1,6 @@
 #define NAPT_ENABLED 1
 #include "../lp02-parentI1/parentI1_head.c"
+#include "seam_natt.c"
 #include "seam_x509.c"
 #include "seam_pending.c"
 #include "seam_whack.c"

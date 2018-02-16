@@ -1,4 +1,5 @@
-#include "parentI1_head.c"
+#include "../lp02-parentI1/parentI1_head.c"
+#include "seam_natt.c"
 #include "seam_demux.c"
 #include "seam_pending.c"
 #include "seam_whack.c"
@@ -23,7 +24,7 @@ static void init_fake_secrets(void)
 			       , NULL, NULL);
 }
 
-#include "parentI1_main.c"
+#include "../lp02-parentI1/parentI1_main.c"
 
 
  /*
