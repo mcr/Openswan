@@ -26,4 +26,5 @@ ikev1_delete_out(struct state *st)
 {
 	printf("deleted state #%lu\n", st->st_serialno);
 }
+
 #endif

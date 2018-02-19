@@ -227,24 +227,6 @@ stf_status start_dh_secretiv(struct pluto_crypto_req_cont *cn UNUSED
   return STF_INLINE;
 }
 
-stf_status
-check_signature_gen(struct connection *c
-                    , struct state *st
-                    , const u_char hash_val[MAX_DIGEST_LEN]
-                    , size_t hash_len
-                    , const pb_stream *sig_pbs
-                    , const struct pubkey_list *keys_from_dns
-                    , const struct gw_info *gateways_from_dns
-                    , err_t (*try_RSA_signature)(const u_char hash_val[MAX_DIGEST_LEN]
-                                                 , size_t hash_len
-                                                 , const pb_stream *sig_pbs
-                                                 , struct pubkey *kr
-                                                 , struct state *st))
-{
-  return STF_OK;
-}
-
-
 void finish_dh_secretiv(struct state *st,
                         struct pluto_crypto_req *r)
 {
