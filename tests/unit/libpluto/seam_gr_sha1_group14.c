@@ -138,10 +138,28 @@ unsigned char tc14_results_skeyseed[]= {
 	0x0d, 0x06, 0x22, 0x17,
 };
 
+unsigned char tc14_results_skeyid[]= {
+	0x9d, 0x8e, 0x53, 0x96,  0x0b, 0x36, 0x01, 0xf4,
+	0xc0, 0xd3, 0x29, 0xee,  0x1e, 0xc3, 0x70, 0x27,
+	0x0d, 0x06, 0x22, 0x17,
+};
+
 unsigned char tc14_results_skey_d[]= {
 	0xac, 0x97, 0xeb, 0x39,  0x07, 0x53, 0xa4, 0x5d,
 	0x61, 0xc1, 0x64, 0xff,  0xca, 0x25, 0x99, 0xb0,
 	0x2e, 0x05, 0x3c, 0x7e,
+};
+
+unsigned char tc14_results_skeyid_d[]= {
+	0xac, 0x97, 0xeb, 0x39,  0x07, 0x53, 0xa4, 0x5d,
+	0x61, 0xc1, 0x64, 0xff,  0xca, 0x25, 0x99, 0xb0,
+	0x2e, 0x05, 0x3c, 0x7e,
+};
+
+unsigned char tc14_results_skeyid_a[]= {
+	0x4e, 0xa8, 0xe6, 0x62,  0xb0, 0x7c, 0xdd, 0x43,
+	0x0f, 0x69, 0x44, 0xc6,  0x72, 0x3e, 0x4b, 0x82,
+	0xd5, 0x72, 0x24, 0x18,
 };
 
 unsigned char tc14_results_skey_ai[]= {
@@ -157,6 +175,11 @@ unsigned char tc14_results_skey_ar[]= {
 };
 
 unsigned char tc14_results_skey_ei[]= {
+	0x3f, 0x44, 0xbf, 0x47,  0xca, 0xfd, 0x81, 0x50,
+	0x59, 0x1d, 0xeb, 0x08,  0x81, 0x99, 0xfc, 0xbf,
+};
+
+unsigned char tc14_results_skeyid_e[]= {
 	0x3f, 0x44, 0xbf, 0x47,  0xca, 0xfd, 0x81, 0x50,
 	0x59, 0x1d, 0xeb, 0x08,  0x81, 0x99, 0xfc, 0xbf,
 };
@@ -178,18 +201,78 @@ unsigned char tc14_results_skey_pr[]= {
 	0xeb, 0x81, 0x58, 0xe7,
 };
 
+unsigned char tc14_results_new_iv[]= {
+	0xe9, 0x00, 0x11, 0x7e,  0x41, 0xd4, 0x31, 0x62,
+	0x40, 0xb8, 0x63, 0x22,  0xbf, 0x06, 0x9f, 0xbc,
+};
 
-struct pluto_crypto_req;
-void finish_dh_v2(struct state *st,
-		  struct pluto_crypto_req *r)
-{
-	//struct pcr_skeycalc_v2 *dhv2 = &r->pcr_d.dhv2;
+unsigned char tc14_results_enc_key[]= {
+	0xe9, 0x00, 0x11, 0x7e,  0x41, 0xd4, 0x31, 0x62,
+	0x40, 0xb8, 0x63, 0x22,  0xbf, 0x06, 0x9f, 0xbc,
+};
+
 
 #define CLONEIT(X) \
     clonetochunk(st->st_##X \
 		 , tc14_results_##X \
 		 , sizeof(tc14_results_##X) \
 		 ,   "calculated " #X "shared secret");
+
+stf_status start_dh_secretiv(struct pluto_crypto_req_cont *cn UNUSED
+			     , struct state *st UNUSED
+			     , enum crypto_importance importance UNUSED
+			     , enum phase1_role init       UNUSED /* TRUE=g_init,FALSE=g_r */
+			     , u_int16_t oakley_group2     UNUSED)
+{
+  return STF_INLINE;
+}
+
+stf_status
+check_signature_gen(struct connection *c
+                    , struct state *st
+                    , const u_char hash_val[MAX_DIGEST_LEN]
+                    , size_t hash_len
+                    , const pb_stream *sig_pbs
+                    , const struct pubkey_list *keys_from_dns
+                    , const struct gw_info *gateways_from_dns
+                    , err_t (*try_RSA_signature)(const u_char hash_val[MAX_DIGEST_LEN]
+                                                 , size_t hash_len
+                                                 , const pb_stream *sig_pbs
+                                                 , struct pubkey *kr
+                                                 , struct state *st))
+{
+  return STF_OK;
+}
+
+
+void finish_dh_secretiv(struct state *st,
+                        struct pluto_crypto_req *r)
+{
+    struct pcr_skeyid_r *dhr = &r->pcr_d.dhr;
+
+    CLONEIT(shared);
+    CLONEIT(skeyid);
+    CLONEIT(skeyid_d);
+    CLONEIT(skeyid_a);
+    CLONEIT(skeyid_e);
+    CLONEIT(enc_key);
+
+    passert(dhr->new_iv.len <= MAX_DIGEST_LEN);
+    passert(dhr->new_iv.len <= sizeof(tc14_results_new_iv));
+    passert(dhr->new_iv.len > 0);
+
+    memcpy(st->st_new_iv, tc14_results_new_iv, dhr->new_iv.len);
+    st->st_new_iv_len = dhr->new_iv.len;
+
+    st->hidden_variables.st_skeyid_calculated = TRUE;
+}
+
+
+struct pluto_crypto_req;
+void finish_dh_v2(struct state *st,
+		  struct pluto_crypto_req *r)
+{
+	//struct pcr_skeycalc_v2 *dhv2 = &r->pcr_d.dhv2;
 
     CLONEIT(shared);
     CLONEIT(skey_d);
