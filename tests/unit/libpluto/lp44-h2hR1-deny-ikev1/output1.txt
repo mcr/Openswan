@@ -59,7 +59,7 @@ RC=0 "mytunnel-no-ikev1":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+
 |   75 74 6f 75  6e 69 74 30  00 00 00 14  af ca d7 13
 |   68 a1 f1 c9  6b 86 96 fc  77 57 01 00
 |  processing version=1.0 packet with exchange type=ISAKMP_XCHG_IDPROT (2), msgid: 00000000
-./h2hR1-deny-ikev1 ignoring unknown Vendor ID payload [4f45706c75746f756e697430]
+./h2hR1-deny-ikev1 received Vendor ID payload [Openswan (this version) 2.6-regression ]
 ./h2hR1-deny-ikev1 received Vendor ID payload [Dead Peer Detection]
 | find_host_connection2 called from main_inI1_outR1, me=132.213.238.7:500 him=192.168.1.1:500 policy=/!IKEv1
 | find_host_pair: looking for me=132.213.238.7:500 %address him=192.168.1.1:500 any-match
