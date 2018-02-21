@@ -41,9 +41,11 @@ RC=0 "mytunnel-ikev1":     myip=unset; hisip=unset;
 RC=0 "mytunnel-ikev1":   ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1
 RC=0 "mytunnel-ikev1":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK; prio: 32,32; interface: eth0; kind=CK_PERMANENT
 |   =========== input from from parentM1.pcap ========
-| *received 276 bytes from 192.168.1.1:500 on eth0 (port=500)
+skipping: eth0:4500 float outside: 55045 <=> d: 500
+picking: eth0:500  outside: 55044 <=> d: 500
+| *received 376 bytes from 192.168.1.1:500 on eth0 (port=500)
 |   80 01 02 03  04 05 06 07  00 00 00 00  00 00 00 00
-|   01 10 02 00  00 00 00 00  00 00 01 14  0d 00 00 d4
+|   01 10 02 00  00 00 00 00  00 00 01 78  0d 00 00 d4
 |   00 00 00 01  00 00 00 01  00 00 00 c8  00 01 00 06
 |   03 00 00 20  00 01 00 00  80 0b 00 01  80 0c 0e 10
 |   80 03 00 03  80 01 00 07  80 02 00 02  80 04 00 0e
@@ -58,11 +60,22 @@ RC=0 "mytunnel-ikev1":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK; prio: 32,
 |   00 00 00 20  05 01 00 00  80 0b 00 01  80 0c 0e 10
 |   80 03 00 03  80 01 00 07  80 02 00 02  80 04 00 0f
 |   0d 00 00 10  4f 45 70 6c  75 74 6f 75  6e 69 74 30
-|   00 00 00 14  af ca d7 13  68 a1 f1 c9  6b 86 96 fc
-|   77 57 01 00
+|   0d 00 00 14  af ca d7 13  68 a1 f1 c9  6b 86 96 fc
+|   77 57 01 00  0d 00 00 14  4a 13 1c 81  07 03 58 45
+|   5c 57 28 f2  0e 95 45 2f  0d 00 00 14  7d 94 19 a6
+|   53 10 ca 6f  2c 17 9d 92  15 52 9d 56  0d 00 00 14
+|   90 cb 80 91  3e bb 69 6e  08 63 81 b5  ec 42 7b 1f
+|   0d 00 00 14  cd 60 46 43  35 df 21 f8  7c fd b2 fc
+|   68 b6 a4 48  00 00 00 14  44 85 15 2d  18 b6 bb cd
+|   0b e8 a8 46  95 79 dd cc
 |  processing version=1.0 packet with exchange type=ISAKMP_XCHG_IDPROT (2), msgid: 00000000
 ./parentN1 received Vendor ID payload [Openswan (this version) 2.6-regression ]
 ./parentN1 received Vendor ID payload [Dead Peer Detection]
+./parentN1 received Vendor ID payload [RFC 3947] method set to=115
+./parentN1 received Vendor ID payload [draft-ietf-ipsec-nat-t-ike-03] meth=108, but already using method 115
+./parentN1 received Vendor ID payload [draft-ietf-ipsec-nat-t-ike-02_n] meth=106, but already using method 115
+./parentN1 received Vendor ID payload [draft-ietf-ipsec-nat-t-ike-02] meth=107, but already using method 115
+./parentN1 received Vendor ID payload [draft-ietf-ipsec-nat-t-ike-00]
 | find_host_connection2 called from main_inI1_outR1, me=132.213.238.7:500 him=192.168.1.1:500 policy=/!IKEv1
 | find_host_pair: looking for me=132.213.238.7:500 %address him=192.168.1.1:500 any-match
 | find_host_pair: comparing to me=132.213.238.7:500 %address him=192.168.1.1:500
@@ -113,19 +126,26 @@ RC=0 "mytunnel-ikev1":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK; prio: 32,
 | emitting 16 raw bytes of V_ID into ISAKMP Vendor ID Payload
 | V_ID  af ca d7 13  68 a1 f1 c9  6b 86 96 fc  77 57 01 00
 | emitting length of ISAKMP Vendor ID Payload: 20
-| emitting length of ISAKMP Message: 116
+| out_vendorid(): sending [RFC 3947]
+|    next-payload: ISAKMP_NEXT_VID [@96=0x d]
+| ***emit ISAKMP Vendor ID Payload:
+| emitting 16 raw bytes of V_ID into ISAKMP Vendor ID Payload
+| V_ID  4a 13 1c 81  07 03 58 45  5c 57 28 f2  0e 95 45 2f
+| emitting length of ISAKMP Vendor ID Payload: 20
+| emitting length of ISAKMP Message: 136
 | complete state transition with STF_OK
 ./parentN1 transition from state STATE_MAIN_R0 to state STATE_MAIN_R1
 | sending reply packet to 192.168.1.1:500 (from port 500)
-sending 116 bytes for STATE_MAIN_R0 through eth0:500 [132.213.238.7:500] to 192.168.1.1:500 (using #1)
+sending 136 bytes for STATE_MAIN_R0 through eth0:500 [93.184.216.34:55044] to 192.168.1.1:500 (using #1)
 |   80 01 02 03  04 05 06 07  de bc 58 3a  8f 40 d0 cf
-|   01 10 02 00  00 00 00 00  00 00 00 74  0d 00 00 34
+|   01 10 02 00  00 00 00 00  00 00 00 88  0d 00 00 34
 |   00 00 00 01  00 00 00 01  00 00 00 28  00 01 00 01
 |   00 00 00 20  00 01 00 00  80 0b 00 01  80 0c 0e 10
 |   80 03 00 03  80 01 00 07  80 02 00 02  80 04 00 0e
 |   0d 00 00 10  4f 45 70 6c  75 74 6f 75  6e 69 74 30
-|   00 00 00 14  af ca d7 13  68 a1 f1 c9  6b 86 96 fc
-|   77 57 01 00
+|   0d 00 00 14  af ca d7 13  68 a1 f1 c9  6b 86 96 fc
+|   77 57 01 00  00 00 00 14  4a 13 1c 81  07 03 58 45
+|   5c 57 28 f2  0e 95 45 2f
 ./parentN1 STATE_MAIN_R1: sent MR1, expecting MI2
 | modecfg pull: noquirk policy:push not-client
 | phase 1 is done, looking for phase 2 to unpend
