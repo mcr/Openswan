@@ -5,6 +5,7 @@
 #include "seam_x509.c"
 #include "seam_crypt.c"
 #include "seam_rsasig.c"
+#include "seam_natt.c"
 #include "seam_gr_sha1_group14.c"
 
 #define TESTNAME "h2hR2"
