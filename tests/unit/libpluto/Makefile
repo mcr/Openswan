@@ -78,6 +78,7 @@ UNITTESTS_v1I1+=lp43-parentM1
 UNITTESTS_v1R1+=lp44-h2hR1-deny-ikev1
 UNITTESTS_v1R1+=lp73-parentN1
 UNITTESTS_v1I2+=lp74-parentM2
+UNITTESTS_v1R2+=lp75-parentN2
 
 UNITTESTS_R1+=lp45-h2hR1-noikev2
 UNITTESTS_I1+=lp46-rekeyikev2-I1
@@ -111,9 +112,9 @@ UNITTESTS+=${UNITTESTS_v1R1}
 UNITTESTS+=${UNITTESTS_I2}
 UNITTESTS+=${UNITTESTS_v1I2}
 UNITTESTS+=${UNITTESTS_R2}
+UNITTESTS+=${UNITTESTS_v1R2}
 UNITTESTS+=${UNITTESTS_I3}
 UNITTESTS+=${UNITTESTS_I4}
-
 
 clean check pcapupdate programs:
 	@set -e; for unittest in ${UNITTESTS}; do ${MAKE} -C $$unittest $@; done
