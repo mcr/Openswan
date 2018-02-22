@@ -266,10 +266,35 @@ RC=0 "t4901":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK; prio: 32,32; inter
 | emitting 16 raw bytes of V_ID into ISAKMP Vendor ID Payload
 | V_ID  af ca d7 13  68 a1 f1 c9  6b 86 96 fc  77 57 01 00
 | emitting length of ISAKMP Vendor ID Payload: 20
-| emitting length of ISAKMP Message: 276
-sending 276 bytes for main_outI1 through eth0:500 [93.184.216.34:55044] to 132.213.238.7:500 (using #1)
+| out_vendorid(): sending [RFC 3947]
+| ***emit ISAKMP Vendor ID Payload:
+| emitting 16 raw bytes of V_ID into ISAKMP Vendor ID Payload
+| V_ID  4a 13 1c 81  07 03 58 45  5c 57 28 f2  0e 95 45 2f
+| emitting length of ISAKMP Vendor ID Payload: 20
+| out_vendorid(): sending [draft-ietf-ipsec-nat-t-ike-03]
+| ***emit ISAKMP Vendor ID Payload:
+| emitting 16 raw bytes of V_ID into ISAKMP Vendor ID Payload
+| V_ID  7d 94 19 a6  53 10 ca 6f  2c 17 9d 92  15 52 9d 56
+| emitting length of ISAKMP Vendor ID Payload: 20
+| out_vendorid(): sending [draft-ietf-ipsec-nat-t-ike-02_n]
+| ***emit ISAKMP Vendor ID Payload:
+| emitting 16 raw bytes of V_ID into ISAKMP Vendor ID Payload
+| V_ID  90 cb 80 91  3e bb 69 6e  08 63 81 b5  ec 42 7b 1f
+| emitting length of ISAKMP Vendor ID Payload: 20
+| out_vendorid(): sending [draft-ietf-ipsec-nat-t-ike-02]
+| ***emit ISAKMP Vendor ID Payload:
+| emitting 16 raw bytes of V_ID into ISAKMP Vendor ID Payload
+| V_ID  cd 60 46 43  35 df 21 f8  7c fd b2 fc  68 b6 a4 48
+| emitting length of ISAKMP Vendor ID Payload: 20
+| out_vendorid(): sending [draft-ietf-ipsec-nat-t-ike-00]
+| ***emit ISAKMP Vendor ID Payload:
+| emitting 16 raw bytes of V_ID into ISAKMP Vendor ID Payload
+| V_ID  44 85 15 2d  18 b6 bb cd  0b e8 a8 46  95 79 dd cc
+| emitting length of ISAKMP Vendor ID Payload: 20
+| emitting length of ISAKMP Message: 376
+sending 376 bytes for main_outI1 through eth0:500 [93.184.216.34:55044] to 132.213.238.7:500 (using #1)
 |   80 01 02 03  04 05 06 07  00 00 00 00  00 00 00 00
-|   01 10 02 00  00 00 00 00  00 00 01 14  0d 00 00 d4
+|   01 10 02 00  00 00 00 00  00 00 01 78  0d 00 00 d4
 |   00 00 00 01  00 00 00 01  00 00 00 c8  00 01 00 06
 |   03 00 00 20  00 01 00 00  80 0b 00 01  80 0c 0e 10
 |   80 03 00 03  80 01 00 07  80 02 00 02  80 04 00 0e
@@ -284,12 +309,18 @@ sending 276 bytes for main_outI1 through eth0:500 [93.184.216.34:55044] to 132.2
 |   00 00 00 20  05 01 00 00  80 0b 00 01  80 0c 0e 10
 |   80 03 00 03  80 01 00 07  80 02 00 02  80 04 00 0f
 |   0d 00 00 10  4f 45 70 6c  75 74 6f 75  6e 69 74 30
-|   00 00 00 14  af ca d7 13  68 a1 f1 c9  6b 86 96 fc
-|   77 57 01 00
+|   0d 00 00 14  af ca d7 13  68 a1 f1 c9  6b 86 96 fc
+|   77 57 01 00  0d 00 00 14  4a 13 1c 81  07 03 58 45
+|   5c 57 28 f2  0e 95 45 2f  0d 00 00 14  7d 94 19 a6
+|   53 10 ca 6f  2c 17 9d 92  15 52 9d 56  0d 00 00 14
+|   90 cb 80 91  3e bb 69 6e  08 63 81 b5  ec 42 7b 1f
+|   0d 00 00 14  cd 60 46 43  35 df 21 f8  7c fd b2 fc
+|   68 b6 a4 48  00 00 00 14  44 85 15 2d  18 b6 bb cd
+|   0b e8 a8 46  95 79 dd cc
 RC=105 STATE_MAIN_I1: initiate
-picking: eth0:500  outside: 55044 <=> d: 500
-| *received 136 bytes from 93.184.216.34:55044 on eth0 (port=500)
-|   80 01 02 03  04 05 06 07  de bc 58 3a  8f 40 d0 cf
+picking: eth0:500  outside: 55044 <=> d: 55044
+| *received 136 bytes from 132.213.238.7:500 on eth0 (port=500)
+|   80 01 02 03  04 05 06 07  64 0a 06 43  5c 7c 4b 31
 |   01 10 02 00  00 00 00 00  00 00 00 88  0d 00 00 34
 |   00 00 00 01  00 00 00 01  00 00 00 28  00 01 00 01
 |   00 00 00 20  00 01 00 00  80 0b 00 01  80 0c 0e 10
@@ -302,7 +333,7 @@ picking: eth0:500  outside: 55044 <=> d: 500
 |    initiator cookie:
 |   80 01 02 03  04 05 06 07
 |    responder cookie:
-|   de bc 58 3a  8f 40 d0 cf
+|   64 0a 06 43  5c 7c 4b 31
 |    ISAKMP version: ISAKMP Version 1.0 (rfc2407)
 |    exchange type: ISAKMP_XCHG_IDPROT
 |    flags: none
@@ -310,8 +341,8 @@ picking: eth0:500  outside: 55044 <=> d: 500
 |    length: 136
 |  processing version=1.0 packet with exchange type=ISAKMP_XCHG_IDPROT (2), msgid: 00000000
 | ICOOKIE:  80 01 02 03  04 05 06 07
-| RCOOKIE:  de bc 58 3a  8f 40 d0 cf
-| state hash entry 28
+| RCOOKIE:  64 0a 06 43  5c 7c 4b 31
+| state hash entry 5
 | v1 state object not found
 | ICOOKIE:  80 01 02 03  04 05 06 07
 | RCOOKIE:  00 00 00 00  00 00 00 00
@@ -333,7 +364,7 @@ picking: eth0:500  outside: 55044 <=> d: 500
 |    length: 20
 ./parentM2 received Vendor ID payload [Openswan (this version) 2.6-regression ]
 ./parentM2 received Vendor ID payload [Dead Peer Detection]
-./parentM2 received Vendor ID payload [RFC 3947] meth=115, but port floating is off
+./parentM2 received Vendor ID payload [RFC 3947] method set to=115
 | ****parse IPsec DOI SIT:
 |    IPsec DOI SIT: SIT_IDENTITY_ONLY
 | ****parse ISAKMP Proposal Payload:
@@ -368,19 +399,20 @@ picking: eth0:500  outside: 55044 <=> d: 500
 |    af+type: OAKLEY_GROUP_DESCRIPTION
 |    length/value: 14
 | Oakley Transform 0 accepted
+./parentM2 enabling possible NAT-traversal with method RFC 3947 (NAT-Traversal)
 | complete state transition with STF_SUSPEND
 | ICOOKIE:  80 01 02 03  04 05 06 07
 | RCOOKIE:  00 00 00 00  00 00 00 00
 | state hash entry 4
 | ICOOKIE:  80 01 02 03  04 05 06 07
-| RCOOKIE:  de bc 58 3a  8f 40 d0 cf
-| state hash entry 28
-| inserting state object #1 bucket: 28
+| RCOOKIE:  64 0a 06 43  5c 7c 4b 31
+| state hash entry 5
+| inserting state object #1 bucket: 5
 | **emit ISAKMP Message:
 |    initiator cookie:
 |   80 01 02 03  04 05 06 07
 |    responder cookie:
-|   de bc 58 3a  8f 40 d0 cf
+|   64 0a 06 43  5c 7c 4b 31
 |    ISAKMP version: ISAKMP Version 1.0 (rfc2407)
 |    exchange type: ISAKMP_XCHG_IDPROT
 |    flags: none
@@ -412,20 +444,20 @@ picking: eth0:500  outside: 55044 <=> d: 500
 |    next-payload: ISAKMP_NEXT_NAT-D [@288=0x14]
 | ***emit ISAKMP NAT-D Payload:
 | emitting 20 raw bytes of NAT-D into ISAKMP NAT-D Payload
-| NAT-D  62 3d 7c 7c  c1 6e 84 8c  b9 2d f9 8c  2a ef 29 87
-|   de 2f 1a 0c
+| NAT-D  d7 66 3f 90  45 db b1 6f  2c 55 f2 25  78 55 db 6a
+|   76 d4 bc 8f
 | emitting length of ISAKMP NAT-D Payload: 24
 | ***emit ISAKMP NAT-D Payload:
 | emitting 20 raw bytes of NAT-D into ISAKMP NAT-D Payload
-| NAT-D  81 b5 74 15  c4 1e 64 b8  4c 1a 4e 9c  14 92 f7 ab
-|   25 31 bf 62
+| NAT-D  b4 e3 01 b0  85 e7 22 52  83 ee ec 6c  44 47 8e 55
+|   28 66 44 8e
 | emitting length of ISAKMP NAT-D Payload: 24
 | emitting length of ISAKMP Message: 356
 | complete state transition with STF_OK
 ./parentM2 transition from state STATE_MAIN_I1 to state STATE_MAIN_I2
 | sending reply packet to 132.213.238.7:500 (from port 500)
 sending 356 bytes for STATE_MAIN_I1 through eth0:500 [93.184.216.34:55044] to 132.213.238.7:500 (using #1)
-|   80 01 02 03  04 05 06 07  de bc 58 3a  8f 40 d0 cf
+|   80 01 02 03  04 05 06 07  64 0a 06 43  5c 7c 4b 31
 |   04 10 02 00  00 00 00 00  00 00 01 64  0a 00 01 04
 |   3d a6 6a 81  e2 92 09 be  18 4f a0 1e  5c ed ea 7c
 |   7d 7b 3a 21  3e 15 0d 53  5d 17 6a be  1b c5 70 ab
@@ -444,10 +476,10 @@ sending 356 bytes for STATE_MAIN_I1 through eth0:500 [93.184.216.34:55044] to 13
 |   08 38 d4 34  70 22 6c 21  d2 5b 20 a1  d2 ba 2a d1
 |   89 f3 20 79  ce ac 1e c2  ec 7d ae 76  94 40 39 a0
 |   14 00 00 14  20 98 9d 37  a8 14 a6 4d  8f f0 7c 08
-|   d3 20 e9 e3  14 00 00 18  62 3d 7c 7c  c1 6e 84 8c
-|   b9 2d f9 8c  2a ef 29 87  de 2f 1a 0c  00 00 00 18
-|   81 b5 74 15  c4 1e 64 b8  4c 1a 4e 9c  14 92 f7 ab
-|   25 31 bf 62
+|   d3 20 e9 e3  14 00 00 18  d7 66 3f 90  45 db b1 6f
+|   2c 55 f2 25  78 55 db 6a  76 d4 bc 8f  00 00 00 18
+|   b4 e3 01 b0  85 e7 22 52  83 ee ec 6c  44 47 8e 55
+|   28 66 44 8e
 ./parentM2 STATE_MAIN_I2: sent MI2, expecting MR2
 | modecfg pull: noquirk policy:push not-client
 | phase 1 is done, looking for phase 2 to unpend
@@ -455,8 +487,8 @@ sending 356 bytes for STATE_MAIN_I1 through eth0:500 [93.184.216.34:55044] to 13
 | pass 0: considering CHILD SAs to delete
 ./parentM2 deleting state #1 (STATE_MAIN_I2)
 | ICOOKIE:  80 01 02 03  04 05 06 07
-| RCOOKIE:  de bc 58 3a  8f 40 d0 cf
-| state hash entry 28
+| RCOOKIE:  64 0a 06 43  5c 7c 4b 31
+| state hash entry 5
 | pass 1: considering PARENT SAs to delete
 ./parentM2 leak: reply packet, item size: X
 ./parentM2 leak: raw packet, item size: X
