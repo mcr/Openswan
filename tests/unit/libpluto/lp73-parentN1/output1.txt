@@ -15,39 +15,38 @@
 | processing whack message of size: A
 | processing whack message of size: A
 processing whack msg time: X size: Y
-./parentN1 loaded key: 6DF7 E7A2 B017 2118 6525 1A9E FC30 F603 ADD5 6698
-| processing whack message of size: A
-processing whack msg time: X size: Y
 ./parentN1 loaded key: AD2F DDF5 7ABE 6140 14AA B39E 50EB EC76 CA12 3C8C
 | processing whack message of size: A
 processing whack msg time: X size: Y
+| find_host_pair: looking for me=<none>:500 %any him=<none>:500 any-match
+| find_host_pair: concluded with <none>
+| found_host_pair_conn (check_connection_end): %any:500 %any/%any:500 -> hp:none
 | Added new connection mytunnel-ikev1 with policy RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK
 ./parentN1 use keyid: 1:<> / 2:<>
-| counting wild cards for 192.168.1.1 is 0
+| counting wild cards for (none) is 15
 ./parentN1 use keyid: 1:<> / 2:<>
 | counting wild cards for 132.213.238.7 is 0
-| orient mytunnel-ikev1 reference sr#1 this: addr:192.168.1.1 that: addr:132.213.238.7
+| based upon ID_wildcard policy, the connection is a template.
+| orient mytunnel-ikev1 reference sr#1 this: addr:132.213.238.7 that: %any
 | orient mytunnel-ikev1 checking against if: eth0 (AF_INET:132.213.238.7:4500)
 | orient mytunnel-ikev1 checking against if: eth0 (AF_INET:132.213.238.7:500)
 |     orient matched on IP
 |   orient mytunnel-ikev1 finished with: 1 [132.213.238.7]
-| find_host_pair: looking for me=132.213.238.7:500 %address him=192.168.1.1:500 exact-match
+| find_host_pair: looking for me=132.213.238.7:500 %any him=0.0.0.0:500 exact-match
 | find_host_pair: concluded with <none>
-| connect_to_host_pair: 132.213.238.7:500 %address 192.168.1.1:500 -> hp:none
-| find_ID_host_pair: looking for me=132.213.238.7 him=192.168.1.1 (exact)
+| connect_to_host_pair: 132.213.238.7:500 %any 0.0.0.0:500 -> hp:none
+| find_ID_host_pair: looking for me=132.213.238.7 him=<any> (exact)
 |   concluded with <none>
 ./parentN1 adding connection: "mytunnel-ikev1"
-| 132.213.238.7...192.168.1.1
+| 132.213.238.7...%any
 | ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK
 |   orient mytunnel-ikev1 finished with: 1 [132.213.238.7]
-RC=0 "mytunnel-ikev1": 132.213.238.7...192.168.1.1; unrouted; eroute owner: #0
+RC=0 "mytunnel-ikev1": 132.213.238.7...%any; unrouted; eroute owner: #0
 RC=0 "mytunnel-ikev1":     myip=unset; hisip=unset;
 RC=0 "mytunnel-ikev1":   ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1
-RC=0 "mytunnel-ikev1":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK; prio: 32,32; interface: eth0; kind=CK_PERMANENT
+RC=0 "mytunnel-ikev1":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK; prio: 32,32; interface: eth0; kind=CK_TEMPLATE
 |   =========== input from from parentM1.pcap ========
-skipping: eth0:4500 float outside: 55045 <=> d: 500
-picking: eth0:500  outside: 55044 <=> d: 500
-| *received 376 bytes from 192.168.1.1:500 on eth0 (port=500)
+| *received 376 bytes from 93.184.216.34:55044 on eth0 (port=500)
 |   80 01 02 03  04 05 06 07  00 00 00 00  00 00 00 00
 |   01 10 02 00  00 00 00 00  00 00 01 78  0d 00 00 d4
 |   00 00 00 01  00 00 00 01  00 00 00 c8  00 01 00 06
@@ -80,25 +79,25 @@ picking: eth0:500  outside: 55044 <=> d: 500
 ./parentN1 received Vendor ID payload [draft-ietf-ipsec-nat-t-ike-02_n] meth=106, but already using method 115
 ./parentN1 received Vendor ID payload [draft-ietf-ipsec-nat-t-ike-02] meth=107, but already using method 115
 ./parentN1 received Vendor ID payload [draft-ietf-ipsec-nat-t-ike-00]
-| find_host_connection2 called from main_inI1_outR1, me=132.213.238.7:500 him=192.168.1.1:500 policy=/!IKEv1
-| find_host_pair: looking for me=132.213.238.7:500 %address him=192.168.1.1:500 any-match
-| find_host_pair: comparing to me=132.213.238.7:500 %address him=192.168.1.1:500
+| find_host_connection2 called from main_inI1_outR1, me=132.213.238.7:500 him=93.184.216.34:55044 policy=/!IKEv1
+| find_host_pair: looking for me=132.213.238.7:500 %address him=93.184.216.34:55044 any-match
+| find_host_pair: comparing to me=132.213.238.7:500 %any him=0.0.0.0:500
 | find_host_pair: concluded with mytunnel-ikev1
-| found_host_pair_conn (find_host_connection2): 132.213.238.7:500 %address/192.168.1.1:500 -> hp:mytunnel-ikev1
+| found_host_pair_conn (find_host_connection2): 132.213.238.7:500 %address/93.184.216.34:55044 -> hp:mytunnel-ikev1
 | searching for connection with policy = /!IKEv1
 | found policy = RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK (mytunnel-ikev1)
 | find_host_connection2 returns mytunnel-ikev1 (ike=none/none)
 | creating state object #1 at Z
 | ICOOKIE:  80 01 02 03  04 05 06 07
-| RCOOKIE:  de bc 58 3a  8f 40 d0 cf
-| state hash entry 28
-| inserting state object #1 bucket: 28
+| RCOOKIE:  64 0a 06 43  5c 7c 4b 31
+| state hash entry 5
+| inserting state object #1 bucket: 5
 ./parentN1 responding to Main Mode
 | **emit ISAKMP Message:
 |    initiator cookie:
 |   80 01 02 03  04 05 06 07
 |    responder cookie:
-|   de bc 58 3a  8f 40 d0 cf
+|   64 0a 06 43  5c 7c 4b 31
 |    ISAKMP version: ISAKMP Version 1.0 (rfc2407)
 |    exchange type: ISAKMP_XCHG_IDPROT
 |    flags: none
@@ -139,9 +138,9 @@ picking: eth0:500  outside: 55044 <=> d: 500
 | emitting length of ISAKMP Message: 136
 | complete state transition with STF_OK
 ./parentN1 transition from state STATE_MAIN_R0 to state STATE_MAIN_R1
-| sending reply packet to 192.168.1.1:500 (from port 500)
-sending 136 bytes for STATE_MAIN_R0 through eth0:500 [93.184.216.34:55044] to 192.168.1.1:500 (using #1)
-|   80 01 02 03  04 05 06 07  de bc 58 3a  8f 40 d0 cf
+| sending reply packet to 93.184.216.34:55044 (from port 500)
+sending 136 bytes for STATE_MAIN_R0 through eth0:500 [132.213.238.7:500] to 93.184.216.34:55044 (using #1)
+|   80 01 02 03  04 05 06 07  64 0a 06 43  5c 7c 4b 31
 |   01 10 02 00  00 00 00 00  00 00 00 88  0d 00 00 34
 |   00 00 00 01  00 00 00 01  00 00 00 28  00 01 00 01
 |   00 00 00 20  00 01 00 00  80 0b 00 01  80 0c 0e 10
