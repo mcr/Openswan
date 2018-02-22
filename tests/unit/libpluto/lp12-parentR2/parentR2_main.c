@@ -43,8 +43,9 @@ int main(int argc, char *argv[])
     tool_init_log();
     init_crypto();
     init_fake_vendorid();
-    init_local_interface();
     init_fake_secrets();
+    init_local_interface();
+    init_demux();
     init_seam_kernelalgs();
 
     infile = argv[0];

@@ -2,7 +2,6 @@
 #include "../lp08-parentR1/parentR1_head.c"
 #include "../seam_host_jamesjohnson.c"
 #include "seam_x509_list.c"
-#include "seam_kernelalgs.c"
 
 #define TESTNAME "certreplytselffR1"
 

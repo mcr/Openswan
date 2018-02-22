@@ -38,7 +38,6 @@
 #include "seam_natt.c"
 #include "seam_ikealg.c"
 #include "seam_dnskey.c"
-#include "seam_kernelalgs.c"
 
 #include "seam_gr_sha1_group14.c"
 
