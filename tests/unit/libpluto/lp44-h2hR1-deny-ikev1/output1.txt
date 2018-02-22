@@ -15,35 +15,36 @@
 | processing whack message of size: A
 | processing whack message of size: A
 processing whack msg time: X size: Y
-./h2hR1-deny-ikev1 loaded key: 6DF7 E7A2 B017 2118 6525 1A9E FC30 F603 ADD5 6698
-| processing whack message of size: A
-processing whack msg time: X size: Y
 ./h2hR1-deny-ikev1 loaded key: AD2F DDF5 7ABE 6140 14AA B39E 50EB EC76 CA12 3C8C
 | processing whack message of size: A
 processing whack msg time: X size: Y
+| find_host_pair: looking for me=<none>:500 %any him=<none>:500 any-match
+| find_host_pair: concluded with <none>
+| found_host_pair_conn (check_connection_end): %any:500 %any/%any:500 -> hp:none
 | Added new connection mytunnel-no-ikev1 with policy RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 ./h2hR1-deny-ikev1 use keyid: 1:<> / 2:<>
-| counting wild cards for 192.168.1.1 is 0
+| counting wild cards for (none) is 15
 ./h2hR1-deny-ikev1 use keyid: 1:<> / 2:<>
 | counting wild cards for 132.213.238.7 is 0
-| orient mytunnel-no-ikev1 reference sr#1 this: addr:192.168.1.1 that: addr:132.213.238.7
+| based upon ID_wildcard policy, the connection is a template.
+| orient mytunnel-no-ikev1 reference sr#1 this: addr:132.213.238.7 that: %any
 | orient mytunnel-no-ikev1 checking against if: eth0 (AF_INET:132.213.238.7:4500)
 | orient mytunnel-no-ikev1 checking against if: eth0 (AF_INET:132.213.238.7:500)
 |     orient matched on IP
 |   orient mytunnel-no-ikev1 finished with: 1 [132.213.238.7]
-| find_host_pair: looking for me=132.213.238.7:500 %address him=192.168.1.1:500 exact-match
+| find_host_pair: looking for me=132.213.238.7:500 %any him=0.0.0.0:500 exact-match
 | find_host_pair: concluded with <none>
-| connect_to_host_pair: 132.213.238.7:500 %address 192.168.1.1:500 -> hp:none
-| find_ID_host_pair: looking for me=132.213.238.7 him=192.168.1.1 (exact)
+| connect_to_host_pair: 132.213.238.7:500 %any 0.0.0.0:500 -> hp:none
+| find_ID_host_pair: looking for me=132.213.238.7 him=<any> (exact)
 |   concluded with <none>
 ./h2hR1-deny-ikev1 adding connection: "mytunnel-no-ikev1"
-| 132.213.238.7...192.168.1.1
+| 132.213.238.7...%any
 | ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 |   orient mytunnel-no-ikev1 finished with: 1 [132.213.238.7]
-RC=0 "mytunnel-no-ikev1": 132.213.238.7...192.168.1.1; unrouted; eroute owner: #0
+RC=0 "mytunnel-no-ikev1": 132.213.238.7...%any; unrouted; eroute owner: #0
 RC=0 "mytunnel-no-ikev1":     myip=unset; hisip=unset;
 RC=0 "mytunnel-no-ikev1":   ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1
-RC=0 "mytunnel-no-ikev1":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK; prio: 32,32; interface: eth0; kind=CK_PERMANENT
+RC=0 "mytunnel-no-ikev1":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK; prio: 32,32; interface: eth0; kind=CK_TEMPLATE
 |   =========== input from from parentM1.pcap ========
 | *received 252 bytes from 192.168.1.1:500 on eth0 (port=500)
 |   80 01 02 03  04 05 06 07  00 00 00 00  00 00 00 00
@@ -67,7 +68,7 @@ RC=0 "mytunnel-no-ikev1":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+
 ./h2hR1-deny-ikev1 received Vendor ID payload [Dead Peer Detection]
 | find_host_connection2 called from main_inI1_outR1, me=132.213.238.7:500 him=192.168.1.1:500 policy=/!IKEv1
 | find_host_pair: looking for me=132.213.238.7:500 %address him=192.168.1.1:500 any-match
-| find_host_pair: comparing to me=132.213.238.7:500 %address him=192.168.1.1:500
+| find_host_pair: comparing to me=132.213.238.7:500 %any him=0.0.0.0:500
 | find_host_pair: concluded with mytunnel-no-ikev1
 | found_host_pair_conn (find_host_connection2): 132.213.238.7:500 %address/192.168.1.1:500 -> hp:mytunnel-no-ikev1
 | searching for connection with policy = /!IKEv1
@@ -75,23 +76,32 @@ RC=0 "mytunnel-no-ikev1":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+
 | connection mytunnel-no-ikev1 (policy=RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK) does not match desired policy  (~ !IKEv1) [withoutversion: mytunnel-no-ikev1]
 | connection mytunnel-no-ikev1 (policy=RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK) would have matched, but ike version policy was wrong
 | find_host_pair: looking for me=132.213.238.7:500 %any him=<none>:500 any-match
-| find_host_pair: comparing to me=132.213.238.7:500 %address him=192.168.1.1:500
-| find_host_pair: concluded with <none>
-| found_host_pair_conn (find_host_connection2): 132.213.238.7:500 %any/%any:500 -> hp:none
+| find_host_pair: comparing to me=132.213.238.7:500 %any him=0.0.0.0:500
+| find_host_pair: concluded with mytunnel-no-ikev1
+| found_host_pair_conn (find_host_connection2): 132.213.238.7:500 %any/%any:500 -> hp:mytunnel-no-ikev1
 | searching for connection with policy = /!IKEv1
-| find_host_connection2 returns empty (ike=mytunnel-no-ikev1/none)
+| found policy = RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK (mytunnel-no-ikev1)
+| connection mytunnel-no-ikev1 (policy=RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK) does not match desired policy  (~ !IKEv1) [withoutversion: mytunnel-no-ikev1]
+| connection mytunnel-no-ikev1 (policy=RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK) would have matched, but ike version policy was wrong
+| find_host_connection2 returns empty (ike=mytunnel-no-ikev1/mytunnel-no-ikev1)
 | find_host_connection2 called from main_inI1_outR1, me=132.213.238.7:500 him=%any:500 policy=/!IKEv1
 | find_host_pair: looking for me=132.213.238.7:500 %any him=<none>:500 any-match
-| find_host_pair: comparing to me=132.213.238.7:500 %address him=192.168.1.1:500
-| find_host_pair: concluded with <none>
-| found_host_pair_conn (find_host_connection2): 132.213.238.7:500 %any/%any:500 -> hp:none
+| find_host_pair: comparing to me=132.213.238.7:500 %any him=0.0.0.0:500
+| find_host_pair: concluded with mytunnel-no-ikev1
+| found_host_pair_conn (find_host_connection2): 132.213.238.7:500 %any/%any:500 -> hp:mytunnel-no-ikev1
 | searching for connection with policy = /!IKEv1
+| found policy = RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK (mytunnel-no-ikev1)
+| connection mytunnel-no-ikev1 (policy=RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK) does not match desired policy  (~ !IKEv1) [withoutversion: mytunnel-no-ikev1]
+| connection mytunnel-no-ikev1 (policy=RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK) would have matched, but ike version policy was wrong
 | find_host_pair: looking for me=132.213.238.7:500 %any him=<none>:500 any-match
-| find_host_pair: comparing to me=132.213.238.7:500 %address him=192.168.1.1:500
-| find_host_pair: concluded with <none>
-| found_host_pair_conn (find_host_connection2): 132.213.238.7:500 %any/%any:500 -> hp:none
+| find_host_pair: comparing to me=132.213.238.7:500 %any him=0.0.0.0:500
+| find_host_pair: concluded with mytunnel-no-ikev1
+| found_host_pair_conn (find_host_connection2): 132.213.238.7:500 %any/%any:500 -> hp:mytunnel-no-ikev1
 | searching for connection with policy = /!IKEv1
-| find_host_connection2 returns empty (ike=none/none)
+| found policy = RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK (mytunnel-no-ikev1)
+| connection mytunnel-no-ikev1 (policy=RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK) does not match desired policy  (~ !IKEv1) [withoutversion: mytunnel-no-ikev1]
+| connection mytunnel-no-ikev1 (policy=RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK) would have matched, but ike version policy was wrong
+| find_host_connection2 returns empty (ike=mytunnel-no-ikev1/mytunnel-no-ikev1)
 ./h2hR1-deny-ikev1 initial Main Mode message received on 132.213.238.7:500 but no connection has been authorized
 | complete state transition with STF_FAIL
 RC=205 STATE_MAIN_R0: INVALID_MAJOR_VERSION
