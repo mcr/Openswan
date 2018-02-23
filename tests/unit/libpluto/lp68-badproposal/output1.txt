@@ -599,6 +599,12 @@ sending 36 bytes for send_v2_notification through eth0:500 [132.213.238.7:500] t
 ./badproposalR1 leak: ikev2_inI1outR1 KE, item size: X
 ./badproposalR1 leak: struct state in new_state(), item size: X
 ./badproposalR1 leak: msg_digest, item size: X
+./badproposalR1 leak: 2 * id list, item size: X
+./badproposalR1 leak: rfc3110 format of public key [created], item size: X
+./badproposalR1 leak: pubkey, item size: X
+./badproposalR1 leak: secret, item size: X
+./badproposalR1 leak: 3 * hasher name, item size: X
+./badproposalR1 leak: 10 * group description, item size: X
 ./badproposalR1 leak: policies path, item size: X
 ./badproposalR1 leak: ocspcerts path, item size: X
 ./badproposalR1 leak: aacerts path, item size: X
@@ -611,11 +617,5 @@ sending 36 bytes for send_v2_notification through eth0:500 [132.213.238.7:500] t
 ./badproposalR1 leak: default conf conffile, item size: X
 ./badproposalR1 leak: default conf ipsecd_dir, item size: X
 ./badproposalR1 leak: default conf ipsec_conf_dir, item size: X
-./badproposalR1 leak: 2 * id list, item size: X
-./badproposalR1 leak: rfc3110 format of public key [created], item size: X
-./badproposalR1 leak: pubkey, item size: X
-./badproposalR1 leak: secret, item size: X
-./badproposalR1 leak: 3 * hasher name, item size: X
-./badproposalR1 leak: 10 * group description, item size: X
 ./badproposalR1 leak detective found Z leaks, total size X
 Pre-amble (offset: X): #!-pluto-whack-file- recorded on FOO

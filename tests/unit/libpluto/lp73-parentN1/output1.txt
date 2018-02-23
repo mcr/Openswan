@@ -166,6 +166,12 @@ sending 136 bytes for STATE_MAIN_R0 through eth0:500 [132.213.238.7:500] to 93.1
 ./parentN1 leak: 23 * VendorID MD5, item size: X
 ./parentN1 leak: vid->data, item size: X
 ./parentN1 leak: msg_digest, item size: X
+./parentN1 leak: 2 * id list, item size: X
+./parentN1 leak: rfc3110 format of public key [created], item size: X
+./parentN1 leak: pubkey, item size: X
+./parentN1 leak: secret, item size: X
+./parentN1 leak: 3 * hasher name, item size: X
+./parentN1 leak: 10 * group description, item size: X
 ./parentN1 leak: policies path, item size: X
 ./parentN1 leak: ocspcerts path, item size: X
 ./parentN1 leak: aacerts path, item size: X
@@ -178,11 +184,5 @@ sending 136 bytes for STATE_MAIN_R0 through eth0:500 [132.213.238.7:500] to 93.1
 ./parentN1 leak: default conf conffile, item size: X
 ./parentN1 leak: default conf ipsecd_dir, item size: X
 ./parentN1 leak: default conf ipsec_conf_dir, item size: X
-./parentN1 leak: 2 * id list, item size: X
-./parentN1 leak: rfc3110 format of public key [created], item size: X
-./parentN1 leak: pubkey, item size: X
-./parentN1 leak: secret, item size: X
-./parentN1 leak: 3 * hasher name, item size: X
-./parentN1 leak: 10 * group description, item size: X
 ./parentN1 leak detective found Z leaks, total size X
 Pre-amble (offset: X): #!-pluto-whack-file- recorded on FOO

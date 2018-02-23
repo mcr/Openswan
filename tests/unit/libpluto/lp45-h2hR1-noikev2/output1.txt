@@ -167,6 +167,12 @@ sending 36 bytes for send_v2_notification through eth0:500 [132.213.238.7:500] t
 ./h2hR1-noikev2 deleting connection
 ./h2hR1-noikev2 leak: notification packet, item size: X
 ./h2hR1-noikev2 leak: msg_digest, item size: X
+./h2hR1-noikev2 leak: 2 * id list, item size: X
+./h2hR1-noikev2 leak: rfc3110 format of public key [created], item size: X
+./h2hR1-noikev2 leak: pubkey, item size: X
+./h2hR1-noikev2 leak: secret, item size: X
+./h2hR1-noikev2 leak: 3 * hasher name, item size: X
+./h2hR1-noikev2 leak: 10 * group description, item size: X
 ./h2hR1-noikev2 leak: policies path, item size: X
 ./h2hR1-noikev2 leak: ocspcerts path, item size: X
 ./h2hR1-noikev2 leak: aacerts path, item size: X
@@ -179,11 +185,5 @@ sending 36 bytes for send_v2_notification through eth0:500 [132.213.238.7:500] t
 ./h2hR1-noikev2 leak: default conf conffile, item size: X
 ./h2hR1-noikev2 leak: default conf ipsecd_dir, item size: X
 ./h2hR1-noikev2 leak: default conf ipsec_conf_dir, item size: X
-./h2hR1-noikev2 leak: 2 * id list, item size: X
-./h2hR1-noikev2 leak: rfc3110 format of public key [created], item size: X
-./h2hR1-noikev2 leak: pubkey, item size: X
-./h2hR1-noikev2 leak: secret, item size: X
-./h2hR1-noikev2 leak: 3 * hasher name, item size: X
-./h2hR1-noikev2 leak: 10 * group description, item size: X
 ./h2hR1-noikev2 leak detective found Z leaks, total size X
 Pre-amble (offset: X): #!-pluto-whack-file- recorded on FOO

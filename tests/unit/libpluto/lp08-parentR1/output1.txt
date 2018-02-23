@@ -319,6 +319,12 @@ sending 432 bytes for STATE_IKEv2_START through eth0:500 [132.213.238.7:500] to 
 ./parentR1 leak: alg_info_ike, item size: X
 ./parentR1 leak: ikev2_inI1outR1 KE, item size: X
 ./parentR1 leak: msg_digest, item size: X
+./parentR1 leak: 2 * id list, item size: X
+./parentR1 leak: rfc3110 format of public key [created], item size: X
+./parentR1 leak: pubkey, item size: X
+./parentR1 leak: secret, item size: X
+./parentR1 leak: 3 * hasher name, item size: X
+./parentR1 leak: 10 * group description, item size: X
 ./parentR1 leak: policies path, item size: X
 ./parentR1 leak: ocspcerts path, item size: X
 ./parentR1 leak: aacerts path, item size: X
@@ -331,11 +337,5 @@ sending 432 bytes for STATE_IKEv2_START through eth0:500 [132.213.238.7:500] to 
 ./parentR1 leak: default conf conffile, item size: X
 ./parentR1 leak: default conf ipsecd_dir, item size: X
 ./parentR1 leak: default conf ipsec_conf_dir, item size: X
-./parentR1 leak: 2 * id list, item size: X
-./parentR1 leak: rfc3110 format of public key [created], item size: X
-./parentR1 leak: pubkey, item size: X
-./parentR1 leak: secret, item size: X
-./parentR1 leak: 3 * hasher name, item size: X
-./parentR1 leak: 10 * group description, item size: X
 ./parentR1 leak detective found Z leaks, total size X
 Pre-amble (offset: X): #!-pluto-whack-file- recorded on FOO
