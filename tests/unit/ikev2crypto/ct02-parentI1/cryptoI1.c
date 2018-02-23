@@ -8,6 +8,7 @@
 #include "seam_keys2.c"
 #include "seam_dh_v2.c"
 #include "seam_ke.c"
+#include "seam_natt.c"
 #include "seam_host_parker.c"
 
 #define TESTNAME "cryptoI1"
@@ -16,6 +17,9 @@ void delete_cryptographic_continuation(struct state *st) {}
 
 static void init_local_interface(void)
 {
+    nat_traversal_support_non_ike = TRUE;
+    nat_traversal_support_port_floating = TRUE;
+    nat_traversal_enabled = TRUE;
     init_parker_interface(TRUE);
 }
 
