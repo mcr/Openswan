@@ -75,7 +75,7 @@ programs ${TESTNAME}: ${TESTNAME}.c $(wildcard ../seam_*.c) ${EXTRAOBJS}
 	@${CC} -c -g -O0 ${TESTNAME}.c ${EXTRAFLAGS}
 	@${CC} -g -O0 -o ${TESTNAME} ${TESTNAME}.o ${EXTRAFLAGS} ${EXTRAOBJS} ${EXTRALIBS}
 
-check: OUTPUT/R2-dump.txt
+check: OUTPUT/R2-dump.txt ${INPUTPCAPS}
 OUTPUT/R2-dump.txt:	${WHACKFILE} ${TESTNAME}
 	@mkdir -p OUTPUT
 	@echo "file ${TESTNAME}"          >.gdb1init

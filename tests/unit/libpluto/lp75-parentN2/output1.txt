@@ -50,7 +50,7 @@ RC=0 "mytunnel-ikev1":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK; prio: 32,
 |   =========== input from from parentM1.pcap ========
 skipping: eth0:4500 float outside: 55045 <=> d: 500
 picking: eth0:500  outside: 55044 <=> d: 500
-| *received 376 bytes from 192.168.1.1:500 on eth0 (port=500)
+| *received 376 bytes from 93.184.216.34:55044 on eth0 (port=500)
 |   80 01 02 03  04 05 06 07  00 00 00 00  00 00 00 00
 |   01 10 02 00  00 00 00 00  00 00 01 78  0d 00 00 d4
 |   00 00 00 01  00 00 00 01  00 00 00 c8  00 01 00 06
@@ -83,11 +83,11 @@ picking: eth0:500  outside: 55044 <=> d: 500
 ./parentN2 received Vendor ID payload [draft-ietf-ipsec-nat-t-ike-02_n] meth=106, but port floating is off
 ./parentN2 received Vendor ID payload [draft-ietf-ipsec-nat-t-ike-02] meth=107, but port floating is off
 ./parentN2 ignoring Vendor ID payload [draft-ietf-ipsec-nat-t-ike-00]
-| find_host_connection2 called from main_inI1_outR1, me=132.213.238.7:500 him=192.168.1.1:500 policy=/!IKEv1
-| find_host_pair: looking for me=132.213.238.7:500 %address him=192.168.1.1:500 any-match
+| find_host_connection2 called from main_inI1_outR1, me=132.213.238.7:500 him=93.184.216.34:55044 policy=/!IKEv1
+| find_host_pair: looking for me=132.213.238.7:500 %address him=93.184.216.34:55044 any-match
 | find_host_pair: comparing to me=132.213.238.7:500 %address him=192.168.1.1:500
-| find_host_pair: concluded with mytunnel-ikev1
-| found_host_pair_conn (find_host_connection2): 132.213.238.7:500 %address/192.168.1.1:500 -> hp:mytunnel-ikev1
+| find_host_pair: concluded with <none>
+| found_host_pair_conn (find_host_connection2): 132.213.238.7:500 %address/93.184.216.34:55044 -> hp:none
 | searching for connection with policy = /!IKEv1
 | found policy = RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK (mytunnel-ikev1)
 | find_host_connection2 returns mytunnel-ikev1 (ike=none/none)
