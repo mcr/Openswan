@@ -1,4 +1,6 @@
 #ifndef SHA1_GROUP14
+#include "pluto_crypt.h"
+
 /*
  * these files are created by running a full pluto, and observing the
  * debug lines, and transforming them to C data files
