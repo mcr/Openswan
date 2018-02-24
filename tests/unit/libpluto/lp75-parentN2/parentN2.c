@@ -14,6 +14,7 @@
 #include "seam_crypt.c"
 #include "seam_x509.c"
 #include "seam_rsasig.c"
+#include "seam_rsa_check.c"
 #include "seam_gr_sha1_group14.c"
 #include "seam_host_jamesjohnson.c"
 

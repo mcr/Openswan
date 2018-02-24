@@ -1,5 +1,5 @@
 
-/* keys.c SEAM */
+/* keymgmt.c SEAM */
 void load_preshared_secrets(int whackfd) {}
 chunk_t mysecret = { .ptr="abcd", .len=4 };
 const chunk_t *get_preshared_secret(const struct connection *c) { return &mysecret; }

@@ -15,6 +15,12 @@
 | processing whack message of size: A
 | processing whack message of size: A
 processing whack msg time: X size: Y
+./h2hR1-deny-ikev1 loaded key: 6DF7 E7A2 B017 2118 6525 1A9E FC30 F603 ADD5 6698
+| processing whack message of size: A
+processing whack msg time: X size: Y
+./h2hR1-deny-ikev1 loaded key: 66A6 7046 BBAB E28F 310E C6C0 80EC 790E F556 2AB9
+| processing whack message of size: A
+processing whack msg time: X size: Y
 ./h2hR1-deny-ikev1 loaded key: AD2F DDF5 7ABE 6140 14AA B39E 50EB EC76 CA12 3C8C
 | processing whack message of size: A
 processing whack msg time: X size: Y
@@ -31,7 +37,6 @@ processing whack msg time: X size: Y
 ./h2hR1-deny-ikev1 can not find public key: AD2F DDF5 7ABE 6140 14AA B39E 50EB EC76 CA12 3C8C
 ./h2hR1-deny-ikev1 use keyid: 1:<> / 2:2A3A 92D4 E0FA 5CD7 8DE1 D133 0C62 6985 2B6E D701
 | counting wild cards for 132.213.238.7 is 0
-| based upon ID_wildcard policy, the connection is a template.
 | orient mytunnel-no-ikev1 reference sr#1 this: addr:132.213.238.7 that: %any
 | orient mytunnel-no-ikev1 checking against if: eth0 (AF_INET:132.213.238.7:4500)
 | orient mytunnel-no-ikev1 checking against if: eth0 (AF_INET:132.213.238.7:500)
@@ -40,18 +45,18 @@ processing whack msg time: X size: Y
 | find_host_pair: looking for me=132.213.238.7:500 %any him=0.0.0.0:500 exact-match
 | find_host_pair: concluded with <none>
 | connect_to_host_pair: 132.213.238.7:500 %any 0.0.0.0:500 -> hp:none
-| find_ID_host_pair: looking for me=132.213.238.7 him=<any> (exact)
+| find_ID_host_pair: looking for me=132.213.238.7 him=@berri.testing.xelerance.com (exact)
 |   concluded with <none>
 ./h2hR1-deny-ikev1 adding connection: "mytunnel-no-ikev1"
-| 132.213.238.7...%any
+| 132.213.238.7...%any[@berri.testing.xelerance.com]
 | ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 |   orient mytunnel-no-ikev1 finished with: 1 [132.213.238.7]
-RC=0 "mytunnel-no-ikev1": 132.213.238.7...%any; unrouted; eroute owner: #0
+RC=0 "mytunnel-no-ikev1": 132.213.238.7...%any[@berri.testing.xelerance.com]; unrouted; eroute owner: #0
 RC=0 "mytunnel-no-ikev1":     myip=unset; hisip=unset;
 RC=0 "mytunnel-no-ikev1":   keys: 1:none 2:2A3A 92D4 E0FA 5CD7 8DE1 D133 0C62 6985 2B6E D701...
 RC=0 "mytunnel-no-ikev1":        ....1:none 2:66A6 7046 BBAB E28F 310E C6C0 80EC 790E F556 2AB9
 RC=0 "mytunnel-no-ikev1":   ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1
-RC=0 "mytunnel-no-ikev1":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK; prio: 32,32; interface: eth0; kind=CK_TEMPLATE
+RC=0 "mytunnel-no-ikev1":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK; prio: 32,32; interface: eth0; kind=CK_PERMANENT
 |   =========== input from from parentM1.pcap ========
 | *received 376 bytes from 93.184.216.34:55044 on eth0 (port=500)
 |   80 01 02 03  04 05 06 07  00 00 00 00  00 00 00 00
