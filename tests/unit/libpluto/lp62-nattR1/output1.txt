@@ -28,13 +28,15 @@ processing whack msg time: X size: Y
 | find_host_pair: concluded with <none>
 | found_host_pair_conn (check_connection_end): %any:500 %any/%any:500 -> hp:none
 | Added new connection parker with policy RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+SAREFTRACK
-./nattR1 use keyid: 1:<> / 2:<>
+./nattR1 use keyid: 1:6DF7 E7A2 B017 2118 6525 1A9E FC30 F603 ADD5 6698 / 2:<>
 | counting wild cards for @jamesjohnson.emmjay.credil.org is 0
-./nattR1 use keyid: 1:<> / 2:<>
+./nattR1 use keyid: 1:AD2F DDF5 7ABE 6140 14AA B39E 50EB EC76 CA12 3C8C / 2:<>
 | counting wild cards for @parker01.emmjay.credil.org is 0
 | orient parker reference sr#1 this: %any that: %defaultroute
 | orient parker checking against if: eth0 (AF_INET:132.213.238.7:4500)
 | orient parker checking against if: eth0 (AF_INET:132.213.238.7:500)
+|   trusted_ca called with a=(empty) b=(empty)
+|   trusted_ca called with a=(empty) b=(empty)
 | orient parker matching on public/private keys: this=no[%any] that=no[%defaultroute]
 |   orient parker matched on that being defaultroute, and this lacking private key
 | pick_if looking for port: 500, family: 0
@@ -53,6 +55,8 @@ processing whack msg time: X size: Y
 |   orient parker finished with: 1 [132.213.238.7]
 RC=0 "parker": fd68:c9f9:4157::/64===%any[@jamesjohnson.emmjay.credil.org]...%any[@parker01.emmjay.credil.org]===fd68:c9f9:4157:2:0:1::/96; unrouted; eroute owner: #0
 RC=0 "parker":     myip=unset; hisip=unset;
+RC=0 "parker":   keys: 1:6DF7 E7A2 B017 2118 6525 1A9E FC30 F603 ADD5 6698 2:none...
+RC=0 "parker":        ....1:AD2F DDF5 7ABE 6140 14AA B39E 50EB EC76 CA12 3C8C 2:none
 RC=0 "parker":   ike_life: 3600s; ipsec_life: 28800s; rekey_margin: 540s; rekey_fuzz: 100%; keyingtries: 0
 RC=0 "parker":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+SAREFTRACK; prio: 96,64; interface: eth0; kind=CK_PERMANENT
 |   =========== input from from nattI1.pcap ========
@@ -128,6 +132,8 @@ RC=0 "parker":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+SAREFTRACK; prio: 
 | orient parker reference sr#1 this: %defaultroute that: %any
 | orient parker checking against if: eth0 (AF_INET:132.213.238.7:4500)
 | orient parker checking against if: eth0 (AF_INET:132.213.238.7:500)
+|   trusted_ca called with a=(empty) b=(empty)
+|   trusted_ca called with a=(empty) b=(empty)
 | orient parker matching on public/private keys: this=no[%defaultroute] that=no[%any]
 |   orient parker matched on this being defaultroute, and that lacking private key
 | pick_if looking for port: 500, family: 0
@@ -335,6 +341,14 @@ sending 432 bytes for STATE_IKEv2_START through eth0:500 [132.213.238.7:500] to 
 ./nattR1 leak: alg_info_ike, item size: X
 ./nattR1 leak: ikev2_inI1outR1 KE, item size: X
 ./nattR1 leak: msg_digest, item size: X
+./nattR1 leak: keep id name, item size: X
+./nattR1 leak: pubkey entry, item size: X
+./nattR1 leak: rfc3110 format of public key, item size: X
+./nattR1 leak: pubkey, item size: X
+./nattR1 leak: keep id name, item size: X
+./nattR1 leak: pubkey entry, item size: X
+./nattR1 leak: rfc3110 format of public key, item size: X
+./nattR1 leak: pubkey, item size: X
 ./nattR1 leak: 2 * id list, item size: X
 ./nattR1 leak: rfc3110 format of public key [created], item size: X
 ./nattR1 leak: pubkey, item size: X

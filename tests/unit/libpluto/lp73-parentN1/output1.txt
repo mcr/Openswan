@@ -18,13 +18,18 @@ processing whack msg time: X size: Y
 ./parentN1 loaded key: AD2F DDF5 7ABE 6140 14AA B39E 50EB EC76 CA12 3C8C
 | processing whack message of size: A
 processing whack msg time: X size: Y
+./parentN1 loaded key: 2A3A 92D4 E0FA 5CD7 8DE1 D133 0C62 6985 2B6E D701
+| processing whack message of size: A
+processing whack msg time: X size: Y
 | find_host_pair: looking for me=<none>:500 %any him=<none>:500 any-match
 | find_host_pair: concluded with <none>
 | found_host_pair_conn (check_connection_end): %any:500 %any/%any:500 -> hp:none
 | Added new connection mytunnel-ikev1 with policy RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK
-./parentN1 use keyid: 1:<> / 2:<>
-| counting wild cards for (none) is 15
-./parentN1 use keyid: 1:<> / 2:<>
+./parentN1 can not find public key: 6DF7 E7A2 B017 2118 6525 1A9E FC30 F603 ADD5 6698
+./parentN1 use keyid: 1:<> / 2:66A6 7046 BBAB E28F 310E C6C0 80EC 790E F556 2AB9
+| counting wild cards for @berri.testing.xelerance.com is 0
+./parentN1 can not find public key: AD2F DDF5 7ABE 6140 14AA B39E 50EB EC76 CA12 3C8C
+./parentN1 use keyid: 1:<> / 2:2A3A 92D4 E0FA 5CD7 8DE1 D133 0C62 6985 2B6E D701
 | counting wild cards for 132.213.238.7 is 0
 | based upon ID_wildcard policy, the connection is a template.
 | orient mytunnel-ikev1 reference sr#1 this: addr:132.213.238.7 that: %any
@@ -43,6 +48,8 @@ processing whack msg time: X size: Y
 |   orient mytunnel-ikev1 finished with: 1 [132.213.238.7]
 RC=0 "mytunnel-ikev1": 132.213.238.7...%any; unrouted; eroute owner: #0
 RC=0 "mytunnel-ikev1":     myip=unset; hisip=unset;
+RC=0 "mytunnel-ikev1":   keys: 1:none 2:2A3A 92D4 E0FA 5CD7 8DE1 D133 0C62 6985 2B6E D701...
+RC=0 "mytunnel-ikev1":        ....1:none 2:66A6 7046 BBAB E28F 310E C6C0 80EC 790E F556 2AB9
 RC=0 "mytunnel-ikev1":   ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1
 RC=0 "mytunnel-ikev1":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK; prio: 32,32; interface: eth0; kind=CK_TEMPLATE
 |   =========== input from from parentM1.pcap ========
@@ -166,6 +173,13 @@ sending 136 bytes for STATE_MAIN_R0 through eth0:500 [132.213.238.7:500] to 93.1
 ./parentN1 leak: 23 * VendorID MD5, item size: X
 ./parentN1 leak: vid->data, item size: X
 ./parentN1 leak: msg_digest, item size: X
+./parentN1 leak: pubkey entry, item size: X
+./parentN1 leak: rfc3110 format of public key, item size: X
+./parentN1 leak: pubkey, item size: X
+./parentN1 leak: keep id name, item size: X
+./parentN1 leak: pubkey entry, item size: X
+./parentN1 leak: rfc3110 format of public key, item size: X
+./parentN1 leak: pubkey, item size: X
 ./parentN1 leak: 2 * id list, item size: X
 ./parentN1 leak: rfc3110 format of public key [created], item size: X
 ./parentN1 leak: pubkey, item size: X

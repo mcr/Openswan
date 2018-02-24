@@ -14,40 +14,65 @@ processing whack msg time: X size: Y
 ./h2hI2 loaded key: 6DF7 E7A2 B017 2118 6525 1A9E FC30 F603 ADD5 6698
 | processing whack message of size: A
 processing whack msg time: X size: Y
+./h2hI2 loaded key: 66A6 7046 BBAB E28F 310E C6C0 80EC 790E F556 2AB9
+| processing whack message of size: A
+processing whack msg time: X size: Y
 ./h2hI2 loaded key: AD2F DDF5 7ABE 6140 14AA B39E 50EB EC76 CA12 3C8C
 | processing whack message of size: A
 processing whack msg time: X size: Y
+| find_host_pair: looking for me=<none>:500 %any him=<none>:500 any-match
+| find_host_pair: concluded with <none>
+| found_host_pair_conn (check_connection_end): %any:500 %any/%any:500 -> hp:none
 | Added new connection mytunnel with policy RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
-./h2hI2 use keyid: 1:<> / 2:<>
-| counting wild cards for 192.168.1.1 is 0
-./h2hI2 use keyid: 1:<> / 2:<>
+./h2hI2 can not find public key: 6DF7 E7A2 B017 2118 6525 1A9E FC30 F603 ADD5 6698
+./h2hI2 use keyid: 1:<> / 2:66A6 7046 BBAB E28F 310E C6C0 80EC 790E F556 2AB9
+| counting wild cards for @berri.testing.xelerance.com is 0
+./h2hI2 use keyid: 1:AD2F DDF5 7ABE 6140 14AA B39E 50EB EC76 CA12 3C8C / 2:<>
 | counting wild cards for 132.213.238.7 is 0
-| orient mytunnel reference sr#1 this: addr:192.168.1.1 that: addr:132.213.238.7
+| orient mytunnel reference sr#1 this: addr:132.213.238.7 that: %any
 | orient mytunnel checking against if: eth0 (AF_INET:192.168.1.1:500)
-|     orient matched on IP
 | orient mytunnel checking against if: eth0 (AF_INET:192.168.1.1:4500)
 | orient mytunnel checking against if: eth0 (AF_INET6:2606:2800:220:1:248:1893:25c8:1946:500)
+|   trusted_ca called with a=(empty) b=(empty)
+|   trusted_ca called with a=(empty) b=(empty)
+| orient mytunnel matching on public/private keys: this=no[%address] that=yes[%any]
+|   orient mytunnel matched on that having private key
+| pick_if looking for port: 500, family: 2
+|   considering eth0 192.168.1.1 port: 500, family: 2, best: <none>/0 0
+|   considering eth0 192.168.1.1 port: 4500, family: 2, best: eth0/20 0
+|   considering eth0 2606:2800:220:1:248:1893:25c8:1946 port: 500, family: 10, best: eth0/20 0
+|   picking maching interface for family[2,2]: AF_INET resulted in: 192.168.1.1
 |   orient mytunnel finished with: 1 [192.168.1.1]
-| find_host_pair: looking for me=192.168.1.1:500 %address him=132.213.238.7:500 exact-match
+| find_host_pair: looking for me=0.0.0.0:500 %address him=132.213.238.7:500 exact-match
 | find_host_pair: concluded with <none>
-| connect_to_host_pair: 192.168.1.1:500 %address 132.213.238.7:500 -> hp:none
-| find_ID_host_pair: looking for me=192.168.1.1 him=132.213.238.7 (exact)
+| connect_to_host_pair: 0.0.0.0:500 %address 132.213.238.7:500 -> hp:none
+| find_ID_host_pair: looking for me=@berri.testing.xelerance.com him=132.213.238.7 (exact)
 |   concluded with <none>
 ./h2hI2 adding connection: "mytunnel"
-| 192.168.1.1...132.213.238.7
+| %any[@berri.testing.xelerance.com]...132.213.238.7
 | ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 |   =========== input from from h2hR1.pcap ========
 |   orient mytunnel finished with: 1 [192.168.1.1]
-RC=0 "mytunnel": 192.168.1.1...132.213.238.7; unrouted; eroute owner: #0
+RC=0 "mytunnel": %any[@berri.testing.xelerance.com]...132.213.238.7; unrouted; eroute owner: #0
 RC=0 "mytunnel":     myip=unset; hisip=unset;
+RC=0 "mytunnel":   keys: 1:none 2:66A6 7046 BBAB E28F 310E C6C0 80EC 790E F556 2AB9...
+RC=0 "mytunnel":        ....1:AD2F DDF5 7ABE 6140 14AA B39E 50EB EC76 CA12 3C8C 2:none
 RC=0 "mytunnel":   ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1
 RC=0 "mytunnel":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK; prio: 32,32; interface: eth0; kind=CK_PERMANENT
 | creating state object #1 at Z
-| orient mytunnel reference sr#1 this: addr:192.168.1.1 that: addr:132.213.238.7
+| orient mytunnel reference sr#1 this: %any that: addr:132.213.238.7
 | orient mytunnel checking against if: eth0 (AF_INET:192.168.1.1:500)
-|     orient matched on IP
 | orient mytunnel checking against if: eth0 (AF_INET:192.168.1.1:4500)
 | orient mytunnel checking against if: eth0 (AF_INET6:2606:2800:220:1:248:1893:25c8:1946:500)
+|   trusted_ca called with a=(empty) b=(empty)
+|   trusted_ca called with a=(empty) b=(empty)
+| orient mytunnel matching on public/private keys: this=yes[%any] that=no[%address]
+|   orient mytunnel matched on this having private key
+| pick_if looking for port: 500, family: 2
+|   considering eth0 192.168.1.1 port: 500, family: 2, best: <none>/0 0
+|   considering eth0 192.168.1.1 port: 4500, family: 2, best: eth0/20 0
+|   considering eth0 2606:2800:220:1:248:1893:25c8:1946 port: 500, family: 10, best: eth0/20 0
+|   picking maching interface for family[2,2]: AF_INET resulted in: 192.168.1.1
 |   orient mytunnel finished with: 1 [192.168.1.1]
 | ICOOKIE:  80 01 02 03  04 05 06 07
 | RCOOKIE:  00 00 00 00  00 00 00 00
@@ -266,15 +291,17 @@ sending 628 bytes for ikev2_parent_outI1_common through eth0:500 [192.168.1.1:50
 |    next-payload: ISAKMP_NEXT_v2IDi [@-20=0x23]
 | *****emit IKEv2 Identification Payload:
 |    critical bit: none
-|    id_type: ID_IPV4_ADDR
-| emitting 4 raw bytes of my identity into IKEv2 Identification Payload
-| my identity  c0 a8 01 01
+|    id_type: ID_FQDN
+| emitting 27 raw bytes of my identity into IKEv2 Identification Payload
+| my identity  62 65 72 72  69 2e 74 65  73 74 69 6e  67 2e 78 65
+|   6c 65 72 61  6e 63 65 2e  63 6f 6d
 | parent SA IDi idhash pi calc
 |   cc 07 97 44  b4 a3 4e 8a  0d 2f 27 8b  ee 06 6d 07
 |   a5 a5 75 2e
 | parent SA I2 idhash calc
-|   01 00 00 00  c0 a8 01 01
-| emitting length of IKEv2 Identification Payload: 12
+|   02 00 00 00  62 65 72 72  69 2e 74 65  73 74 69 6e
+|   67 2e 78 65  6c 65 72 61  6e 63 65 2e  63 6f 6d
+| emitting length of IKEv2 Identification Payload: 35
 | IKEv2 thinking whether to send my certificate:
 |  my policy has  RSASIG, the policy is : RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK
 |  sendcert: CERT_SENDIFASKED and I did not get a certificate request
@@ -289,7 +316,7 @@ sending 628 bytes for ikev2_parent_outI1_common through eth0:500 [192.168.1.1:50
 | emitting length of IKEv2 Authentication Payload: 200
 | __alg_info_esp_add() ealg=12 aalg=12 cnt=1
 | __alg_info_esp_add() ealg=12 aalg=2 cnt=2
-|    next-payload: ISAKMP_NEXT_v2SA [@12=0x21]
+|    next-payload: ISAKMP_NEXT_v2SA [@35=0x21]
 | *****emit IKEv2 Security Association Payload:
 |    critical bit: none
 | ******emit IKEv2 Proposal Substructure Payload:
@@ -333,7 +360,7 @@ sending 628 bytes for ikev2_parent_outI1_common through eth0:500 [192.168.1.1:50
 | emitting length of IKEv2 Transform Substructure Payload: 12
 | emitting length of IKEv2 Proposal Substructure Payload: 32
 | emitting length of IKEv2 Security Association Payload: 68
-|    next-payload: ISAKMP_NEXT_v2TSi [@212=0x2c]
+|    next-payload: ISAKMP_NEXT_v2TSi [@235=0x2c]
 | *****emit IKEv2 Traffic Selector Payload:
 |    critical bit: none
 |    number of TS: 1
@@ -348,7 +375,7 @@ sending 628 bytes for ikev2_parent_outI1_common through eth0:500 [192.168.1.1:50
 | ipv4 high  c0 a8 01 01
 | emitting length of IKEv2 Traffic Selector: 16
 | emitting length of IKEv2 Traffic Selector Payload: 24
-|    next-payload: ISAKMP_NEXT_v2TSr [@280=0x2d]
+|    next-payload: ISAKMP_NEXT_v2TSr [@303=0x2d]
 | *****emit IKEv2 Traffic Selector Payload:
 |    critical bit: none
 |    number of TS: 1
@@ -363,15 +390,16 @@ sending 628 bytes for ikev2_parent_outI1_common through eth0:500 [192.168.1.1:50
 | ipv4 high  84 d5 ee 07
 | emitting length of IKEv2 Traffic Selector: 16
 | emitting length of IKEv2 Traffic Selector Payload: 24
-| emitting 8 raw bytes of padding and length into cleartext
-| padding and length  00 01 02 03  04 05 06 07
+| emitting 1 raw bytes of padding and length into cleartext
+| padding and length  00
 | emitting 16 zero bytes of length of truncated HMAC into IKEv2 Encryption Payload
-| emitting length of IKEv2 Encryption Payload: 372
-| emitting length of ISAKMP Message: 400
+| emitting length of IKEv2 Encryption Payload: 388
+| emitting length of ISAKMP Message: 416
 | encrypting as INITIATOR
 | data before encryption:
-|   27 00 00 0c  01 00 00 00  c0 a8 01 01  21 00 00 c8
-|   01 00 00 00  00 00 00 00  00 00 00 00  00 00 00 00
+|   27 00 00 23  02 00 00 00  62 65 72 72  69 2e 74 65
+|   73 74 69 6e  67 2e 78 65  6c 65 72 61  6e 63 65 2e
+|   63 6f 6d 21  00 00 c8 01  00 00 00 00  00 00 00 00
 |   00 00 00 00  00 00 00 00  00 00 00 00  00 00 00 00
 |   00 00 00 00  00 00 00 00  00 00 00 00  00 00 00 00
 |   00 00 00 00  00 00 00 00  00 00 00 00  00 00 00 00
@@ -383,67 +411,69 @@ sending 628 bytes for ikev2_parent_outI1_common through eth0:500 [192.168.1.1:50
 |   00 00 00 00  00 00 00 00  00 00 00 00  00 00 00 00
 |   00 00 00 00  00 00 00 00  00 00 00 00  00 00 00 00
 |   00 00 00 00  00 00 00 00  00 00 00 00  00 00 00 00
-|   00 00 00 00  2c 00 00 44  02 00 00 20  01 03 04 02
-|   12 34 56 78  03 00 00 08  01 00 00 0c  00 00 00 0c
-|   03 00 00 0c  80 0e 00 80  00 00 00 20  02 03 04 02
-|   12 34 56 78  03 00 00 08  01 00 00 0c  00 00 00 0c
-|   03 00 00 02  80 0e 00 80  2d 00 00 18  01 00 00 00
-|   07 00 00 10  00 00 ff ff  c0 a8 01 01  c0 a8 01 01
-|   00 00 00 18  01 00 00 00  07 00 00 10  00 00 ff ff
-|   84 d5 ee 07  84 d5 ee 07  00 01 02 03  04 05 06 07
+|   00 00 00 00  00 00 00 00  00 00 00 2c  00 00 44 02
+|   00 00 20 01  03 04 02 12  34 56 78 03  00 00 08 01
+|   00 00 0c 00  00 00 0c 03  00 00 0c 80  0e 00 80 00
+|   00 00 20 02  03 04 02 12  34 56 78 03  00 00 08 01
+|   00 00 0c 00  00 00 0c 03  00 00 02 80  0e 00 80 2d
+|   00 00 18 01  00 00 00 07  00 00 10 00  00 ff ff c0
+|   a8 01 01 c0  a8 01 01 00  00 00 18 01  00 00 00 07
+|   00 00 10 00  00 ff ff 84  d5 ee 07 84  d5 ee 07 00
 | data after encryption:
-|   6b e2 00 86  09 ec 0b ba  00 ba c2 b7  f7 aa 78 69
-|   7f a8 88 e2  14 58 fe d8  6b 17 ac 39  c4 ac 7e 56
-|   0b 74 51 11  34 52 17 f8  f6 f9 7c c5  f2 b9 8c cf
-|   53 28 5a ec  77 fa 30 6d  40 47 1d 09  3b 36 43 6c
-|   f5 ee 7c ec  8c 01 b4 97  8c 49 53 97  dc 0c f3 cd
-|   bd d4 f9 43  40 9a a8 4c  c7 97 a9 6e  5f 6f 8a a4
-|   89 61 ac 9c  d8 cc 53 53  2b ef 0d 34  ed e5 74 49
-|   42 6c 97 e6  f4 83 ea 61  58 17 b0 1c  8f 42 b0 7a
-|   b3 96 fe cf  34 b1 b6 d8  c8 a5 b2 b7  b9 75 a4 f3
-|   a2 35 8e 95  8c 79 70 d5  0f bd ce 54  28 58 1c 42
-|   ad ad db 7a  3d c8 93 e1  0b 33 33 f4  f0 65 eb 82
-|   e2 a7 04 cd  aa ab ca 52  b6 f6 6d 98  02 4c ef bf
-|   65 9b d1 15  bf d2 b2 43  69 43 5a 34  bc de 6a 7a
-|   fa 1a 7e 5d  28 37 c5 a3  1e c3 1c 89  8a 30 86 03
-|   cf 61 1b 88  14 6a ba b9  8d 91 d4 20  4a b7 2b 50
-|   9d d5 f8 80  f5 aa ab 9e  a7 b6 61 f7  2e da 58 e0
-|   c0 cb 35 0e  c0 2b 72 f8  3d 51 dc e9  3f cc 55 94
-|   ce 4f e9 05  11 37 b6 33  07 e4 21 71  4c 6b 4f 67
-|   04 0b 28 cc  0a 86 ed 69  c1 df 7d 49  25 80 3d 61
-|   30 22 86 6f  27 5c be a4  a5 4e bf 0d  0a 0f f8 50
-|   f0 ab c6 ec  6a e0 07 b2  24 29 2f 5c  62 a4 57 d3
+|   ab 24 69 db  e2 93 c6 00  6f 0b 33 2c  e8 88 9f ff
+|   19 4e 00 b7  0c 88 76 82  98 58 24 50  91 75 44 9b
+|   65 b1 cd 62  f0 a5 8e f3  85 ff e0 c0  68 36 12 6d
+|   89 56 86 6b  5a 33 83 89  be a0 34 cb  8e 10 1a cc
+|   b8 86 4d e6  ba 6f cd dd  36 4f 2e 68  72 d9 94 4d
+|   71 78 90 ba  21 62 19 d9  ad 87 e5 5f  9b a9 2f 77
+|   4b 01 30 d6  09 e8 7f 1b  5a ef a8 a4  5a 08 0e 0b
+|   61 50 67 9e  b7 40 04 b9  00 b0 f9 de  2d 05 ab c6
+|   b0 08 50 98  4f 33 71 56  4a 62 f6 f5  b5 af 21 78
+|   f6 c3 14 67  d9 21 16 66  66 f6 52 21  57 b1 56 5e
+|   28 f0 c1 02  e5 56 5f e2  b7 f5 d5 77  43 80 b4 49
+|   57 ab 8c 31  16 41 ad e5  14 a0 19 84  b6 83 c1 56
+|   2e 45 1a ca  31 c1 bd 1e  99 9a 83 dd  32 59 85 00
+|   ab 75 1f ba  fa 54 13 43  9c e1 41 44  e1 c8 60 38
+|   45 25 bc df  57 16 d8 8c  c0 b3 a9 47  e5 30 a5 bb
+|   4d 48 17 92  25 80 36 41  66 58 4b 5d  20 6d 8e de
+|   36 1e 36 37  46 87 20 cb  13 ce 73 27  9f b8 2b 52
+|   f7 a7 2d cb  7a c4 c2 f2  a2 ca 16 18  4f 3f 5e f5
+|   51 26 c2 ee  da cb 16 9e  10 b0 bc 78  39 59 c2 50
+|   1b 4c 36 8a  3e e3 48 5a  51 f6 01 5d  87 ed 5a 73
+|   b8 a1 09 68  6b af 60 6b  e2 e9 f2 41  9e 9a 93 fa
+|   a6 d2 96 c2  48 8c f4 e8  37 5d e2 24  dd 8b 19 48
 | #2 complete v2 state transition with STF_OK
 ./h2hI2 transition from state STATE_PARENT_I1 to state STATE_PARENT_I2
 | v2_state_transition: st is #2; pst is #1; transition_st is #1
 ./h2hI2 STATE_PARENT_I2: sent v2I2, expected v2R2 {auth=IKEv2 oursig=fakesig1 theirsig= cipher=aes_128 integ=sha256_128 prf=prf-hmac-sha2-256 group=modp2048} (msgid: 00000000/4294967295)
 | sending reply packet to 132.213.238.7:500 (from port 500)
-sending 400 bytes for STATE_PARENT_I1 through eth0:500 [192.168.1.1:500] to 132.213.238.7:500 (using #2)
+sending 416 bytes for STATE_PARENT_I1 through eth0:500 [192.168.1.1:500] to 132.213.238.7:500 (using #2)
 |   80 01 02 03  04 05 06 07  de bc 58 3a  8f 40 d0 cf
-|   2e 20 23 08  00 00 00 01  00 00 01 90  23 00 01 74
+|   2e 20 23 08  00 00 00 01  00 00 01 a0  23 00 01 84
 |   80 01 02 03  04 05 06 07  08 09 0a 0b  0c 0d 0e 0f
-|   6b e2 00 86  09 ec 0b ba  00 ba c2 b7  f7 aa 78 69
-|   7f a8 88 e2  14 58 fe d8  6b 17 ac 39  c4 ac 7e 56
-|   0b 74 51 11  34 52 17 f8  f6 f9 7c c5  f2 b9 8c cf
-|   53 28 5a ec  77 fa 30 6d  40 47 1d 09  3b 36 43 6c
-|   f5 ee 7c ec  8c 01 b4 97  8c 49 53 97  dc 0c f3 cd
-|   bd d4 f9 43  40 9a a8 4c  c7 97 a9 6e  5f 6f 8a a4
-|   89 61 ac 9c  d8 cc 53 53  2b ef 0d 34  ed e5 74 49
-|   42 6c 97 e6  f4 83 ea 61  58 17 b0 1c  8f 42 b0 7a
-|   b3 96 fe cf  34 b1 b6 d8  c8 a5 b2 b7  b9 75 a4 f3
-|   a2 35 8e 95  8c 79 70 d5  0f bd ce 54  28 58 1c 42
-|   ad ad db 7a  3d c8 93 e1  0b 33 33 f4  f0 65 eb 82
-|   e2 a7 04 cd  aa ab ca 52  b6 f6 6d 98  02 4c ef bf
-|   65 9b d1 15  bf d2 b2 43  69 43 5a 34  bc de 6a 7a
-|   fa 1a 7e 5d  28 37 c5 a3  1e c3 1c 89  8a 30 86 03
-|   cf 61 1b 88  14 6a ba b9  8d 91 d4 20  4a b7 2b 50
-|   9d d5 f8 80  f5 aa ab 9e  a7 b6 61 f7  2e da 58 e0
-|   c0 cb 35 0e  c0 2b 72 f8  3d 51 dc e9  3f cc 55 94
-|   ce 4f e9 05  11 37 b6 33  07 e4 21 71  4c 6b 4f 67
-|   04 0b 28 cc  0a 86 ed 69  c1 df 7d 49  25 80 3d 61
-|   30 22 86 6f  27 5c be a4  a5 4e bf 0d  0a 0f f8 50
-|   f0 ab c6 ec  6a e0 07 b2  24 29 2f 5c  62 a4 57 d3
-|   60 18 c6 c8  61 08 83 56  e5 47 03 23  30 8e 92 a9
+|   ab 24 69 db  e2 93 c6 00  6f 0b 33 2c  e8 88 9f ff
+|   19 4e 00 b7  0c 88 76 82  98 58 24 50  91 75 44 9b
+|   65 b1 cd 62  f0 a5 8e f3  85 ff e0 c0  68 36 12 6d
+|   89 56 86 6b  5a 33 83 89  be a0 34 cb  8e 10 1a cc
+|   b8 86 4d e6  ba 6f cd dd  36 4f 2e 68  72 d9 94 4d
+|   71 78 90 ba  21 62 19 d9  ad 87 e5 5f  9b a9 2f 77
+|   4b 01 30 d6  09 e8 7f 1b  5a ef a8 a4  5a 08 0e 0b
+|   61 50 67 9e  b7 40 04 b9  00 b0 f9 de  2d 05 ab c6
+|   b0 08 50 98  4f 33 71 56  4a 62 f6 f5  b5 af 21 78
+|   f6 c3 14 67  d9 21 16 66  66 f6 52 21  57 b1 56 5e
+|   28 f0 c1 02  e5 56 5f e2  b7 f5 d5 77  43 80 b4 49
+|   57 ab 8c 31  16 41 ad e5  14 a0 19 84  b6 83 c1 56
+|   2e 45 1a ca  31 c1 bd 1e  99 9a 83 dd  32 59 85 00
+|   ab 75 1f ba  fa 54 13 43  9c e1 41 44  e1 c8 60 38
+|   45 25 bc df  57 16 d8 8c  c0 b3 a9 47  e5 30 a5 bb
+|   4d 48 17 92  25 80 36 41  66 58 4b 5d  20 6d 8e de
+|   36 1e 36 37  46 87 20 cb  13 ce 73 27  9f b8 2b 52
+|   f7 a7 2d cb  7a c4 c2 f2  a2 ca 16 18  4f 3f 5e f5
+|   51 26 c2 ee  da cb 16 9e  10 b0 bc 78  39 59 c2 50
+|   1b 4c 36 8a  3e e3 48 5a  51 f6 01 5d  87 ed 5a 73
+|   b8 a1 09 68  6b af 60 6b  e2 e9 f2 41  9e 9a 93 fa
+|   a6 d2 96 c2  48 8c f4 e8  37 5d e2 24  dd 8b 19 48
+|   c9 cb 8c b9  79 61 e5 75  e8 09 8f 58  6a 1a 6e b8
 ./h2hI2 deleting connection
 | pass 0: considering CHILD SAs to delete
 ./h2hI2 deleting state #2 (STATE_CHILD_C0_KEYING)
@@ -540,6 +570,13 @@ sending 80 bytes for ikev2_delete_out through eth0:500 [192.168.1.1:500] to 132.
 ./h2hI2 leak: db_context->conj, item size: X
 ./h2hI2 leak: v2 policy database, item size: X
 ./h2hI2 leak: struct state in new_state(), item size: X
+./h2hI2 leak: pubkey entry, item size: X
+./h2hI2 leak: rfc3110 format of public key, item size: X
+./h2hI2 leak: pubkey, item size: X
+./h2hI2 leak: keep id name, item size: X
+./h2hI2 leak: pubkey entry, item size: X
+./h2hI2 leak: rfc3110 format of public key, item size: X
+./h2hI2 leak: pubkey, item size: X
 ./h2hI2 leak: 2 * id list, item size: X
 ./h2hI2 leak: rfc3110 format of public key [created], item size: X
 ./h2hI2 leak: pubkey, item size: X

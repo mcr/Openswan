@@ -18,9 +18,9 @@ processing whack msg time: X size: Y
 | processing whack message of size: A
 processing whack msg time: X size: Y
 | Added new connection t4901 with policy RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK
-./parentM2 use keyid: 1:<> / 2:<>
+./parentM2 use keyid: 1:6DF7 E7A2 B017 2118 6525 1A9E FC30 F603 ADD5 6698 / 2:<>
 | counting wild cards for 192.168.1.1 is 0
-./parentM2 use keyid: 1:<> / 2:<>
+./parentM2 use keyid: 1:AD2F DDF5 7ABE 6140 14AA B39E 50EB EC76 CA12 3C8C / 2:<>
 | counting wild cards for 132.213.238.7 is 0
 | orient t4901 reference sr#1 this: addr:192.168.1.1 that: addr:132.213.238.7
 | orient t4901 checking against if: eth0 (AF_INET:192.168.1.1:500)
@@ -40,6 +40,8 @@ processing whack msg time: X size: Y
 |   orient t4901 finished with: 1 [192.168.1.1]
 RC=0 "t4901": 192.168.1.1...132.213.238.7; unrouted; eroute owner: #0
 RC=0 "t4901":     myip=unset; hisip=unset;
+RC=0 "t4901":   keys: 1:6DF7 E7A2 B017 2118 6525 1A9E FC30 F603 ADD5 6698 2:none...
+RC=0 "t4901":        ....1:AD2F DDF5 7ABE 6140 14AA B39E 50EB EC76 CA12 3C8C 2:none
 RC=0 "t4901":   ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1
 RC=0 "t4901":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK; prio: 32,32; interface: eth0; kind=CK_PERMANENT
 | creating state object #1 at Z
@@ -518,6 +520,12 @@ sending 356 bytes for STATE_MAIN_I1 through eth0:500 [93.184.216.34:55044] to 13
 ./parentM2 leak: db_context->conj, item size: X
 ./parentM2 leak: v2 policy database, item size: X
 ./parentM2 leak: struct state in new_state(), item size: X
+./parentM2 leak: pubkey entry, item size: X
+./parentM2 leak: rfc3110 format of public key, item size: X
+./parentM2 leak: pubkey, item size: X
+./parentM2 leak: pubkey entry, item size: X
+./parentM2 leak: rfc3110 format of public key, item size: X
+./parentM2 leak: pubkey, item size: X
 ./parentM2 leak: 2 * id list, item size: X
 ./parentM2 leak: rfc3110 format of public key [created], item size: X
 ./parentM2 leak: pubkey, item size: X

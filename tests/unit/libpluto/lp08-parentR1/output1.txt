@@ -22,9 +22,9 @@ processing whack msg time: X size: Y
 | processing whack message of size: A
 processing whack msg time: X size: Y
 | Added new connection parker1--jj2 with policy RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+IKEv2Init+SAREFTRACK
-./parentR1 use keyid: 1:<> / 2:<>
+./parentR1 use keyid: 1:2A3A 92D4 E0FA 5CD7 8DE1 D133 0C62 6985 2B6E D701 / 2:<>
 | counting wild cards for @jamesjohnson.emmjay.credil.org is 0
-./parentR1 use keyid: 1:<> / 2:<>
+./parentR1 use keyid: 1:66A6 7046 BBAB E28F 310E C6C0 80EC 790E F556 2AB9 / 2:<>
 | counting wild cards for @parker01.emmjay.credil.org is 0
 | orient parker1--jj2 reference sr#1 this: addr:132.213.238.7 that: addr:192.168.1.1
 | orient parker1--jj2 checking against if: eth0 (AF_INET:132.213.238.7:4500)
@@ -42,6 +42,8 @@ processing whack msg time: X size: Y
 |   orient parker1--jj2 finished with: 1 [132.213.238.7]
 RC=0 "parker1--jj2": fd68:c9f9:4157::/64===132.213.238.7[@jamesjohnson.emmjay.credil.org]...192.168.1.1[@parker01.emmjay.credil.org]===fd68:c9f9:4157:2:0:1::/96; unrouted; eroute owner: #0
 RC=0 "parker1--jj2":     myip=unset; hisip=unset;
+RC=0 "parker1--jj2":   keys: 1:2A3A 92D4 E0FA 5CD7 8DE1 D133 0C62 6985 2B6E D701 2:none...
+RC=0 "parker1--jj2":        ....1:66A6 7046 BBAB E28F 310E C6C0 80EC 790E F556 2AB9 2:none
 RC=0 "parker1--jj2":   ike_life: 3600s; ipsec_life: 28800s; rekey_margin: 540s; rekey_fuzz: 100%; keyingtries: 0
 RC=0 "parker1--jj2":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+IKEv2Init+SAREFTRACK; prio: 64,96; interface: eth0; kind=CK_PERMANENT
 |   =========== input from from parentI1.pcap ========
@@ -319,6 +321,14 @@ sending 432 bytes for STATE_IKEv2_START through eth0:500 [132.213.238.7:500] to 
 ./parentR1 leak: alg_info_ike, item size: X
 ./parentR1 leak: ikev2_inI1outR1 KE, item size: X
 ./parentR1 leak: msg_digest, item size: X
+./parentR1 leak: keep id name, item size: X
+./parentR1 leak: pubkey entry, item size: X
+./parentR1 leak: rfc3110 format of public key, item size: X
+./parentR1 leak: pubkey, item size: X
+./parentR1 leak: keep id name, item size: X
+./parentR1 leak: pubkey entry, item size: X
+./parentR1 leak: rfc3110 format of public key, item size: X
+./parentR1 leak: pubkey, item size: X
 ./parentR1 leak: 2 * id list, item size: X
 ./parentR1 leak: rfc3110 format of public key [created], item size: X
 ./parentR1 leak: pubkey, item size: X
