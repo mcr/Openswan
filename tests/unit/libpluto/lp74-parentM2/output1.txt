@@ -36,7 +36,6 @@ processing whack msg time: X size: Y
 ./parentM2 adding connection: "t4901"
 | 192.168.1.1...132.213.238.7
 | ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK
-|   =========== input from from parentN1.pcap ========
 |   orient t4901 finished with: 1 [192.168.1.1]
 RC=0 "t4901": 192.168.1.1...132.213.238.7; unrouted; eroute owner: #0
 RC=0 "t4901":     myip=unset; hisip=unset;
@@ -320,6 +319,9 @@ sending 376 bytes for main_outI1 through eth0:500 [93.184.216.34:55044] to 132.2
 |   68 b6 a4 48  00 00 00 14  44 85 15 2d  18 b6 bb cd
 |   0b e8 a8 46  95 79 dd cc
 RC=105 STATE_MAIN_I1: initiate
+0: output to OUTPUT/parentM2.pcap
+0: input from parentN1.pcap
+|   =========== input from from parentN1.pcap ========
 picking: eth0:500  outside: 55044 <=> d: 55044
 | *received 136 bytes from 132.213.238.7:500 on eth0 (port=500)
 |   80 01 02 03  04 05 06 07  64 0a 06 43  5c 7c 4b 31
@@ -331,16 +333,6 @@ picking: eth0:500  outside: 55044 <=> d: 55044
 |   0d 00 00 14  af ca d7 13  68 a1 f1 c9  6b 86 96 fc
 |   77 57 01 00  00 00 00 14  4a 13 1c 81  07 03 58 45
 |   5c 57 28 f2  0e 95 45 2f
-| **parse ISAKMP Message:
-|    initiator cookie:
-|   80 01 02 03  04 05 06 07
-|    responder cookie:
-|   64 0a 06 43  5c 7c 4b 31
-|    ISAKMP version: ISAKMP Version 1.0 (rfc2407)
-|    exchange type: ISAKMP_XCHG_IDPROT
-|    flags: none
-|    message ID:  00 00 00 00
-|    length: 136
 |  processing version=1.0 packet with exchange type=ISAKMP_XCHG_IDPROT (2), msgid: 00000000
 | ICOOKIE:  80 01 02 03  04 05 06 07
 | RCOOKIE:  64 0a 06 43  5c 7c 4b 31
@@ -351,56 +343,9 @@ picking: eth0:500  outside: 55044 <=> d: 55044
 | state hash entry 4
 | v1 peer and cookies match on #1, provided msgid 00000000 vs 00000000
 | v1 state object #1 found, in STATE_MAIN_I1
-| got payload 0x2(ISAKMP_NEXT_SA) needed: 0x2 opt: 0x2080
-| ***parse ISAKMP Security Association Payload:
-|    length: 52
-|    DOI: ISAKMP_DOI_IPSEC
-| got payload 0x2000(ISAKMP_NEXT_VID) needed: 0x0 opt: 0x2080
-| ***parse ISAKMP Vendor ID Payload:
-|    length: 16
-| got payload 0x2000(ISAKMP_NEXT_VID) needed: 0x0 opt: 0x2080
-| ***parse ISAKMP Vendor ID Payload:
-|    length: 20
-| got payload 0x2000(ISAKMP_NEXT_VID) needed: 0x0 opt: 0x2080
-| ***parse ISAKMP Vendor ID Payload:
-|    length: 20
 ./parentM2 received Vendor ID payload [Openswan (this version) 2.6-regression ]
 ./parentM2 received Vendor ID payload [Dead Peer Detection]
 ./parentM2 received Vendor ID payload [RFC 3947] method set to=115
-| ****parse IPsec DOI SIT:
-|    IPsec DOI SIT: SIT_IDENTITY_ONLY
-| ****parse ISAKMP Proposal Payload:
-|    length: 40
-|    proposal number: 0
-|    protocol ID: PROTO_ISAKMP
-|    SPI size: 0
-|    number of transforms: 1
-| *****parse ISAKMP Transform Payload (ISAKMP):
-|    length: 32
-|    transform number: 0
-|    transform ID: KEY_IKE
-| ******parse ISAKMP Oakley attribute:
-|    af+type: OAKLEY_LIFE_TYPE
-|    length/value: 1
-|    [1 is OAKLEY_DES_CBC]
-| ******parse ISAKMP Oakley attribute:
-|    af+type: OAKLEY_LIFE_DURATION
-|    length/value: 3600
-| ******parse ISAKMP Oakley attribute:
-|    af+type: OAKLEY_AUTHENTICATION_METHOD
-|    length/value: 3
-|    [3 is OAKLEY_RSA_SIG]
-| ******parse ISAKMP Oakley attribute:
-|    af+type: OAKLEY_ENCRYPTION_ALGORITHM
-|    length/value: 7
-| ******parse ISAKMP Oakley attribute:
-|    af+type: OAKLEY_HASH_ALGORITHM
-|    length/value: 2
-|    [2 is OAKLEY_SHA1]
-| ******parse ISAKMP Oakley attribute:
-|    af+type: OAKLEY_GROUP_DESCRIPTION
-|    length/value: 14
-| Oakley Transform 0 accepted
 ./parentM2 enabling possible NAT-traversal with method RFC 3947 (NAT-Traversal)
 | complete state transition with STF_SUSPEND
 | ICOOKIE:  80 01 02 03  04 05 06 07
@@ -485,6 +430,7 @@ sending 356 bytes for STATE_MAIN_I1 through eth0:500 [93.184.216.34:55044] to 13
 ./parentM2 STATE_MAIN_I2: sent MI2, expecting MR2
 | modecfg pull: noquirk policy:push not-client
 | phase 1 is done, looking for phase 2 to unpend
+1: output closed
 ./parentM2 deleting connection
 | pass 0: considering CHILD SAs to delete
 ./parentM2 deleting state #1 (STATE_MAIN_I2)
