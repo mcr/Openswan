@@ -15,13 +15,7 @@
 | processing whack message of size: A
 | processing whack message of size: A
 processing whack msg time: X size: Y
-./parentN2 loaded key: 6DF7 E7A2 B017 2118 6525 1A9E FC30 F603 ADD5 6698
-| processing whack message of size: A
-processing whack msg time: X size: Y
 ./parentN2 loaded key: 66A6 7046 BBAB E28F 310E C6C0 80EC 790E F556 2AB9
-| processing whack message of size: A
-processing whack msg time: X size: Y
-./parentN2 loaded key: AD2F DDF5 7ABE 6140 14AA B39E 50EB EC76 CA12 3C8C
 | processing whack message of size: A
 processing whack msg time: X size: Y
 ./parentN2 loaded key: 2A3A 92D4 E0FA 5CD7 8DE1 D133 0C62 6985 2B6E D701
@@ -30,33 +24,31 @@ processing whack msg time: X size: Y
 | find_host_pair: looking for me=<none>:500 %any him=<none>:500 any-match
 | find_host_pair: concluded with <none>
 | found_host_pair_conn (check_connection_end): %any:500 %any/%any:500 -> hp:none
-| Added new connection mytunnel-ikev1 with policy RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK
-./parentN2 can not find public key: 6DF7 E7A2 B017 2118 6525 1A9E FC30 F603 ADD5 6698
-./parentN2 use keyid: 1:<> / 2:66A6 7046 BBAB E28F 310E C6C0 80EC 790E F556 2AB9
+| Added new connection t4901 with policy RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK
+./parentN2 use keyid: 1:66A6 7046 BBAB E28F 310E C6C0 80EC 790E F556 2AB9 / 2:<>
 | counting wild cards for @berri.testing.xelerance.com is 0
-./parentN2 can not find public key: AD2F DDF5 7ABE 6140 14AA B39E 50EB EC76 CA12 3C8C
-./parentN2 use keyid: 1:<> / 2:2A3A 92D4 E0FA 5CD7 8DE1 D133 0C62 6985 2B6E D701
+./parentN2 use keyid: 1:2A3A 92D4 E0FA 5CD7 8DE1 D133 0C62 6985 2B6E D701 / 2:<>
 | counting wild cards for 132.213.238.7 is 0
-| orient mytunnel-ikev1 reference sr#1 this: addr:132.213.238.7 that: %any
-| orient mytunnel-ikev1 checking against if: eth0 (AF_INET:132.213.238.7:4500)
-| orient mytunnel-ikev1 checking against if: eth0 (AF_INET:132.213.238.7:500)
+| orient t4901 reference sr#1 this: addr:132.213.238.7 that: %any
+| orient t4901 checking against if: eth0 (AF_INET:132.213.238.7:4500)
+| orient t4901 checking against if: eth0 (AF_INET:132.213.238.7:500)
 |     orient matched on IP
-|   orient mytunnel-ikev1 finished with: 1 [132.213.238.7]
+|   orient t4901 finished with: 1 [132.213.238.7]
 | find_host_pair: looking for me=132.213.238.7:500 %any him=0.0.0.0:500 exact-match
 | find_host_pair: concluded with <none>
 | connect_to_host_pair: 132.213.238.7:500 %any 0.0.0.0:500 -> hp:none
 | find_ID_host_pair: looking for me=132.213.238.7 him=@berri.testing.xelerance.com (exact)
 |   concluded with <none>
-./parentN2 adding connection: "mytunnel-ikev1"
+./parentN2 adding connection: "t4901"
 | 132.213.238.7...%any[@berri.testing.xelerance.com]
 | ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK
-|   orient mytunnel-ikev1 finished with: 1 [132.213.238.7]
-RC=0 "mytunnel-ikev1": 132.213.238.7...%any[@berri.testing.xelerance.com]; unrouted; eroute owner: #0
-RC=0 "mytunnel-ikev1":     myip=unset; hisip=unset;
-RC=0 "mytunnel-ikev1":   keys: 1:none 2:2A3A 92D4 E0FA 5CD7 8DE1 D133 0C62 6985 2B6E D701...
-RC=0 "mytunnel-ikev1":        ....1:none 2:66A6 7046 BBAB E28F 310E C6C0 80EC 790E F556 2AB9
-RC=0 "mytunnel-ikev1":   ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1
-RC=0 "mytunnel-ikev1":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK; prio: 32,32; interface: eth0; kind=CK_PERMANENT
+|   orient t4901 finished with: 1 [132.213.238.7]
+RC=0 "t4901": 132.213.238.7...%any[@berri.testing.xelerance.com]; unrouted; eroute owner: #0
+RC=0 "t4901":     myip=unset; hisip=unset;
+RC=0 "t4901":   keys: 1:2A3A 92D4 E0FA 5CD7 8DE1 D133 0C62 6985 2B6E D701 2:none...
+RC=0 "t4901":        ....1:66A6 7046 BBAB E28F 310E C6C0 80EC 790E F556 2AB9 2:none
+RC=0 "t4901":   ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1
+RC=0 "t4901":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK; prio: 32,32; interface: eth0; kind=CK_PERMANENT
 0: input from parentM1.pcap
 |   =========== input from from parentM1.pcap ========
 | *received 376 bytes from 93.184.216.34:55044 on eth0 (port=500)
@@ -95,11 +87,11 @@ RC=0 "mytunnel-ikev1":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK; prio: 32,
 | find_host_connection2 called from main_inI1_outR1, me=132.213.238.7:500 him=93.184.216.34:55044 policy=/!IKEv1
 | find_host_pair: looking for me=132.213.238.7:500 %address him=93.184.216.34:55044 any-match
 | find_host_pair: comparing to me=132.213.238.7:500 %any him=0.0.0.0:500
-| find_host_pair: concluded with mytunnel-ikev1
-| found_host_pair_conn (find_host_connection2): 132.213.238.7:500 %address/93.184.216.34:55044 -> hp:mytunnel-ikev1
+| find_host_pair: concluded with t4901
+| found_host_pair_conn (find_host_connection2): 132.213.238.7:500 %address/93.184.216.34:55044 -> hp:t4901
 | searching for connection with policy = /!IKEv1
-| found policy = RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK (mytunnel-ikev1)
-| find_host_connection2 returns mytunnel-ikev1 (ike=none/none)
+| found policy = RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK (t4901)
+| find_host_connection2 returns t4901 (ike=none/none)
 | creating state object #1 at Z
 | ICOOKIE:  80 01 02 03  04 05 06 07
 | RCOOKIE:  64 0a 06 43  5c 7c 4b 31
