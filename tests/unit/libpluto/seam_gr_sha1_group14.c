@@ -226,6 +226,7 @@ stf_status start_dh_secretiv(struct pluto_crypto_req_cont *cn UNUSED
 			     , enum phase1_role init       UNUSED /* TRUE=g_init,FALSE=g_r */
 			     , u_int16_t oakley_group2     UNUSED)
 {
+  continuation = cn;
   return STF_INLINE;
 }
 
@@ -241,12 +242,10 @@ void finish_dh_secretiv(struct state *st,
     CLONEIT(skeyid_e);
     CLONEIT(enc_key);
 
-    passert(dhr->new_iv.len <= MAX_DIGEST_LEN);
-    passert(dhr->new_iv.len <= sizeof(tc14_results_new_iv));
-    passert(dhr->new_iv.len > 0);
+    r->pcr_success = TRUE;
 
-    memcpy(st->st_new_iv, tc14_results_new_iv, dhr->new_iv.len);
-    st->st_new_iv_len = dhr->new_iv.len;
+    memcpy(st->st_new_iv, tc14_results_new_iv, sizeof(tc14_results_new_iv));
+    st->st_new_iv_len = sizeof(tc14_results_new_iv);
 
     st->hidden_variables.st_skeyid_calculated = TRUE;
 }
