@@ -20,6 +20,9 @@ processing whack msg time: X size: Y
 ./h2hI2 loaded key: AD2F DDF5 7ABE 6140 14AA B39E 50EB EC76 CA12 3C8C
 | processing whack message of size: A
 processing whack msg time: X size: Y
+./h2hI2 loaded key: 2A3A 92D4 E0FA 5CD7 8DE1 D133 0C62 6985 2B6E D701
+| processing whack message of size: A
+processing whack msg time: X size: Y
 | find_host_pair: looking for me=<none>:500 %any him=<none>:500 any-match
 | find_host_pair: concluded with <none>
 | found_host_pair_conn (check_connection_end): %any:500 %any/%any:500 -> hp:none
@@ -27,7 +30,8 @@ processing whack msg time: X size: Y
 ./h2hI2 can not find public key: 6DF7 E7A2 B017 2118 6525 1A9E FC30 F603 ADD5 6698
 ./h2hI2 use keyid: 1:<> / 2:66A6 7046 BBAB E28F 310E C6C0 80EC 790E F556 2AB9
 | counting wild cards for @berri.testing.xelerance.com is 0
-./h2hI2 use keyid: 1:AD2F DDF5 7ABE 6140 14AA B39E 50EB EC76 CA12 3C8C / 2:<>
+./h2hI2 can not find public key: AD2F DDF5 7ABE 6140 14AA B39E 50EB EC76 CA12 3C8C
+./h2hI2 use keyid: 1:<> / 2:2A3A 92D4 E0FA 5CD7 8DE1 D133 0C62 6985 2B6E D701
 | counting wild cards for 132.213.238.7 is 0
 | orient mytunnel reference sr#1 this: addr:132.213.238.7 that: %any
 | orient mytunnel checking against if: eth0 (AF_INET:192.168.1.1:500)
@@ -56,7 +60,7 @@ processing whack msg time: X size: Y
 RC=0 "mytunnel": %any[@berri.testing.xelerance.com]...132.213.238.7; unrouted; eroute owner: #0
 RC=0 "mytunnel":     myip=unset; hisip=unset;
 RC=0 "mytunnel":   keys: 1:none 2:66A6 7046 BBAB E28F 310E C6C0 80EC 790E F556 2AB9...
-RC=0 "mytunnel":        ....1:AD2F DDF5 7ABE 6140 14AA B39E 50EB EC76 CA12 3C8C 2:none
+RC=0 "mytunnel":        ....1:none 2:2A3A 92D4 E0FA 5CD7 8DE1 D133 0C62 6985 2B6E D701
 RC=0 "mytunnel":   ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1
 RC=0 "mytunnel":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK; prio: 32,32; interface: eth0; kind=CK_PERMANENT
 | creating state object #1 at Z
