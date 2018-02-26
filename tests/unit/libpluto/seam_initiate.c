@@ -1,4 +1,4 @@
-
+#ifndef INCLUDE_QUICK_MODE
 void connection_check_phase2(void) {}
 
 /* initiate.c SEAM */
@@ -14,3 +14,4 @@ int initiate_ondemand(const ip_address *our_client
                               , struct xfrm_user_sec_ctx_ike *uctx
                               , err_t why) {}
 
+#endif

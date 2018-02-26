@@ -250,6 +250,15 @@ void finish_dh_secretiv(struct state *st,
     st->hidden_variables.st_skeyid_calculated = TRUE;
 }
 
+void finish_dh_secret(struct state *st,
+		      struct pluto_crypto_req *r)
+{
+    extern unsigned char tc14_results_shared[];
+    struct pcr_skeyid_r *dhr = &r->pcr_d.dhr;
+
+    CLONEIT(shared);
+}
+
 
 struct pluto_crypto_req;
 void finish_dh_v2(struct state *st,
@@ -265,9 +274,11 @@ void finish_dh_v2(struct state *st,
     CLONEIT(skey_er);
     CLONEIT(skey_pi);
     CLONEIT(skey_pr);
-#undef CLONEIT
 
     st->hidden_variables.st_skeyid_calculated = TRUE;
 }
+
+#undef CLONEIT
+
 #define SHA1_GROUP14
 #endif
