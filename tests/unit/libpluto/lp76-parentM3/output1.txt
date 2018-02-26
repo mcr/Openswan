@@ -409,7 +409,6 @@ picking: eth0:500  outside: 55044 <=> d: 55044
 | NAT-T found NAT_T_WITH_NATD
 | sending NAT-D payloads
 |    next-payload: ISAKMP_NEXT_NAT-D [@288=0x14]
-| _natd_hash: hasher=0x6b8640(20)
 | _natd_hash: icookie=
 |   80 01 02 03  04 05 06 07
 | _natd_hash: rcookie=
@@ -423,7 +422,6 @@ picking: eth0:500  outside: 55044 <=> d: 55044
 | NAT-D  d7 66 3f 90  45 db b1 6f  2c 55 f2 25  78 55 db 6a
 |   76 d4 bc 8f
 | emitting length of ISAKMP NAT-D Payload: 24
-| _natd_hash: hasher=0x6b8640(20)
 | _natd_hash: icookie=
 |   80 01 02 03  04 05 06 07
 | _natd_hash: rcookie=
@@ -536,7 +534,6 @@ picking: eth0:500  outside: 55044 <=> d: 55044
 |   so do not send cert.
 | I did not send a certificate because I do not have one.
 |  I am not sending a certificate request
-| _natd_hash: hasher=0x6b8640(20)
 | _natd_hash: icookie=
 |   80 01 02 03  04 05 06 07
 | _natd_hash: rcookie=
@@ -545,7 +542,6 @@ picking: eth0:500  outside: 55044 <=> d: 55044
 | _natd_hash: port=500
 | _natd_hash: hash=  b4 e3 01 b0  85 e7 22 52  83 ee ec 6c  44 47 8e 55
 |   28 66 44 8e
-| _natd_hash: hasher=0x6b8640(20)
 | _natd_hash: icookie=
 |   80 01 02 03  04 05 06 07
 | _natd_hash: rcookie=
