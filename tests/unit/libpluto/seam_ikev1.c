@@ -1,14 +1,3 @@
-stf_status
-aggr_outI1(int whack_sock,
-	   struct connection *c,
-	   struct state *predecessor,
-	   lset_t policy,
-	   unsigned long try
-	   , enum crypto_importance importance)
-{
-	fprintf(stderr, "IKEv1 aggressive output requested\n");
-	osw_abort();
-}
 
 #ifndef OMIT_MAIN_MODE
 #include "seam_ikev1_main.c"
