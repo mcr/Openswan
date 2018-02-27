@@ -257,6 +257,7 @@ void finish_dh_secret(struct state *st,
     struct pcr_skeyid_r *dhr = &r->pcr_d.dhr;
 
     CLONEIT(shared);
+    r->pcr_success = TRUE;
 }
 
 
