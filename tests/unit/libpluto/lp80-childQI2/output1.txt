@@ -985,18 +985,201 @@ sending 508 bytes for quick_outI1 through eth0:4500 [93.184.216.34:55045] to 132
 |   b2 b6 6a 96  03 7f a1 2a  33 57 0f c1  5c e5 4d c6
 |   e9 f5 67 2f  2e ce 20 98  3e 44 43 fe
 RC=118 STATE_QUICK_I1: initiate
-3: output closed
-./childQI2 deleting connection
-| pass 0: considering CHILD SAs to delete
-./childQI2 deleting state #2 (STATE_QUICK_I1)
+3: output to OUTPUT/childQI2.pcap
+3: input from childQR1.pcap
+|   =========== input from from childQR1.pcap ========
+skipping: eth0:500  outside: 55044 <=> d: 55045
+picking: eth0:4500 float outside: 55045 <=> d: 55045
+| *received 428 bytes from 132.213.238.7:4500 on eth0 (port=4500)
+|   80 01 02 03  04 05 06 07  64 0a 06 43  5c 7c 4b 31
+|   08 10 20 01  80 01 02 03  00 00 01 ac  58 3d 80 2d
+|   e2 da 59 13  5a d3 d7 89  99 93 ef c0  50 84 f0 ef
+|   ac 8a 31 e5  5e 4c 8a f8  67 77 29 48  0e 42 69 ab
+|   71 50 9b 03  d2 98 04 ab  b6 5b 10 f8  fd 5f 67 02
+|   24 fd a9 bd  c5 20 ec fd  80 9f 59 89  49 e6 fd 11
+|   88 57 0a 03  54 1c 30 59  1f 1d b4 78  6b 80 81 5d
+|   36 6b d7 37  b4 e7 19 37  86 95 cf 87  9e 69 e0 fe
+|   e4 9c 2d 23  fa 21 46 c4  3c fa af f3  a0 15 b0 20
+|   06 b5 62 26  9b 32 11 ce  8c bf 21 63  74 bd fb e3
+|   76 e7 8b 05  33 bd e1 4a  79 bb 0d 3b  d3 1d 03 72
+|   a2 9f c6 0f  6d 50 e3 df  a9 be af 70  85 60 0a aa
+|   7f eb c0 61  d8 72 81 ed  3b e7 69 34  a6 25 b9 41
+|   3c 1d 36 16  87 44 63 09  ce 25 d8 b2  41 fa 31 41
+|   ba 41 9e d8  94 89 68 5f  d1 21 65 f2  aa 5b 47 60
+|   17 4d 3c 5a  1d 47 d1 53  63 cb 29 26  ad 4d 79 15
+|   02 d2 10 3c  48 ce 81 53  13 37 2f 25  a2 18 90 9b
+|   0a 96 62 e6  3a 13 58 1f  99 f6 d3 b3  3a ca 9f 41
+|   19 f9 04 89  eb ca 3d fd  37 de 0a 44  b5 df 84 24
+|   b6 74 b9 79  92 e5 ae 27  ce 23 99 da  84 26 c8 98
+|   bb 36 d4 ae  ed 24 06 43  6b b0 93 bf  3c b5 92 dd
+|   d2 2c e7 09  fe 3f 7d 31  a8 7a 8a cf  9a 0c ad 71
+|   6e 6f 18 99  31 33 b9 57  ac ff ce 47  a7 e3 f2 fd
+|   71 25 8a 19  3d fe 11 f8  44 9a a5 d1  54 56 43 56
+|   e8 cd 1c ec  50 56 6f ae  c1 b6 a4 38  e9 9e ee e8
+|   e6 04 d3 bc  d4 01 c3 10  bd 1c 53 ff  a9 ec 27 3b
+|   fd b2 c2 36  1b e5 7a 9a  5c 03 d1 7c
+|  processing version=1.0 packet with exchange type=ISAKMP_XCHG_QUICK (32), msgid: 2147549699
 | ICOOKIE:  80 01 02 03  04 05 06 07
 | RCOOKIE:  64 0a 06 43  5c 7c 4b 31
 | state hash entry 5
+| v1 peer and cookies match on #2, provided msgid 80010203 vs 80010203
+| v1 state object #2 found, in STATE_QUICK_I1
+| received encrypted packet from 132.213.238.7:4500
+| decrypting 400 bytes using algorithm OAKLEY_AES_CBC
+| decrypted:
+|   01 00 00 18  49 e6 ba fb  0a 80 f2 2c  a6 6d 63 65
+|   53 65 f0 58  88 0b f8 dd  0a 00 00 38  00 00 00 01
+|   00 00 00 01  00 00 00 2c  00 03 04 01  12 34 56 78
+|   00 00 00 20  00 0c 00 00  80 03 00 0e  80 04 00 03
+|   80 01 00 01  80 02 04 b0  80 05 00 02  80 06 00 80
+|   04 00 00 14  00 00 00 00  00 00 00 00  00 00 00 00
+|   00 00 00 00  05 00 01 04  a5 9a 13 6c  b8 87 48 57
+|   e1 22 6e a0  b8 55 c2 00  31 15 65 84  8b f9 dc a4
+|   5f 49 d4 c5  f0 98 8e 9b  31 85 6e 27  5a c2 75 09
+|   07 37 05 b5  b1 53 18 07  81 e8 1d 07  c6 19 1c de
+|   dc 1f 2c 26  d2 0b 59 f9  67 6a ee 3c  e5 fa 72 3f
+|   54 96 1e 7d  8e d0 30 08  0b ed 95 b0  65 2f 5c a6
+|   36 7e 92 2d  da cb 88 54  e3 97 fa 16  6f 9e 7c a6
+|   0c 43 2f 29  be 2c a4 55  68 01 45 bc  56 a9 84 b9
+|   2b 1b bf 9a  fc 84 67 5f  d3 04 79 90  b7 fa 89 5b
+|   04 06 d5 9a  50 92 16 4b  d6 33 40 be  2a 44 94 74
+|   33 a7 a5 c1  1f 88 5b eb  4e d2 bb 94  b9 22 db e3
+|   b6 5a 8c f9  d6 43 5d 5e  5d c9 19 b8  c8 81 53 01
+|   95 09 02 7b  c0 2a b0 c8  5d 2c 69 78  6c e8 f6 5d
+|   e4 90 43 83  fd f7 98 5e  cc 92 5c 79  7b 62 ae 98
+|   db 4f 7f e0  68 7c cd 29  69 0a ad a3  e8 37 d7 41
+|   b4 79 b3 a5  38 a2 8d a0  69 ff bd aa  ba d5 54 70
+|   40 ab b5 fc  26 6d ae ce  05 00 00 10  04 00 00 00
+|   c0 a8 01 01  ff ff ff ff  00 00 00 10  04 00 00 00
+|   84 d5 ee 07  ff ff ff ff  00 00 00 00  00 00 00 00
+| next IV:  a9 ec 27 3b  fd b2 c2 36  1b e5 7a 9a  5c 03 d1 7c
+| **emit ISAKMP Message:
+|    initiator cookie:
+|   80 01 02 03  04 05 06 07
+|    responder cookie:
+|   64 0a 06 43  5c 7c 4b 31
+|    ISAKMP version: ISAKMP Version 1.0 (rfc2407)
+|    exchange type: ISAKMP_XCHG_QUICK
+|    flags: ISAKMP_FLAG_ENCRYPTION
+|    message ID:  80 01 02 03
+| HASH(2) computed:
+|   49 e6 ba fb  0a 80 f2 2c  a6 6d 63 65  53 65 f0 58
+|   88 0b f8 dd
+| __alg_info_esp_add() ealg=12 aalg=12 cnt=1
+| __alg_info_esp_add() ealg=12 aalg=2 cnt=2
+| DH public value received:
+|   a5 9a 13 6c  b8 87 48 57  e1 22 6e a0  b8 55 c2 00
+|   31 15 65 84  8b f9 dc a4  5f 49 d4 c5  f0 98 8e 9b
+|   31 85 6e 27  5a c2 75 09  07 37 05 b5  b1 53 18 07
+|   81 e8 1d 07  c6 19 1c de  dc 1f 2c 26  d2 0b 59 f9
+|   67 6a ee 3c  e5 fa 72 3f  54 96 1e 7d  8e d0 30 08
+|   0b ed 95 b0  65 2f 5c a6  36 7e 92 2d  da cb 88 54
+|   e3 97 fa 16  6f 9e 7c a6  0c 43 2f 29  be 2c a4 55
+|   68 01 45 bc  56 a9 84 b9  2b 1b bf 9a  fc 84 67 5f
+|   d3 04 79 90  b7 fa 89 5b  04 06 d5 9a  50 92 16 4b
+|   d6 33 40 be  2a 44 94 74  33 a7 a5 c1  1f 88 5b eb
+|   4e d2 bb 94  b9 22 db e3  b6 5a 8c f9  d6 43 5d 5e
+|   5d c9 19 b8  c8 81 53 01  95 09 02 7b  c0 2a b0 c8
+|   5d 2c 69 78  6c e8 f6 5d  e4 90 43 83  fd f7 98 5e
+|   cc 92 5c 79  7b 62 ae 98  db 4f 7f e0  68 7c cd 29
+|   69 0a ad a3  e8 37 d7 41  b4 79 b3 a5  38 a2 8d a0
+|   69 ff bd aa  ba d5 54 70  40 ab b5 fc  26 6d ae ce
+| complete state transition with STF_SUSPEND
+| NAT-Traversal: received 0 NAT-OA.
+| our client is subnet 192.168.1.1/32
+| our client protocol/port is 0/0
+| peer client is subnet 132.213.238.7/32
+| peer client protocol/port is 0/0
+| ***emit ISAKMP Hash Payload:
+| emitting 20 zero bytes of HASH into ISAKMP Hash Payload
+| emitting length of ISAKMP Hash Payload: 24
+| HASH(3) computed:  d4 36 ad 48  2c 88 75 8b  6f cf 4e 83  e5 6d d3 95
+|   9b bb 03 6e
+| kernel_alg_esp_auth_keylen(auth=2, sadb_aalg=3): a_keylen=0
+| ESP KEYMAT
+|   KEYMAT computed:
+|   4b 58 90 7b  af 46 0a b7  2c 71 ac 00  ad 6c 7e fc
+|   Peer KEYMAT computed:
+|   4b 58 90 7b  af 46 0a b7  2c 71 ac 00  ad 6c 7e fc
+| encrypting:
+|   00 00 00 18  d4 36 ad 48  2c 88 75 8b  6f cf 4e 83
+|   e5 6d d3 95  9b bb 03 6e
+| IV:
+|   a9 ec 27 3b  fd b2 c2 36  1b e5 7a 9a  5c 03 d1 7c
+| unpadded size is: 24
+| emitting 8 zero bytes of encryption padding into ISAKMP Message
+| encrypting 32 using OAKLEY_AES_CBC
+| next IV:  b1 7d 18 d6  74 4c 17 51  6f 32 12 61  8b 26 ab a5
+| emitting length of ISAKMP Message: 60
+| inR1_outI2: instance t4901[0], setting newest_ipsec_sa to #2 (was #0) (spd.eroute=#0)
+| complete state transition with STF_OK
+./childQI2 transition from state STATE_QUICK_I1 to state STATE_QUICK_I2
+| sending reply packet to 132.213.238.7:4500 (from port 4500)
+sending 60 bytes for STATE_QUICK_I1 through eth0:4500 [93.184.216.34:55045] to 132.213.238.7:4500 (using #2)
+|   80 01 02 03  04 05 06 07  64 0a 06 43  5c 7c 4b 31
+|   08 10 20 01  80 01 02 03  00 00 00 3c  25 42 0e 53
+|   59 3e 04 e3  aa 17 97 bf  4a 86 83 27  b1 7d 18 d6
+|   74 4c 17 51  6f 32 12 61  8b 26 ab a5
+./childQI2 STATE_QUICK_I2: sent QI2, IPsec SA established tunnel mode {ESP=>0x12345678 <0x12345678 xfrm=aes_cbc[128]-hmac_sha1_96 NATOA=none NATD=none DPD=none}
+| modecfg pull: noquirk policy:push not-client
+| phase 1 is done, looking for phase 2 to unpend
 4: output closed
 ./childQI2 deleting connection
 | pass 0: considering CHILD SAs to delete
+./childQI2 deleting state #2 (STATE_QUICK_I2)
+./childQI2 gave up looking for unique msgid; using 0x03020180
+| **emit ISAKMP Message:
+|    initiator cookie:
+|   80 01 02 03  04 05 06 07
+|    responder cookie:
+|   64 0a 06 43  5c 7c 4b 31
+|    ISAKMP version: ISAKMP Version 1.0 (rfc2407)
+|    exchange type: ISAKMP_XCHG_INFO
+|    flags: ISAKMP_FLAG_ENCRYPTION
+|    message ID:  80 01 02 03
+| ***emit ISAKMP Hash Payload:
+| emitting 20 zero bytes of HASH(1) into ISAKMP Hash Payload
+| emitting length of ISAKMP Hash Payload: 24
+| ***emit ISAKMP Delete Payload:
+|    DOI: ISAKMP_DOI_IPSEC
+|    protocol ID: 3
+|    SPI size: 4
+|    number of SPIs: 1
+| emitting 4 raw bytes of delete payload into ISAKMP Delete Payload
+| delete payload  12 34 56 78
+| emitting length of ISAKMP Delete Payload: 16
+| HASH(1) computed:
+|   b1 9e 61 ed  fe e7 90 7f  de 85 3e 6e  b5 ca 05 7a
+|   ef f9 ac 46
+| last Phase 1 IV:  2b d6 a9 12  96 6d a8 7f  6e 75 c9 7a  65 0d af fd
+| current Phase 1 IV:  2b d6 a9 12  96 6d a8 7f  6e 75 c9 7a  65 0d af fd
+| computed Phase 2 IV:
+|   0d 11 f3 ec  13 af d9 8e  5f f0 ba b5  31 68 4f 25
+|   1b 87 1e 0b
+| encrypting:
+|   0c 00 00 18  b1 9e 61 ed  fe e7 90 7f  de 85 3e 6e
+|   b5 ca 05 7a  ef f9 ac 46  00 00 00 10  00 00 00 01
+|   03 04 00 01  12 34 56 78
+| IV:
+|   0d 11 f3 ec  13 af d9 8e  5f f0 ba b5  31 68 4f 25
+|   1b 87 1e 0b
+| unpadded size is: 40
+| emitting 8 zero bytes of encryption padding into ISAKMP Message
+| encrypting 48 using OAKLEY_AES_CBC
+| next IV:  58 93 73 8f  63 2b 82 aa  0c 4b 1d ec  74 cc 1d 1f
+| emitting length of ISAKMP Message: 76
+sending 76 bytes for delete notify through eth0:4500 [93.184.216.34:55045] to 132.213.238.7:4500 (using #1)
+|   80 01 02 03  04 05 06 07  64 0a 06 43  5c 7c 4b 31
+|   08 10 05 01  80 01 02 03  00 00 00 4c  55 82 16 f3
+|   29 c7 19 da  b8 9f 1c 88  18 21 47 43  37 0f 73 f9
+|   e0 fd d9 6b  a3 54 59 71  61 54 90 9e  58 93 73 8f
+|   63 2b 82 aa  0c 4b 1d ec  74 cc 1d 1f
+| ICOOKIE:  80 01 02 03  04 05 06 07
+| RCOOKIE:  64 0a 06 43  5c 7c 4b 31
+| state hash entry 5
 | pass 1: considering PARENT SAs to delete
 ./childQI2 deleting state #1 (STATE_MAIN_I4)
+./childQI2 gave up looking for unique msgid; using 0x03020180
 | **emit ISAKMP Message:
 |    initiator cookie:
 |   80 01 02 03  04 05 06 07
@@ -1048,9 +1231,16 @@ sending 92 bytes for delete notify through eth0:4500 [93.184.216.34:55045] to 13
 | ICOOKIE:  80 01 02 03  04 05 06 07
 | RCOOKIE:  64 0a 06 43  5c 7c 4b 31
 | state hash entry 5
+./childQI2 leak: reply packet, item size: X
+./childQI2 leak: msgid, item size: X
+./childQI2 leak: peer_keymat in quick_inI1_outR1(), item size: X
+./childQI2 leak: keymat in compute_keymat(), item size: X
+./childQI2 leak: calculated grshared secret, item size: X
+./childQI2 leak: calculated sharedshared secret, item size: X
+./childQI2 leak: quick outI2 DH, item size: X
+./childQI2 leak: Gr, item size: X
 ./childQI2 leak: nonce, item size: X
 ./childQI2 leak: alg_info_esp, item size: X
-./childQI2 leak: reply packet from quick_outI1, item size: X
 ./childQI2 leak: long term secret, item size: X
 ./childQI2 leak: saved gi value, item size: X
 ./childQI2 leak: initiator nonce, item size: X
