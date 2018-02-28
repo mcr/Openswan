@@ -8,6 +8,10 @@
 ./childQI2 ike_alg_register_hash(): Activating OAKLEY_MD5: Ok (ret=0)
 ./childQI2 loading secrets from "../samples/parker.secrets"
 ./childQI2 loaded private key for keyid: PPK_RSA:AQN7wUerV/66A6 7046 BBAB E28F 310E C6C0 80EC 790E F556 2AB9
+./childQI2 registed kernel encr algorithm aes_cbc [12, 128<=key<=512]
+./childQI2 registed kernel encr algorithm 3des [3, 192<=key<=192]
+./childQI2 registed kernel integ algorithm hmac_sha1_96 [2, 160<=key<=160]
+./childQI2 registed kernel integ algorithm hmac_sha2_256_128 [12, 256<=key<=256]
 | processing whack message of size: A
 | processing whack message of size: A
 processing whack msg time: X size: Y
@@ -1044,13 +1048,13 @@ sending 92 bytes for delete notify through eth0:4500 [93.184.216.34:55045] to 13
 | ICOOKIE:  80 01 02 03  04 05 06 07
 | RCOOKIE:  64 0a 06 43  5c 7c 4b 31
 | state hash entry 5
+./childQI2 leak: nonce, item size: X
 ./childQI2 leak: alg_info_esp, item size: X
 ./childQI2 leak: reply packet from quick_outI1, item size: X
 ./childQI2 leak: long term secret, item size: X
 ./childQI2 leak: saved gi value, item size: X
 ./childQI2 leak: initiator nonce, item size: X
 ./childQI2 leak: quick_outI1 KE, item size: X
-./childQI2 leak: st_nr in duplicate_state, item size: X
 ./childQI2 leak: st_skey_pr in duplicate_state, item size: X
 ./childQI2 leak: st_skey_pi in duplicate_state, item size: X
 ./childQI2 leak: st_skey_er in duplicate_state, item size: X

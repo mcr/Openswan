@@ -1,5 +1,6 @@
 #include "../lp10-parentI2/parentI2_head.c"
 #include "seam_keys2.c"
+#include "seam_pending.c"
 #include "seam_ke.c"
 #include "seam_dh_v2.c"
 #include "seam_x509.c"

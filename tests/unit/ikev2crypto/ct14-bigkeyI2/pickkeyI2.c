@@ -1,5 +1,6 @@
 #include "../lp10-parentI2/parentI2_head.c"
 #include "seam_host_parker.c"
+#include "seam_pending.c"
 #include "seam_natt.c"
 #include "seam_keys2.c"
 #include "seam_gr_sha1_group14.c"
