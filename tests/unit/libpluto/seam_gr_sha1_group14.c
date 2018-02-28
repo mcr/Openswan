@@ -214,11 +214,13 @@ unsigned char tc14_results_enc_key[]= {
 };
 
 
-#define CLONEIT(X) \
+#define CLONETO(X,Y) \
     clonetochunk(st->st_##X \
-		 , tc14_results_##X \
-		 , sizeof(tc14_results_##X) \
+		 , Y \
+		 , sizeof(Y) \
 		 ,   "calculated " #X "shared secret");
+
+#define CLONEIT(X) CLONETO(X,tc14_results_##X)
 
 stf_status start_dh_secretiv(struct pluto_crypto_req_cont *cn UNUSED
 			     , struct state *st UNUSED
@@ -257,6 +259,7 @@ void finish_dh_secret(struct state *st,
     struct pcr_skeyid_r *dhr = &r->pcr_d.dhr;
 
     CLONEIT(shared);
+    CLONETO(gr, tc14_gr);
     r->pcr_success = TRUE;
 }
 
