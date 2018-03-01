@@ -1095,7 +1095,6 @@ picking: eth0:4500 float outside: 55045 <=> d: 55045
 | emitting length of ISAKMP Hash Payload: 24
 | HASH(3) computed:  d4 36 ad 48  2c 88 75 8b  6f cf 4e 83  e5 6d d3 95
 |   9b bb 03 6e
-| kernel_alg_esp_auth_keylen(auth=2, sadb_aalg=3): a_keylen=0
 | ESP KEYMAT
 |   KEYMAT computed:
 |   4b 58 90 7b  af 46 0a b7  2c 71 ac 00  ad 6c 7e fc
