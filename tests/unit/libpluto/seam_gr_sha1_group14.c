@@ -9,7 +9,6 @@
 /* test case 3 - DH operation, SHA1 + AES */
 u_int16_t     tc14_oakleygroup  = OAKLEY_GROUP_MODP2048;
 oakley_auth_t tc14_auth         = AUTH_ALGORITHM_HMAC_SHA1;
-oakley_hash_t tc14_hash         = OAKLEY_SHA1;
 enum phase1_role tc14_init      = RESPONDER;
 
 /* secret value */

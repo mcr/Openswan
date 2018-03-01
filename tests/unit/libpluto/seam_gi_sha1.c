@@ -7,7 +7,6 @@
 /* test case 3 - DH operation, SHA1 + AES */
 u_int16_t     tc3_oakleygroup  = OAKLEY_GROUP_MODP1536;
 oakley_auth_t tc3_auth         = AUTH_ALGORITHM_HMAC_SHA1;
-oakley_hash_t tc3_hash         = OAKLEY_SHA1;
 enum phase1_role tc3_init      = INITIATOR;
 
 unsigned char tc3_gi[] = {
