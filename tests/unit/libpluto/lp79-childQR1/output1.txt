@@ -683,7 +683,6 @@ sending 332 bytes for STATE_MAIN_R2 through eth0:4500 [132.213.238.7:4500] to 93
 |    length/value: 128
 | __alg_info_esp_add() ealg=12 aalg=12 cnt=1
 | __alg_info_esp_add() ealg=12 aalg=2 cnt=2
-| kernel_alg_esp_enc_ok(12,128): alg_id=12, alg_ivlen=16, alg_minbits=128, alg_maxbits=512, res=0, ret=1
 | DH public value received:
 |   3d a6 6a 81  e2 92 09 be  18 4f a0 1e  5c ed ea 7c
 |   7d 7b 3a 21  3e 15 0d 53  5d 17 6a be  1b c5 70 ab
