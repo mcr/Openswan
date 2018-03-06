@@ -138,6 +138,7 @@ picking: eth0:500  outside: 55044 <=> d: 500
 | RCOOKIE:  de bc 58 3a  8f 40 d0 cf
 | state hash entry 28
 | inserting state object #1 bucket: 28
+| inserting event EVENT_SO_DISCARD, timeout in 0 seconds for #1
 | will not send/process a dcookie
 | received a notify..
 | nat chunk  80 01 02 03  04 05 06 07  00 00 00 00  00 00 00 00
@@ -280,6 +281,7 @@ picking: eth0:500  outside: 55044 <=> d: 500
 | Vendor ID  4f 45 70 6c  75 74 6f 75  6e 69 74 30
 | emitting length of ISAKMP Vendor ID Payload: 16
 | emitting length of ISAKMP Message: 432
+| inserting event EVENT_SO_DISCARD, timeout in 300 seconds for #1
 | #1 complete v2 state transition with STF_OK
 ./xf12-parentR2 transition from state STATE_IKEv2_START to state STATE_PARENT_R1
 | v2_state_transition: st is #1; pst is #0; transition_st is #1
@@ -528,6 +530,7 @@ picking: eth0:500  outside: 55044 <=> d: 500
 |   3e cf b2 49
 | an RSA Sig check passed with *AQN7wUerV [preloaded key]
 ./xf12-parentR2 PARENT SA now authenticated. Send R2 and considering Child-SA
+| inserting event EVENT_SA_REPLACE, timeout in 3600 seconds for #1
 | **emit ISAKMP Message:
 |    initiator cookie:
 |   80 01 02 03  04 05 06 07
@@ -655,6 +658,7 @@ picking: eth0:500  outside: 55044 <=> d: 500
 | RCOOKIE:  de bc 58 3a  8f 40 d0 cf
 | state hash entry 28
 | inserting state object #2 bucket: 28
+| inserting event EVENT_SO_DISCARD, timeout in 0 seconds for #2
 | printing contents struct traffic_selector
 |   ts_type: IKEv2_TS_IPV6_ADDR_RANGE
 |   ipprotoid: 0
@@ -945,6 +949,7 @@ sending 528 bytes for STATE_PARENT_R1 through eth0:500 [93.184.216.34:55044] to 
 |   db ed 7a 02  5f ff 98 9e  33 3d a2 36  bc bf de ce
 | releasing whack for #X (sock=Y)
 | releasing whack for #X (sock=Y)
+| inserting event EVENT_SA_REPLACE, timeout in 28530 seconds for #2
 now look at the resulting SAs produced.
 RC=0 #2: "parker1--jj2":500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; newest IPSEC; eroute owner; nodpd; msgid=0; idle; import:respond to friend
 RC=0 #1: "parker1--jj2":500 IKEv2.0 STATE_PARENT_R2 (received v2I2, PARENT SA established); none in -1s; newest ISAKMP; nodpd; retranscnt=0,outorder=0,last=-1,next=1,recv=1; msgid=0; idle; import:respond to friend

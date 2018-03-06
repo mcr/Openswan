@@ -1132,7 +1132,7 @@ sending 60 bytes for STATE_QUICK_I1 through eth0:4500 [93.184.216.34:55045] to 1
 |   08 10 20 01  80 01 02 03  00 00 00 3c  25 42 0e 53
 |   59 3e 04 e3  aa 17 97 bf  4a 86 83 27  b1 7d 18 d6
 |   74 4c 17 51  6f 32 12 61  8b 26 ab a5
-| inserting event EVENT_SA_EXPIRE, timeout in 0 seconds for #2
+| inserting event EVENT_SA_REPLACE, timeout in 950 seconds for #2
 ./childQI2 STATE_QUICK_I2: sent QI2, IPsec SA established tunnel mode {ESP=>0x12345678 <0x12345678 xfrm=aes_cbc[128]-hmac_sha1_96 NATOA=none NATD=none DPD=none}
 | modecfg pull: noquirk policy:push not-client
 | phase 1 is done, looking for phase 2 to unpend

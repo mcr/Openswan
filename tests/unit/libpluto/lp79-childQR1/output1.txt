@@ -679,7 +679,6 @@ sending 332 bytes for STATE_MAIN_R2 through eth0:4500 [132.213.238.7:4500] to 93
 | ******parse ISAKMP IPsec DOI attribute:
 |    af+type: SA_LIFE_DURATION
 |    length/value: 1200
-|    long duration: 0
 | ******parse ISAKMP IPsec DOI attribute:
 |    af+type: AUTH_ALGORITHM
 |    length/value: 2
@@ -750,7 +749,6 @@ sending 332 bytes for STATE_MAIN_R2 through eth0:4500 [132.213.238.7:4500] to 93
 | ******parse ISAKMP IPsec DOI attribute:
 |    af+type: SA_LIFE_DURATION
 |    length/value: 1200
-|    long duration: 0
 | ******parse ISAKMP IPsec DOI attribute:
 |    af+type: AUTH_ALGORITHM
 |    length/value: 2

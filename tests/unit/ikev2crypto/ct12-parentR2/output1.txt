@@ -126,6 +126,7 @@ RC=0 "parker1--jj2":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+IKEv2Init+SA
 | RCOOKIE:  de bc 58 3a  8f 40 d0 cf
 | state hash entry 28
 | inserting state object #1 bucket: 28
+| inserting event EVENT_SO_DISCARD, timeout in 0 seconds for #1
 | will not send/process a dcookie
 | received a notify..
 | nat chunk  80 01 02 03  04 05 06 07  00 00 00 00  00 00 00 00
@@ -268,6 +269,7 @@ RC=0 "parker1--jj2":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+IKEv2Init+SA
 | Vendor ID  4f 45 70 6c  75 74 6f 75  6e 69 74 30
 | emitting length of ISAKMP Vendor ID Payload: 16
 | emitting length of ISAKMP Message: 432
+| inserting event EVENT_SO_DISCARD, timeout in 300 seconds for #1
 | #1 complete v2 state transition with STF_OK
 ./cryptoR2 transition from state STATE_IKEv2_START to state STATE_PARENT_R1
 | v2_state_transition: st is #1; pst is #0; transition_st is #1
@@ -514,6 +516,7 @@ sending 432 bytes for STATE_IKEv2_START through eth0:500 [132.213.238.7:500] to 
 |   3e cf b2 49
 | an RSA Sig check passed with *AQN7wUerV [preloaded key]
 ./cryptoR2 PARENT SA now authenticated. Send R2 and considering Child-SA
+| inserting event EVENT_SA_REPLACE, timeout in 3600 seconds for #1
 | **emit ISAKMP Message:
 |    initiator cookie:
 |   80 01 02 03  04 05 06 07
@@ -641,6 +644,7 @@ sending 432 bytes for STATE_IKEv2_START through eth0:500 [132.213.238.7:500] to 
 | RCOOKIE:  de bc 58 3a  8f 40 d0 cf
 | state hash entry 28
 | inserting state object #2 bucket: 28
+| inserting event EVENT_SO_DISCARD, timeout in 0 seconds for #2
 | printing contents struct traffic_selector
 |   ts_type: IKEv2_TS_IPV6_ADDR_RANGE
 |   ipprotoid: 0
@@ -840,6 +844,7 @@ sending 528 bytes for STATE_PARENT_R1 through eth0:500 [132.213.238.7:500] to 19
 |   db ed 7a 02  5f ff 98 9e  33 3d a2 36  bc bf de ce
 | releasing whack for #X (sock=Y)
 | releasing whack for #X (sock=Y)
+| inserting event EVENT_SA_REPLACE, timeout in 28530 seconds for #2
 ./cryptoR2 leak: reply packet, item size: X
 ./cryptoR2 leak: skeyseed_t1, item size: X
 ./cryptoR2 leak: responder keys, item size: X
