@@ -77,6 +77,7 @@ RC=0 "t4901":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK; prio: 32,32; inter
 | RCOOKIE:  00 00 00 00  00 00 00 00
 | state hash entry 4
 | inserting state object #1 bucket: 4
+| inserting event EVENT_SO_DISCARD, timeout in 0 seconds for #1
 | not including aes_gcm_8(18)-hmac_sha2_256_128(12)-prfsha2_256(5)-MODP2048(14 in policy, as algorithm missing(enc:0,integ:32,prf:1,group:1)
 | not including aes_gcm_8(18)-hmac_sha1_96(2)-prfsha2_256(5)-MODP2048(14) in policy, as algorithm missing(enc:0,integ:20,prf:1,group:1)
 | not including aes_gcm_8(18)-hmac_sha2_256_128(12)-prfsha2_256(5)-MODP1536(5) in policy, as algorithm missing(enc:0,integ:32,prf:1,group:1)
@@ -342,6 +343,7 @@ sending 376 bytes for main_outI1 through eth0:500 [93.184.216.34:55044] to 132.2
 |   0d 00 00 14  cd 60 46 43  35 df 21 f8  7c fd b2 fc
 |   68 b6 a4 48  00 00 00 14  44 85 15 2d  18 b6 bb cd
 |   0b e8 a8 46  95 79 dd cc
+| inserting event EVENT_RETRANSMIT, timeout in 10 seconds for #1
 RC=105 STATE_MAIN_I1: initiate
 0: input from parentN1.pcap
 |   =========== input from from parentN1.pcap ========
@@ -378,6 +380,7 @@ picking: eth0:500  outside: 55044 <=> d: 55044
 | RCOOKIE:  64 0a 06 43  5c 7c 4b 31
 | state hash entry 5
 | inserting state object #1 bucket: 5
+| inserting event EVENT_SO_DISCARD, timeout in 0 seconds for #1
 | **emit ISAKMP Message:
 |    initiator cookie:
 |   80 01 02 03  04 05 06 07
@@ -469,6 +472,7 @@ sending 356 bytes for STATE_MAIN_I1 through eth0:500 [93.184.216.34:55044] to 13
 |   2c 55 f2 25  78 55 db 6a  76 d4 bc 8f  00 00 00 18
 |   b4 e3 01 b0  85 e7 22 52  83 ee ec 6c  44 47 8e 55
 |   28 66 44 8e
+| inserting event EVENT_RETRANSMIT, timeout in 10 seconds for #1
 ./childQI1 STATE_MAIN_I2: sent MI2, expecting MR2
 | modecfg pull: noquirk policy:push not-client
 | phase 1 is done, looking for phase 2 to unpend
@@ -572,6 +576,7 @@ picking: eth0:500  outside: 55044 <=> d: 55044
 |   76 d4 bc 8f
 | NAT_TRAVERSAL hash=2 (me:0) (him:1)
 ./childQI1 NAT-Traversal: Result using unknown method: i am NATed
+| inserting event EVENT_NAT_T_KEEPALIVE, timeout in 0 second
 | ***emit ISAKMP Identification Payload (IPsec DOI):
 |    ID type: ID_FQDN
 |    Protocol ID: 0
@@ -665,6 +670,7 @@ sending 332 bytes for STATE_MAIN_I2 through eth0:4500 [93.184.216.34:55045] to 1
 |   58 70 77 c3  5c 9e c7 df  cb a5 b2 f8  eb c8 a2 38
 |   2d bc 44 bd  09 59 7b 2e  7f 54 16 3c  fd 07 9f e6
 |   06 15 c6 c1  33 dc 1d 65  95 ba ad f4
+| inserting event EVENT_RETRANSMIT, timeout in 10 seconds for #1
 ./childQI1 STATE_MAIN_I3: sent MI3, expecting MR3
 | modecfg pull: noquirk policy:push not-client
 | phase 1 is done, looking for phase 2 to unpend
@@ -729,6 +735,7 @@ picking: eth0:4500 float outside: 55045 <=> d: 55045
 | authentication succeeded
 | complete state transition with STF_OK
 ./childQI1 transition from state STATE_MAIN_I3 to state STATE_MAIN_I4
+| inserting event EVENT_SA_REPLACE, timeout in 3269 seconds for #1
 ./childQI1 STATE_MAIN_I4: ISAKMP SA established {auth=OAKLEY_RSA_SIG oursig= theirsig= cipher=aes_128 prf=oakley_sha group=modp2048}
 | modecfg pull: noquirk policy:push not-client
 | phase 1 is done, looking for phase 2 to unpend
@@ -739,6 +746,7 @@ picking: eth0:4500 float outside: 55045 <=> d: 55045
 | RCOOKIE:  64 0a 06 43  5c 7c 4b 31
 | state hash entry 5
 | inserting state object #2 bucket: 5
+| inserting event EVENT_SO_DISCARD, timeout in 0 seconds for #2
 ./childQI1 initiating Quick Mode RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK {using isakmp#1 msgid:03020180 proposal=defaults pfsgroup=OAKLEY_GROUP_MODP2048}
 | **emit ISAKMP Message:
 |    initiator cookie:
@@ -985,6 +993,7 @@ sending 508 bytes for quick_outI1 through eth0:4500 [93.184.216.34:55045] to 132
 |   aa 7e 94 f6  f2 9e df dc  75 d9 f8 e6  30 95 f8 74
 |   b2 b6 6a 96  03 7f a1 2a  33 57 0f c1  5c e5 4d c6
 |   e9 f5 67 2f  2e ce 20 98  3e 44 43 fe
+| inserting event EVENT_RETRANSMIT, timeout in 10 seconds for #2
 RC=118 STATE_QUICK_I1: initiate
 3: output closed
 ./childQI1 deleting connection

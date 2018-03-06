@@ -52,6 +52,7 @@ RC=0 "cpenohint":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Ini
 | RCOOKIE:  00 00 00 00  00 00 00 00
 | state hash entry 4
 | inserting state object #1 bucket: 4
+| inserting event EVENT_SO_DISCARD, timeout in 0 seconds for #1
 | Queuing pending Quick Mode with 93.184.216.34 "cpenohint"
 ./dnscpeI1 initiating v2 parent SA
 ./dnscpeI1 STATE_PARENT_I1: initiate
@@ -167,6 +168,7 @@ sending 388 bytes for ikev2_parent_outI1_common through eth0:500 [192.168.1.1:50
 |   27 ec f2 2b  d5 28 36 92  28 23 8a 58  36 a2 4f d8
 |   ee 6c cd bb  00 00 00 10  4f 45 70 6c  75 74 6f 75
 |   6e 69 74 30
+| inserting event EVENT_v2_RETRANSMIT, timeout in 10 seconds for #1
 ./dnscpeI1 transition from state STATE_IKEv2_START to state STATE_PARENT_I1
 ./dnscpeI1 STATE_PARENT_I1: sent v2I1, expected v2R1 (msgid: 00000000/4294967295)
 ./dnscpeI1 deleting state #1 (STATE_PARENT_I1)

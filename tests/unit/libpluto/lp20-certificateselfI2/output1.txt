@@ -68,6 +68,7 @@ RC=0 "home":   ESP algorithms loaded: AES(12)_128-SHA1(2)_160
 | RCOOKIE:  00 00 00 00  00 00 00 00
 | state hash entry 4
 | inserting state object #1 bucket: 4
+| inserting event EVENT_SO_DISCARD, timeout in 0 seconds for #1
 ./certificateselfI2 initiating v2 parent SA
 ./certificateselfI2 STATE_PARENT_I1: initiate
 sending 432 bytes for ikev2_parent_outI1_common through eth0:500 [93.184.216.34:500] to 132.213.238.7:500 (using #1)
@@ -98,6 +99,7 @@ sending 432 bytes for ikev2_parent_outI1_common through eth0:500 [93.184.216.34:
 |   ee 6c cd bb  2b 00 00 1c  00 00 40 05  cd bc 1b 74
 |   02 d7 5e 4c  da 5b cd 1c  a1 08 87 2b  f9 7d c4 c2
 |   00 00 00 10  4f 45 70 6c  75 74 6f 75  6e 69 74 30
+| inserting event EVENT_v2_RETRANSMIT, timeout in 10 seconds for #1
 ./certificateselfI2 transition from state STATE_IKEv2_START to state STATE_PARENT_I1
 ./certificateselfI2 STATE_PARENT_I1: sent v2I1, expected v2R1 (msgid: 00000000/4294967295)
 0: output to OUTPUT/parentI2.pcap
@@ -149,6 +151,7 @@ sending 432 bytes for ikev2_parent_outI1_common through eth0:500 [93.184.216.34:
 | RCOOKIE:  64 0a 06 43  5c 7c 4b 31
 | state hash entry 5
 | inserting state object #1 bucket: 5
+| inserting event EVENT_SO_DISCARD, timeout in 0 seconds for #1
 | state found and its state is:STATE_PARENT_I1 msgid: 00000
 | considering state entry: 0
 | now proceed with state specific processing using state #0 initiator-V2_init
@@ -169,6 +172,8 @@ sending 432 bytes for ikev2_parent_outI1_common through eth0:500 [93.184.216.34:
 | RCOOKIE:  64 0a 06 43  5c 7c 4b 31
 | state hash entry 5
 | inserting state object #2 bucket: 5
+| inserting event EVENT_SO_DISCARD, timeout in 0 seconds for #2
+| inserting event EVENT_SA_REPLACE, timeout in 3600 seconds for #1
 | **emit ISAKMP Message:
 |    initiator cookie:
 |   80 01 02 03  04 05 06 07
@@ -549,6 +554,7 @@ sending 432 bytes for ikev2_parent_outI1_common through eth0:500 [93.184.216.34:
 |   31 f0 76 bd  1f f3 b9 5c  b5 5e 2d 82  5e 20 f8 67
 |   76 4c 6c 2f  a5 02 9c b7  14 65 a1 14  b8 4e 41 ff
 |   df c7 d3 ae  54 10 38 0b  61 0b f2 12  3d ea 9c 6f
+| inserting event EVENT_v2_RETRANSMIT, timeout in 10 seconds for #2
 | #2 complete v2 state transition with STF_OK
 ./certificateselfI2 transition from state STATE_PARENT_I1 to state STATE_PARENT_I2
 | v2_state_transition: st is #2; pst is #1; transition_st is #1
@@ -697,6 +703,7 @@ sending 76 bytes for ikev2_delete_out through eth0:500 [93.184.216.34:500] to 13
 |   80 01 02 03  04 05 06 07  08 09 0a 0b  0c 0d 0e 0f
 |   23 56 8c 9a  7c 01 7c 8e  c1 2a 91 9a  c4 da 80 c2
 |   5e c0 be 04  65 78 5e 79  df 5f d5 d2
+| inserting event EVENT_SA_DELETE, timeout in 300 seconds for #1
 | pass 1: considering PARENT SAs to delete
 ./certificateselfI2 deleting state #1 (STATE_IKESA_DEL)
 | considering request to delete IKE parent state

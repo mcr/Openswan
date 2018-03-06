@@ -126,6 +126,7 @@ RC=0 "parker1--jj2":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+IKEv2Init+SA
 | RCOOKIE:  de bc 58 3a  8f 40 d0 cf
 | state hash entry 28
 | inserting state object #1 bucket: 28
+| inserting event EVENT_SO_DISCARD, timeout in 0 seconds for #1
 | will not send/process a dcookie
 | received a notify..
 | nat chunk  80 01 02 03  04 05 06 07  00 00 00 00  00 00 00 00
@@ -239,6 +240,7 @@ RC=0 "parker1--jj2":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+IKEv2Init+SA
 | Vendor ID  4f 45 70 6c  75 74 6f 75  6e 69 74 30
 | emitting length of ISAKMP Vendor ID Payload: 16
 | emitting length of ISAKMP Message: 432
+| inserting event EVENT_SO_DISCARD, timeout in 300 seconds for #1
 | #1 complete v2 state transition with STF_OK
 ./rekeyikev2-R1 transition from state STATE_IKEv2_START to state STATE_PARENT_R1
 | v2_state_transition: st is #1; pst is #0; transition_st is #1
@@ -452,6 +454,7 @@ sending 432 bytes for STATE_IKEv2_START through eth0:500 [132.213.238.7:500] to 
 | checking alg=1 == 1, keyid=@parker01.emmjay.credil.org same_id=1
 | key issuer CA is '%any'
 ./rekeyikev2-R1 PARENT SA now authenticated. Send R2 and considering Child-SA
+| inserting event EVENT_SA_REPLACE, timeout in 3600 seconds for #1
 | **emit ISAKMP Message:
 |    initiator cookie:
 |   80 01 02 03  04 05 06 07
@@ -533,6 +536,7 @@ sending 432 bytes for STATE_IKEv2_START through eth0:500 [132.213.238.7:500] to 
 | RCOOKIE:  de bc 58 3a  8f 40 d0 cf
 | state hash entry 28
 | inserting state object #2 bucket: 28
+| inserting event EVENT_SO_DISCARD, timeout in 0 seconds for #2
 | printing contents struct traffic_selector
 |   ts_type: IKEv2_TS_IPV6_ADDR_RANGE
 |   ipprotoid: 0
@@ -777,6 +781,7 @@ sending 448 bytes for STATE_PARENT_R1 through eth0:500 [132.213.238.7:500] to 19
 |   ed 0d 10 07  2c ed 0c ad  25 c2 16 b2  1f 71 09 d6
 | releasing whack for #X (sock=Y)
 | releasing whack for #X (sock=Y)
+| inserting event EVENT_SA_REPLACE, timeout in 28530 seconds for #2
 2: output to OUTPUT/rekeyikev2-R1.pcap
 2: input from rekeyCI1.pcap
 |   =========== input from from rekeyCI1.pcap ========
@@ -847,6 +852,8 @@ sending 448 bytes for STATE_PARENT_R1 through eth0:500 [132.213.238.7:500] to 19
 | RCOOKIE:  de bc 58 3a  8f 40 d0 cf
 | state hash entry 28
 | inserting state object #3 bucket: 28
+| inserting event EVENT_SO_DISCARD, timeout in 0 seconds for #3
+| inserting event EVENT_SO_DISCARD, timeout in 0 seconds for #3
 | decrypting payload as RESPONDER
 | decrypting as RESPONDER, using INITIATOR keys
 | data being hmac:  80 01 02 03  04 05 06 07  de bc 58 3a  8f 40 d0 cf
@@ -968,6 +975,7 @@ sending 448 bytes for STATE_PARENT_R1 through eth0:500 [132.213.238.7:500] to 19
 |    number of TS: 1
 | processing payload: ISAKMP_NEXT_v2TSr (len=48)
 ./rekeyikev2-R1 msgid=2 CHILD_SA PFS rekey message received from 192.168.1.1:500 on eth0 (port=500)
+| inserting event EVENT_SO_DISCARD, timeout in 0 seconds for #3
 | DH public value received:
 |   3d a6 6a 81  e2 92 09 be  18 4f a0 1e  5c ed ea 7c
 |   7d 7b 3a 21  3e 15 0d 53  5d 17 6a be  1b c5 70 ab
@@ -1318,6 +1326,7 @@ sending 496 bytes for STATE_CHILD_C1_REKEY through eth0:500 [132.213.238.7:500] 
 |   ea 74 b0 ad  d0 96 06 39  4f 18 d6 fe  b3 b1 c6 ff
 | releasing whack for #X (sock=Y)
 | releasing whack for #X (sock=Y)
+| inserting event EVENT_SA_REPLACE, timeout in 28530 seconds for #3
 ./rekeyikev2-R1 leak: reply packet, item size: X
 ./rekeyikev2-R1 leak: skeyseed_t1, item size: X
 ./rekeyikev2-R1 leak: responder keys, item size: X

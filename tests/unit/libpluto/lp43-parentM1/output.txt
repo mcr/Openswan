@@ -76,6 +76,7 @@ RC=0 "t4901":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK; prio: 32,32; inter
 | RCOOKIE:  00 00 00 00  00 00 00 00
 | state hash entry 4
 | inserting state object #1 bucket: 4
+| inserting event EVENT_SO_DISCARD, timeout in 0 seconds for #1
 | not including aes_gcm_8(18)-hmac_sha2_256_128(12)-prfsha2_256(5)-MODP2048(14 in policy, as algorithm missing(enc:0,integ:32,prf:1,group:1)
 | not including aes_gcm_8(18)-hmac_sha1_96(2)-prfsha2_256(5)-MODP2048(14) in policy, as algorithm missing(enc:0,integ:20,prf:1,group:1)
 | not including aes_gcm_8(18)-hmac_sha2_256_128(12)-prfsha2_256(5)-MODP1536(5) in policy, as algorithm missing(enc:0,integ:32,prf:1,group:1)
@@ -340,6 +341,7 @@ sending 376 bytes for main_outI1 through eth0:500 [93.184.216.34:55044] to 132.2
 |   0d 00 00 14  cd 60 46 43  35 df 21 f8  7c fd b2 fc
 |   68 b6 a4 48  00 00 00 14  44 85 15 2d  18 b6 bb cd
 |   0b e8 a8 46  95 79 dd cc
+| inserting event EVENT_RETRANSMIT, timeout in 10 seconds for #1
 RC=105 STATE_MAIN_I1: initiate
 ./parentM1 deleting state #1 (STATE_MAIN_I1)
 | ICOOKIE:  80 01 02 03  04 05 06 07

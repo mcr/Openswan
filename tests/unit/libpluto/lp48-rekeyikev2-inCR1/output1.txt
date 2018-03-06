@@ -58,6 +58,7 @@ RC=0 "parker1--jj2":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+IKEv2Init+SA
 | RCOOKIE:  00 00 00 00  00 00 00 00
 | state hash entry 4
 | inserting state object #1 bucket: 4
+| inserting event EVENT_SO_DISCARD, timeout in 0 seconds for #1
 ./rekeyikev2-inCR1 initiating v2 parent SA
 ./rekeyikev2-inCR1 STATE_PARENT_I1: initiate
 | not including aes_gcm_8(18)-hmac_sha2_256_128(12)-prfsha2_256(5)-MODP2048(14 in policy, as algorithm missing(enc:0,integ:32,prf:1,group:1)
@@ -107,6 +108,7 @@ sending 628 bytes for ikev2_parent_outI1_common through eth0:500 [192.168.1.1:50
 |   cd bc 1b 74  02 d7 5e 4c  da 5b cd 1c  a1 08 87 2b
 |   f9 7d c4 c2  00 00 00 10  4f 45 70 6c  75 74 6f 75
 |   6e 69 74 30
+| inserting event EVENT_v2_RETRANSMIT, timeout in 10 seconds for #1
 ./rekeyikev2-inCR1 transition from state STATE_IKEv2_START to state STATE_PARENT_I1
 ./rekeyikev2-inCR1 STATE_PARENT_I1: sent v2I1, expected v2R1 (msgid: 00000000/4294967295)
 0: input from ../lp10-parentI2/parentR1.pcap
@@ -157,6 +159,7 @@ sending 628 bytes for ikev2_parent_outI1_common through eth0:500 [192.168.1.1:50
 | RCOOKIE:  de bc 58 3a  8f 40 d0 cf
 | state hash entry 28
 | inserting state object #1 bucket: 28
+| inserting event EVENT_SO_DISCARD, timeout in 0 seconds for #1
 | state found and its state is:STATE_PARENT_I1 msgid: 00000
 | considering state entry: 0
 | now proceed with state specific processing using state #0 initiator-V2_init
@@ -177,6 +180,8 @@ sending 628 bytes for ikev2_parent_outI1_common through eth0:500 [192.168.1.1:50
 | RCOOKIE:  de bc 58 3a  8f 40 d0 cf
 | state hash entry 28
 | inserting state object #2 bucket: 28
+| inserting event EVENT_SO_DISCARD, timeout in 0 seconds for #2
+| inserting event EVENT_SA_REPLACE, timeout in 3600 seconds for #1
 | **emit ISAKMP Message:
 |    initiator cookie:
 |   80 01 02 03  04 05 06 07
@@ -349,6 +354,7 @@ sending 628 bytes for ikev2_parent_outI1_common through eth0:500 [192.168.1.1:50
 |   c1 80 67 b8  b0 c6 68 fc  74 72 06 9c  76 1c 22 c0
 |   9f a6 6b 7a  7a 7a 3c 81  d0 f8 1e b4  33 0c bb 37
 |   bf ff b1 0c  f2 99 69 ef  63 48 f5 69  6e 77 cc 6e
+| inserting event EVENT_v2_RETRANSMIT, timeout in 10 seconds for #2
 | #2 complete v2 state transition with STF_OK
 ./rekeyikev2-inCR1 transition from state STATE_PARENT_I1 to state STATE_PARENT_I2
 | v2_state_transition: st is #2; pst is #1; transition_st is #1
@@ -479,9 +485,11 @@ sending 464 bytes for STATE_PARENT_I1 through eth0:500 [192.168.1.1:500] to 132.
 ./rekeyikev2-inCR1 STATE_CHILD_C1_KEYED: CHILD SA established tunnel mode {ESP=>0x12345678 <0x12345678 xfrm=aes_cbc[128]-hmac_sha2_256_128 NATOA=none NATD=none DPD=none}
 | releasing whack for #X (sock=Y)
 | releasing whack for #X (sock=Y)
+| inserting event EVENT_SA_REPLACE, timeout in 27807 seconds for #2
 now pretend that the keylife timer is up, and rekey the connection
 RC=0 #2: "parker1--jj2":500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; newest IPSEC; nodpd; msgid=1; idle; import:admin initiate
 RC=0 #1: "parker1--jj2":500 IKEv2.0 STATE_PARENT_I3 (PARENT SA established); none in -1s; newest ISAKMP; nodpd; retranscnt=0,outorder=0,last=1,next=2,recv=-1; msgid=0; idle; import:admin initiate
+| inserting event EVENT_SO_DISCARD, timeout in 0 seconds for #3
 ./rekeyikev2-inCR1 starting rekey of CHILD SA for state=#2 (expired) using PARENT SA #1
 | **emit ISAKMP Message:
 |    initiator cookie:
@@ -700,6 +708,7 @@ sending 528 bytes for ikev2child_outC1_tail through eth0:500 [192.168.1.1:500] t
 |   01 e4 32 25  cd 6d b9 95  cc dd 1a 8e  d6 0d 9f b2
 |   df 72 14 20  9f 3a 62 51  a2 42 14 7c  1b 24 2d 7b
 |   9a d8 75 4c  99 2c 95 e7  de d1 6d 9e  7f cc 65 c3
+| inserting event EVENT_v2_RETRANSMIT, timeout in 10 seconds for #3
 | #3 complete v2 state transition with STF_OK
 ./rekeyikev2-inCR1 transition from state STATE_CHILD_C1_REKEY to state STATE_CHILD_C1_REKEY
 | v2_state_transition: st is #3; pst is #0; transition_st is #3
@@ -823,6 +832,7 @@ sending 528 bytes for ikev2child_outC1_tail through eth0:500 [192.168.1.1:500] t
 ./rekeyikev2-inCR1 STATE_CHILD_C1_KEYED: CHILD SA established tunnel mode {ESP=>0x34567812 <0x34567812 xfrm=aes_cbc[128]-hmac_sha2_256_128 NATOA=none NATD=none DPD=none}
 | releasing whack for #X (sock=Y)
 | releasing whack for #X (sock=Y)
+| inserting event EVENT_SA_REPLACE, timeout in 28048 seconds for #3
 RC=0 #3: "parker1--jj2":500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; newest IPSEC; nodpd; msgid=2; idle; import:admin initiate
 RC=0 #2: "parker1--jj2":500 IKEv2.0 STATE_CHILD_C1_KEYED (CHILD SA established); none in -1s; nodpd; msgid=1; idle; import:admin initiate
 RC=0 #1: "parker1--jj2":500 IKEv2.0 STATE_PARENT_I3 (PARENT SA established); none in -1s; newest ISAKMP; nodpd; retranscnt=0,outorder=0,last=2,next=3,recv=-1; msgid=0; idle; import:admin initiate
@@ -944,6 +954,7 @@ sending 80 bytes for ikev2_delete_out through eth0:500 [192.168.1.1:500] to 132.
 |   80 01 02 03  04 05 06 07  08 09 0a 0b  0c 0d 0e 0f
 |   23 56 8c 9a  7c 01 7c 8e  c1 2a 91 9a  c4 da 80 c2
 |   65 1d 73 17  5e a0 55 55  43 f2 92 70  dc c0 9d cd
+| inserting event EVENT_SA_DELETE, timeout in 300 seconds for #1
 ./rekeyikev2-inCR1 leak: skeyseed_t1, item size: X
 ./rekeyikev2-inCR1 leak: responder keys, item size: X
 ./rekeyikev2-inCR1 leak: initiator keys, item size: X

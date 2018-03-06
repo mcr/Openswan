@@ -97,6 +97,7 @@ RC=0 "t4901":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK; prio: 32,32; inter
 | RCOOKIE:  64 0a 06 43  5c 7c 4b 31
 | state hash entry 5
 | inserting state object #1 bucket: 5
+| inserting event EVENT_SO_DISCARD, timeout in 0 seconds for #1
 ./childQR1 responding to Main Mode
 | **emit ISAKMP Message:
 |    initiator cookie:
@@ -154,6 +155,7 @@ sending 136 bytes for STATE_MAIN_R0 through eth0:500 [132.213.238.7:500] to 93.1
 |   0d 00 00 14  af ca d7 13  68 a1 f1 c9  6b 86 96 fc
 |   77 57 01 00  00 00 00 14  4a 13 1c 81  07 03 58 45
 |   5c 57 28 f2  0e 95 45 2f
+| inserting event EVENT_RETRANSMIT, timeout in 10 seconds for #1
 ./childQR1 STATE_MAIN_R1: sent MR1, expecting MI2
 | modecfg pull: noquirk policy:push not-client
 | phase 1 is done, looking for phase 2 to unpend
@@ -219,6 +221,7 @@ sending 136 bytes for STATE_MAIN_R0 through eth0:500 [132.213.238.7:500] to 93.1
 |   08 38 d4 34  70 22 6c 21  d2 5b 20 a1  d2 ba 2a d1
 |   89 f3 20 79  ce ac 1e c2  ec 7d ae 76  94 40 39 a0
 ./childQR1 NAT-Traversal: Result using draft-ietf-ipsec-nat-t-ike (MacOS X): peer is NATed
+| inserting event EVENT_NAT_T_KEEPALIVE, timeout in 0 second
 | complete state transition with STF_SUSPEND
 | **emit ISAKMP Message:
 |    initiator cookie:
@@ -294,6 +297,7 @@ sending 356 bytes for STATE_MAIN_R1 through eth0:500 [132.213.238.7:500] to 93.1
 |   78 ab 84 55  96 7a 2b 38  63 63 32 03  00 00 00 18
 |   d7 66 3f 90  45 db b1 6f  2c 55 f2 25  78 55 db 6a
 |   76 d4 bc 8f
+| inserting event EVENT_RETRANSMIT, timeout in 10 seconds for #1
 ./childQR1 STATE_MAIN_R2: sent MR2, expecting MI3
 | modecfg pull: noquirk policy:push not-client
 | phase 1 is done, looking for phase 2 to unpend
@@ -492,6 +496,7 @@ sending 332 bytes for STATE_MAIN_R2 through eth0:4500 [132.213.238.7:4500] to 93
 |   b4 67 1f 7e  27 8b 6a d4  db 98 43 1d  34 cc 19 24
 |   2e fb 60 a4  de 44 8f 6a  e8 a4 e2 08  2b d6 a9 12
 |   96 6d a8 7f  6e 75 c9 7a  65 0d af fd
+| inserting event EVENT_SA_REPLACE, timeout in 3510 seconds for #1
 ./childQR1 STATE_MAIN_R3: sent MR3, ISAKMP SA established {auth=OAKLEY_RSA_SIG oursig= theirsig= cipher=aes_128 prf=oakley_sha group=modp2048}
 | modecfg pull: noquirk policy:push not-client
 | phase 1 is done, looking for phase 2 to unpend
@@ -644,6 +649,7 @@ sending 332 bytes for STATE_MAIN_R2 through eth0:4500 [132.213.238.7:4500] to 93
 | RCOOKIE:  64 0a 06 43  5c 7c 4b 31
 | state hash entry 5
 | inserting state object #2 bucket: 5
+| inserting event EVENT_SO_DISCARD, timeout in 0 seconds for #2
 | ****parse IPsec DOI SIT:
 |    IPsec DOI SIT: SIT_IDENTITY_ONLY
 | ****parse ISAKMP Proposal Payload:
@@ -881,6 +887,7 @@ sending 428 bytes for STATE_QUICK_R0 through eth0:4500 [132.213.238.7:4500] to 9
 |   e8 cd 1c ec  50 56 6f ae  c1 b6 a4 38  e9 9e ee e8
 |   e6 04 d3 bc  d4 01 c3 10  bd 1c 53 ff  a9 ec 27 3b
 |   fd b2 c2 36  1b e5 7a 9a  5c 03 d1 7c
+| inserting event EVENT_RETRANSMIT, timeout in 10 seconds for #2
 ./childQR1 STATE_QUICK_R1: sent QR1, inbound IPsec SA installed, expecting QI2
 | modecfg pull: noquirk policy:push not-client
 | phase 1 is done, looking for phase 2 to unpend

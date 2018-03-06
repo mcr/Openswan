@@ -212,6 +212,7 @@ RC=2      rw-any
 | RCOOKIE:  64 0a 06 43  5c 7c 4b 31
 | state hash entry 5
 | inserting state object #1 bucket: 5
+| inserting event EVENT_SO_DISCARD, timeout in 0 seconds for #1
 | will not send/process a dcookie
 | received a notify..
 | nat chunk  80 01 02 03  04 05 06 07  00 00 00 00  00 00 00 00
@@ -319,6 +320,7 @@ RC=2      rw-any
 | Vendor ID  4f 45 70 6c  75 74 6f 75  6e 69 74 30
 | emitting length of ISAKMP Vendor ID Payload: 16
 | emitting length of ISAKMP Message: 432
+| inserting event EVENT_SO_DISCARD, timeout in 300 seconds for #1
 | #1 complete v2 state transition with STF_OK
 ./certreplydaveR1 transition from state STATE_IKEv2_START to state STATE_PARENT_R1
 | v2_state_transition: st is #1; pst is #0; transition_st is #1
@@ -931,6 +933,7 @@ sending 432 bytes for STATE_IKEv2_START through eth0:500 [132.213.238.7:500] to 
 | checking alg=1 == 1, keyid=C=CA, ST=Ontario, L=Ottawa, O=Xelerance Corporation, OU=Doctor Taylor Plumage, CN=carol.testing.openswan.org, E=mcr@xelerance.com same_id=1
 | key issuer CA is 'C=CA, ST=Ontario, L=Ottawa, O=Xelerance Corporation, OU=Doctor Taylor Plumage, CN=testing.xelerance.com, E=mcr@xelerance.com'
 ./certreplydaveR1 PARENT SA now authenticated. Send R2 and considering Child-SA
+| inserting event EVENT_SA_REPLACE, timeout in 3600 seconds for #1
 | **emit ISAKMP Message:
 |    initiator cookie:
 |   80 01 02 03  04 05 06 07
@@ -1085,6 +1088,7 @@ sending 432 bytes for STATE_IKEv2_START through eth0:500 [132.213.238.7:500] to 
 | RCOOKIE:  64 0a 06 43  5c 7c 4b 31
 | state hash entry 5
 | inserting state object #2 bucket: 5
+| inserting event EVENT_SO_DISCARD, timeout in 0 seconds for #2
 | printing contents struct traffic_selector
 |   ts_type: IKEv2_TS_IPV4_ADDR_RANGE
 |   ipprotoid: 0
@@ -1560,6 +1564,7 @@ sending 1404 bytes for STATE_PARENT_R1 through eth0:500 [132.213.238.7:500] to 9
 |   d7 cc 66 f1  16 d3 54 df  e1 74 91 f0
 | releasing whack for #X (sock=Y)
 | releasing whack for #X (sock=Y)
+| inserting event EVENT_SA_REPLACE, timeout in 1110 seconds for #2
 2: output to OUTPUT/parentR1dave.pcap
 2: input from ../lp24-certreplydaveR2/davecertI1.pcap
 |   =========== input from from ../lp24-certreplydaveR2/davecertI1.pcap ========
@@ -1630,6 +1635,7 @@ sending 1404 bytes for STATE_PARENT_R1 through eth0:500 [132.213.238.7:500] to 9
 | RCOOKIE:  5d 73 ce 75  3d b1 db 6d
 | state hash entry 15
 | inserting state object #3 bucket: 15
+| inserting event EVENT_SO_DISCARD, timeout in 0 seconds for #3
 | will not send/process a dcookie
 | received a notify..
 | nat chunk  8d 0e 0f 10  11 12 13 14  00 00 00 00  00 00 00 00
@@ -1737,6 +1743,7 @@ sending 1404 bytes for STATE_PARENT_R1 through eth0:500 [132.213.238.7:500] to 9
 | Vendor ID  4f 45 70 6c  75 74 6f 75  6e 69 74 30
 | emitting length of ISAKMP Vendor ID Payload: 16
 | emitting length of ISAKMP Message: 432
+| inserting event EVENT_SO_DISCARD, timeout in 300 seconds for #3
 | #3 complete v2 state transition with STF_OK
 ./certreplydaveR1 transition from state STATE_IKEv2_START to state STATE_PARENT_R1
 | v2_state_transition: st is #3; pst is #0; transition_st is #3

@@ -62,6 +62,7 @@ RC=0 "home":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAR
 | RCOOKIE:  00 00 00 00  00 00 00 00
 | state hash entry 4
 | inserting state object #1 bucket: 4
+| inserting event EVENT_SO_DISCARD, timeout in 0 seconds for #1
 ./davecertI2-id initiating v2 parent SA
 ./davecertI2-id STATE_PARENT_I1: initiate
 | not including aes_gcm_8(18)-hmac_sha2_256_128(12)-prfsha2_256(5)-MODP2048(14 in policy, as algorithm missing(enc:0,integ:32,prf:1,group:1)
@@ -111,6 +112,7 @@ sending 628 bytes for ikev2_parent_outI1_common through eth0:500 [93.184.216.35:
 |   cd 75 36 6e  bb c6 07 29  89 9f 33 c9  b7 8c 95 e9
 |   4e ac a8 b1  00 00 00 10  4f 45 70 6c  75 74 6f 75
 |   6e 69 74 30
+| inserting event EVENT_v2_RETRANSMIT, timeout in 10 seconds for #1
 ./davecertI2-id transition from state STATE_IKEv2_START to state STATE_PARENT_I1
 ./davecertI2-id STATE_PARENT_I1: sent v2I1, expected v2R1 (msgid: 00000000/4294967295)
 0: output to OUTPUT/davecertI2-id.pcap

@@ -146,6 +146,7 @@ RC=0 "parker-wrong-TS":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+SAREFTRAC
 | RCOOKIE:  64 0a 06 43  5c 7c 4b 31
 | state hash entry 5
 | inserting state object #1 bucket: 5
+| inserting event EVENT_SO_DISCARD, timeout in 0 seconds for #1
 | will not send/process a dcookie
 | received a notify..
 | nat chunk  80 01 02 03  04 05 06 07  00 00 00 00  00 00 00 00
@@ -259,6 +260,7 @@ RC=0 "parker-wrong-TS":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+SAREFTRAC
 | Vendor ID  4f 45 70 6c  75 74 6f 75  6e 69 74 30
 | emitting length of ISAKMP Vendor ID Payload: 16
 | emitting length of ISAKMP Message: 432
+| inserting event EVENT_SO_DISCARD, timeout in 300 seconds for #1
 | #1 complete v2 state transition with STF_OK
 ./childTSwrong transition from state STATE_IKEv2_START to state STATE_PARENT_R1
 | v2_state_transition: st is #1; pst is #0; transition_st is #1
@@ -475,6 +477,7 @@ sending 432 bytes for STATE_IKEv2_START through eth0:500 [132.213.238.7:500] to 
 | checking alg=1 == 1, keyid=@parker01.emmjay.credil.org same_id=1
 | key issuer CA is '%any'
 ./childTSwrong PARENT SA now authenticated. Send R2 and considering Child-SA
+| inserting event EVENT_SA_REPLACE, timeout in 3600 seconds for #1
 | pick_if looking for port: 4500, family: 2
 |   considering eth0 132.213.238.7 port: 4500, family: 2, best: <none>/0 0
 |   considering eth0 132.213.238.7 port: 500, family: 2, best: eth0/20 0
@@ -642,6 +645,7 @@ sending 320 bytes for STATE_PARENT_R1 through eth0:4500 [132.213.238.7:4500] to 
 |   d8 14 09 5c  40 98 92 7d  7e e9 15 7f  c0 a8 34 fc
 |   1e 8d 6a 4f  9b 67 12 ba  ae 04 2b f1  41 8e 57 73
 |   b5 3b 22 64  e6 b9 3e e3  9c bf 5b 05  cc 35 16 8e
+| inserting event EVENT_SA_REPLACE, timeout in 3330 seconds for #1
 ./childTSwrong leak: ikev2_inI2outR2 KE, item size: X
 ./childTSwrong leak: alg_info_ike, item size: X
 ./childTSwrong leak: ikev2_inI1outR1 KE, item size: X

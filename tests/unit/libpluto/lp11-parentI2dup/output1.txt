@@ -53,6 +53,7 @@ RC=0 "parker1--jj2":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+IKEv2Init+SA
 | RCOOKIE:  00 00 00 00  00 00 00 00
 | state hash entry 4
 | inserting state object #1 bucket: 4
+| inserting event EVENT_SO_DISCARD, timeout in 0 seconds for #1
 ./parentI2duplicate initiating v2 parent SA
 ./parentI2duplicate STATE_PARENT_I1: initiate
 | not including aes_gcm_8(18)-hmac_sha2_256_128(12)-prfsha2_256(5)-MODP2048(14 in policy, as algorithm missing(enc:0,integ:32,prf:1,group:1)
@@ -102,6 +103,7 @@ sending 628 bytes for ikev2_parent_outI1_common through eth0:500 [192.168.1.1:50
 |   cd bc 1b 74  02 d7 5e 4c  da 5b cd 1c  a1 08 87 2b
 |   f9 7d c4 c2  00 00 00 10  4f 45 70 6c  75 74 6f 75
 |   6e 69 74 30
+| inserting event EVENT_v2_RETRANSMIT, timeout in 10 seconds for #1
 ./parentI2duplicate transition from state STATE_IKEv2_START to state STATE_PARENT_I1
 ./parentI2duplicate STATE_PARENT_I1: sent v2I1, expected v2R1 (msgid: 00000000/4294967295)
 | *received 432 bytes from 132.213.238.7:500 on eth0 (port=500)
@@ -160,6 +162,7 @@ sending 628 bytes for ikev2_parent_outI1_common through eth0:500 [192.168.1.1:50
 | RCOOKIE:  de bc 58 3a  8f 40 d0 cf
 | state hash entry 28
 | inserting state object #1 bucket: 28
+| inserting event EVENT_SO_DISCARD, timeout in 0 seconds for #1
 | state found and its state is:STATE_PARENT_I1 msgid: 00000
 | ***parse IKEv2 Security Association Payload:
 |    critical bit: none
@@ -246,6 +249,8 @@ sending 628 bytes for ikev2_parent_outI1_common through eth0:500 [192.168.1.1:50
 | RCOOKIE:  de bc 58 3a  8f 40 d0 cf
 | state hash entry 28
 | inserting state object #2 bucket: 28
+| inserting event EVENT_SO_DISCARD, timeout in 0 seconds for #2
+| inserting event EVENT_SA_REPLACE, timeout in 3600 seconds for #1
 | **emit ISAKMP Message:
 |    initiator cookie:
 |   80 01 02 03  04 05 06 07
@@ -358,6 +363,7 @@ sending 628 bytes for ikev2_parent_outI1_common through eth0:500 [192.168.1.1:50
 | emitting length of IKEv2 Encryption Payload: 436
 | emitting length of ISAKMP Message: 464
 | encrypting as INITIATOR
+| inserting event EVENT_v2_RETRANSMIT, timeout in 10 seconds for #2
 | #2 complete v2 state transition with STF_OK
 ./parentI2duplicate transition from state STATE_PARENT_I1 to state STATE_PARENT_I2
 | v2_state_transition: st is #2; pst is #1; transition_st is #1
@@ -463,6 +469,7 @@ sending 80 bytes for ikev2_delete_out through eth0:500 [192.168.1.1:500] to 132.
 |   80 01 02 03  04 05 06 07  08 09 0a 0b  0c 0d 0e 0f
 |   23 56 8c 9a  7c 01 7c 8e  c1 2a 91 9a  c4 da 80 c2
 |   24 38 69 32  56 f1 7c 17  3d f6 b0 6d  45 d0 7a c7
+| inserting event EVENT_SA_DELETE, timeout in 300 seconds for #1
 | pass 1: considering PARENT SAs to delete
 ./parentI2duplicate deleting state #1 (STATE_IKESA_DEL)
 | considering request to delete IKE parent state
