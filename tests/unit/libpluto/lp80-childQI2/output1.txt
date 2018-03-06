@@ -1098,8 +1098,12 @@ picking: eth0:4500 float outside: 55045 <=> d: 55045
 | ESP KEYMAT
 |   KEYMAT computed:
 |   4b 58 90 7b  af 46 0a b7  2c 71 ac 00  ad 6c 7e fc
+|   8c c4 bd e7  76 ee 35 0e  3d 8c d6 b9  45 ef 77 59
+|   15 7c 6f b0
 |   Peer KEYMAT computed:
 |   4b 58 90 7b  af 46 0a b7  2c 71 ac 00  ad 6c 7e fc
+|   8c c4 bd e7  76 ee 35 0e  3d 8c d6 b9  45 ef 77 59
+|   15 7c 6f b0
 | encrypting:
 |   00 00 00 18  d4 36 ad 48  2c 88 75 8b  6f cf 4e 83
 |   e5 6d d3 95  9b bb 03 6e

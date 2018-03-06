@@ -806,12 +806,16 @@ sending 332 bytes for STATE_MAIN_R2 through eth0:4500 [132.213.238.7:4500] to 93
 |   49 e6 ba fb  0a 80 f2 2c  a6 6d 63 65  53 65 f0 58
 |   88 0b f8 dd
 | compute_proto_keymat:needed_len (after ESP enc)=16
-| compute_proto_keymat:needed_len (after ESP auth)=16
+| compute_proto_keymat:needed_len (after ESP auth)=36
 | ESP KEYMAT
 |   KEYMAT computed:
 |   4b 58 90 7b  af 46 0a b7  2c 71 ac 00  ad 6c 7e fc
+|   8c c4 bd e7  76 ee 35 0e  3d 8c d6 b9  45 ef 77 59
+|   15 7c 6f b0
 |   Peer KEYMAT computed:
 |   4b 58 90 7b  af 46 0a b7  2c 71 ac 00  ad 6c 7e fc
+|   8c c4 bd e7  76 ee 35 0e  3d 8c d6 b9  45 ef 77 59
+|   15 7c 6f b0
 | encrypting:
 |   01 00 00 18  49 e6 ba fb  0a 80 f2 2c  a6 6d 63 65
 |   53 65 f0 58  88 0b f8 dd  0a 00 00 38  00 00 00 01
