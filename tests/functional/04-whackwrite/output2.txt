@@ -1,6 +1,5 @@
 debugging mode enabled
 end of file ../../unit/libpluto/samples/parker.conf
-end of top file reached
 Loading conn ikev2:parker--jj
 Loading conn parker1--jj2
 Loading conn any1--jj2
