@@ -216,6 +216,12 @@ RC=105 STATE_MAIN_I1: initiate
 ./ikev1derived leak: pubkey entry, item size: X
 ./ikev1derived leak: rfc3110 format of public key, item size: X
 ./ikev1derived leak: pubkey, item size: X
+./ikev1derived leak: 2 * id list, item size: X
+./ikev1derived leak: rfc3110 format of public key [created], item size: X
+./ikev1derived leak: pubkey, item size: X
+./ikev1derived leak: secret, item size: X
+./ikev1derived leak: 3 * hasher name, item size: X
+./ikev1derived leak: 10 * group description, item size: X
 ./ikev1derived leak: policies path, item size: X
 ./ikev1derived leak: ocspcerts path, item size: X
 ./ikev1derived leak: aacerts path, item size: X
@@ -228,10 +234,4 @@ RC=105 STATE_MAIN_I1: initiate
 ./ikev1derived leak: default conf conffile, item size: X
 ./ikev1derived leak: default conf ipsecd_dir, item size: X
 ./ikev1derived leak: default conf ipsec_conf_dir, item size: X
-./ikev1derived leak: 2 * id list, item size: X
-./ikev1derived leak: rfc3110 format of public key [created], item size: X
-./ikev1derived leak: pubkey, item size: X
-./ikev1derived leak: secret, item size: X
-./ikev1derived leak: 3 * hasher name, item size: X
-./ikev1derived leak: 10 * group description, item size: X
 ./ikev1derived leak detective found Z leaks, total size X
