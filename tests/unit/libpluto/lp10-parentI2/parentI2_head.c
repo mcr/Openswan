@@ -38,9 +38,7 @@
 
 u_int8_t reply_buffer[MAX_OUTPUT_UDP_SIZE];
 
-#include "seam_gr_sha1_group14.c"
 #include "seam_finish.c"
 
-#include "ikev2sendI1.c"
 
 
