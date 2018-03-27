@@ -17,9 +17,9 @@
 | processing whack message of size: A
 processing whack msg time: X size: Y
 | Added new connection home with policy RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+SAREFTRACK
-| from whack: got --esp=3des-md5;modp1024
-| esp string values: 3des(3)_000-hmac_md5_96(1)_000-MODP1024(2); flags=-strict
-| ike (phase1) algorihtm values: 3des(3)-hmac_md5_96(1)-prfmd5(1)-MODP1024(2); flags=-strict
+| from whack: got --esp=3des-md5;modp1536
+| esp string values: 3des(3)_000-hmac_md5_96(1)_000-MODP1536(5); flags=-strict
+| ike (phase1) algorihtm values: 3des(3)-hmac_md5_96(1)-prfmd5(1)-MODP1536(5); flags=-strict
 ./v1certM1   loading certificate from carolCert.pem
 ./v1certM1   loaded host cert file '../samples/carol/certs/carolCert.pem' (1415 bytes)
 | certificate is valid
@@ -45,9 +45,9 @@ RC=0 "home":     myip=unset; hisip=unset; mycert=carolCert.pem;
 RC=0 "home":   CAs: 'C=CA, ST=Ontario, L=Ottawa, O=Xelerance Corporation, OU=Doctor Taylor Plumage, CN=testing.xelerance.com, E=mcr@xelerance.com'...'%any'
 RC=0 "home":   ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1
 RC=0 "home":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+SAREFTRACK; prio: 32,16; interface: eth0; kind=CK_PERMANENT
-RC=0 "home":   IKEv2 algorithms wanted: 3des(3)-hmac_md5_96(1)-prfmd5(1)-MODP1024(2); flags=-strict
-RC=0 "home":   IKEv2 algorithms found:  3des(3)_192-hmac_md5_96(1)_128-prfmd5(1)-MODP1024(2)
-RC=0 "home":   ESP algorithms wanted: 3des(3)_000-hmac_md5_96(1)_000-MODP1024(2); flags=-strict
+RC=0 "home":   IKEv2 algorithms wanted: 3des(3)-hmac_md5_96(1)-prfmd5(1)-MODP1536(5); flags=-strict
+RC=0 "home":   IKEv2 algorithms found:  3des(3)_192-hmac_md5_96(1)_128-prfmd5(1)-MODP1536(5)
+RC=0 "home":   ESP algorithms wanted: 3des(3)_000-hmac_md5_96(1)_000-MODP1536(5); flags=-strict
 | esp algid=3 not available
 RC=0 "home":   ESP algorithms loaded: none
 | creating state object #1 at Z
@@ -105,8 +105,8 @@ RC=0 "home":   ESP algorithms loaded: none
 |     [1 is OAKLEY_MD5]
 | ******emit ISAKMP Oakley attribute:
 |    af+type: OAKLEY_GROUP_DESCRIPTION
-|    length/value: 2
-|     [2 is OAKLEY_GROUP_MODP1024]
+|    length/value: 5
+|     [5 is OAKLEY_GROUP_MODP1536]
 | emitting length of ISAKMP Transform Payload (ISAKMP): 32
 | emitting length of ISAKMP Proposal Payload: 40
 | emitting length of ISAKMP Security Association Payload: 52
@@ -150,7 +150,7 @@ sending 216 bytes for main_outI1 through eth0:500 [93.184.216.34:55044] to 192.1
 |   01 10 02 00  00 00 00 00  00 00 00 d8  0d 00 00 34
 |   00 00 00 01  00 00 00 01  00 00 00 28  00 01 00 01
 |   00 00 00 20  00 01 00 00  80 0b 00 01  80 0c 0e 10
-|   80 03 00 03  80 01 00 05  80 02 00 01  80 04 00 02
+|   80 03 00 03  80 01 00 05  80 02 00 01  80 04 00 05
 |   0d 00 00 10  4f 45 70 6c  75 74 6f 75  6e 69 74 30
 |   0d 00 00 14  af ca d7 13  68 a1 f1 c9  6b 86 96 fc
 |   77 57 01 00  0d 00 00 14  4a 13 1c 81  07 03 58 45

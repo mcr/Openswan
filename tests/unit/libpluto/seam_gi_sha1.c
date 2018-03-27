@@ -169,16 +169,46 @@ unsigned char tc3_results_skey_pr[]= {
 	0xeb, 0x81, 0x58, 0xe7,
 };
 
-void finish_dh_v2(struct state *st,
-		  struct pluto_crypto_req *r)
-{
-	//struct pcr_skeycalc_v2 *dhv2 = &r->pcr_d.dhv2;
-
 #define CLONEIT(X) \
     clonetochunk(st->st_##X \
 		 , tc3_results_##X \
 		 , sizeof(tc3_results_##X) \
 		 ,   "calculated " #X "shared secret");
+
+stf_status start_dh_secretiv(struct pluto_crypto_req_cont *cn UNUSED
+			     , struct state *st UNUSED
+			     , enum crypto_importance importance UNUSED
+			     , enum phase1_role init       UNUSED /* TRUE=g_init,FALSE=g_r */
+			     , u_int16_t oakley_group2     UNUSED)
+{
+  continuation = cn;
+  return STF_INLINE;
+}
+
+void finish_dh_secretiv(struct state *st,
+                        struct pluto_crypto_req *r)
+{
+    struct pcr_skeyid_r *dhr = &r->pcr_d.dhr;
+
+    CLONEIT(shared);
+    CLONEIT(skeyid);
+    CLONEIT(skeyid_d);
+    CLONEIT(skeyid_a);
+    CLONEIT(skeyid_e);
+    CLONEIT(enc_key);
+
+    r->pcr_success = TRUE;
+
+    memcpy(st->st_new_iv, tc3_results_new_iv, sizeof(tc3_results_new_iv));
+    st->st_new_iv_len = sizeof(tc3_results_new_iv);
+
+    st->hidden_variables.st_skeyid_calculated = TRUE;
+}
+
+void finish_dh_v2(struct state *st,
+		  struct pluto_crypto_req *r)
+{
+	//struct pcr_skeycalc_v2 *dhv2 = &r->pcr_d.dhv2;
 
     CLONEIT(shared);
     CLONEIT(skey_d);
