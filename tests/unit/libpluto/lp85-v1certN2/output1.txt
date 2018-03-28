@@ -250,7 +250,7 @@ sending 136 bytes for STATE_MAIN_R0 through eth0:500 [192.168.0.1:500] to 93.184
 | emitting length of ISAKMP NAT-D Payload: 20
 | emitting length of ISAKMP Message: 284
 | main inI2_outR2: starting async DH calculation (group=5)
-| started dh_secretiv, returned: stf=STF_INLINE
+| started dh_secretiv, returned: stf=STF_SUSPEND
 | complete state transition with STF_OK
 ./v1certN2 transition from state STATE_MAIN_R1 to state STATE_MAIN_R2
 | sending reply packet to 93.184.216.34:55044 (from port 500)

@@ -535,7 +535,7 @@ picking: eth0:500  outside: 55044 <=> d: 55044
 |   cc 92 5c 79  7b 62 ae 98  db 4f 7f e0  68 7c cd 29
 |   69 0a ad a3  e8 37 d7 41  b4 79 b3 a5  38 a2 8d a0
 |   69 ff bd aa  ba d5 54 70  40 ab b5 fc  26 6d ae ce
-| complete state transition with STF_INLINE
+| complete state transition with STF_SUSPEND
 | thinking about whether to send my certificate:
 |   I have RSA key: OAKLEY_RSA_SIG cert.type: CERT_NONE
 |   sendcert: CERT_SENDIFASKED and I did not get a certificate request

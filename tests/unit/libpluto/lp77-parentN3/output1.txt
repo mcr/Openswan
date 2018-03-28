@@ -269,7 +269,7 @@ sending 136 bytes for STATE_MAIN_R0 through eth0:500 [132.213.238.7:500] to 93.1
 | emitting length of ISAKMP NAT-D Payload: 24
 | emitting length of ISAKMP Message: 356
 | main inI2_outR2: starting async DH calculation (group=14)
-| started dh_secretiv, returned: stf=STF_INLINE
+| started dh_secretiv, returned: stf=STF_SUSPEND
 | complete state transition with STF_OK
 ./parentN3 transition from state STATE_MAIN_R1 to state STATE_MAIN_R2
 | sending reply packet to 93.184.216.34:55044 (from port 500)
@@ -326,13 +326,22 @@ sending 356 bytes for STATE_MAIN_R1 through eth0:500 [132.213.238.7:500] to 93.1
 |   58 70 77 c3  5c 9e c7 df  cb a5 b2 f8  eb c8 a2 38
 |   2d bc 44 bd  09 59 7b 2e  7f 54 16 3c  fd 07 9f e6
 |   06 15 c6 c1  33 dc 1d 65  95 ba ad f4
+| **parse ISAKMP Message:
+|    initiator cookie:
+|   80 01 02 03  04 05 06 07
+|    responder cookie:
+|   64 0a 06 43  5c 7c 4b 31
+|    ISAKMP version: ISAKMP Version 1.0 (rfc2407)
+|    exchange type: ISAKMP_XCHG_IDPROT
+|    flags: ISAKMP_FLAG_ENCRYPTION
+|    message ID:  00 00 00 00
+|    length: 332
 |  processing version=1.0 packet with exchange type=ISAKMP_XCHG_IDPROT (2), msgid: 00000000
 | ICOOKIE:  80 01 02 03  04 05 06 07
 | RCOOKIE:  64 0a 06 43  5c 7c 4b 31
 | state hash entry 5
 | v1 peer and cookies match on #1, provided msgid 00000000 vs 00000000
 | v1 state object #1 found, in STATE_MAIN_R2
-| received encrypted packet from 93.184.216.34:55045 but exponentiation still in progress
 | received encrypted packet from 93.184.216.34:55045
 | decrypting 304 bytes using algorithm OAKLEY_AES_CBC
 | decrypted:
