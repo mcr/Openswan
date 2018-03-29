@@ -54,6 +54,33 @@ RC=0 "rw":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK; prio: 16,32; interfac
 RC=0 "rw":   ESP algorithms wanted: 3des(3)_000-hmac_md5_96(1)_000-MODP1536(5); flags=-strict
 | auth algid=1 not available
 RC=0 "rw":   ESP algorithms loaded: none
+| Changed path to directory '../samples/moon/cacerts'
+./v1certN3   loaded CA cert file 'rootCA.pem' (1525 bytes)
+| Changed path to directory '../samples/moon/aacerts'
+| Changed path to directory '../samples/moon/ocspcerts'
+| Found -1 items in directory '../samples/moon/crls'
+RC=0
+RC=0 List of X.509 End Certificates:
+RC=0
+RC=0 Mar 28 18:53:17 2018, count: 1
+RC=0        subject: 'C=CA, ST=Canada, L=Ottawa, O=Xelerance Corporation, OU=Doctor Taylor Plumage, CN=moon.testing.openswan.org, E=mcr@xelerance.com'
+RC=0        issuer:  'C=CA, ST=Ontario, L=Ottawa, O=Xelerance Corporation, OU=Doctor Taylor Plumage, CN=testing.xelerance.com, E=mcr@xelerance.com'
+RC=0        serial:   00:8c:b2:68:2f:b0:f4:5a:93
+RC=0        pubkey:   2048 RSA Key AwEAAeOoT, has private key
+RC=0        validity: not before Jan 16 11:48:38 2017 ok
+RC=0                  not after  Nov 06 11:48:38 2019 ok
+RC=0
+RC=0 List of X.509 CA Certificates:
+RC=0
+RC=0 Mar 28 18:53:17 2018, count: 1
+RC=0        subject: 'C=CA, ST=Ontario, L=Ottawa, O=Xelerance Corporation, OU=Doctor Taylor Plumage, CN=testing.xelerance.com, E=mcr@xelerance.com'
+RC=0        issuer:  'C=CA, ST=Ontario, L=Ottawa, O=Xelerance Corporation, OU=Doctor Taylor Plumage, CN=testing.xelerance.com, E=mcr@xelerance.com'
+RC=0        serial:   00:f7:85:a2:4b:c9:65:98:f2
+RC=0        pubkey:   2048 RSA Key AwEAAbCBn
+RC=0        validity: not before Jan 14 08:36:54 2017 ok
+RC=0                  not after  Nov 04 08:36:54 2019 ok
+RC=0        subjkey:  99:12:46:33:fb:fd:7a:46:9f:7e:d5:39:72:86:f1:e1:cf:5e:59:dd
+RC=0        authkey:  99:12:46:33:fb:fd:7a:46:9f:7e:d5:39:72:86:f1:e1:cf:5e:59:dd
 0: input from v1certM1.pcap
 |   =========== input from from v1certM1.pcap ========
 | *received 216 bytes from 93.184.216.34:55044 on eth0 (port=500)
@@ -249,7 +276,7 @@ sending 136 bytes for STATE_MAIN_R0 through eth0:500 [192.168.0.1:500] to 93.184
 | emitting length of ISAKMP NAT-D Payload: 20
 | emitting length of ISAKMP Message: 284
 | main inI2_outR2: starting async DH calculation (group=5)
-| started dh_secretiv, returned: stf=STF_INLINE
+| started dh_secretiv, returned: stf=STF_SUSPEND
 | complete state transition with STF_OK
 ./v1certN3 transition from state STATE_MAIN_R1 to state STATE_MAIN_R2
 | sending reply packet to 93.184.216.34:55044 (from port 500)
@@ -364,13 +391,22 @@ sending 284 bytes for STATE_MAIN_R1 through eth0:500 [192.168.0.1:500] to 93.184
 |   09 f1 ea 71  b9 a1 02 3e  39 f7 9b a3  16 15 43 43
 |   e8 93 cc 2b  0f f5 58 30  50 6a 7c b3  e7 06 07 7b
 |   64 a4 54 03
+| **parse ISAKMP Message:
+|    initiator cookie:
+|   80 01 02 03  04 05 06 07
+|    responder cookie:
+|   64 0a 06 43  5c 7c 4b 31
+|    ISAKMP version: ISAKMP Version 1.0 (rfc2407)
+|    exchange type: ISAKMP_XCHG_IDPROT
+|    flags: ISAKMP_FLAG_ENCRYPTION
+|    message ID:  00 00 00 00
+|    length: 1332
 |  processing version=1.0 packet with exchange type=ISAKMP_XCHG_IDPROT (2), msgid: 00000000
 | ICOOKIE:  80 01 02 03  04 05 06 07
 | RCOOKIE:  64 0a 06 43  5c 7c 4b 31
 | state hash entry 5
 | v1 peer and cookies match on #1, provided msgid 00000000 vs 00000000
 | v1 state object #1 found, in STATE_MAIN_R2
-| received encrypted packet from 93.184.216.34:55044 but exponentiation still in progress
 | received encrypted packet from 93.184.216.34:55044
 | decrypting 1304 bytes using algorithm OAKLEY_3DES_CBC
 | decrypted:
@@ -512,8 +548,51 @@ sending 284 bytes for STATE_MAIN_R1 through eth0:500 [192.168.0.1:500] to 93.184
 | L3 - algorithm:
 |   'sha256WithRSAEncryption'
 | L1 - signatureValue:
-./v1certN3 issuer cacert not found
-./v1certN3 X.509 certificate rejected
+| signature algorithm: 'sha256WithRSAEncryption'
+|   digest:  0a 62 fd 5a  36 14 1e 1b  07 13 89 81  70 d9 75 b3
+|   88 bd f9 f3  af 95 9d 49  5f dd 69 ab  1e a3 e5 d2
+| decrypt_sig() decrypted signature:
+|   00 00 01 ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+|   ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+|   ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+|   ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+|   ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+|   ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+|   ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+|   ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+|   ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+|   ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+|   ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+|   ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+|   ff ff ff ff  ff ff ff ff  ff ff ff ff  ff 00 30 31
+|   30 0d 06 09  60 86 48 01  65 03 04 02  01 05 00 04
+|   20 0a 62 fd  5a 36 14 1e  1b 07 13 89  81 70 d9 75
+|   b3 88 bd f9  f3 af 95 9d  49 5f dd 69  ab 1e a3 e5
+|   d2
+./v1certN3 no crl from issuer "C=CA, ST=Ontario, L=Ottawa, O=Xelerance Corporation, OU=Doctor Taylor Plumage, CN=testing.xelerance.com, E=mcr@xelerance.com" found (strict=no)
+| signature algorithm: 'sha256WithRSAEncryption'
+|   digest:  a4 94 57 50  f5 ce 09 7f  39 7a 78 3d  00 52 c2 ec
+|   02 e7 ec 6e  19 bf 98 3b  ee ad f2 f4  96 d1 7e 30
+| decrypt_sig() decrypted signature:
+|   00 00 01 ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+|   ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+|   ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+|   ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+|   ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+|   ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+|   ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+|   ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+|   ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+|   ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+|   ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+|   ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+|   ff ff ff ff  ff ff ff ff  ff ff ff ff  ff 00 30 31
+|   30 0d 06 09  60 86 48 01  65 03 04 02  01 05 00 04
+|   20 a4 94 57  50 f5 ce 09  7f 39 7a 78  3d 00 52 c2
+|   ec 02 e7 ec  6e 19 bf 98  3b ee ad f2  f4 96 d1 7e
+|   30
+| reached self-signed root ca
+| Public key validated
 | CR
 | requested CA: '%any'
 | refine_connection: starting with rw
@@ -855,6 +934,11 @@ sending 1324 bytes for STATE_MAIN_R2 through eth0:4500 [192.168.0.1:4500] to 93.
 ./v1certN3 leak: keep id name, item size: X
 ./v1certN3 leak: connection name, item size: X
 ./v1certN3 leak: temporary connection, item size: X
+./v1certN3 leak: rfc3110 format of public key [created], item size: X
+./v1certN3 leak: issuer dn, item size: X
+./v1certN3 leak: keep id name, item size: X
+./v1certN3 leak: pubkey entry, item size: X
+./v1certN3 leak: pubkey, item size: X
 ./v1certN3 leak: main_inI2_outR2_tail, item size: X
 ./v1certN3 leak: inI2_outR2 KE, item size: X
 ./v1certN3 leak: 67 * VendorID MD5, item size: X
@@ -867,6 +951,8 @@ sending 1324 bytes for STATE_MAIN_R2 through eth0:4500 [192.168.0.1:4500] to 93.
 ./v1certN3 leak: 23 * VendorID MD5, item size: X
 ./v1certN3 leak: vid->data, item size: X
 ./v1certN3 leak: msg_digest, item size: X
+./v1certN3 leak: x509cert, item size: X
+./v1certN3 leak: CA cert, item size: X
 ./v1certN3 leak: keep id name, item size: X
 ./v1certN3 leak: ID host_pair, item size: X
 ./v1certN3 leak: host_pair, item size: X
