@@ -47,6 +47,7 @@ RC=0 "nat-t":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+SAREFTRACK; prio: 1
 ./loadbob leak: keep id name, item size: X
 ./loadbob leak: pubkey entry, item size: X
 ./loadbob leak: pubkey, item size: X
+./loadbob leak: issuer, item size: X
 ./loadbob leak: rfc3110 format of public key [created], item size: X
 ./loadbob leak: issuer dn, item size: X
 ./loadbob leak: keep id name, item size: X

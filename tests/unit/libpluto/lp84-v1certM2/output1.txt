@@ -24,7 +24,7 @@ processing whack msg time: X size: Y
 ./v1certM2   loading certificate from carolCert.pem
 ./v1certM2   loaded host cert file '../samples/carol/certs/carolCert.pem' (1415 bytes)
 | certificate is valid
-| counting wild cards for carol@strongswan.org is 0
+| counting wild cards for C=CA, ST=Ontario, L=Ottawa, O=Xelerance Corporation, OU=Doctor Taylor Plumage, CN=carol.testing.openswan.org, E=mcr@xelerance.com is 0
 | counting wild cards for @moon.strongswan.org is 0
 | alg_info_addref() alg_info->ref_cnt=1
 | alg_info_addref() alg_info->ref_cnt=1
@@ -35,13 +35,13 @@ processing whack msg time: X size: Y
 | find_host_pair: looking for me=192.168.0.100:500 %address him=192.168.0.1:500 exact-match
 | find_host_pair: concluded with <none>
 | connect_to_host_pair: 192.168.0.100:500 %address 192.168.0.1:500 -> hp:none
-| find_ID_host_pair: looking for me=carol@strongswan.org him=@moon.strongswan.org (exact)
+| find_ID_host_pair: looking for me=C=CA, ST=Ontario, L=Ottawa, O=Xelerance Corporation, OU=Doctor Taylor Plumage, CN=carol.testing.openswan.org, E=mcr@xelerance.com him=@moon.strongswan.org (exact)
 |   concluded with <none>
 ./v1certM2 adding connection: "home"
-| 192.168.0.100[carol@strongswan.org]...192.168.0.1[@moon.strongswan.org]===10.1.0.0/16
+| 192.168.0.100[C=CA, ST=Ontario, L=Ottawa, O=Xelerance Corporation, OU=Doctor Taylor Plumage, CN=carol.testing.openswan.org, E=mcr@xelerance.com]...192.168.0.1[@moon.strongswan.org]===10.1.0.0/16
 | ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+SAREFTRACK
 |   orient home finished with: 1 [0.0.0.0]
-RC=0 "home": 192.168.0.100[carol@strongswan.org]...192.168.0.1[@moon.strongswan.org]===10.1.0.0/16; unrouted; eroute owner: #0
+RC=0 "home": 192.168.0.100[C=CA, ST=Ontario, L=Ottawa, O=Xelerance Corporation, OU=Doctor Taylor Plumage, CN=carol.testing.openswan.org, E=mcr@xelerance.com]...192.168.0.1[@moon.strongswan.org]===10.1.0.0/16; unrouted; eroute owner: #0
 RC=0 "home":     myip=unset; hisip=unset; mycert=carolCert.pem;
 RC=0 "home":   CAs: 'C=CA, ST=Ontario, L=Ottawa, O=Xelerance Corporation, OU=Doctor Taylor Plumage, CN=testing.xelerance.com, E=mcr@xelerance.com'...'%any'
 RC=0 "home":   ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1
@@ -297,11 +297,6 @@ sending 284 bytes for STATE_MAIN_I1 through eth0:500 [93.184.216.34:55044] to 19
 ./v1certM2 leak: 2 * db_context->conj, item size: X
 ./v1certM2 leak: v2 policy database, item size: X
 ./v1certM2 leak: struct state in new_state(), item size: X
-./v1certM2 leak: rfc3110 format of public key [created], item size: X
-./v1certM2 leak: issuer dn, item size: X
-./v1certM2 leak: keep id name, item size: X
-./v1certM2 leak: pubkey entry, item size: X
-./v1certM2 leak: pubkey, item size: X
 ./v1certM2 leak: rfc3110 format of public key [created], item size: X
 ./v1certM2 leak: issuer dn, item size: X
 ./v1certM2 leak: keep id name, item size: X
