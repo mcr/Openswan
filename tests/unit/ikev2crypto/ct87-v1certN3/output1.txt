@@ -67,8 +67,8 @@ RC=0        subject: 'C=CA, ST=Canada, L=Ottawa, O=Xelerance Corporation, OU=Doc
 RC=0        issuer:  'C=CA, ST=Ontario, L=Ottawa, O=Xelerance Corporation, OU=Doctor Taylor Plumage, CN=testing.xelerance.com, E=mcr@xelerance.com'
 RC=0        serial:   00:8c:b2:68:2f:b0:f4:5a:93
 RC=0        pubkey:   2048 RSA Key AwEAAeOoT, has private key
-RC=0        validity: not before Jan 16 11:48:38 2017 ok
-RC=0                  not after  Nov 06 11:48:38 2019 ok
+RC=0        validity: not before Jan 16 16:48:38 UTC 2017 ok
+RC=0                  not after  Nov 06 16:48:38 UTC 2019 ok
 RC=0
 RC=0 List of X.509 CA Certificates:
 RC=0
@@ -77,8 +77,8 @@ RC=0        subject: 'C=CA, ST=Ontario, L=Ottawa, O=Xelerance Corporation, OU=Do
 RC=0        issuer:  'C=CA, ST=Ontario, L=Ottawa, O=Xelerance Corporation, OU=Doctor Taylor Plumage, CN=testing.xelerance.com, E=mcr@xelerance.com'
 RC=0        serial:   00:f7:85:a2:4b:c9:65:98:f2
 RC=0        pubkey:   2048 RSA Key AwEAAbCBn
-RC=0        validity: not before Jan 14 08:36:54 2017 ok
-RC=0                  not after  Nov 04 08:36:54 2019 ok
+RC=0        validity: not before Jan 14 13:36:54 UTC 2017 ok
+RC=0                  not after  Nov 04 13:36:54 UTC 2019 ok
 RC=0        subjkey:  99:12:46:33:fb:fd:7a:46:9f:7e:d5:39:72:86:f1:e1:cf:5e:59:dd
 RC=0        authkey:  99:12:46:33:fb:fd:7a:46:9f:7e:d5:39:72:86:f1:e1:cf:5e:59:dd
 0: input from v1certM1.pcap
