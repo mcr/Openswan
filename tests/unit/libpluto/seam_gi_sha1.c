@@ -204,12 +204,13 @@ unsigned char tc3_results_new_iv[]= {
 };
 
 
-
-#define CLONEIT(X) \
+#define CLONETO(X,Y) \
     clonetochunk(st->st_##X \
-		 , tc3_results_##X \
-		 , sizeof(tc3_results_##X) \
+		 , Y \
+		 , sizeof(Y) \
 		 ,   "calculated " #X "shared secret");
+
+#define CLONEIT(X) CLONETO(X,tc3_results_##X)
 
 stf_status start_dh_secretiv(struct pluto_crypto_req_cont *cn UNUSED
 			     , struct state *st UNUSED
@@ -240,6 +241,17 @@ void finish_dh_secretiv(struct state *st,
 
     st->hidden_variables.st_skeyid_calculated = TRUE;
 }
+
+void finish_dh_secret(struct state *st,
+		      struct pluto_crypto_req *r)
+{
+    struct pcr_skeyid_r *dhr = &r->pcr_d.dhr;
+
+    CLONEIT(shared);
+    CLONETO(gr, tc3_gi);
+    r->pcr_success = TRUE;
+}
+
 
 void finish_dh_v2(struct state *st,
 		  struct pluto_crypto_req *r)
