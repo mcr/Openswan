@@ -15,6 +15,9 @@
  *
  */
 
+#ifndef _PLUTO_CONSTANTS_H
+#define _PLUTO_CONSTANTS_H
+
 /* Control and lock pathnames */
 
 #ifndef DEFAULT_CTLBASE
@@ -697,3 +700,4 @@ enum PrivateKeyKind {
 #define XAUTH_MAX_PASS_LENGTH 128
 
 
+#endif /* _PLUTO_CONSTANTS_H */
