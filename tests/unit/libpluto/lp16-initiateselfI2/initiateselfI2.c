@@ -1,5 +1,6 @@
 #define SEAM_CRYPTO
 #include "../lp10-parentI2/parentI2_head.c"
+#include "seam_kernel.c"
 #include "ikev2sendI1.c"
 #include "seam_pending.c"
 #include "seam_natt.c"
