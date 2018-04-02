@@ -638,17 +638,16 @@ sending 284 bytes for STATE_MAIN_R1 through eth0:500 [192.168.0.1:500] to 93.184
 | CR
 | requested CA: '%any'
 | refine_connection: starting with rw
-|   trusted_ca called with a=C=CA, ST=Ontario, L=Ottawa, O=Xelerance Corporation, OU=Doctor Taylor Plumage, CN=testing.xelerance.com, E=mcr@xelerance.com b=(empty)
 |    match_id a=C=CA, ST=Ontario, L=Ottawa, O=Xelerance Corporation, OU=Doctor Taylor Plumage, CN=carol.testing.openswan.org, E=mcr@xelerance.com
 |             b=(none)
 |    results  matched
-|   trusted_ca called with a=C=CA, ST=Ontario, L=Ottawa, O=Xelerance Corporation, OU=Doctor Taylor Plumage, CN=testing.xelerance.com, E=mcr@xelerance.com b=(empty)
+|   trusted_ca called with a=(empty) b=(empty)
 | refine_connection: checking rw against rw, best=(none) with match=1(id=1/ca=1/reqca=1)
 | refine_connection: checked rw against rw, now for see if best
 | started looking for secret for @moon.strongswan.org->(none) of kind PPK_RSA
 | searching for certificate PPK_RSA:AwEAAeOoT vs PPK_RSA:AwEAAeOoT
 | rsa key AwEAAeOoT found
-| refine_connection: picking new best rw (wild=15, peer_pathlen=7/our=0)
+| refine_connection: picking new best rw (wild=15, peer_pathlen=0/our=0)
 | find_host_pair: looking for me=192.168.0.1:500 %any him=<none>:500 any-match
 | find_host_pair: comparing to me=192.168.0.1:500 %any him=0.0.0.0:500
 | find_host_pair: concluded with rw
@@ -656,7 +655,7 @@ sending 284 bytes for STATE_MAIN_R1 through eth0:500 [192.168.0.1:500] to 93.184
 |    match_id a=C=CA, ST=Ontario, L=Ottawa, O=Xelerance Corporation, OU=Doctor Taylor Plumage, CN=carol.testing.openswan.org, E=mcr@xelerance.com
 |             b=(none)
 |    results  matched
-|   trusted_ca called with a=C=CA, ST=Ontario, L=Ottawa, O=Xelerance Corporation, OU=Doctor Taylor Plumage, CN=testing.xelerance.com, E=mcr@xelerance.com b=(empty)
+|   trusted_ca called with a=(empty) b=(empty)
 | refine_connection: checking rw against rw, best=rw with match=1(id=1/ca=1/reqca=1)
 | refine_connection: checked rw against rw, now for see if best
 | started looking for secret for @moon.strongswan.org->(none) of kind PPK_RSA
@@ -977,11 +976,6 @@ sending 1324 bytes for STATE_MAIN_R2 through eth0:4500 [192.168.0.1:4500] to 93.
 ./v1certN3 leak: keep id name, item size: X
 ./v1certN3 leak: connection name, item size: X
 ./v1certN3 leak: temporary connection, item size: X
-./v1certN3 leak: rfc3110 format of public key [created], item size: X
-./v1certN3 leak: issuer dn, item size: X
-./v1certN3 leak: keep id name, item size: X
-./v1certN3 leak: pubkey entry, item size: X
-./v1certN3 leak: pubkey, item size: X
 ./v1certN3 leak: main_inI2_outR2_tail, item size: X
 ./v1certN3 leak: inI2_outR2 KE, item size: X
 ./v1certN3 leak: 67 * VendorID MD5, item size: X
