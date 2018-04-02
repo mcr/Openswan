@@ -269,7 +269,7 @@ sending 136 bytes for STATE_MAIN_R0 through eth0:500 [132.213.238.7:500] to 93.1
 | emitting length of ISAKMP NAT-D Payload: 24
 | emitting length of ISAKMP Message: 356
 | main inI2_outR2: starting async DH calculation (group=14)
-| started dh_secretiv, returned: stf=STF_INLINE
+| started dh_secretiv, returned: stf=STF_SUSPEND
 | complete state transition with STF_OK
 ./xf79-childQR1 transition from state STATE_MAIN_R1 to state STATE_MAIN_R2
 | sending reply packet to 93.184.216.34:55044 (from port 500)
@@ -331,7 +331,6 @@ sending 356 bytes for STATE_MAIN_R1 through eth0:500 [132.213.238.7:500] to 93.1
 | state hash entry 5
 | v1 peer and cookies match on #1, provided msgid 00000000 vs 00000000
 | v1 state object #1 found, in STATE_MAIN_R2
-| received encrypted packet from 93.184.216.34:55045 but exponentiation still in progress
 | received encrypted packet from 93.184.216.34:55045
 | decrypting 304 bytes using algorithm OAKLEY_AES_CBC
 | decrypted:
