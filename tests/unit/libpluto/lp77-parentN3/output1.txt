@@ -344,6 +344,7 @@ sending 356 bytes for STATE_MAIN_R1 through eth0:500 [132.213.238.7:500] to 93.1
 | v1 state object #1 found, in STATE_MAIN_R2
 | received encrypted packet from 93.184.216.34:55045
 | decrypting 304 bytes using algorithm OAKLEY_AES_CBC
+| crypting using IV:  e9 00 11 7e  41 d4 31 62  40 b8 63 22  bf 06 9f bc
 | decrypted:
 |   09 00 00 23  02 00 00 00  62 65 72 72  69 2e 74 65
 |   73 74 69 6e  67 2e 78 65  6c 65 72 61  6e 63 65 2e
@@ -475,6 +476,7 @@ sending 356 bytes for STATE_MAIN_R1 through eth0:500 [132.213.238.7:500] to 93.1
 | unpadded size is: 290
 | emitting 14 zero bytes of encryption padding into ISAKMP Message
 | encrypting 304 using OAKLEY_AES_CBC
+| crypting using IV:  fd 07 9f e6  06 15 c6 c1  33 dc 1d 65  95 ba ad f4
 | next IV:  2b d6 a9 12  96 6d a8 7f  6e 75 c9 7a  65 0d af fd
 | emitting length of ISAKMP Message: 332
 | last encrypted block of Phase 1:

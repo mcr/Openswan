@@ -640,6 +640,7 @@ picking: eth0:500  outside: 55044 <=> d: 55044
 | unpadded size is: 295
 | emitting 9 zero bytes of encryption padding into ISAKMP Message
 | encrypting 304 using OAKLEY_AES_CBC
+| crypting using IV:  e9 00 11 7e  41 d4 31 62  40 b8 63 22  bf 06 9f bc
 | next IV:  fd 07 9f e6  06 15 c6 c1  33 dc 1d 65  95 ba ad f4
 | emitting length of ISAKMP Message: 332
 | complete state transition with STF_OK
@@ -709,6 +710,7 @@ picking: eth0:4500 float outside: 55045 <=> d: 55045
 | v1 state object #1 found, in STATE_MAIN_I3
 | received encrypted packet from 132.213.238.7:4500
 | decrypting 304 bytes using algorithm OAKLEY_AES_CBC
+| crypting using IV:  fd 07 9f e6  06 15 c6 c1  33 dc 1d 65  95 ba ad f4
 | decrypted:
 |   09 00 00 0c  01 00 00 00  84 d5 ee 07  00 00 01 16
 |   77 e4 4d 00  38 09 46 47  3b 80 52 4c  e9 8d c5 6e
@@ -958,6 +960,7 @@ picking: eth0:4500 float outside: 55045 <=> d: 55045
 |   1b 87 1e 0b
 | unpadded size is: 480
 | encrypting 480 using OAKLEY_AES_CBC
+| crypting using IV:  0d 11 f3 ec  13 af d9 8e  5f f0 ba b5  31 68 4f 25
 | next IV:  5c e5 4d c6  e9 f5 67 2f  2e ce 20 98  3e 44 43 fe
 | emitting length of ISAKMP Message: 508
 sending 508 bytes for quick_outI1 through eth0:4500 [93.184.216.34:55045] to 132.213.238.7:4500 (using #2)
@@ -1043,6 +1046,7 @@ RC=118 STATE_QUICK_I1: initiate
 | unpadded size is: 52
 | emitting 12 zero bytes of encryption padding into ISAKMP Message
 | encrypting 64 using OAKLEY_AES_CBC
+| crypting using IV:  0d 11 f3 ec  13 af d9 8e  5f f0 ba b5  31 68 4f 25
 | next IV:  07 63 cc 3a  ef 74 29 11  44 bf 9a be  60 a9 a8 72
 | emitting length of ISAKMP Message: 92
 sending 92 bytes for delete notify through eth0:4500 [93.184.216.34:55045] to 132.213.238.7:4500 (using #1)

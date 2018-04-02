@@ -529,10 +529,11 @@ picking: eth0:500  outside: 55044 <=> d: 55044
 |   61 f3 0e 71  41 e6 1c db  5d 31 cb 13  61 d3 08 1e
 |   04 09 f8 76  50 23 83 ba  b7 00 fc
 | IV:
-|   e9 00 11 7e  41 d4 31 62  40 b8 63 22  bf 06 9f bc
+|   e9 00 11 7e  41 d4 31 62
 | unpadded size is: 1467
 | emitting 5 zero bytes of encryption padding into ISAKMP Message
 | encrypting 1472 using OAKLEY_3DES_CBC
+| crypting using IV:  e9 00 11 7e  41 d4 31 62
 | next IV:  f7 12 f5 a3  87 9a 25 a9
 | emitting length of ISAKMP Message: 1500
 | complete state transition with STF_OK

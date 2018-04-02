@@ -640,6 +640,7 @@ picking: eth0:500  outside: 55044 <=> d: 55044
 | unpadded size is: 295
 | emitting 9 zero bytes of encryption padding into ISAKMP Message
 | encrypting 304 using OAKLEY_AES_CBC
+| crypting using IV:  e9 00 11 7e  41 d4 31 62  40 b8 63 22  bf 06 9f bc
 | next IV:  fd 07 9f e6  06 15 c6 c1  33 dc 1d 65  95 ba ad f4
 | emitting length of ISAKMP Message: 332
 | complete state transition with STF_OK
@@ -708,6 +709,7 @@ picking: eth0:4500 float outside: 55045 <=> d: 55045
 | v1 state object #1 found, in STATE_MAIN_I3
 | received encrypted packet from 132.213.238.7:4500
 | decrypting 304 bytes using algorithm OAKLEY_AES_CBC
+| crypting using IV:  fd 07 9f e6  06 15 c6 c1  33 dc 1d 65  95 ba ad f4
 | decrypted:
 |   09 00 00 0c  01 00 00 00  84 d5 ee 07  00 00 01 16
 |   77 e4 4d 00  38 09 46 47  3b 80 52 4c  e9 8d c5 6e
@@ -957,6 +959,7 @@ picking: eth0:4500 float outside: 55045 <=> d: 55045
 |   1b 87 1e 0b
 | unpadded size is: 480
 | encrypting 480 using OAKLEY_AES_CBC
+| crypting using IV:  0d 11 f3 ec  13 af d9 8e  5f f0 ba b5  31 68 4f 25
 | next IV:  5c e5 4d c6  e9 f5 67 2f  2e ce 20 98  3e 44 43 fe
 | emitting length of ISAKMP Message: 508
 sending 508 bytes for quick_outI1 through eth0:4500 [93.184.216.34:55045] to 132.213.238.7:4500 (using #2)
@@ -1035,6 +1038,7 @@ picking: eth0:4500 float outside: 55045 <=> d: 55045
 | v1 state object #2 found, in STATE_QUICK_I1
 | received encrypted packet from 132.213.238.7:4500
 | decrypting 400 bytes using algorithm OAKLEY_AES_CBC
+| crypting using IV:  5c e5 4d c6  e9 f5 67 2f  2e ce 20 98  3e 44 43 fe
 | decrypted:
 |   01 00 00 18  49 e6 ba fb  0a 80 f2 2c  a6 6d 63 65
 |   53 65 f0 58  88 0b f8 dd  0a 00 00 38  00 00 00 01
@@ -1121,6 +1125,7 @@ picking: eth0:4500 float outside: 55045 <=> d: 55045
 | unpadded size is: 24
 | emitting 8 zero bytes of encryption padding into ISAKMP Message
 | encrypting 32 using OAKLEY_AES_CBC
+| crypting using IV:  a9 ec 27 3b  fd b2 c2 36  1b e5 7a 9a  5c 03 d1 7c
 | next IV:  b1 7d 18 d6  74 4c 17 51  6f 32 12 61  8b 26 ab a5
 | emitting length of ISAKMP Message: 60
 | inR1_outI2: instance t4901[0], setting newest_ipsec_sa to #2 (was #0) (spd.eroute=#0)
@@ -1179,6 +1184,7 @@ sending 60 bytes for STATE_QUICK_I1 through eth0:4500 [93.184.216.34:55045] to 1
 | unpadded size is: 40
 | emitting 8 zero bytes of encryption padding into ISAKMP Message
 | encrypting 48 using OAKLEY_AES_CBC
+| crypting using IV:  0d 11 f3 ec  13 af d9 8e  5f f0 ba b5  31 68 4f 25
 | next IV:  58 93 73 8f  63 2b 82 aa  0c 4b 1d ec  74 cc 1d 1f
 | emitting length of ISAKMP Message: 76
 sending 76 bytes for delete notify through eth0:4500 [93.184.216.34:55045] to 132.213.238.7:4500 (using #1)
@@ -1232,6 +1238,7 @@ sending 76 bytes for delete notify through eth0:4500 [93.184.216.34:55045] to 13
 | unpadded size is: 52
 | emitting 12 zero bytes of encryption padding into ISAKMP Message
 | encrypting 64 using OAKLEY_AES_CBC
+| crypting using IV:  0d 11 f3 ec  13 af d9 8e  5f f0 ba b5  31 68 4f 25
 | next IV:  07 63 cc 3a  ef 74 29 11  44 bf 9a be  60 a9 a8 72
 | emitting length of ISAKMP Message: 92
 sending 92 bytes for delete notify through eth0:4500 [93.184.216.34:55045] to 132.213.238.7:4500 (using #1)
