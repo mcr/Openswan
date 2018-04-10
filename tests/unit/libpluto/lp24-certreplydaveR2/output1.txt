@@ -109,7 +109,7 @@ processing whack msg time: X size: Y
 |   orient rw-any finished with: 1 [132.213.238.7]
 RC=0 "rw-any": 10.2.0.0/16===132.213.238.7[@moon.testing.openswan.org]...%any; unrouted; eroute owner: #0
 RC=0 "rw-any":     myip=unset; hisip=unset; mycert=moonCert.pem;
-RC=0 "rw-any":   CAs: 'C=CA, ST=Ontario, L=Ottawa, O=Xelerance Corporation, OU=Doctor Taylor Plumage, CN=testing.xelerance.com, E=mcr@xelerance.com'...'C=CA, ST=Ontario, L=Ottawa, O=Xelerance Corporation, OU=Doctor Taylor Plumage, CN=testing.xelerance.com, E=mcr@xelerance.com'
+RC=0 "rw-any":   keys: 1:75B9 7996 96CB FFE9 9CEA F984 D596 602E 42AE 6535 2:none...
 RC=0 "rw-any":   ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1
 RC=0 "rw-any":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK; prio: 16,32; interface: eth0; kind=CK_TEMPLATE
 RC=0 "rw-any":   ESP algorithms wanted: aes_cbc(12)_128-hmac_sha1_96(2)_000-MODP2048(14); flags=-strict
@@ -118,14 +118,15 @@ RC=0 "rw-any":   ESP algorithms loaded: AES(12)_128-SHA1(2)_160
 ./certreplydaveR2   loaded CA cert file 'rootCA.pem' (1525 bytes)
 RC=0 "rw-carol": 10.2.0.0/16===132.213.238.7[@moon.testing.openswan.org]...93.184.216.34[@carol.testing.openswan.org]; unrouted; eroute owner: #0
 RC=0 "rw-carol":     myip=unset; hisip=unset; mycert=moonCert.pem; hiscert=carolCert.pem;
-RC=0 "rw-carol":   CAs: 'C=CA, ST=Ontario, L=Ottawa, O=Xelerance Corporation, OU=Doctor Taylor Plumage, CN=testing.xelerance.com, E=mcr@xelerance.com'...'C=CA, ST=Ontario, L=Ottawa, O=Xelerance Corporation, OU=Doctor Taylor Plumage, CN=testing.xelerance.com, E=mcr@xelerance.com'
+RC=0 "rw-carol":   keys: 1:75B9 7996 96CB FFE9 9CEA F984 D596 602E 42AE 6535 2:none...
+RC=0 "rw-carol":        ....1:C529 B6C4 CDF5 97E6 322E A755 1874 D9DC DFBF 74DB 2:none
 RC=0 "rw-carol":   ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1
 RC=0 "rw-carol":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK; prio: 16,32; interface: eth0; kind=CK_PERMANENT
 RC=0 "rw-carol":   ESP algorithms wanted: aes_cbc(12)_128-hmac_sha1_96(2)_000-MODP2048(14); flags=-strict
 RC=0 "rw-carol":   ESP algorithms loaded: AES(12)_128-SHA1(2)_160
 RC=0 "rw-dave": 10.2.0.0/16===132.213.238.7[@moon.testing.openswan.org]...192.168.0.200[C=CA, ST=ON, L=Ottawa, O=Xelerance Corporation, OU=Openswan, CN=dave@openswan.org]; unrouted; eroute owner: #0
 RC=0 "rw-dave":     myip=unset; hisip=unset; mycert=moonCert.pem;
-RC=0 "rw-dave":   CAs: 'C=CA, ST=Ontario, L=Ottawa, O=Xelerance Corporation, OU=Doctor Taylor Plumage, CN=testing.xelerance.com, E=mcr@xelerance.com'...'C=CA, ST=Ontario, L=Ottawa, O=Xelerance Corporation, OU=Doctor Taylor Plumage, CN=testing.xelerance.com, E=mcr@xelerance.com'
+RC=0 "rw-dave":   keys: 1:75B9 7996 96CB FFE9 9CEA F984 D596 602E 42AE 6535 2:none...
 RC=0 "rw-dave":   ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1
 RC=0 "rw-dave":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK; prio: 16,32; interface: eth0; kind=CK_PERMANENT
 RC=0 "rw-dave":   ESP algorithms wanted: aes_cbc(12)_128-hmac_sha1_96(2)_000-MODP2048(14); flags=-strict
@@ -912,7 +913,7 @@ sending 432 bytes for STATE_IKEv2_START through eth0:500 [132.213.238.7:500] to 
 | reached self-signed root ca
 ./certreplydaveR2 0: validated X509 certificate: 'C=CA, ST=Ontario, L=Ottawa, O=Xelerance Corporation, OU=Doctor Taylor Plumage, CN=carol.testing.openswan.org, E=mcr@xelerance.com', added to trusted database
 | Public key validated
-| ikev2 verify required CA is 'C=CA, ST=Ontario, L=Ottawa, O=Xelerance Corporation, OU=Doctor Taylor Plumage, CN=testing.xelerance.com, E=mcr@xelerance.com'
+| ikev2 verify required CA is '%any'
 |
 | List of X.509 End Certificates:
 |
@@ -2323,7 +2324,7 @@ sending 432 bytes for STATE_IKEv2_START through eth0:500 [132.213.238.7:500] to 
 | reached self-signed root ca
 ./certreplydaveR2 0: validated X509 certificate: 'C=CA, ST=ON, L=Ottawa, O=Xelerance Corporation, OU=Openswan, CN=dave@openswan.org, E=mcr@xelerance.com', added to trusted database
 | Public key validated
-| ikev2 verify required CA is 'C=CA, ST=Ontario, L=Ottawa, O=Xelerance Corporation, OU=Doctor Taylor Plumage, CN=testing.xelerance.com, E=mcr@xelerance.com'
+| ikev2 verify required CA is '%any'
 |
 | List of X.509 End Certificates:
 |
@@ -3020,10 +3021,8 @@ sending 1404 bytes for STATE_PARENT_R1 through eth0:500 [132.213.238.7:500] to 9
 ./certreplydaveR2 leak: st_skeyseed in duplicate_state, item size: X
 ./certreplydaveR2 leak: st_enc_key in duplicate_state, item size: X
 ./certreplydaveR2 leak: struct state in new_state(), item size: X
-./certreplydaveR2 leak: ca string, item size: X
 ./certreplydaveR2 leak: keep id name, item size: X
 ./certreplydaveR2 leak: host ip, item size: X
-./certreplydaveR2 leak: ca string, item size: X
 ./certreplydaveR2 leak: keep id name, item size: X
 ./certreplydaveR2 leak: connection name, item size: X
 ./certreplydaveR2 leak: temporary connection, item size: X
@@ -3083,10 +3082,8 @@ sending 1404 bytes for STATE_PARENT_R1 through eth0:500 [132.213.238.7:500] to 9
 ./certreplydaveR2 leak: ID host_pair, item size: X
 ./certreplydaveR2 leak: host_pair, item size: X
 ./certreplydaveR2 leak: host ip, item size: X
-./certreplydaveR2 leak: ca string, item size: X
 ./certreplydaveR2 leak: keep id name, item size: X
 ./certreplydaveR2 leak: host ip, item size: X
-./certreplydaveR2 leak: ca string, item size: X
 ./certreplydaveR2 leak: keep id name, item size: X
 ./certreplydaveR2 leak: connection name, item size: X
 ./certreplydaveR2 leak: rfc3110 format of public key [created], item size: X
@@ -3107,10 +3104,8 @@ sending 1404 bytes for STATE_PARENT_R1 through eth0:500 [132.213.238.7:500] to 9
 ./certreplydaveR2 leak: ID host_pair, item size: X
 ./certreplydaveR2 leak: host_pair, item size: X
 ./certreplydaveR2 leak: host ip, item size: X
-./certreplydaveR2 leak: ca string, item size: X
 ./certreplydaveR2 leak: keep id name, item size: X
 ./certreplydaveR2 leak: host ip, item size: X
-./certreplydaveR2 leak: ca string, item size: X
 ./certreplydaveR2 leak: keep id name, item size: X
 ./certreplydaveR2 leak: connection name, item size: X
 ./certreplydaveR2 leak: rfc3110 format of public key [created], item size: X
@@ -3125,18 +3120,25 @@ sending 1404 bytes for STATE_PARENT_R1 through eth0:500 [132.213.238.7:500] to 9
 ./certreplydaveR2 leak: pubkey, item size: X
 ./certreplydaveR2 leak: x509cert, item size: X
 ./certreplydaveR2 leak: host cert, item size: X
-./certreplydaveR2 leak: 2 * certificate filename, item size: X
+./certreplydaveR2 leak: certificate filename, item size: X
+./certreplydaveR2 leak: rfc3110 format of public key [created], item size: X
+./certreplydaveR2 leak: issuer dn, item size: X
+./certreplydaveR2 leak: keep id name, item size: X
+./certreplydaveR2 leak: pubkey, item size: X
+./certreplydaveR2 leak: certificate filename, item size: X
 ./certreplydaveR2 leak: alg_info_esp, item size: X
 ./certreplydaveR2 leak: struct connection, item size: X
 ./certreplydaveR2 leak: alg_info_ike, item size: X
 ./certreplydaveR2 leak: keep id name, item size: X
 ./certreplydaveR2 leak: ID host_pair, item size: X
 ./certreplydaveR2 leak: host_pair, item size: X
-./certreplydaveR2 leak: ca string, item size: X
 ./certreplydaveR2 leak: host ip, item size: X
-./certreplydaveR2 leak: ca string, item size: X
 ./certreplydaveR2 leak: keep id name, item size: X
 ./certreplydaveR2 leak: connection name, item size: X
+./certreplydaveR2 leak: rfc3110 format of public key [created], item size: X
+./certreplydaveR2 leak: issuer dn, item size: X
+./certreplydaveR2 leak: keep id name, item size: X
+./certreplydaveR2 leak: pubkey, item size: X
 ./certreplydaveR2 leak: x509cert, item size: X
 ./certreplydaveR2 leak: host cert, item size: X
 ./certreplydaveR2 leak: certificate filename, item size: X

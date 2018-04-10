@@ -48,7 +48,7 @@ processing whack msg time: X size: Y
 |   orient rw finished with: 1 [0.0.0.0]
 RC=0 "rw": 10.1.0.0/16===192.168.0.1[@moon.strongswan.org]...%any; unrouted; eroute owner: #0
 RC=0 "rw":     myip=unset; hisip=unset; mycert=moonCert.pem;
-RC=0 "rw":   CAs: 'C=CA, ST=Ontario, L=Ottawa, O=Xelerance Corporation, OU=Doctor Taylor Plumage, CN=testing.xelerance.com, E=mcr@xelerance.com'...'%any'
+RC=0 "rw":   keys: 1:75B9 7996 96CB FFE9 9CEA F984 D596 602E 42AE 6535 2:none...
 RC=0 "rw":   ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1
 RC=0 "rw":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK; prio: 16,32; interface: eth0; kind=CK_TEMPLATE
 RC=0 "rw":   ESP algorithms wanted: 3des(3)_000-hmac_md5_96(1)_000-MODP1536(5); flags=-strict
@@ -675,13 +675,8 @@ sending 284 bytes for STATE_MAIN_R1 through eth0:500 [192.168.0.1:500] to 93.184
 |             b=(none)
 |    results  matched
 |   trusted_ca called with a=(empty) b=(empty)
-|   trusted_ca called with a=C=CA, ST=Ontario, L=Ottawa, O=Xelerance Corporation, OU=Doctor Taylor Plumage, CN=testing.xelerance.com, E=mcr@xelerance.com b=C=CA, ST=Ontario, L=Ottawa, O=Xelerance Corporation, OU=Doctor Taylor Plumage, CN=testing.xelerance.com, E=mcr@xelerance.com
-| refine_connection: checking rw against rw, best=(none) with match=1(id=1/ca=1/reqca=1)
-| refine_connection: checked rw against rw, now for see if best
-| started looking for secret for @moon.strongswan.org->(none) of kind PPK_RSA
-| searching for certificate PPK_RSA:AwEAAeOoT vs PPK_RSA:AwEAAeOoT
-| rsa key AwEAAeOoT found
-| refine_connection: picking new best rw (wild=15, peer_pathlen=0/our=0)
+|   trusted_ca called with a=(empty) b=C=CA, ST=Ontario, L=Ottawa, O=Xelerance Corporation, OU=Doctor Taylor Plumage, CN=testing.xelerance.com, E=mcr@xelerance.com
+| refine_connection: checking rw against rw, best=(none) with match=0(id=1/ca=1/reqca=0)
 | find_host_pair: looking for me=192.168.0.1:500 %any him=<none>:500 any-match
 | find_host_pair: comparing to me=192.168.0.1:500 %any him=0.0.0.0:500
 | find_host_pair: concluded with rw

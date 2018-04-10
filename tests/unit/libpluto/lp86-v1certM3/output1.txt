@@ -46,7 +46,8 @@ processing whack msg time: X size: Y
 |   orient home finished with: 1 [0.0.0.0]
 RC=0 "home": 192.168.0.100[C=CA, ST=Ontario, L=Ottawa, O=Xelerance Corporation, OU=Doctor Taylor Plumage, CN=carol.testing.openswan.org, E=mcr@xelerance.com]...192.168.0.1[@moon.strongswan.org]===10.1.0.0/16; unrouted; eroute owner: #0
 RC=0 "home":     myip=unset; hisip=unset; mycert=carolCert.pem; hiscert=moonCert.pem;
-RC=0 "home":   CAs: 'C=CA, ST=Ontario, L=Ottawa, O=Xelerance Corporation, OU=Doctor Taylor Plumage, CN=testing.xelerance.com, E=mcr@xelerance.com'...'C=CA, ST=Ontario, L=Ottawa, O=Xelerance Corporation, OU=Doctor Taylor Plumage, CN=testing.xelerance.com, E=mcr@xelerance.com'
+RC=0 "home":   keys: 1:C529 B6C4 CDF5 97E6 322E A755 1874 D9DC DFBF 74DB 2:none...
+RC=0 "home":        ....1:75B9 7996 96CB FFE9 9CEA F984 D596 602E 42AE 6535 2:none
 RC=0 "home":   ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1
 RC=0 "home":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+SAREFTRACK; prio: 32,16; interface: eth0; kind=CK_PERMANENT
 RC=0 "home":   ESP algorithms wanted: 3des(3)_000-hmac_md5_96(1)_000-MODP1536(5); flags=-strict
@@ -413,20 +414,7 @@ picking: eth0:500  outside: 55044 <=> d: 55044
 ./v1certM3 I am sending a certificate request
 | ***emit ISAKMP Certificate RequestPayload:
 |    cert type: CERT_X509_SIGNATURE
-| emitting 181 raw bytes of CA into ISAKMP Certificate RequestPayload
-| CA  30 81 b2 31  0b 30 09 06  03 55 04 06  13 02 43 41
-|   31 10 30 0e  06 03 55 04  08 0c 07 4f  6e 74 61 72
-|   69 6f 31 0f  30 0d 06 03  55 04 07 0c  06 4f 74 74
-|   61 77 61 31  1e 30 1c 06  03 55 04 0a  0c 15 58 65
-|   6c 65 72 61  6e 63 65 20  43 6f 72 70  6f 72 61 74
-|   69 6f 6e 31  1e 30 1c 06  03 55 04 0b  0c 15 44 6f
-|   63 74 6f 72  20 54 61 79  6c 6f 72 20  50 6c 75 6d
-|   61 67 65 31  1e 30 1c 06  03 55 04 03  0c 15 74 65
-|   73 74 69 6e  67 2e 78 65  6c 65 72 61  6e 63 65 2e
-|   63 6f 6d 31  20 30 1e 06  09 2a 86 48  86 f7 0d 01
-|   09 01 16 11  6d 63 72 40  78 65 6c 65  72 61 6e 63
-|   65 2e 63 6f  6d
-| emitting length of ISAKMP Certificate RequestPayload: 186
+| emitting length of ISAKMP Certificate RequestPayload: 5
 | hashing 48 bytes of SA
 | started looking for secret for C=CA, ST=Ontario, L=Ottawa, O=Xelerance Corporation, OU=Doctor Taylor Plumage, CN=carol.testing.openswan.org, E=mcr@xelerance.com->@moon.strongswan.org of kind PPK_RSA
 | searching for certificate PPK_RSA:AwEAAbfz1 vs PPK_RSA:AwEAAbfz1
@@ -527,47 +515,37 @@ picking: eth0:500  outside: 55044 <=> d: 55044
 |   23 eb e9 85  2f 2c 21 b0  41 cc f3 25  7f 43 e1 01
 |   c1 4f 59 95  e6 e1 b8 b7  33 c2 4f 87  3e f7 bd 2a
 |   cd b6 ed ec  f5 c7 80 bb  e9 d0 26 b9  2a 22 61 41
-|   65 fc 09 00  00 ba 04 30  81 b2 31 0b  30 09 06 03
-|   55 04 06 13  02 43 41 31  10 30 0e 06  03 55 04 08
-|   0c 07 4f 6e  74 61 72 69  6f 31 0f 30  0d 06 03 55
-|   04 07 0c 06  4f 74 74 61  77 61 31 1e  30 1c 06 03
-|   55 04 0a 0c  15 58 65 6c  65 72 61 6e  63 65 20 43
-|   6f 72 70 6f  72 61 74 69  6f 6e 31 1e  30 1c 06 03
-|   55 04 0b 0c  15 44 6f 63  74 6f 72 20  54 61 79 6c
-|   6f 72 20 50  6c 75 6d 61  67 65 31 1e  30 1c 06 03
-|   55 04 03 0c  15 74 65 73  74 69 6e 67  2e 78 65 6c
-|   65 72 61 6e  63 65 2e 63  6f 6d 31 20  30 1e 06 09
-|   2a 86 48 86  f7 0d 01 09  01 16 11 6d  63 72 40 78
-|   65 6c 65 72  61 6e 63 65  2e 63 6f 6d  00 00 01 04
-|   49 27 a9 11  ea ba 12 46  a2 fe ae ed  9a a5 36 de
-|   f7 d3 03 99  72 a3 b8 c6  52 66 3d bd  b9 a2 a7 f8
-|   fe 60 bb cc  b4 6d 31 a5  06 76 0d 91  a9 08 d5 cc
-|   c5 f1 a2 47  06 09 59 cc  ba 4d 11 b3  18 1b b6 60
-|   f9 66 a6 66  6a 44 5a 7b  5f 78 b8 f2  1b f6 c3 88
-|   55 70 27 b8  88 cd 13 e0  b0 4b bd 9c  a6 be 06 7c
-|   7a c8 71 44  81 7f 88 30  05 e7 b2 6f  81 0d 1d ec
-|   85 cb fd 4e  8f 33 bb 52  31 54 34 bd  2c e5 88 72
-|   2c f7 2b 85  42 5f fd bd  32 41 46 43  2b e7 7a 45
-|   7c 69 bc 7e  2f c5 18 0e  6b 3e 55 88  9e 30 09 20
-|   1d 29 c0 4d  42 49 6a e9  39 c9 1e eb  1d 00 20 65
-|   9a b8 7a 60  1f 77 6a d5  a7 93 13 68  e5 52 05 0a
-|   21 ff d8 ac  fb 2a 85 e0  55 b3 2d b5  8a d9 42 b3
-|   26 2c 06 e8  9d ec 47 ac  9a 4e 4d c8  2a 12 0d 7f
-|   cf 83 5d 9c  38 61 f3 0e  71 41 e6 1c  db 5d 31 cb
-|   13 61 d3 08  1e 04 09 f8  76 50 23 83  ba b7 00 fc
+|   65 fc 09 00  00 05 04 00  00 01 04 49  27 a9 11 ea
+|   ba 12 46 a2  fe ae ed 9a  a5 36 de f7  d3 03 99 72
+|   a3 b8 c6 52  66 3d bd b9  a2 a7 f8 fe  60 bb cc b4
+|   6d 31 a5 06  76 0d 91 a9  08 d5 cc c5  f1 a2 47 06
+|   09 59 cc ba  4d 11 b3 18  1b b6 60 f9  66 a6 66 6a
+|   44 5a 7b 5f  78 b8 f2 1b  f6 c3 88 55  70 27 b8 88
+|   cd 13 e0 b0  4b bd 9c a6  be 06 7c 7a  c8 71 44 81
+|   7f 88 30 05  e7 b2 6f 81  0d 1d ec 85  cb fd 4e 8f
+|   33 bb 52 31  54 34 bd 2c  e5 88 72 2c  f7 2b 85 42
+|   5f fd bd 32  41 46 43 2b  e7 7a 45 7c  69 bc 7e 2f
+|   c5 18 0e 6b  3e 55 88 9e  30 09 20 1d  29 c0 4d 42
+|   49 6a e9 39  c9 1e eb 1d  00 20 65 9a  b8 7a 60 1f
+|   77 6a d5 a7  93 13 68 e5  52 05 0a 21  ff d8 ac fb
+|   2a 85 e0 55  b3 2d b5 8a  d9 42 b3 26  2c 06 e8 9d
+|   ec 47 ac 9a  4e 4d c8 2a  12 0d 7f cf  83 5d 9c 38
+|   61 f3 0e 71  41 e6 1c db  5d 31 cb 13  61 d3 08 1e
+|   04 09 f8 76  50 23 83 ba  b7 00 fc
 | IV:
 |   e9 00 11 7e  41 d4 31 62
-| unpadded size is: 1648
-| encrypting 1648 using OAKLEY_3DES_CBC
+| unpadded size is: 1467
+| emitting 5 zero bytes of encryption padding into ISAKMP Message
+| encrypting 1472 using OAKLEY_3DES_CBC
 | crypting using IV:  e9 00 11 7e  41 d4 31 62
-| next IV:  09 aa d3 94  b2 06 69 6c
-| emitting length of ISAKMP Message: 1676
+| next IV:  f7 12 f5 a3  87 9a 25 a9
+| emitting length of ISAKMP Message: 1500
 | complete state transition with STF_OK
 ./v1certM3 transition from state STATE_MAIN_I2 to state STATE_MAIN_I3
 | sending reply packet to 192.168.0.1:4500 (from port 500)
-sending 1676 bytes for STATE_MAIN_I2 through eth0:500 [93.184.216.34:55044] to 192.168.0.1:4500 (using #1)
+sending 1500 bytes for STATE_MAIN_I2 through eth0:500 [93.184.216.34:55044] to 192.168.0.1:4500 (using #1)
 |   80 01 02 03  04 05 06 07  64 0a 06 43  5c 7c 4b 31
-|   05 10 02 01  00 00 00 00  00 00 06 8c  8c a7 56 cf
+|   05 10 02 01  00 00 00 00  00 00 05 dc  8c a7 56 cf
 |   f7 25 bc ff  50 8c a9 dd  a5 9a 4e d5  8d 93 5e fb
 |   97 65 bb 23  df 7f 6b a2  8e d3 15 31  c9 ef 8f 12
 |   00 e7 11 97  5a 97 4c 00  46 e6 33 83  48 ce ec 07
@@ -642,35 +620,24 @@ sending 1676 bytes for STATE_MAIN_I2 through eth0:500 [93.184.216.34:55044] to 1
 |   fd 53 63 c9  30 ba b8 8d  cc 70 c1 c9  16 4c 08 d9
 |   4a 68 c5 46  8e 51 2a ee  22 89 cd a6  c4 db 4b a8
 |   c4 02 6b ea  8a e4 3e 0b  7f 08 4c 4b  6b 14 b8 c4
-|   ef dd a7 ab  6d 4d 31 b8  99 d6 0e c2  a2 3c aa ac
-|   ef f3 e7 02  61 99 89 b1  2c 38 b7 7b  51 89 07 e7
-|   9f a3 9b c2  cf 14 18 18  d8 4c 79 29  54 3b 3b 72
-|   d9 bb 58 07  ff 2b 82 c4  93 bd 80 41  55 6c 71 41
-|   dc 75 71 15  b2 2b 86 f0  9f 65 b6 60  32 41 7b 23
-|   4a 3e 2b 25  59 5e 5f 70  c5 20 06 19  e7 c2 eb 5e
-|   cd cf 5d 55  bf 4b 0f 02  52 a1 e3 70  7b bc 1e 73
-|   aa 25 12 d3  20 ff c7 af  ff 2c 75 8d  91 74 b5 d5
-|   c6 d4 9f f0  dc c5 f9 ac  67 71 a1 75  51 21 dc d8
-|   cc 8e b3 d2  b7 20 b5 58  7e 04 7d 1f  71 e3 a0 0e
-|   54 53 d6 f2  c3 cb 66 c5  44 c3 da f2  5d 8d 17 d9
-|   42 ce a2 e9  51 16 6a ae  ff 31 42 46  5d fc 85 2f
-|   25 de 8c 31  eb 19 eb 00  38 e6 a5 01  b2 4b c7 b8
-|   63 84 a5 cc  ec 99 6e 12  25 bd 26 d8  f2 4e 12 cf
-|   36 00 12 09  b4 e7 56 cf  fd 92 38 0b  55 d9 ee 34
-|   ea 4b 49 78  06 0b 02 e6  c5 16 24 8d  39 cd 74 73
-|   f1 45 01 64  03 e4 bc f8  fe 35 d9 63  19 79 ca 38
-|   42 93 0b 0f  31 40 e9 59  d9 17 99 c3  28 47 95 90
-|   c8 02 bf 6f  0e b0 cb f2  aa 01 fb fa  db ce 6a e3
-|   fe 81 49 52  c1 76 42 5e  9f c1 39 c4  c9 f6 64 de
-|   54 37 87 96  20 37 ed 02  bd 8c 78 f5  16 78 18 40
-|   12 f7 21 4d  66 04 3f ad  04 89 e9 27  f0 32 b9 93
-|   5a 80 e9 3d  7a 76 f8 d3  b6 01 91 2a  8f eb d6 47
-|   5c 83 c1 d7  68 4c 5c c5  40 86 11 92  6e 0b 9b 09
-|   2f ef a0 58  26 2f 59 dc  b3 fc f9 ad  c3 9f 8c 46
-|   1a 70 3a cb  c4 33 fc 54  b7 90 31 85  66 ee df a7
-|   21 5c d5 e6  76 8f 04 fe  d7 b3 82 6b  b0 ba da 0f
-|   5e 9f 6b 7d  27 60 36 5c  d6 84 57 c2  4d 42 53 8d
-|   8c c7 7f 71  09 aa d3 94  b2 06 69 6c
+|   ef dd a7 ab  6d 4d 31 b8  99 d6 0e c2  db b3 df 88
+|   a0 f9 70 43  21 b0 73 8f  7b 7b b2 fe  ab 3e ff 1f
+|   ef ce c7 4e  96 e6 0f 22  fd 20 18 b9  af 11 7d e5
+|   ce f0 0f 98  8b 50 33 fd  70 bb 9b b9  e4 17 83 2f
+|   9e 3f 39 78  2f 6a 80 52  12 a6 5e bb  e6 08 e8 5c
+|   38 d1 b3 bc  9b 41 ab 42  c9 f6 f4 a5  b5 05 43 8c
+|   7e 22 2a 5f  9c 15 b2 48  52 06 68 3f  cd 0e 87 58
+|   a2 1c 28 fb  f3 2d 29 71  2e c6 ee 4e  18 c8 0a 38
+|   9f a8 bf 30  b9 9c bb 51  f2 d6 aa f9  bf de ec 75
+|   1d 15 dc 3a  6d ad 20 ba  0b 1c 46 90  83 b4 0c 56
+|   a1 ba e1 9c  11 c2 2b 62  14 49 ab cd  1e b9 f5 20
+|   68 7f d3 43  8b ca 05 b0  29 ce b6 ea  98 7c 72 65
+|   27 c8 cf d8  bd 96 c6 ad  36 eb b1 5b  0f d5 a2 ce
+|   da 6c e5 32  cd d4 05 85  56 04 52 a5  3c 5c 6d 77
+|   50 62 c6 39  14 de 21 c8  df b4 ec d1  3f 65 e3 64
+|   eb af 4d b2  e4 44 4c c7  2e 6d 36 34  67 a2 16 57
+|   90 c8 8b aa  37 34 2c a5  03 00 04 99  e0 64 b1 d9
+|   ef ce db 19  f7 12 f5 a3  87 9a 25 a9
 | inserting event EVENT_RETRANSMIT, timeout in 10 seconds for #1
 ./v1certM3 STATE_MAIN_I3: sent MI3, expecting MR3
 | modecfg pull: noquirk policy:push not-client

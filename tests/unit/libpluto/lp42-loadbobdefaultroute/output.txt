@@ -35,7 +35,7 @@ processing whack msg time: X size: Y
 | ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+SAREFTRACK
 RC=0 "nat-t": %any[bob@strongswan.org]...%any===10.1.0.0/16; unrouted; eroute owner: #0
 RC=0 "nat-t":     myip=unset; hisip=unset; mycert=bobCert.pem;
-RC=0 "nat-t":   CAs: 'C=CH, O=Linux strongSwan, CN=strongSwan Root CA'...'%any'
+RC=0 "nat-t":   keys: 1:A339 C44A 54EA F8CD A71A 5BC3 31B6 80CE 210B CBFE 2:none...
 RC=0 "nat-t":   ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1
 RC=0 "nat-t":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+SAREFTRACK; prio: 16,0; interface: eth0; kind=CK_PERMANENT
 |   orient nat-t finished with: 1 [10.2.0.10]
