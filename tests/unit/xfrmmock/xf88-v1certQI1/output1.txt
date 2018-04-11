@@ -45,8 +45,9 @@ processing whack msg time: X size: Y
 | ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+SAREFTRACK
 |   orient home finished with: 1 [0.0.0.0]
 RC=0 "home": 192.168.0.100[C=CA, ST=Ontario, L=Ottawa, O=Xelerance Corporation, OU=Doctor Taylor Plumage, CN=carol.testing.openswan.org, E=mcr@xelerance.com]...192.168.0.1[@moon.strongswan.org]===10.1.0.0/16; unrouted; eroute owner: #0
-RC=0 "home":     myip=unset; hisip=unset; mycert=carolCert.pem;
-RC=0 "home":   CAs: 'C=CA, ST=Ontario, L=Ottawa, O=Xelerance Corporation, OU=Doctor Taylor Plumage, CN=testing.xelerance.com, E=mcr@xelerance.com'...'%any'
+RC=0 "home":     myip=unset; hisip=unset; mycert=carolCert.pem; hiscert=moonCert.pem;
+RC=0 "home":   keys: 1:C529 B6C4 CDF5 97E6 322E A755 1874 D9DC DFBF 74DB 2:none...
+RC=0 "home":        ....1:75B9 7996 96CB FFE9 9CEA F984 D596 602E 42AE 6535 2:none
 RC=0 "home":   ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1
 RC=0 "home":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+SAREFTRACK; prio: 32,16; interface: eth0; kind=CK_PERMANENT
 RC=0 "home":   ESP algorithms wanted: 3des(3)_000-hmac_md5_96(1)_000-MODP1536(5); flags=-strict
@@ -413,20 +414,7 @@ picking: eth0:500  outside: 55044 <=> d: 55044
 ./v1certQI1 I am sending a certificate request
 | ***emit ISAKMP Certificate RequestPayload:
 |    cert type: CERT_X509_SIGNATURE
-| emitting 181 raw bytes of CA into ISAKMP Certificate RequestPayload
-| CA  30 81 b2 31  0b 30 09 06  03 55 04 06  13 02 43 41
-|   31 10 30 0e  06 03 55 04  08 0c 07 4f  6e 74 61 72
-|   69 6f 31 0f  30 0d 06 03  55 04 07 0c  06 4f 74 74
-|   61 77 61 31  1e 30 1c 06  03 55 04 0a  0c 15 58 65
-|   6c 65 72 61  6e 63 65 20  43 6f 72 70  6f 72 61 74
-|   69 6f 6e 31  1e 30 1c 06  03 55 04 0b  0c 15 44 6f
-|   63 74 6f 72  20 54 61 79  6c 6f 72 20  50 6c 75 6d
-|   61 67 65 31  1e 30 1c 06  03 55 04 03  0c 15 74 65
-|   73 74 69 6e  67 2e 78 65  6c 65 72 61  6e 63 65 2e
-|   63 6f 6d 31  20 30 1e 06  09 2a 86 48  86 f7 0d 01
-|   09 01 16 11  6d 63 72 40  78 65 6c 65  72 61 6e 63
-|   65 2e 63 6f  6d
-| emitting length of ISAKMP Certificate RequestPayload: 186
+| emitting length of ISAKMP Certificate RequestPayload: 5
 | hashing 48 bytes of SA
 | started looking for secret for C=CA, ST=Ontario, L=Ottawa, O=Xelerance Corporation, OU=Doctor Taylor Plumage, CN=carol.testing.openswan.org, E=mcr@xelerance.com->@moon.strongswan.org of kind PPK_RSA
 | searching for certificate PPK_RSA:AwEAAbfz1 vs PPK_RSA:AwEAAbfz1
@@ -527,47 +515,37 @@ picking: eth0:500  outside: 55044 <=> d: 55044
 |   23 eb e9 85  2f 2c 21 b0  41 cc f3 25  7f 43 e1 01
 |   c1 4f 59 95  e6 e1 b8 b7  33 c2 4f 87  3e f7 bd 2a
 |   cd b6 ed ec  f5 c7 80 bb  e9 d0 26 b9  2a 22 61 41
-|   65 fc 09 00  00 ba 04 30  81 b2 31 0b  30 09 06 03
-|   55 04 06 13  02 43 41 31  10 30 0e 06  03 55 04 08
-|   0c 07 4f 6e  74 61 72 69  6f 31 0f 30  0d 06 03 55
-|   04 07 0c 06  4f 74 74 61  77 61 31 1e  30 1c 06 03
-|   55 04 0a 0c  15 58 65 6c  65 72 61 6e  63 65 20 43
-|   6f 72 70 6f  72 61 74 69  6f 6e 31 1e  30 1c 06 03
-|   55 04 0b 0c  15 44 6f 63  74 6f 72 20  54 61 79 6c
-|   6f 72 20 50  6c 75 6d 61  67 65 31 1e  30 1c 06 03
-|   55 04 03 0c  15 74 65 73  74 69 6e 67  2e 78 65 6c
-|   65 72 61 6e  63 65 2e 63  6f 6d 31 20  30 1e 06 09
-|   2a 86 48 86  f7 0d 01 09  01 16 11 6d  63 72 40 78
-|   65 6c 65 72  61 6e 63 65  2e 63 6f 6d  00 00 01 04
-|   49 27 a9 11  ea ba 12 46  a2 fe ae ed  9a a5 36 de
-|   f7 d3 03 99  72 a3 b8 c6  52 66 3d bd  b9 a2 a7 f8
-|   fe 60 bb cc  b4 6d 31 a5  06 76 0d 91  a9 08 d5 cc
-|   c5 f1 a2 47  06 09 59 cc  ba 4d 11 b3  18 1b b6 60
-|   f9 66 a6 66  6a 44 5a 7b  5f 78 b8 f2  1b f6 c3 88
-|   55 70 27 b8  88 cd 13 e0  b0 4b bd 9c  a6 be 06 7c
-|   7a c8 71 44  81 7f 88 30  05 e7 b2 6f  81 0d 1d ec
-|   85 cb fd 4e  8f 33 bb 52  31 54 34 bd  2c e5 88 72
-|   2c f7 2b 85  42 5f fd bd  32 41 46 43  2b e7 7a 45
-|   7c 69 bc 7e  2f c5 18 0e  6b 3e 55 88  9e 30 09 20
-|   1d 29 c0 4d  42 49 6a e9  39 c9 1e eb  1d 00 20 65
-|   9a b8 7a 60  1f 77 6a d5  a7 93 13 68  e5 52 05 0a
-|   21 ff d8 ac  fb 2a 85 e0  55 b3 2d b5  8a d9 42 b3
-|   26 2c 06 e8  9d ec 47 ac  9a 4e 4d c8  2a 12 0d 7f
-|   cf 83 5d 9c  38 61 f3 0e  71 41 e6 1c  db 5d 31 cb
-|   13 61 d3 08  1e 04 09 f8  76 50 23 83  ba b7 00 fc
+|   65 fc 09 00  00 05 04 00  00 01 04 49  27 a9 11 ea
+|   ba 12 46 a2  fe ae ed 9a  a5 36 de f7  d3 03 99 72
+|   a3 b8 c6 52  66 3d bd b9  a2 a7 f8 fe  60 bb cc b4
+|   6d 31 a5 06  76 0d 91 a9  08 d5 cc c5  f1 a2 47 06
+|   09 59 cc ba  4d 11 b3 18  1b b6 60 f9  66 a6 66 6a
+|   44 5a 7b 5f  78 b8 f2 1b  f6 c3 88 55  70 27 b8 88
+|   cd 13 e0 b0  4b bd 9c a6  be 06 7c 7a  c8 71 44 81
+|   7f 88 30 05  e7 b2 6f 81  0d 1d ec 85  cb fd 4e 8f
+|   33 bb 52 31  54 34 bd 2c  e5 88 72 2c  f7 2b 85 42
+|   5f fd bd 32  41 46 43 2b  e7 7a 45 7c  69 bc 7e 2f
+|   c5 18 0e 6b  3e 55 88 9e  30 09 20 1d  29 c0 4d 42
+|   49 6a e9 39  c9 1e eb 1d  00 20 65 9a  b8 7a 60 1f
+|   77 6a d5 a7  93 13 68 e5  52 05 0a 21  ff d8 ac fb
+|   2a 85 e0 55  b3 2d b5 8a  d9 42 b3 26  2c 06 e8 9d
+|   ec 47 ac 9a  4e 4d c8 2a  12 0d 7f cf  83 5d 9c 38
+|   61 f3 0e 71  41 e6 1c db  5d 31 cb 13  61 d3 08 1e
+|   04 09 f8 76  50 23 83 ba  b7 00 fc
 | IV:
 |   e9 00 11 7e  41 d4 31 62
-| unpadded size is: 1648
-| encrypting 1648 using OAKLEY_3DES_CBC
+| unpadded size is: 1467
+| emitting 5 zero bytes of encryption padding into ISAKMP Message
+| encrypting 1472 using OAKLEY_3DES_CBC
 | crypting using IV:  e9 00 11 7e  41 d4 31 62
-| next IV:  09 aa d3 94  b2 06 69 6c
-| emitting length of ISAKMP Message: 1676
+| next IV:  f7 12 f5 a3  87 9a 25 a9
+| emitting length of ISAKMP Message: 1500
 | complete state transition with STF_OK
 ./v1certQI1 transition from state STATE_MAIN_I2 to state STATE_MAIN_I3
 | sending reply packet to 192.168.0.1:4500 (from port 500)
-sending 1676 bytes for STATE_MAIN_I2 through eth0:500 [93.184.216.34:55044] to 192.168.0.1:4500 (using #1)
+sending 1500 bytes for STATE_MAIN_I2 through eth0:500 [93.184.216.34:55044] to 192.168.0.1:4500 (using #1)
 |   80 01 02 03  04 05 06 07  64 0a 06 43  5c 7c 4b 31
-|   05 10 02 01  00 00 00 00  00 00 06 8c  8c a7 56 cf
+|   05 10 02 01  00 00 00 00  00 00 05 dc  8c a7 56 cf
 |   f7 25 bc ff  50 8c a9 dd  a5 9a 4e d5  8d 93 5e fb
 |   97 65 bb 23  df 7f 6b a2  8e d3 15 31  c9 ef 8f 12
 |   00 e7 11 97  5a 97 4c 00  46 e6 33 83  48 ce ec 07
@@ -642,35 +620,24 @@ sending 1676 bytes for STATE_MAIN_I2 through eth0:500 [93.184.216.34:55044] to 1
 |   fd 53 63 c9  30 ba b8 8d  cc 70 c1 c9  16 4c 08 d9
 |   4a 68 c5 46  8e 51 2a ee  22 89 cd a6  c4 db 4b a8
 |   c4 02 6b ea  8a e4 3e 0b  7f 08 4c 4b  6b 14 b8 c4
-|   ef dd a7 ab  6d 4d 31 b8  99 d6 0e c2  a2 3c aa ac
-|   ef f3 e7 02  61 99 89 b1  2c 38 b7 7b  51 89 07 e7
-|   9f a3 9b c2  cf 14 18 18  d8 4c 79 29  54 3b 3b 72
-|   d9 bb 58 07  ff 2b 82 c4  93 bd 80 41  55 6c 71 41
-|   dc 75 71 15  b2 2b 86 f0  9f 65 b6 60  32 41 7b 23
-|   4a 3e 2b 25  59 5e 5f 70  c5 20 06 19  e7 c2 eb 5e
-|   cd cf 5d 55  bf 4b 0f 02  52 a1 e3 70  7b bc 1e 73
-|   aa 25 12 d3  20 ff c7 af  ff 2c 75 8d  91 74 b5 d5
-|   c6 d4 9f f0  dc c5 f9 ac  67 71 a1 75  51 21 dc d8
-|   cc 8e b3 d2  b7 20 b5 58  7e 04 7d 1f  71 e3 a0 0e
-|   54 53 d6 f2  c3 cb 66 c5  44 c3 da f2  5d 8d 17 d9
-|   42 ce a2 e9  51 16 6a ae  ff 31 42 46  5d fc 85 2f
-|   25 de 8c 31  eb 19 eb 00  38 e6 a5 01  b2 4b c7 b8
-|   63 84 a5 cc  ec 99 6e 12  25 bd 26 d8  f2 4e 12 cf
-|   36 00 12 09  b4 e7 56 cf  fd 92 38 0b  55 d9 ee 34
-|   ea 4b 49 78  06 0b 02 e6  c5 16 24 8d  39 cd 74 73
-|   f1 45 01 64  03 e4 bc f8  fe 35 d9 63  19 79 ca 38
-|   42 93 0b 0f  31 40 e9 59  d9 17 99 c3  28 47 95 90
-|   c8 02 bf 6f  0e b0 cb f2  aa 01 fb fa  db ce 6a e3
-|   fe 81 49 52  c1 76 42 5e  9f c1 39 c4  c9 f6 64 de
-|   54 37 87 96  20 37 ed 02  bd 8c 78 f5  16 78 18 40
-|   12 f7 21 4d  66 04 3f ad  04 89 e9 27  f0 32 b9 93
-|   5a 80 e9 3d  7a 76 f8 d3  b6 01 91 2a  8f eb d6 47
-|   5c 83 c1 d7  68 4c 5c c5  40 86 11 92  6e 0b 9b 09
-|   2f ef a0 58  26 2f 59 dc  b3 fc f9 ad  c3 9f 8c 46
-|   1a 70 3a cb  c4 33 fc 54  b7 90 31 85  66 ee df a7
-|   21 5c d5 e6  76 8f 04 fe  d7 b3 82 6b  b0 ba da 0f
-|   5e 9f 6b 7d  27 60 36 5c  d6 84 57 c2  4d 42 53 8d
-|   8c c7 7f 71  09 aa d3 94  b2 06 69 6c
+|   ef dd a7 ab  6d 4d 31 b8  99 d6 0e c2  db b3 df 88
+|   a0 f9 70 43  21 b0 73 8f  7b 7b b2 fe  ab 3e ff 1f
+|   ef ce c7 4e  96 e6 0f 22  fd 20 18 b9  af 11 7d e5
+|   ce f0 0f 98  8b 50 33 fd  70 bb 9b b9  e4 17 83 2f
+|   9e 3f 39 78  2f 6a 80 52  12 a6 5e bb  e6 08 e8 5c
+|   38 d1 b3 bc  9b 41 ab 42  c9 f6 f4 a5  b5 05 43 8c
+|   7e 22 2a 5f  9c 15 b2 48  52 06 68 3f  cd 0e 87 58
+|   a2 1c 28 fb  f3 2d 29 71  2e c6 ee 4e  18 c8 0a 38
+|   9f a8 bf 30  b9 9c bb 51  f2 d6 aa f9  bf de ec 75
+|   1d 15 dc 3a  6d ad 20 ba  0b 1c 46 90  83 b4 0c 56
+|   a1 ba e1 9c  11 c2 2b 62  14 49 ab cd  1e b9 f5 20
+|   68 7f d3 43  8b ca 05 b0  29 ce b6 ea  98 7c 72 65
+|   27 c8 cf d8  bd 96 c6 ad  36 eb b1 5b  0f d5 a2 ce
+|   da 6c e5 32  cd d4 05 85  56 04 52 a5  3c 5c 6d 77
+|   50 62 c6 39  14 de 21 c8  df b4 ec d1  3f 65 e3 64
+|   eb af 4d b2  e4 44 4c c7  2e 6d 36 34  67 a2 16 57
+|   90 c8 8b aa  37 34 2c a5  03 00 04 99  e0 64 b1 d9
+|   ef ce db 19  f7 12 f5 a3  87 9a 25 a9
 | inserting event EVENT_RETRANSMIT, timeout in 10 seconds for #1
 ./v1certQI1 STATE_MAIN_I3: sent MI3, expecting MR3
 | modecfg pull: noquirk policy:push not-client
@@ -771,9 +738,9 @@ picking: eth0:500  outside: 55044 <=> d: 55044
 | v1 state object #1 found, in STATE_MAIN_I3
 | received encrypted packet from 192.168.0.1:4500
 | decrypting 1296 bytes using algorithm OAKLEY_3DES_CBC
-| crypting using IV:  09 aa d3 94  b2 06 69 6c
+| crypting using IV:  f7 12 f5 a3  87 9a 25 a9
 | decrypted:
-|   06 00 00 1b  02 00 00 00  6d 6f 6f 6e  2e 73 74 72
+|   f8 b8 26 2c  37 9c 4c c5  6d 6f 6f 6e  2e 73 74 72
 |   6f 6e 67 73  77 61 6e 2e  6f 72 67 09  00 03 ee 04
 |   30 82 03 e5  30 82 02 cd  02 09 00 8c  b2 68 2f b0
 |   f4 5a 93 30  0d 06 09 2a  86 48 86 f7  0d 01 01 0b
@@ -856,285 +823,11 @@ picking: eth0:500  outside: 55044 <=> d: 55044
 |   48 73 f2 7d  f7 a2 29 46  30 08 02 35  7e 00 00 00
 | next IV:  ac a6 c6 01  eb 36 c2 5f
 | got payload 0x20(ISAKMP_NEXT_ID) needed: 0x220 opt: 0x20c0
-| ***parse ISAKMP Identification Payload:
-|    length: 27
-|    ID type: ID_FQDN
-|    DOI specific A: 0
-|    DOI specific B: 0
-|      obj:   6d 6f 6f 6e  2e 73 74 72  6f 6e 67 73  77 61 6e 2e
-|   6f 72 67
-| got payload 0x40(ISAKMP_NEXT_CERT) needed: 0x200 opt: 0x20c0
-| ***parse ISAKMP Certificate Payload:
-|    length: 1006
-|    cert encoding: CERT_X509_SIGNATURE
-| got payload 0x200(ISAKMP_NEXT_SIG) needed: 0x200 opt: 0x20c0
-| ***parse ISAKMP Signature Payload:
-|    length: 260
-| removing 3 bytes of padding
-./v1certQI1 Main mode peer ID is ID_FQDN: '@moon.strongswan.org'
-| hashing 48 bytes of SA
-| key issuer CA is 'C=CA, ST=Ontario, L=Ottawa, O=Xelerance Corporation, OU=Doctor Taylor Plumage, CN=testing.xelerance.com, E=mcr@xelerance.com'
-| an RSA Sig check passed with *AwEAAeOoT [preloaded key]
-| authentication succeeded
-| complete state transition with STF_OK
-./v1certQI1 transition from state STATE_MAIN_I3 to state STATE_MAIN_I4
-| inserting event EVENT_SA_REPLACE, timeout in 3269 seconds for #1
-./v1certQI1 STATE_MAIN_I4: ISAKMP SA established {auth=OAKLEY_RSA_SIG oursig= theirsig=AwEAAeOoT cipher=oakley_3des_cbc_192 prf=oakley_md5 group=modp1536}
-| modecfg pull: noquirk policy:push not-client
-| phase 1 is done, looking for phase 2 to unpend
-| unqueuing pending Quick Mode with 192.168.0.1 "home" import:admin initiate
-| duplicating state object #1
-| creating state object #2 at Z
-| ICOOKIE:  80 01 02 03  04 05 06 07
-| RCOOKIE:  64 0a 06 43  5c 7c 4b 31
-| state hash entry 5
-| inserting state object #2 bucket: 5
-| inserting event EVENT_SO_DISCARD, timeout in 0 seconds for #2
-| auth algid=1 not available
-./v1certQI1 initiating Quick Mode RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+SAREFTRACK {using isakmp#1 msgid:03020180 proposal=none pfsgroup=OAKLEY_GROUP_MODP1536}
-| **emit ISAKMP Message:
-|    initiator cookie:
-|   80 01 02 03  04 05 06 07
-|    responder cookie:
-|   64 0a 06 43  5c 7c 4b 31
-|    ISAKMP version: ISAKMP Version 1.0 (rfc2407)
-|    exchange type: ISAKMP_XCHG_QUICK
-|    flags: ISAKMP_FLAG_ENCRYPTION
-|    message ID:  80 01 02 03
-| ***emit ISAKMP Hash Payload:
-| emitting 16 zero bytes of HASH into ISAKMP Hash Payload
-| emitting length of ISAKMP Hash Payload: 20
-| ***emit ISAKMP Security Association Payload:
-|    DOI: ISAKMP_DOI_IPSEC
-| ****emit IPsec DOI SIT:
-|    IPsec DOI SIT: SIT_IDENTITY_ONLY
-| out_sa pcn: 0 has 1 valid proposals
-| out_sa pcn: 0 pn: 0<1 valid_count: 1 trans_cnt: 4
-| ****emit ISAKMP Proposal Payload:
-|    proposal number: 0
-|    protocol ID: PROTO_IPSEC_ESP
-|    SPI size: 4
-|    number of transforms: 4
-| emitting 4 raw bytes of SPI into ISAKMP Proposal Payload
-| SPI  12 34 56 78
-| *****emit ISAKMP Transform Payload (ESP):
-|    transform number: 0
-|    transform ID: ESP_AES
-| ******emit ISAKMP IPsec DOI attribute:
-|    af+type: GROUP_DESCRIPTION
-|    length/value: 5
-|     [5 is OAKLEY_GROUP_MODP1536]
-| ******emit ISAKMP IPsec DOI attribute:
-|    af+type: ENCAPSULATION_MODE
-|    length/value: 3
-|     [3 is ENCAPSULATION_MODE_UDP_TUNNEL_RFC]
-| ******emit ISAKMP IPsec DOI attribute:
-|    af+type: SA_LIFE_TYPE
-|    length/value: 1
-|     [1 is SA_LIFE_TYPE_SECONDS]
-| ******emit ISAKMP IPsec DOI attribute:
-|    af+type: SA_LIFE_DURATION
-|    length/value: 1200
-| ******emit ISAKMP IPsec DOI attribute:
-|    af+type: AUTH_ALGORITHM
-|    length/value: 2
-|     [2 is AUTH_ALGORITHM_HMAC_SHA1]
-| ******emit ISAKMP IPsec DOI attribute:
-|    af+type: KEY_LENGTH
-|    length/value: 128
-| emitting length of ISAKMP Transform Payload (ESP): 32
-| *****emit ISAKMP Transform Payload (ESP):
-|    transform number: 1
-|    transform ID: ESP_AES
-| ******emit ISAKMP IPsec DOI attribute:
-|    af+type: GROUP_DESCRIPTION
-|    length/value: 5
-|     [5 is OAKLEY_GROUP_MODP1536]
-| ******emit ISAKMP IPsec DOI attribute:
-|    af+type: ENCAPSULATION_MODE
-|    length/value: 3
-|     [3 is ENCAPSULATION_MODE_UDP_TUNNEL_RFC]
-| ******emit ISAKMP IPsec DOI attribute:
-|    af+type: SA_LIFE_TYPE
-|    length/value: 1
-|     [1 is SA_LIFE_TYPE_SECONDS]
-| ******emit ISAKMP IPsec DOI attribute:
-|    af+type: SA_LIFE_DURATION
-|    length/value: 1200
-| ******emit ISAKMP IPsec DOI attribute:
-|    af+type: AUTH_ALGORITHM
-|    length/value: 1
-|     [1 is AUTH_ALGORITHM_HMAC_MD5]
-| ******emit ISAKMP IPsec DOI attribute:
-|    af+type: KEY_LENGTH
-|    length/value: 128
-| emitting length of ISAKMP Transform Payload (ESP): 32
-| *****emit ISAKMP Transform Payload (ESP):
-|    transform number: 2
-|    transform ID: ESP_3DES
-| ******emit ISAKMP IPsec DOI attribute:
-|    af+type: GROUP_DESCRIPTION
-|    length/value: 5
-|     [5 is OAKLEY_GROUP_MODP1536]
-| ******emit ISAKMP IPsec DOI attribute:
-|    af+type: ENCAPSULATION_MODE
-|    length/value: 3
-|     [3 is ENCAPSULATION_MODE_UDP_TUNNEL_RFC]
-| ******emit ISAKMP IPsec DOI attribute:
-|    af+type: SA_LIFE_TYPE
-|    length/value: 1
-|     [1 is SA_LIFE_TYPE_SECONDS]
-| ******emit ISAKMP IPsec DOI attribute:
-|    af+type: SA_LIFE_DURATION
-|    length/value: 1200
-| ******emit ISAKMP IPsec DOI attribute:
-|    af+type: AUTH_ALGORITHM
-|    length/value: 2
-|     [2 is AUTH_ALGORITHM_HMAC_SHA1]
-| emitting length of ISAKMP Transform Payload (ESP): 28
-| *****emit ISAKMP Transform Payload (ESP):
-|    transform number: 3
-|    transform ID: ESP_3DES
-| ******emit ISAKMP IPsec DOI attribute:
-|    af+type: GROUP_DESCRIPTION
-|    length/value: 5
-|     [5 is OAKLEY_GROUP_MODP1536]
-| ******emit ISAKMP IPsec DOI attribute:
-|    af+type: ENCAPSULATION_MODE
-|    length/value: 3
-|     [3 is ENCAPSULATION_MODE_UDP_TUNNEL_RFC]
-| ******emit ISAKMP IPsec DOI attribute:
-|    af+type: SA_LIFE_TYPE
-|    length/value: 1
-|     [1 is SA_LIFE_TYPE_SECONDS]
-| ******emit ISAKMP IPsec DOI attribute:
-|    af+type: SA_LIFE_DURATION
-|    length/value: 1200
-| ******emit ISAKMP IPsec DOI attribute:
-|    af+type: AUTH_ALGORITHM
-|    length/value: 1
-|     [1 is AUTH_ALGORITHM_HMAC_MD5]
-| emitting length of ISAKMP Transform Payload (ESP): 28
-| emitting length of ISAKMP Proposal Payload: 132
-| emitting length of ISAKMP Security Association Payload: 144
-| ***emit ISAKMP Nonce Payload:
-| emitting 16 raw bytes of Ni into ISAKMP Nonce Payload
-| Ni  b5 ce 84 19  09 5c 6e 2b  6b 62 d3 05  53 05 b3 c4
-| emitting length of ISAKMP Nonce Payload: 20
-| ***emit ISAKMP Key Exchange Payload:
-| emitting 192 raw bytes of keyex value into ISAKMP Key Exchange Payload
-| keyex value  ff bc 6a 92  a6 b9 55 9b  05 fa 96 a7  a4 35 07 b4
-|   c1 e1 c0 86  1a 58 71 d9  ba 73 a1 63  11 37 88 c0
-|   de bb 39 79  e7 ff 0c 52  b4 ce 60 50  eb 05 36 9e
-|   a4 30 0d 2b  ff 3b 1b 29  9f 3b 80 2c  cb 13 31 8c
-|   2a b9 e3 b5  62 7c b4 b3  5e b9 39 98  20 76 b5 7c
-|   05 0d 7b 35  c3 c5 c7 cc  8c 0f ea b7  b6 4a 7d 7b
-|   6b 8f 6b 4d  ab f4 ac 40  6d d2 01 26  b9 0a 98 ac
-|   76 6e fa 37  a7 89 0c 43  94 ff 9a 77  61 5b 58 f5
-|   2d 65 1b bf  a5 8d 2a 54  9a f8 b0 1a  a4 bc a3 d7
-|   62 42 66 63  b1 55 d4 eb  da 9f 60 a6  a1 35 73 e6
-|   a8 88 13 5c  dc 67 3d d4  83 02 99 03  f3 a9 0e ca
-|   23 e1 ec 1e  27 03 31 b2  d0 50 f4 f7  58 f4 99 27
-| emitting length of ISAKMP Key Exchange Payload: 196
-| ***emit ISAKMP Identification Payload (IPsec DOI):
-|    ID type: ID_IPV4_ADDR_SUBNET
-|    Protocol ID: 0
-|    port: 0
-| emitting 4 raw bytes of client network into ISAKMP Identification Payload (IPsec DOI)
-| client network  c0 a8 00 64
-| emitting 4 raw bytes of client mask into ISAKMP Identification Payload (IPsec DOI)
-| client mask  ff ff ff ff
-| emitting length of ISAKMP Identification Payload (IPsec DOI): 16
-| ***emit ISAKMP Identification Payload (IPsec DOI):
-|    ID type: ID_IPV4_ADDR_SUBNET
-|    Protocol ID: 0
-|    port: 0
-| emitting 4 raw bytes of client network into ISAKMP Identification Payload (IPsec DOI)
-| client network  0a 01 00 00
-| emitting 4 raw bytes of client mask into ISAKMP Identification Payload (IPsec DOI)
-| client mask  ff ff 00 00
-| emitting length of ISAKMP Identification Payload (IPsec DOI): 16
-| HASH(1) computed:
-|   75 e9 d7 da  fc f5 7b b2  fc c6 0c 28  88 54 c6 39
-| last Phase 1 IV:  ac a6 c6 01  eb 36 c2 5f
-| current Phase 1 IV:  ac a6 c6 01  eb 36 c2 5f
-| computed Phase 2 IV:
-|   75 4d 0c ca  5d 56 a2 c1  63 0c 73 cc  8f ed 19 92
-| encrypting:
-|   01 00 00 14  75 e9 d7 da  fc f5 7b b2  fc c6 0c 28
-|   88 54 c6 39  0a 00 00 90  00 00 00 01  00 00 00 01
-|   00 00 00 84  00 03 04 04  12 34 56 78  03 00 00 20
-|   00 0c 00 00  80 03 00 05  80 04 00 03  80 01 00 01
-|   80 02 04 b0  80 05 00 02  80 06 00 80  03 00 00 20
-|   01 0c 00 00  80 03 00 05  80 04 00 03  80 01 00 01
-|   80 02 04 b0  80 05 00 01  80 06 00 80  03 00 00 1c
-|   02 03 00 00  80 03 00 05  80 04 00 03  80 01 00 01
-|   80 02 04 b0  80 05 00 02  00 00 00 1c  03 03 00 00
-|   80 03 00 05  80 04 00 03  80 01 00 01  80 02 04 b0
-|   80 05 00 01  04 00 00 14  b5 ce 84 19  09 5c 6e 2b
-|   6b 62 d3 05  53 05 b3 c4  05 00 00 c4  ff bc 6a 92
-|   a6 b9 55 9b  05 fa 96 a7  a4 35 07 b4  c1 e1 c0 86
-|   1a 58 71 d9  ba 73 a1 63  11 37 88 c0  de bb 39 79
-|   e7 ff 0c 52  b4 ce 60 50  eb 05 36 9e  a4 30 0d 2b
-|   ff 3b 1b 29  9f 3b 80 2c  cb 13 31 8c  2a b9 e3 b5
-|   62 7c b4 b3  5e b9 39 98  20 76 b5 7c  05 0d 7b 35
-|   c3 c5 c7 cc  8c 0f ea b7  b6 4a 7d 7b  6b 8f 6b 4d
-|   ab f4 ac 40  6d d2 01 26  b9 0a 98 ac  76 6e fa 37
-|   a7 89 0c 43  94 ff 9a 77  61 5b 58 f5  2d 65 1b bf
-|   a5 8d 2a 54  9a f8 b0 1a  a4 bc a3 d7  62 42 66 63
-|   b1 55 d4 eb  da 9f 60 a6  a1 35 73 e6  a8 88 13 5c
-|   dc 67 3d d4  83 02 99 03  f3 a9 0e ca  23 e1 ec 1e
-|   27 03 31 b2  d0 50 f4 f7  58 f4 99 27  05 00 00 10
-|   04 00 00 00  c0 a8 00 64  ff ff ff ff  00 00 00 10
-|   04 00 00 00  0a 01 00 00  ff ff 00 00
-| IV:
-|   75 4d 0c ca  5d 56 a2 c1  63 0c 73 cc  8f ed 19 92
-| unpadded size is: 412
-| emitting 4 zero bytes of encryption padding into ISAKMP Message
-| encrypting 416 using OAKLEY_3DES_CBC
-| crypting using IV:  75 4d 0c ca  5d 56 a2 c1
-| next IV:  cc fc 04 e2  b1 35 d3 df
-| emitting length of ISAKMP Message: 444
-sending 444 bytes for quick_outI1 through eth0:500 [93.184.216.34:55044] to 192.168.0.1:4500 (using #2)
-|   80 01 02 03  04 05 06 07  64 0a 06 43  5c 7c 4b 31
-|   08 10 20 01  80 01 02 03  00 00 01 bc  e3 bb b3 6c
-|   fd 61 31 f1  c4 dc 78 3d  05 f3 9e 29  4f 98 40 1f
-|   59 a9 54 75  6f ec 66 05  04 49 19 47  73 46 1c 7a
-|   3f ad 94 84  af d8 e3 9f  f1 85 98 44  7a 9f f2 b0
-|   9d b5 a9 6e  89 d0 9e 44  ab eb c0 7a  80 ca c8 20
-|   c9 f8 ae 45  e9 5e 47 b6  74 57 74 9c  d1 b1 f2 73
-|   d0 52 80 06  33 c7 d5 80  7f b0 0d 77  79 13 40 1d
-|   cd d0 99 50  68 43 c6 06  f8 08 30 9b  f4 48 ba 73
-|   1b 34 8e 69  2f 0b 1a f2  c6 d9 7e cb  25 bb 82 a4
-|   52 d2 5b 13  33 7c 45 b2  49 85 6b 85  ac 81 0f 52
-|   30 cf ce 78  11 a0 48 a2  43 66 28 95  57 18 6b bb
-|   55 ff 4a 40  7f fa b4 5f  8b 91 ff 5f  95 8f 9b 41
-|   bf ce ba 89  7b 31 ae 3d  34 98 b4 4b  9c 7e 39 39
-|   3d dc 5b 12  a6 f0 32 e2  b0 cf ed 4f  62 c1 87 e2
-|   b9 fc 8d 0c  d0 b7 d4 1b  b5 d0 01 5c  4d 99 90 6f
-|   ef 2a 69 cd  3b 90 23 9e  c7 fa d5 6d  b0 d6 a7 ad
-|   54 f2 63 a7  55 62 b6 58  de 81 28 72  5d 34 18 c7
-|   8b 2d 3b ed  7f e8 3a 06  8d 87 07 7c  eb b2 1a 32
-|   44 0d 01 83  20 90 32 80  1c d0 0a 46  7a 6e 35 8e
-|   0c 4f 6a 08  de f9 62 72  e5 58 30 89  37 53 69 ff
-|   51 49 14 2a  49 7a 6b af  b4 f6 a1 11  86 63 33 d3
-|   f2 52 2e e6  c1 52 15 b9  f1 e0 3f bc  bc 77 8a 19
-|   eb da 64 73  94 18 74 28  c3 dc af 94  ed 0d a3 1e
-|   f7 be f9 8e  b2 5d 00 43  aa a7 fe 6b  da b6 e9 e0
-|   14 cc d3 bb  cd 34 59 03  5b 70 30 9b  76 18 10 f3
-|   18 2d f6 03  c3 7b ef 73  3c ec 3a 0d  9d 48 c1 20
-|   6e 83 c4 42  cc fc 04 e2  b1 35 d3 df
-| inserting event EVENT_RETRANSMIT, timeout in 10 seconds for #2
-RC=118 STATE_QUICK_I1: initiate
-3: output closed
-./v1certQI1 deleting connection
-| pass 0: considering CHILD SAs to delete
-./v1certQI1 deleting state #2 (STATE_QUICK_I1)
-| ICOOKIE:  80 01 02 03  04 05 06 07
-| RCOOKIE:  64 0a 06 43  5c 7c 4b 31
-| state hash entry 5
-| pass 1: considering PARENT SAs to delete
-./v1certQI1 deleting state #1 (STATE_MAIN_I4)
+./v1certQI1 byte 2 of ISAKMP Identification Payload must be zero, but is not
+./v1certQI1 malformed payload in packet
+| payload malformed after IV
+|   f7 12 f5 a3  87 9a 25 a9
+./v1certQI1 sending notification PAYLOAD_MALFORMED to 192.168.0.1:4500
 | **emit ISAKMP Message:
 |    initiator cookie:
 |   80 01 02 03  04 05 06 07
@@ -1142,61 +835,28 @@ RC=118 STATE_QUICK_I1: initiate
 |   64 0a 06 43  5c 7c 4b 31
 |    ISAKMP version: ISAKMP Version 1.0 (rfc2407)
 |    exchange type: ISAKMP_XCHG_INFO
-|    flags: ISAKMP_FLAG_ENCRYPTION
+|    flags: none
 |    message ID:  80 01 02 03
-| ***emit ISAKMP Hash Payload:
-| emitting 16 zero bytes of HASH(1) into ISAKMP Hash Payload
-| emitting length of ISAKMP Hash Payload: 20
-| ***emit ISAKMP Delete Payload:
+| ***emit ISAKMP Notification Payload:
 |    DOI: ISAKMP_DOI_IPSEC
 |    protocol ID: 1
-|    SPI size: 16
-|    number of SPIs: 1
-| emitting 16 raw bytes of delete payload into ISAKMP Delete Payload
-| delete payload  80 01 02 03  04 05 06 07  64 0a 06 43  5c 7c 4b 31
-| emitting length of ISAKMP Delete Payload: 28
-| HASH(1) computed:
-|   53 31 51 f6  ef 6b 5b 67  9c 53 2b 9d  c3 eb a4 49
-| last Phase 1 IV:  ac a6 c6 01  eb 36 c2 5f
-| current Phase 1 IV:  ac a6 c6 01  eb 36 c2 5f
-| computed Phase 2 IV:
-|   75 4d 0c ca  5d 56 a2 c1  63 0c 73 cc  8f ed 19 92
-| encrypting:
-|   0c 00 00 14  53 31 51 f6  ef 6b 5b 67  9c 53 2b 9d
-|   c3 eb a4 49  00 00 00 1c  00 00 00 01  01 10 00 01
+|    SPI size: 0
+|    Notify Message Type: PAYLOAD_MALFORMED
+| emitting length of ISAKMP Notification Payload: 12
+| emitting length of ISAKMP Message: 40
+sending 40 bytes for notification packet through eth0:500 [93.184.216.34:55044] to 192.168.0.1:4500 (using #1)
 |   80 01 02 03  04 05 06 07  64 0a 06 43  5c 7c 4b 31
-| IV:
-|   75 4d 0c ca  5d 56 a2 c1  63 0c 73 cc  8f ed 19 92
-| unpadded size is: 48
-| encrypting 48 using OAKLEY_3DES_CBC
-| crypting using IV:  75 4d 0c ca  5d 56 a2 c1
-| next IV:  d0 d0 94 61  f6 6e 51 37
-| emitting length of ISAKMP Message: 76
-sending 76 bytes for delete notify through eth0:500 [93.184.216.34:55044] to 192.168.0.1:4500 (using #1)
-|   80 01 02 03  04 05 06 07  64 0a 06 43  5c 7c 4b 31
-|   08 10 05 01  80 01 02 03  00 00 00 4c  63 bf 8b 06
-|   d0 04 60 19  cd 1a 95 e1  f4 42 40 ce  1b 20 37 8b
-|   6e 6f 22 2a  22 70 b9 67  fc 69 5a 43  8b d6 c2 e2
-|   66 85 40 d1  d0 d0 94 61  f6 6e 51 37
+|   0b 10 05 00  80 01 02 03  00 00 00 28  00 00 00 0c
+|   00 00 00 01  01 00 00 10
+3: output closed
+./v1certQI1 deleting connection
+| pass 0: considering CHILD SAs to delete
+./v1certQI1 deleting state #1 (STATE_MAIN_I3)
 | ICOOKIE:  80 01 02 03  04 05 06 07
 | RCOOKIE:  64 0a 06 43  5c 7c 4b 31
 | state hash entry 5
-./v1certQI1 leak: reply packet from quick_outI1, item size: X
-./v1certQI1 leak: long term secret, item size: X
-./v1certQI1 leak: saved gi value, item size: X
-./v1certQI1 leak: initiator nonce, item size: X
-./v1certQI1 leak: quick_outI1 KE, item size: X
-./v1certQI1 leak: st_nr in duplicate_state, item size: X
-./v1certQI1 leak: st_skey_pr in duplicate_state, item size: X
-./v1certQI1 leak: st_skey_pi in duplicate_state, item size: X
-./v1certQI1 leak: st_skey_er in duplicate_state, item size: X
-./v1certQI1 leak: st_skey_ei in duplicate_state, item size: X
-./v1certQI1 leak: st_skey_ar in duplicate_state, item size: X
-./v1certQI1 leak: st_skey_ai in duplicate_state, item size: X
-./v1certQI1 leak: st_skey_d in duplicate_state, item size: X
-./v1certQI1 leak: st_skeyseed in duplicate_state, item size: X
-./v1certQI1 leak: st_enc_key in duplicate_state, item size: X
-./v1certQI1 leak: struct state in new_state(), item size: X
+| pass 1: considering PARENT SAs to delete
+./v1certQI1 leak: reply packet, item size: X
 ./v1certQI1 leak: raw packet, item size: X
 ./v1certQI1 leak: calculated enc_keyshared secret, item size: X
 ./v1certQI1 leak: calculated skeyid_eshared secret, item size: X
