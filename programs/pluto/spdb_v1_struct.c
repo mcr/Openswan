@@ -88,6 +88,28 @@ int v2tov1_encr(enum ikev2_trans_type_encr encr)
     }
 }
 
+int v2tov1_encr_child(enum ikev2_trans_type_encr encr)
+{
+    switch(encr) {
+    case IKEv2_ENCR_DES:
+        return ESP_DES;
+    case  IKEv2_ENCR_IDEA:
+        return ESP_IDEA;
+    case  IKEv2_ENCR_BLOWFISH:
+        return ESP_BLOWFISH;
+    case  IKEv2_ENCR_RC5:
+        return ESP_RC5;
+    case  IKEv2_ENCR_3DES:
+        return ESP_3DES;
+    case  IKEv2_ENCR_CAST:
+        return ESP_CAST;
+    case  IKEv2_ENCR_AES_CBC:
+        return ESP_AES;
+    default:
+	return 0;
+    }
+}
+
 int v2tov1_integ(enum ikev2_trans_type_integ v2integ)
 {
     switch(v2integ) {
@@ -472,7 +494,7 @@ bool extrapolate_v1_from_v2(struct db_sa *sadb, lset_t policy, enum phase1_role 
             /* child SA policy */
             db_trans_add(sadb->prop_v1_ctx, KEY_IKE);
             db_attr_add_values(sadb->prop_v1_ctx, OAKLEY_ENCRYPTION_ALGORITHM,
-                               v2tov1_encr(cur_dtf->encr_transid));
+                               v2tov1_encr_child(cur_dtf->encr_transid));
             db_attr_add_values(sadb->prop_v1_ctx, OAKLEY_HASH_ALGORITHM,
                                v2tov1_integ(cur_dtf->integ_transid));
             db_attr_add_values(sadb->prop_v1_ctx, OAKLEY_GROUP_DESCRIPTION,

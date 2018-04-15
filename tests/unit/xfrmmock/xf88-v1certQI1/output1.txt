@@ -875,17 +875,17 @@ picking: eth0:500  outside: 55044 <=> d: 55044
 | ****emit IPsec DOI SIT:
 |    IPsec DOI SIT: SIT_IDENTITY_ONLY
 | out_sa pcn: 0 has 1 valid proposals
-| out_sa pcn: 0 pn: 0<1 valid_count: 1 trans_cnt: 4
+| out_sa pcn: 0 pn: 0<1 valid_count: 1 trans_cnt: 1
 | ****emit ISAKMP Proposal Payload:
 |    proposal number: 0
 |    protocol ID: PROTO_IPSEC_ESP
 |    SPI size: 4
-|    number of transforms: 4
+|    number of transforms: 1
 | emitting 4 raw bytes of SPI into ISAKMP Proposal Payload
 | SPI  12 34 56 78
 | *****emit ISAKMP Transform Payload (ESP):
 |    transform number: 0
-|    transform ID: ESP_AES
+|    transform ID: ESP_DES_IV64
 | ******emit ISAKMP IPsec DOI attribute:
 |    af+type: GROUP_DESCRIPTION
 |    length/value: 5
@@ -902,87 +902,19 @@ picking: eth0:500  outside: 55044 <=> d: 55044
 |    af+type: SA_LIFE_DURATION
 |    length/value: 1200
 | ******emit ISAKMP IPsec DOI attribute:
-|    af+type: AUTH_ALGORITHM
-|    length/value: 2
-|     [2 is AUTH_ALGORITHM_HMAC_SHA1]
-| ******emit ISAKMP IPsec DOI attribute:
-|    af+type: KEY_LENGTH
-|    length/value: 128
-| emitting length of ISAKMP Transform Payload (ESP): 32
-| *****emit ISAKMP Transform Payload (ESP):
-|    transform number: 1
-|    transform ID: ESP_AES
-| ******emit ISAKMP IPsec DOI attribute:
-|    af+type: GROUP_DESCRIPTION
-|    length/value: 5
-|     [5 is OAKLEY_GROUP_MODP1536]
-| ******emit ISAKMP IPsec DOI attribute:
-|    af+type: ENCAPSULATION_MODE
-|    length/value: 3
-|     [3 is ENCAPSULATION_MODE_UDP_TUNNEL_RFC]
-| ******emit ISAKMP IPsec DOI attribute:
 |    af+type: SA_LIFE_TYPE
-|    length/value: 1
-|     [1 is SA_LIFE_TYPE_SECONDS]
+|    length/value: 5
+|     [5 is 5??]
 | ******emit ISAKMP IPsec DOI attribute:
 |    af+type: SA_LIFE_DURATION
-|    length/value: 1200
-| ******emit ISAKMP IPsec DOI attribute:
-|    af+type: AUTH_ALGORITHM
 |    length/value: 1
-|     [1 is AUTH_ALGORITHM_HMAC_MD5]
-| ******emit ISAKMP IPsec DOI attribute:
-|    af+type: KEY_LENGTH
-|    length/value: 128
-| emitting length of ISAKMP Transform Payload (ESP): 32
-| *****emit ISAKMP Transform Payload (ESP):
-|    transform number: 2
-|    transform ID: ESP_3DES
-| ******emit ISAKMP IPsec DOI attribute:
-|    af+type: GROUP_DESCRIPTION
-|    length/value: 5
-|     [5 is OAKLEY_GROUP_MODP1536]
 | ******emit ISAKMP IPsec DOI attribute:
 |    af+type: ENCAPSULATION_MODE
-|    length/value: 3
-|     [3 is ENCAPSULATION_MODE_UDP_TUNNEL_RFC]
-| ******emit ISAKMP IPsec DOI attribute:
-|    af+type: SA_LIFE_TYPE
-|    length/value: 1
-|     [1 is SA_LIFE_TYPE_SECONDS]
-| ******emit ISAKMP IPsec DOI attribute:
-|    af+type: SA_LIFE_DURATION
-|    length/value: 1200
-| ******emit ISAKMP IPsec DOI attribute:
-|    af+type: AUTH_ALGORITHM
-|    length/value: 2
-|     [2 is AUTH_ALGORITHM_HMAC_SHA1]
-| emitting length of ISAKMP Transform Payload (ESP): 28
-| *****emit ISAKMP Transform Payload (ESP):
-|    transform number: 3
-|    transform ID: ESP_3DES
-| ******emit ISAKMP IPsec DOI attribute:
-|    af+type: GROUP_DESCRIPTION
-|    length/value: 5
-|     [5 is OAKLEY_GROUP_MODP1536]
-| ******emit ISAKMP IPsec DOI attribute:
-|    af+type: ENCAPSULATION_MODE
-|    length/value: 3
-|     [3 is ENCAPSULATION_MODE_UDP_TUNNEL_RFC]
-| ******emit ISAKMP IPsec DOI attribute:
-|    af+type: SA_LIFE_TYPE
-|    length/value: 1
-|     [1 is SA_LIFE_TYPE_SECONDS]
-| ******emit ISAKMP IPsec DOI attribute:
-|    af+type: SA_LIFE_DURATION
-|    length/value: 1200
-| ******emit ISAKMP IPsec DOI attribute:
-|    af+type: AUTH_ALGORITHM
-|    length/value: 1
-|     [1 is AUTH_ALGORITHM_HMAC_MD5]
-| emitting length of ISAKMP Transform Payload (ESP): 28
-| emitting length of ISAKMP Proposal Payload: 132
-| emitting length of ISAKMP Security Association Payload: 144
+|    length/value: 0
+|     [0 is 0??]
+| emitting length of ISAKMP Transform Payload (ESP): 36
+| emitting length of ISAKMP Proposal Payload: 48
+| emitting length of ISAKMP Security Association Payload: 60
 | ***emit ISAKMP Nonce Payload:
 | emitting 16 raw bytes of Ni into ISAKMP Nonce Payload
 | Ni  b5 ce 84 19  09 5c 6e 2b  6b 62 d3 05  53 05 b3 c4
@@ -1021,75 +953,64 @@ picking: eth0:500  outside: 55044 <=> d: 55044
 | client mask  ff ff 00 00
 | emitting length of ISAKMP Identification Payload (IPsec DOI): 16
 | HASH(1) computed:
-|   75 e9 d7 da  fc f5 7b b2  fc c6 0c 28  88 54 c6 39
+|   6a 58 6e 71  5a bc f6 ff  1a 52 3c 6a  87 bb c2 9c
 | last Phase 1 IV:  c9 50 37 27  01 e4 2c 15
 | current Phase 1 IV:  c9 50 37 27  01 e4 2c 15
 | computed Phase 2 IV:
 |   41 ce 59 99  ca a7 06 1f  7b 09 44 0e  69 96 94 e7
 | encrypting:
-|   01 00 00 14  75 e9 d7 da  fc f5 7b b2  fc c6 0c 28
-|   88 54 c6 39  0a 00 00 90  00 00 00 01  00 00 00 01
-|   00 00 00 84  00 03 04 04  12 34 56 78  03 00 00 20
-|   00 0c 00 00  80 03 00 05  80 04 00 03  80 01 00 01
-|   80 02 04 b0  80 05 00 02  80 06 00 80  03 00 00 20
-|   01 0c 00 00  80 03 00 05  80 04 00 03  80 01 00 01
-|   80 02 04 b0  80 05 00 01  80 06 00 80  03 00 00 1c
-|   02 03 00 00  80 03 00 05  80 04 00 03  80 01 00 01
-|   80 02 04 b0  80 05 00 02  00 00 00 1c  03 03 00 00
-|   80 03 00 05  80 04 00 03  80 01 00 01  80 02 04 b0
-|   80 05 00 01  04 00 00 14  b5 ce 84 19  09 5c 6e 2b
-|   6b 62 d3 05  53 05 b3 c4  05 00 00 c4  ff bc 6a 92
-|   a6 b9 55 9b  05 fa 96 a7  a4 35 07 b4  c1 e1 c0 86
-|   1a 58 71 d9  ba 73 a1 63  11 37 88 c0  de bb 39 79
-|   e7 ff 0c 52  b4 ce 60 50  eb 05 36 9e  a4 30 0d 2b
-|   ff 3b 1b 29  9f 3b 80 2c  cb 13 31 8c  2a b9 e3 b5
-|   62 7c b4 b3  5e b9 39 98  20 76 b5 7c  05 0d 7b 35
-|   c3 c5 c7 cc  8c 0f ea b7  b6 4a 7d 7b  6b 8f 6b 4d
-|   ab f4 ac 40  6d d2 01 26  b9 0a 98 ac  76 6e fa 37
-|   a7 89 0c 43  94 ff 9a 77  61 5b 58 f5  2d 65 1b bf
-|   a5 8d 2a 54  9a f8 b0 1a  a4 bc a3 d7  62 42 66 63
-|   b1 55 d4 eb  da 9f 60 a6  a1 35 73 e6  a8 88 13 5c
-|   dc 67 3d d4  83 02 99 03  f3 a9 0e ca  23 e1 ec 1e
-|   27 03 31 b2  d0 50 f4 f7  58 f4 99 27  05 00 00 10
-|   04 00 00 00  c0 a8 00 64  ff ff ff ff  00 00 00 10
-|   04 00 00 00  0a 01 00 00  ff ff 00 00
+|   01 00 00 14  6a 58 6e 71  5a bc f6 ff  1a 52 3c 6a
+|   87 bb c2 9c  0a 00 00 3c  00 00 00 01  00 00 00 01
+|   00 00 00 30  00 03 04 01  12 34 56 78  00 00 00 24
+|   00 01 00 00  80 03 00 05  80 04 00 03  80 01 00 01
+|   80 02 04 b0  80 01 00 05  80 02 00 01  80 04 00 00
+|   04 00 00 14  b5 ce 84 19  09 5c 6e 2b  6b 62 d3 05
+|   53 05 b3 c4  05 00 00 c4  ff bc 6a 92  a6 b9 55 9b
+|   05 fa 96 a7  a4 35 07 b4  c1 e1 c0 86  1a 58 71 d9
+|   ba 73 a1 63  11 37 88 c0  de bb 39 79  e7 ff 0c 52
+|   b4 ce 60 50  eb 05 36 9e  a4 30 0d 2b  ff 3b 1b 29
+|   9f 3b 80 2c  cb 13 31 8c  2a b9 e3 b5  62 7c b4 b3
+|   5e b9 39 98  20 76 b5 7c  05 0d 7b 35  c3 c5 c7 cc
+|   8c 0f ea b7  b6 4a 7d 7b  6b 8f 6b 4d  ab f4 ac 40
+|   6d d2 01 26  b9 0a 98 ac  76 6e fa 37  a7 89 0c 43
+|   94 ff 9a 77  61 5b 58 f5  2d 65 1b bf  a5 8d 2a 54
+|   9a f8 b0 1a  a4 bc a3 d7  62 42 66 63  b1 55 d4 eb
+|   da 9f 60 a6  a1 35 73 e6  a8 88 13 5c  dc 67 3d d4
+|   83 02 99 03  f3 a9 0e ca  23 e1 ec 1e  27 03 31 b2
+|   d0 50 f4 f7  58 f4 99 27  05 00 00 10  04 00 00 00
+|   c0 a8 00 64  ff ff ff ff  00 00 00 10  04 00 00 00
+|   0a 01 00 00  ff ff 00 00
 | IV:
 |   41 ce 59 99  ca a7 06 1f  7b 09 44 0e  69 96 94 e7
-| unpadded size is: 412
-| emitting 4 zero bytes of encryption padding into ISAKMP Message
-| encrypting 416 using OAKLEY_3DES_CBC
+| unpadded size is: 328
+| encrypting 328 using OAKLEY_3DES_CBC
 | crypting using IV:  41 ce 59 99  ca a7 06 1f
-| next IV:  00 b9 58 b4  6b 2b 0f fa
-| emitting length of ISAKMP Message: 444
-sending 444 bytes for quick_outI1 through eth0:500 [93.184.216.34:55044] to 192.168.0.1:4500 (using #2)
+| next IV:  fd ce e6 3c  a0 6c d7 6f
+| emitting length of ISAKMP Message: 356
+sending 356 bytes for quick_outI1 through eth0:500 [93.184.216.34:55044] to 192.168.0.1:4500 (using #2)
 |   80 01 02 03  04 05 06 07  64 0a 06 43  5c 7c 4b 31
-|   08 10 20 01  80 01 02 03  00 00 01 bc  59 f6 b1 46
-|   dc c2 05 38  b6 2a 0f b3  7c 1f 91 a6  31 88 8a 27
-|   e9 d3 6a 72  00 fd 07 f5  5b ac f8 68  4c 1c 1d 29
-|   b9 ba 5e c9  2a 8b 7b b9  68 b6 8b ea  bb d7 5d 86
-|   f5 4e ce 12  d4 10 11 6c  ed 77 3e 87  70 b0 2c 5d
-|   b1 84 cd bb  92 c2 41 34  54 ae d1 eb  49 a3 6a 7c
-|   93 a4 38 8f  e7 17 94 e8  31 20 a4 d9  81 c0 ed a8
-|   98 59 4d 57  61 1d 3a 26  6e 98 99 03  88 22 d8 65
-|   f0 dd f7 24  97 8c 60 aa  55 63 dd 2a  35 02 5f 77
-|   86 db 7a 75  29 65 de d7  01 03 aa 29  e4 21 4e 55
-|   24 c9 fa c4  42 8b bd 64  e7 15 49 86  e2 d9 63 c8
-|   8d 30 99 af  fd 51 53 89  7f ed 09 2f  6f bd 49 3e
-|   53 62 fa 58  3f f1 24 22  62 e0 f9 7c  a6 f9 52 c6
-|   f5 27 57 ee  9e f8 05 ed  cb 9e 73 6c  4d 70 00 78
-|   16 a6 2f a8  98 b8 86 c5  aa f3 4d 3d  5b 66 11 74
-|   ce 06 bb ef  76 33 1d 30  6d 3c bf fe  a9 5a 4b 50
-|   36 c4 d2 3d  cb fe 80 72  b7 a0 c3 f6  ec b0 99 b1
-|   cc f5 43 6b  ad 63 3b 44  cf e4 eb 12  7f 7c fd 2f
-|   96 84 dd 01  20 c7 94 dc  69 a6 a8 aa  bf eb dd 0d
-|   f5 2a 77 f7  6d dd 63 35  9f d2 72 d9  39 23 97 ba
-|   61 52 74 2a  26 1c 46 43  23 eb 54 c4  ec 23 14 a9
-|   73 06 37 c4  8a 1b 7d 7c  ae 69 ba 35  7c 00 ef b0
-|   36 d1 e6 e6  fb 6d 7c 48  58 b8 0d e3  5a 82 79 94
-|   75 ea e0 63  d2 37 6a 63  18 22 f3 e0  4e 53 d3 f3
-|   b3 c3 9d 00  1e f7 19 72  7b 1b dc a8  14 8f e2 50
-|   6c f4 61 56  cf 17 8d e7  e9 d4 5d ce  b9 d0 ae 55
-|   8f 6f 48 87  00 b9 58 b4  6b 2b 0f fa
+|   08 10 20 01  80 01 02 03  00 00 01 64  8d 08 7b e4
+|   d3 65 7a 80  fb f8 a7 b9  b6 f6 57 75  c9 94 db 84
+|   e3 13 92 aa  e0 37 03 a5  e8 7e 38 8f  9e 86 7b e7
+|   d0 fa a4 ee  c4 c9 65 ca  df fe 9a ac  90 38 40 b6
+|   1a f5 03 e4  cb ca 0d c0  a9 b2 84 1a  b2 b6 0a 84
+|   83 74 17 3d  bd d5 b4 bd  b4 11 bf bd  24 f8 42 7b
+|   20 6f 7c da  9f 2b 43 be  74 c7 c6 3b  0e 0b 0e d0
+|   17 a9 ff f4  94 3f a3 fe  ea 80 46 3b  ab 0c 6d 94
+|   b3 e6 c2 39  5b c2 39 5b  9d 4d a1 b8  45 ae b6 f4
+|   5e e1 f6 26  04 98 0f da  dc 6d ec 42  a3 b2 99 c8
+|   ee df 0c 09  98 54 48 cf  ce ef e7 94  5f 83 03 11
+|   24 4c 5e f7  fb 01 23 a4  94 43 76 26  fe f8 6c bf
+|   ff 0c 6b cf  d6 ab 4a 5d  37 16 9f 26  97 d9 66 c4
+|   39 a9 11 a2  85 df fb c6  b2 65 fe 83  2f 24 f7 a4
+|   d6 5d 3d af  74 a2 a6 e2  c3 24 ac 73  65 8d 50 98
+|   68 5a a9 e3  0a 8a e5 36  a6 0f fb 44  41 c7 b8 66
+|   42 d1 a7 27  cd 53 f2 a3  ee 59 30 03  58 73 52 6e
+|   55 5c 2f 2d  0c c6 d0 64  65 20 0e c3  42 1a 48 e7
+|   08 a5 9e a0  7a a6 92 7d  e6 f5 58 8f  5c 68 42 cf
+|   29 2b 36 98  74 ba 7d 01  6d 7b 18 a0  5b 65 e4 85
+|   e9 fc 65 e5  9e cd df 12  16 18 1c 71  fd ce e6 3c
+|   a0 6c d7 6f
 | inserting event EVENT_RETRANSMIT, timeout in 10 seconds for #2
 RC=118 STATE_QUICK_I1: initiate
 3: output closed
@@ -1151,6 +1072,14 @@ sending 76 bytes for delete notify through eth0:500 [93.184.216.34:55044] to 192
 ./v1certQI1 leak: long term secret, item size: X
 ./v1certQI1 leak: saved gi value, item size: X
 ./v1certQI1 leak: initiator nonce, item size: X
+./v1certQI1 leak: v1 policy proposal conj, item size: X
+./v1certQI1 leak: db_context->attrs, item size: X
+./v1certQI1 leak: db_context->trans, item size: X
+./v1certQI1 leak: db_context, item size: X
+./v1certQI1 leak: db_context->attrs, item size: X
+./v1certQI1 leak: db_context->trans, item size: X
+./v1certQI1 leak: 2 * db_context->conj, item size: X
+./v1certQI1 leak: v2 policy database, item size: X
 ./v1certQI1 leak: quick_outI1 KE, item size: X
 ./v1certQI1 leak: st_nr in duplicate_state, item size: X
 ./v1certQI1 leak: st_skey_pr in duplicate_state, item size: X
