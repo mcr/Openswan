@@ -13,6 +13,7 @@
 ./v1certM2 registed kernel encr algorithm aes_cbc [12, 128<=key<=512]
 ./v1certM2 registed kernel encr algorithm 3des [3, 192<=key<=192]
 ./v1certM2 registed kernel integ algorithm hmac_sha1_96 [2, 160<=key<=160]
+./v1certM2 registed kernel integ algorithm hmac_md5_96 [1, 128<=key<=128]
 ./v1certM2 registed kernel integ algorithm hmac_sha2_256_128 [12, 256<=key<=256]
 | processing whack message of size: A
 | processing whack message of size: A
@@ -51,8 +52,7 @@ RC=0 "home":        ....1:75B9 7996 96CB FFE9 9CEA F984 D596 602E 42AE 6535 2:no
 RC=0 "home":   ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1
 RC=0 "home":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+SAREFTRACK; prio: 32,16; interface: eth0; kind=CK_PERMANENT
 RC=0 "home":   ESP algorithms wanted: 3des(3)_000-hmac_md5_96(1)_000-MODP1536(5); flags=-strict
-| auth algid=1 not available
-RC=0 "home":   ESP algorithms loaded: none
+RC=0 "home":   ESP algorithms loaded: 3DES(3)_192-MD5(1)_128
 | creating state object #1 at Z
 | orient home reference sr#1 this: addr:192.168.0.100 that: addr:192.168.0.1
 | orient home checking against if: eth0 (AF_INET:0.0.0.0:500)

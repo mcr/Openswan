@@ -13,6 +13,7 @@
 ./v1certQI1 registed kernel encr algorithm aes_cbc [12, 128<=key<=512]
 ./v1certQI1 registed kernel encr algorithm 3des [3, 192<=key<=192]
 ./v1certQI1 registed kernel integ algorithm hmac_sha1_96 [2, 160<=key<=160]
+./v1certQI1 registed kernel integ algorithm hmac_md5_96 [1, 128<=key<=128]
 ./v1certQI1 registed kernel integ algorithm hmac_sha2_256_128 [12, 256<=key<=256]
 | processing whack message of size: A
 | processing whack message of size: A
@@ -51,8 +52,7 @@ RC=0 "home":        ....1:75B9 7996 96CB FFE9 9CEA F984 D596 602E 42AE 6535 2:no
 RC=0 "home":   ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1
 RC=0 "home":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+SAREFTRACK; prio: 32,16; interface: eth0; kind=CK_PERMANENT
 RC=0 "home":   ESP algorithms wanted: 3des(3)_000-hmac_md5_96(1)_000-MODP1536(5); flags=-strict
-| auth algid=1 not available
-RC=0 "home":   ESP algorithms loaded: none
+RC=0 "home":   ESP algorithms loaded: 3DES(3)_192-MD5(1)_128
 | creating state object #1 at Z
 | orient home reference sr#1 this: addr:192.168.0.100 that: addr:192.168.0.1
 | orient home checking against if: eth0 (AF_INET:0.0.0.0:500)
@@ -857,8 +857,7 @@ picking: eth0:500  outside: 55044 <=> d: 55044
 | state hash entry 5
 | inserting state object #2 bucket: 5
 | inserting event EVENT_SO_DISCARD, timeout in 0 seconds for #2
-| auth algid=1 not available
-./v1certQI1 initiating Quick Mode RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+SAREFTRACK {using isakmp#1 msgid:03020180 proposal=none pfsgroup=OAKLEY_GROUP_MODP1536}
+./v1certQI1 initiating Quick Mode RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+SAREFTRACK {using isakmp#1 msgid:03020180 proposal=3DES(3)_192-MD5(1)_128 pfsgroup=OAKLEY_GROUP_MODP1536}
 | **emit ISAKMP Message:
 |    initiator cookie:
 |   80 01 02 03  04 05 06 07

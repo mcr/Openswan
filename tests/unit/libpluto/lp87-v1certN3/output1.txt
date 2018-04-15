@@ -13,6 +13,7 @@
 ./v1certN3 registed kernel encr algorithm aes_cbc [12, 128<=key<=512]
 ./v1certN3 registed kernel encr algorithm 3des [3, 192<=key<=192]
 ./v1certN3 registed kernel integ algorithm hmac_sha1_96 [2, 160<=key<=160]
+./v1certN3 registed kernel integ algorithm hmac_md5_96 [1, 128<=key<=128]
 ./v1certN3 registed kernel integ algorithm hmac_sha2_256_128 [12, 256<=key<=256]
 | processing whack message of size: A
 | processing whack message of size: A
@@ -53,8 +54,7 @@ RC=0 "rw":   keys: 1:75B9 7996 96CB FFE9 9CEA F984 D596 602E 42AE 6535 2:none...
 RC=0 "rw":   ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1
 RC=0 "rw":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK; prio: 16,32; interface: eth0; kind=CK_TEMPLATE
 RC=0 "rw":   ESP algorithms wanted: 3des(3)_000-hmac_md5_96(1)_000-MODP1536(5); flags=-strict
-| auth algid=1 not available
-RC=0 "rw":   ESP algorithms loaded: none
+RC=0 "rw":   ESP algorithms loaded: 3DES(3)_192-MD5(1)_128
 | Changed path to directory '../samples/moon/cacerts'
 ./v1certN3   loaded CA cert file 'rootCA.pem' (1525 bytes)
 | Changed path to directory '../samples/moon/aacerts'
