@@ -64,6 +64,8 @@
 #include "pkcs.h"
 #include "asn1.h"
 
+#include "db2_ops.h"
+
 #include "sha1.h"
 #include "md5.h"
 #include "pluto/crypto.h" /* requires sha1.h and md5.h */
@@ -834,6 +836,8 @@ quick_outI1_tail(struct pluto_crypto_req_cont *pcrc
     }
 #endif
 
+    st->st_sadb = alginfo2child_db2(st->st_connection->alg_info_esp);
+
     /* set up reply */
     init_pbs(&reply_stream, reply_buffer, sizeof(reply_buffer), "reply packet");
 
@@ -870,7 +874,7 @@ quick_outI1_tail(struct pluto_crypto_req_cont *pcrc
 	    pm |= POLICY_COMPRESS;
 
 	if (!out_sa(&rbody
-		    , &ipsec_sadb[(st->st_policy & pm) >> POLICY_IPSEC_SHIFT]
+                    , st->st_sadb
 		    , st, /*oakley_mode*/FALSE, INITIATOR, /* aggr */FALSE, ISAKMP_NEXT_NONCE))
 	{
 	    reset_cur_state();
