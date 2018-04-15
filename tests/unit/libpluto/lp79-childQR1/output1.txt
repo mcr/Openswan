@@ -666,7 +666,7 @@ sending 332 bytes for STATE_MAIN_R2 through eth0:4500 [132.213.238.7:4500] to 93
 | *****parse ISAKMP Transform Payload (ESP):
 |    length: 32
 |    transform number: 0
-|    transform ID: ESP_AES
+|    ESP transform ID: ESP_AES
 | ******parse ISAKMP IPsec DOI attribute:
 |    af+type: GROUP_DESCRIPTION
 |    length/value: 14
@@ -736,7 +736,7 @@ sending 332 bytes for STATE_MAIN_R2 through eth0:4500 [132.213.238.7:4500] to 93
 | *****parse ISAKMP Transform Payload (ESP):
 |    length: 32
 |    transform number: 0
-|    transform ID: ESP_AES
+|    ESP transform ID: ESP_AES
 | ******parse ISAKMP IPsec DOI attribute:
 |    af+type: GROUP_DESCRIPTION
 |    length/value: 14
@@ -772,7 +772,7 @@ sending 332 bytes for STATE_MAIN_R2 through eth0:4500 [132.213.238.7:4500] to 93
 | SPI  12 34 56 78
 | *****emit ISAKMP Transform Payload (ESP):
 |    transform number: 0
-|    transform ID: ESP_AES
+|    ESP transform ID: ESP_AES
 | emitting 24 raw bytes of attributes into ISAKMP Transform Payload (ESP)
 | attributes  80 03 00 0e  80 04 00 03  80 01 00 01  80 02 04 b0
 |   80 05 00 02  80 06 00 80
