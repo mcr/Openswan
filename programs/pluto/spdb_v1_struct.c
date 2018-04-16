@@ -1237,7 +1237,7 @@ parse_isakmp_sa_body(
               if (LHAS(seen_attrs, a.isaat_af_type & ISAKMP_ATTR_RTYPE_MASK))
               {
                     loglog(RC_LOG_SERIOUS, "repeated %s attribute in Oakley Transform %u"
-                        , enum_show(&oakley_attr_names, a.isaat_af_type)
+                        , enum_show(&oakley_attr_names, a.isaat_af_type & ISAKMP_ATTR_RTYPE_MASK)
                         , trans.isat_transnum);
                     return BAD_PROPOSAL_SYNTAX;
               }
@@ -1819,7 +1819,7 @@ parse_ipsec_transform(struct isakmp_transform *trans
           if (LHAS(seen_attrs, a.isaat_af_type & ISAKMP_ATTR_RTYPE_MASK))
           {
               loglog(RC_LOG_SERIOUS, "repeated %s attribute in IPsec Transform %u"
-                    , enum_show(&ipsec_attr_names, a.isaat_af_type)
+                    , enum_show(&ipsec_attr_names, a.isaat_af_type & ISAKMP_ATTR_RTYPE_MASK)
                     , trans->isat_transnum);
               return FALSE;
           }
