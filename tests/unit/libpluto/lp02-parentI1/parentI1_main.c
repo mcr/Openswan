@@ -71,6 +71,7 @@ int main(int argc, char *argv[])
         free_state(st);
     }
 #endif
+    passert(GLOBALS_ARE_RESET());
 
     delete_connection(c1, TRUE);
 
