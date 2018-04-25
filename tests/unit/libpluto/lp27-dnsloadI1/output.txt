@@ -42,19 +42,6 @@ RC=0 "cpe": %any[@cpe.example.com]...93.184.216.34<example.com>[@example.com]===
 RC=0 "cpe":     myip=unset; hisip=unset;
 RC=0 "cpe":   ike_life: 3600s; ipsec_life: 28800s; rekey_margin: 540s; rekey_fuzz: 100%; keyingtries: 0
 RC=0 "cpe":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK; prio: 16,0; interface: eth0; kind=CK_PERMANENT
-| creating state object #1 at Z
-| orient cpe reference sr#1 this: %defaultroute that: %dns
-| orient cpe checking against if: eth0 (AF_INET:192.168.1.1:500)
-| orient cpe checking against if: eth0 (AF_INET:192.168.1.1:4500)
-| orient cpe checking against if: eth0 (AF_INET6:2606:2800:220:1:248:1893:25c8:1946:500)
-| orient cpe matching on public/private keys: this=no[%defaultroute] that=no[%dns]
-|   orient cpe matched on this being defaultroute, and that lacking private key
-| pick_if looking for port: 500, family: 2
-|   considering eth0 192.168.1.1 port: 500, family: 2, best: <none>/0 0
-|   considering eth0 192.168.1.1 port: 4500, family: 2, best: eth0/20 0
-|   considering eth0 2606:2800:220:1:248:1893:25c8:1946 port: 500, family: 10, best: eth0/20 0
-|   picking maching interface for family[2,2]: AF_INET resulted in: 192.168.1.1
-|   orient cpe finished with: 1 [192.168.1.1]
 | ICOOKIE:  80 01 02 03  04 05 06 07
 | RCOOKIE:  00 00 00 00  00 00 00 00
 | state hash entry 4

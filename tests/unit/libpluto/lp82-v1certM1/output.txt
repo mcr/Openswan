@@ -54,11 +54,6 @@ RC=0 "home":   IKEv2 algorithms found:  3des(3)_192-hmac_md5_96(1)_128-prfmd5(1)
 RC=0 "home":   ESP algorithms wanted: 3des(3)_000-hmac_md5_96(1)_000-MODP1536(5); flags=-strict
 | esp algid=3 not available
 RC=0 "home":   ESP algorithms loaded: none
-| creating state object #1 at Z
-| orient home reference sr#1 this: addr:192.168.0.100 that: addr:192.168.0.1
-| orient home checking against if: eth0 (AF_INET:0.0.0.0:500)
-|     orient matched on IP
-|   orient home finished with: 1 [0.0.0.0]
 | ICOOKIE:  80 01 02 03  04 05 06 07
 | RCOOKIE:  00 00 00 00  00 00 00 00
 | state hash entry 4

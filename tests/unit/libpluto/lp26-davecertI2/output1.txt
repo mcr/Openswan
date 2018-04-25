@@ -58,15 +58,6 @@ RC=0 "home":   ESP algorithms wanted: aes_cbc(12)_128-hmac_sha1_96(2)_000-MODP20
 RC=0 "home":   ESP algorithms loaded: AES(12)_128-SHA1(2)_160
 | Changed path to directory '../samples/davecert/cacerts'
 ./davecertI2   loaded CA cert file 'rootCA.pem' (1525 bytes)
-| creating state object #1 at Z
-| orient home reference sr#1 this: %defaultroute that: addr:132.213.238.7
-| orient home checking against if: eth0 (AF_INET:0.0.0.0:500)
-| orient home matching on public/private keys: this=yes[%defaultroute] that=no[%address]
-|   orient home matched on this having private key
-| pick_if looking for port: 500, family: 2
-|   considering eth0 0.0.0.0 port: 500, family: 2, best: <none>/0 0
-|   picking maching interface for family[2,2]: AF_INET resulted in: 0.0.0.0
-|   orient home finished with: 1 [0.0.0.0]
 | ICOOKIE:  8d 0e 0f 10  11 12 13 14
 | RCOOKIE:  00 00 00 00  00 00 00 00
 | state hash entry 4
