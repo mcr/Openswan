@@ -82,6 +82,8 @@ int main(int argc, char *argv[])
     show_one_connection(c1, whack_log);
     init_loaded();
 
+    reset_globals();
+
     st = sendI1(c1, DBG_CONTROL, regression == 0);
 
     for(i=0; i<PCAP_INPUT_COUNT; i++) {
