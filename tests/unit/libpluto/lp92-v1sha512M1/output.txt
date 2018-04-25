@@ -19,7 +19,7 @@ processing whack msg time: X size: Y
 | Added new connection home512 with policy RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+SAREFTRACK
 | from whack: got --esp=3des-md5;modp1536
 | esp string values: 3des(3)_000-hmac_md5_96(1)_000-MODP1536(5); flags=-strict
-| ike (phase1) algorihtm values: aes_cbc(12)_256-hmac_md5_128(6)-prfmd5(1)-MODP4096(16); flags=-strict
+| ike (phase1) algorihtm values: aes_cbc(12)_256-hmac_sha2_512_256(14)-prfsha2_512(7)-MODP4096(16); flags=-strict
 ./v1sha512M1   loading certificate from carolCert.pem
 ./v1sha512M1   loaded host cert file '../samples/carol/certs/carolCert.pem' (1415 bytes)
 | certificate is valid
@@ -49,8 +49,8 @@ RC=0 "home512":   keys: 1:C529 B6C4 CDF5 97E6 322E A755 1874 D9DC DFBF 74DB 2:no
 RC=0 "home512":        ....1:75B9 7996 96CB FFE9 9CEA F984 D596 602E 42AE 6535 2:none
 RC=0 "home512":   ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1
 RC=0 "home512":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+SAREFTRACK; prio: 32,16; interface: eth0; kind=CK_PERMANENT
-RC=0 "home512":   IKEv2 algorithms wanted: aes_cbc(12)_256-hmac_md5_128(6)-prfmd5(1)-MODP4096(16); flags=-strict
-RC=0 "home512":   IKEv2 algorithms found:  aes_cbc(12)_256-hmac_md5_128(6)-prfmd5(1)-MODP4096(16); flags=-strict
+RC=0 "home512":   IKEv2 algorithms wanted: aes_cbc(12)_256-hmac_sha2_512_256(14)-prfsha2_512(7)-MODP4096(16); flags=-strict
+RC=0 "home512":   IKEv2 algorithms found:  aes_cbc(12)_256-hmac_sha2_512_256(14)-prfsha2_512(7)-MODP4096(16); flags=-strict
 RC=0 "home512":   ESP algorithms wanted: 3des(3)_000-hmac_md5_96(1)_000-MODP1536(5); flags=-strict
 | esp algid=3 not available
 RC=0 "home512":   ESP algorithms loaded: none
@@ -59,7 +59,7 @@ RC=0 "home512":   ESP algorithms loaded: none
 | state hash entry 4
 | inserting state object #1 bucket: 4
 | inserting event EVENT_SO_DISCARD, timeout in 0 seconds for #1
-| not including aes_cbc(12)_256-hmac_md5_128(6)-prfmd5(1)-MODP4096(16) in policy, as algorithm missing(enc:1,integ:0,prf:1,group:1)
+| not including aes_cbc(12)_256-hmac_sha2_512_256(14)-prfsha2_512(7)-MODP4096( in policy, as algorithm missing(enc:1,integ:64,prf:0,group:1)
 ./v1sha512M1 initiating Main Mode
 | **emit ISAKMP Message:
 |    initiator cookie:

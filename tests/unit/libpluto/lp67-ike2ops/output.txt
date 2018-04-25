@@ -206,7 +206,6 @@ default v1 (RSA):| sa disjunct cnt: 1
 | for input ike=aes128-sha1-sha1-modp2048
 | alg_info_parse_str() ealg_buf=aes aalg_buf=sha1 eklen=128  aklen=0
 | parser_alg_info_add() ealg_getbyname("aes")=12
-| enum_search_prefix ("OAKLEY_SHA1")
 | parser_alg_info_add() aalg_getbyname("sha1")=2
 | enum_search_prefix ("OAKLEY_GROUP_MODP2048")
 | parser_alg_info_add() modp_getbyname("modp2048")=14

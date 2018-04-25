@@ -162,16 +162,9 @@ sending 216 bytes for main_outI1 through eth0:500 [93.184.216.34:55044] to 192.1
 | inserting event EVENT_RETRANSMIT, timeout in 10 seconds for #1
 RC=105 STATE_MAIN_I1: initiate
 ./v1certM1 deleting state #1 (STATE_MAIN_I1)
-| ICOOKIE:  80 01 02 03  04 05 06 07
-| RCOOKIE:  00 00 00 00  00 00 00 00
-| state hash entry 4
 ./v1certM1 deleting connection
 | pass 0: considering CHILD SAs to delete
 | pass 1: considering PARENT SAs to delete
-| alg_info_delref(ADDRESS) alg_info->ref_cnt=1
-| alg_info_delref(ADDRESS) freeing alg_info
-| alg_info_delref(ADDRESS) alg_info->ref_cnt=1
-| alg_info_delref(ADDRESS) freeing alg_info
 ./v1certM1 leak: 67 * VendorID MD5, item size: X
 ./v1certM1 leak: 3 * vid->data, item size: X
 ./v1certM1 leak: 15 * VendorID MD5, item size: X

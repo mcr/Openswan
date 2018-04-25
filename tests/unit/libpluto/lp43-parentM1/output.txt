@@ -329,9 +329,6 @@ sending 376 bytes for main_outI1 through eth0:500 [93.184.216.34:55044] to 132.2
 | inserting event EVENT_RETRANSMIT, timeout in 10 seconds for #1
 RC=105 STATE_MAIN_I1: initiate
 ./parentM1 deleting state #1 (STATE_MAIN_I1)
-| ICOOKIE:  80 01 02 03  04 05 06 07
-| RCOOKIE:  00 00 00 00  00 00 00 00
-| state hash entry 4
 ./parentM1 deleting connection
 | pass 0: considering CHILD SAs to delete
 | pass 1: considering PARENT SAs to delete
