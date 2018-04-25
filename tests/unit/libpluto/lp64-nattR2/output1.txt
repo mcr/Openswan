@@ -1,5 +1,6 @@
 ./nattR2 ike_alg_register_enc(): Activating OAKLEY_AES_CBC: Ok (ret=0)
 ./nattR2 ike_alg_register_hash(): Activating OAKLEY_SHA2_512: Ok (ret=0)
+./nattR2 ike_alg_register_prf(): Activating prf-hmac-sha2-512: Ok (ret=0)
 ./nattR2 ike_alg_register_hash(): Activating OAKLEY_SHA2_256: Ok (ret=0)
 ./nattR2 ike_alg_register_prf(): Activating prf-hmac-sha2-256: Ok (ret=0)
 ./nattR2 ike_alg_register_hash(): Activating OAKLEY_SHA1: Ok (ret=0)
@@ -13,6 +14,7 @@
 ./nattR2 registed kernel integ algorithm hmac_sha1_96 [2, 160<=key<=160]
 ./nattR2 registed kernel integ algorithm hmac_md5_96 [1, 128<=key<=128]
 ./nattR2 registed kernel integ algorithm hmac_sha2_256_128 [12, 256<=key<=256]
+./nattR2 registed kernel integ algorithm hmac_sha2_512_256 [14, 256<=key<=256]
 | processing whack message of size: A
 | processing whack message of size: A
 processing whack msg time: X size: Y
@@ -853,7 +855,7 @@ sending 448 bytes for STATE_PARENT_R1 through eth0:4500 [132.213.238.7:4500] to 
 ./nattR2 leak: rfc3110 format of public key [created], item size: X
 ./nattR2 leak: pubkey, item size: X
 ./nattR2 leak: secret, item size: X
-./nattR2 leak: 3 * hasher name, item size: X
+./nattR2 leak: 4 * hasher name, item size: X
 ./nattR2 leak: 10 * group description, item size: X
 ./nattR2 leak: policies path, item size: X
 ./nattR2 leak: ocspcerts path, item size: X

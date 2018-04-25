@@ -1,5 +1,6 @@
 ./v1certM1 ike_alg_register_enc(): Activating OAKLEY_AES_CBC: Ok (ret=0)
 ./v1certM1 ike_alg_register_hash(): Activating OAKLEY_SHA2_512: Ok (ret=0)
+./v1certM1 ike_alg_register_prf(): Activating prf-hmac-sha2-512: Ok (ret=0)
 ./v1certM1 ike_alg_register_hash(): Activating OAKLEY_SHA2_256: Ok (ret=0)
 ./v1certM1 ike_alg_register_prf(): Activating prf-hmac-sha2-256: Ok (ret=0)
 ./v1certM1 ike_alg_register_hash(): Activating OAKLEY_SHA1: Ok (ret=0)
@@ -204,7 +205,7 @@ RC=105 STATE_MAIN_I1: initiate
 ./v1certM1 leak: cacert path, item size: X
 ./v1certM1 leak: acert path, item size: X
 ./v1certM1 leak: override ipsec.d, item size: X
-./v1certM1 leak: 3 * hasher name, item size: X
+./v1certM1 leak: 4 * hasher name, item size: X
 ./v1certM1 leak: 10 * group description, item size: X
 ./v1certM1 leak: policies path, item size: X
 ./v1certM1 leak: ocspcerts path, item size: X

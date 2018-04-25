@@ -1,5 +1,6 @@
 ./davecertR2-id ike_alg_register_enc(): Activating OAKLEY_AES_CBC: Ok (ret=0)
 ./davecertR2-id ike_alg_register_hash(): Activating OAKLEY_SHA2_512: Ok (ret=0)
+./davecertR2-id ike_alg_register_prf(): Activating prf-hmac-sha2-512: Ok (ret=0)
 ./davecertR2-id ike_alg_register_hash(): Activating OAKLEY_SHA2_256: Ok (ret=0)
 ./davecertR2-id ike_alg_register_prf(): Activating prf-hmac-sha2-256: Ok (ret=0)
 ./davecertR2-id ike_alg_register_hash(): Activating OAKLEY_SHA1: Ok (ret=0)
@@ -15,6 +16,7 @@
 ./davecertR2-id registed kernel integ algorithm hmac_sha1_96 [2, 160<=key<=160]
 ./davecertR2-id registed kernel integ algorithm hmac_md5_96 [1, 128<=key<=128]
 ./davecertR2-id registed kernel integ algorithm hmac_sha2_256_128 [12, 256<=key<=256]
+./davecertR2-id registed kernel integ algorithm hmac_sha2_512_256 [14, 256<=key<=256]
 | processing whack message of size: A
 | processing whack message of size: A
 processing whack msg time: X size: Y
@@ -1476,7 +1478,7 @@ sending 1472 bytes for STATE_PARENT_R1 through eth0:500 [132.213.238.7:500] to 9
 ./davecertR2-id leak: cacert path, item size: X
 ./davecertR2-id leak: acert path, item size: X
 ./davecertR2-id leak: override ipsec.d, item size: X
-./davecertR2-id leak: 3 * hasher name, item size: X
+./davecertR2-id leak: 4 * hasher name, item size: X
 ./davecertR2-id leak: 10 * group description, item size: X
 ./davecertR2-id leak: policies path, item size: X
 ./davecertR2-id leak: ocspcerts path, item size: X
