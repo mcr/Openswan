@@ -197,12 +197,6 @@ main_outI1(int whack_sock
         /* mark this as a parent SA */
         st->st_sadb->parentSA = TRUE;
 
-        if(!extrapolate_v1_from_v2(st->st_sadb, c->policy, INITIATOR)) {
-            openswan_log("can not derive IKEv1 policy from IKEv2 settings");
-            reset_cur_state();
-            return STF_INTERNAL_ERROR;
-        }
-
 	int np = numvidtosend > 0 ? ISAKMP_NEXT_VID : ISAKMP_NEXT_NONE;
 	if (!out_sa(&md.rbody
 		    , st->st_sadb, st, /* oakley_mode*/TRUE, INITIATOR

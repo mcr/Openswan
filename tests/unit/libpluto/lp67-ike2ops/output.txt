@@ -293,5 +293,28 @@ default v1 (RSA):| sa disjunct cnt: 1
 |     trans-type-prf value="prf-hmac-sha2-256" [attrs: 0]
 |     trans-type-integ value="hmac_sha1_96" [attrs: 0]
 |     trans-type-dh value="OAKLEY_GROUP_MODP3072" [attrs: 0]
-./lp67-ike2ops leak: alg_info_ike, item size: 2064
-./lp67-ike2ops leak detective found 1 leaks, total size 2064
+| for input ike=aes256-sha2_512-modp2048
+| alg_info_parse_str() ealg_buf=aes aalg_buf=sha2_512 eklen=256  aklen=0
+| parser_alg_info_add() ealg_getbyname("aes")=12
+| parser_alg_info_add() aalg_getbyname("sha2_512")=14
+| enum_search_prefix ("OAKLEY_GROUP_MODP2048")
+| parser_alg_info_add() modp_getbyname("modp2048")=14
+| __alg_info_ike_add() ealg=12 aalg=14 prfalg_id=7 modp_id=14, cnt=1
+| proposals: cnt=1
+|  disj: cnt=1 [next=2]
+| 1:  protoid="PROTO_ISAKMP" [trans: 4]
+|     trans-type-encr value="aes_cbc" [attrs: 1]
+|       type="KEY_LENGTH" value="256"
+|     trans-type-prf value="prf-hmac-sha2-512" [attrs: 0]
+|     trans-type-integ value="hmac_sha2_512_256" [attrs: 0]
+|     trans-type-dh value="OAKLEY_GROUP_MODP2048" [attrs: 0]
+strong v1 (RSA):| sa disjunct cnt: 1 
+|   conjunctions cnt: 1 
+|     protoid: 1 (PROTO_ISAKMP) cnt: 1 
+|       transform: 1 cnt: 4 
+|         type: 3(OAKLEY_AUTHENTICATION_METHOD) val: 3(OAKLEY_RSA_SIG) 
+|         type: 1(OAKLEY_ENCRYPTION_ALGORITHM) val: 7(OAKLEY_AES_CBC) 
+|         type: 2(OAKLEY_HASH_ALGORITHM) val: 6(OAKLEY_SHA2_512) 
+|         type: 4(OAKLEY_GROUP_DESCRIPTION) val: 14(OAKLEY_GROUP_MODP2048) 
+./lp67-ike2ops leak: 2 * alg_info_ike, item size: 2064
+./lp67-ike2ops leak detective found 2 leaks, total size 2064
