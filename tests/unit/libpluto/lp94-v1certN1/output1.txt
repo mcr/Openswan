@@ -23,10 +23,8 @@ processing whack msg time: X size: Y
 | find_host_pair: looking for me=<none>:500 %any him=<none>:500 any-match
 | find_host_pair: concluded with <none>
 | found_host_pair_conn (check_connection_end): %any:500 %any/%any:500 -> hp:none
-| Added new connection rw with policy RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK
-| from whack: got --esp=3des-md5;modp1536
-| esp string values: 3des(3)_000-hmac_md5_96(1)_000-MODP1536(5); flags=-strict
-| ike (phase1) algorihtm values: 3des(3)-hmac_md5_96(1)-prfmd5(1)-MODP1536(5); flags=-strict
+| Added new connection rw512 with policy RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK
+| ike (phase1) algorihtm values: aes_cbc(12)_256-hmac_sha2_512_256(14)-prfsha2_512(7)-MODP4096(16); flags=-strict
 ./v1sha512N1   loading certificate from moonCert.pem
 ./v1sha512N1   loaded host cert file '../samples/moon/certs/moonCert.pem' (1411 bytes)
 |   file content is not binary ASN.1
@@ -72,36 +70,33 @@ processing whack msg time: X size: Y
 | counting wild cards for (none) is 15
 | based upon ID_wildcard policy, the connection is a template.
 | alg_info_addref() alg_info->ref_cnt=1
-| alg_info_addref() alg_info->ref_cnt=1
-| orient rw reference sr#1 this: addr:192.168.0.1 that: %any
-| orient rw checking against if: eth0 (AF_INET:0.0.0.0:4500)
-| orient rw checking against if: eth0 (AF_INET:0.0.0.0:500)
+| orient rw512 reference sr#1 this: addr:192.168.0.1 that: %any
+| orient rw512 checking against if: eth0 (AF_INET:0.0.0.0:4500)
+| orient rw512 checking against if: eth0 (AF_INET:0.0.0.0:500)
 |     orient matched on IP
-|   orient rw finished with: 1 [0.0.0.0]
+|   orient rw512 finished with: 1 [0.0.0.0]
 | find_host_pair: looking for me=192.168.0.1:500 %any him=0.0.0.0:500 exact-match
 | find_host_pair: concluded with <none>
 | connect_to_host_pair: 192.168.0.1:500 %any 0.0.0.0:500 -> hp:none
 | find_ID_host_pair: looking for me=@moon.strongswan.org him=<any> (exact)
 |   concluded with <none>
-./v1sha512N1 adding connection: "rw"
+./v1sha512N1 adding connection: "rw512"
 | 10.1.0.0/16===192.168.0.1[@moon.strongswan.org]...%any
 | ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK
-|   orient rw finished with: 1 [0.0.0.0]
-RC=0 "rw": 10.1.0.0/16===192.168.0.1[@moon.strongswan.org]...%any; unrouted; eroute owner: #0
-RC=0 "rw":     myip=unset; hisip=unset; mycert=moonCert.pem;
-RC=0 "rw":   CAs: '%any'...'C=CA, ST=Ontario, L=Ottawa, O=Xelerance Corporation, OU=Doctor Taylor Plumage, CN=testing.xelerance.com, E=mcr@xelerance.com'
-RC=0 "rw":   keys: 1:75B9 7996 96CB FFE9 9CEA F984 D596 602E 42AE 6535 2:none...
-RC=0 "rw":   ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1
-RC=0 "rw":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK; prio: 16,32; interface: eth0; kind=CK_TEMPLATE
-RC=0 "rw":   ESP algorithms wanted: 3des(3)_000-hmac_md5_96(1)_000-MODP1536(5); flags=-strict
-RC=0 "rw":   ESP algorithms loaded: 3DES(3)_192-MD5(1)_128
+|   orient rw512 finished with: 1 [0.0.0.0]
+RC=0 "rw512": 10.1.0.0/16===192.168.0.1[@moon.strongswan.org]...%any; unrouted; eroute owner: #0
+RC=0 "rw512":     myip=unset; hisip=unset; mycert=moonCert.pem;
+RC=0 "rw512":   CAs: '%any'...'C=CA, ST=Ontario, L=Ottawa, O=Xelerance Corporation, OU=Doctor Taylor Plumage, CN=testing.xelerance.com, E=mcr@xelerance.com'
+RC=0 "rw512":   keys: 1:75B9 7996 96CB FFE9 9CEA F984 D596 602E 42AE 6535 2:none...
+RC=0 "rw512":   ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1
+RC=0 "rw512":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK; prio: 16,32; interface: eth0; kind=CK_TEMPLATE
 |   =========== input from from v1sha512M1.pcap ========
 | *received 216 bytes from 93.184.216.34:55044 on eth0 (port=500)
 |   80 01 02 03  04 05 06 07  00 00 00 00  00 00 00 00
 |   01 10 02 00  00 00 00 00  00 00 00 d8  0d 00 00 34
 |   00 00 00 01  00 00 00 01  00 00 00 28  00 01 00 01
 |   00 00 00 20  00 01 00 00  80 0b 00 01  80 0c 0e 10
-|   80 03 00 03  80 01 00 07  80 02 00 00  80 04 00 10
+|   80 03 00 03  80 01 00 07  80 02 00 06  80 04 00 10
 |   0d 00 00 10  4f 45 70 6c  75 74 6f 75  6e 69 74 30
 |   0d 00 00 14  af ca d7 13  68 a1 f1 c9  6b 86 96 fc
 |   77 57 01 00  0d 00 00 14  4a 13 1c 81  07 03 58 45
@@ -122,11 +117,11 @@ RC=0 "rw":   ESP algorithms loaded: 3DES(3)_192-MD5(1)_128
 | find_host_connection2 called from main_inI1_outR1, me=192.168.0.1:500 him=93.184.216.34:55044 policy=/!IKEv1
 | find_host_pair: looking for me=192.168.0.1:500 %address him=93.184.216.34:55044 any-match
 | find_host_pair: comparing to me=192.168.0.1:500 %any him=0.0.0.0:500
-| find_host_pair: concluded with rw
-| found_host_pair_conn (find_host_connection2): 192.168.0.1:500 %address/93.184.216.34:55044 -> hp:rw
+| find_host_pair: concluded with rw512
+| found_host_pair_conn (find_host_connection2): 192.168.0.1:500 %address/93.184.216.34:55044 -> hp:rw512
 | searching for connection with policy = /!IKEv1
-| found policy = RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK (rw)
-| find_host_connection2 returns rw (ike=none/none)
+| found policy = RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK (rw512)
+| find_host_connection2 returns rw512 (ike=none/none)
 | creating state object #1 at Z
 | ICOOKIE:  80 01 02 03  04 05 06 07
 | RCOOKIE:  64 0a 06 43  5c 7c 4b 31
