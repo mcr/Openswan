@@ -140,31 +140,56 @@ RC=0 "rw512":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK; prio: 16,32; inter
 |    message ID:  00 00 00 00
 | ***emit ISAKMP Security Association Payload:
 |    DOI: ISAKMP_DOI_IPSEC
-
-XXXX
-
-| **emit ISAKMP Message:
-|    initiator cookie:
-|   80 01 02 03  04 05 06 07
-|    responder cookie:
-|   64 0a 06 43  5c 7c 4b 31
-|    ISAKMP version: ISAKMP Version 1.0 (rfc2407)
-|    exchange type: ISAKMP_XCHG_INFO
-|    flags: none
-|    message ID:  00 00 00 00
-| ***emit ISAKMP Notification Payload:
-|    DOI: ISAKMP_DOI_IPSEC
-|    protocol ID: 1
+| ****emit IPsec DOI SIT:
+|    IPsec DOI SIT: SIT_IDENTITY_ONLY
+| ****emit ISAKMP Proposal Payload:
+|    proposal number: 0
+|    protocol ID: PROTO_ISAKMP
 |    SPI size: 0
-|    Notify Message Type: NO_PROPOSAL_CHOSEN
-| emitting length of ISAKMP Notification Payload: 12
-| emitting length of ISAKMP Message: 40
-sending 40 bytes for notification packet through eth0:500 [192.168.0.1:500] to 93.184.216.34:55044 (using #1)
+|    number of transforms: 1
+| *****emit ISAKMP Transform Payload (ISAKMP):
+|    transform number: 0
+|    transform ID: KEY_IKE
+| emitting 24 raw bytes of attributes into ISAKMP Transform Payload (ISAKMP)
+| attributes  80 0b 00 01  80 0c 0e 10  80 03 00 03  80 01 00 07
+|   80 02 00 06  80 04 00 10
+| emitting length of ISAKMP Transform Payload (ISAKMP): 32
+| emitting length of ISAKMP Proposal Payload: 40
+| emitting length of ISAKMP Security Association Payload: 52
+| ***emit ISAKMP Vendor ID Payload:
+| emitting 12 raw bytes of Vendor ID into ISAKMP Vendor ID Payload
+| Vendor ID  4f 45 70 6c  75 74 6f 75  6e 69 74 30
+| emitting length of ISAKMP Vendor ID Payload: 16
+| out_vendorid(): sending [Dead Peer Detection]
+| ***emit ISAKMP Vendor ID Payload:
+| emitting 16 raw bytes of V_ID into ISAKMP Vendor ID Payload
+| V_ID  af ca d7 13  68 a1 f1 c9  6b 86 96 fc  77 57 01 00
+| emitting length of ISAKMP Vendor ID Payload: 20
+| out_vendorid(): sending [RFC 3947]
+|    next-payload: ISAKMP_NEXT_VID [@96=0x d]
+| ***emit ISAKMP Vendor ID Payload:
+| emitting 16 raw bytes of V_ID into ISAKMP Vendor ID Payload
+| V_ID  4a 13 1c 81  07 03 58 45  5c 57 28 f2  0e 95 45 2f
+| emitting length of ISAKMP Vendor ID Payload: 20
+| emitting length of ISAKMP Message: 136
+| complete state transition with STF_OK
+./v1sha512N1 transition from state STATE_MAIN_R0 to state STATE_MAIN_R1
+| sending reply packet to 93.184.216.34:55044 (from port 500)
+sending 136 bytes for STATE_MAIN_R0 through eth0:500 [192.168.0.1:500] to 93.184.216.34:55044 (using #1)
 |   80 01 02 03  04 05 06 07  64 0a 06 43  5c 7c 4b 31
-|   0b 10 05 00  00 00 00 00  00 00 00 28  00 00 00 0c
-|   00 00 00 01  01 00 00 0e
-| state transition function for STATE_MAIN_R0 failed: NO_PROPOSAL_CHOSEN whack_fd: 4294967295
-./v1sha512N1 deleting state #1 (STATE_MAIN_R0)
+|   01 10 02 00  00 00 00 00  00 00 00 88  0d 00 00 34
+|   00 00 00 01  00 00 00 01  00 00 00 28  00 01 00 01
+|   00 00 00 20  00 01 00 00  80 0b 00 01  80 0c 0e 10
+|   80 03 00 03  80 01 00 07  80 02 00 06  80 04 00 10
+|   0d 00 00 10  4f 45 70 6c  75 74 6f 75  6e 69 74 30
+|   0d 00 00 14  af ca d7 13  68 a1 f1 c9  6b 86 96 fc
+|   77 57 01 00  00 00 00 14  4a 13 1c 81  07 03 58 45
+|   5c 57 28 f2  0e 95 45 2f
+| inserting event EVENT_RETRANSMIT, timeout in 10 seconds for #1
+./v1sha512N1 STATE_MAIN_R1: sent MR1, expecting MI2
+| modecfg pull: noquirk policy:push not-client
+| phase 1 is done, looking for phase 2 to unpend
+./v1sha512N1 deleting state #1 (STATE_MAIN_R1)
 ./v1sha512N1 deleting connection
 | pass 0: considering CHILD SAs to delete
 | pass 1: considering PARENT SAs to delete

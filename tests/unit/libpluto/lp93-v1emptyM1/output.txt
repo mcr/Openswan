@@ -72,7 +72,8 @@ RC=0 "homeV1empty":   ESP algorithms loaded: none
 |    flags: none
 |    message ID:  00 00 00 00
 ./v1emptyM1 can not extrapolate IKEv1 policy from empty IKEv2 policy
-./v1emptyM1 can not derive IKEv1 policy from IKEv2 settings
+./v1emptyM1 can not derive IKEv1 policy from IKEv2 settings, failed
+./v1emptyM1 outsa fail
 ./v1emptyM1 deleting state #1 (STATE_MAIN_I1)
 ./v1emptyM1 deleting connection
 | pass 0: considering CHILD SAs to delete
