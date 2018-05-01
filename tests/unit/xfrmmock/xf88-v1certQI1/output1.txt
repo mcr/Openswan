@@ -54,7 +54,7 @@ RC=0 "home":        ....1:75B9 7996 96CB FFE9 9CEA F984 D596 602E 42AE 6535 2:no
 RC=0 "home":   ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1
 RC=0 "home":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+SAREFTRACK; prio: 32,16; interface: eth0; kind=CK_PERMANENT
 RC=0 "home":   ESP algorithms wanted: 3des(3)_000-hmac_md5_96(1)_000-MODP1536(5); flags=-strict
-RC=0 "home":   ESP algorithms loaded: 3DES(3)_192-MD5(1)_128
+RC=0 "home":   ESP algorithms loaded: 3des(3)_192-hmac_md5_96(1)_128
 | ICOOKIE:  80 01 02 03  04 05 06 07
 | RCOOKIE:  00 00 00 00  00 00 00 00
 | state hash entry 4
@@ -854,7 +854,7 @@ picking: eth0:500  outside: 55044 <=> d: 55044
 | state hash entry 5
 | inserting state object #2 bucket: 5
 | inserting event EVENT_SO_DISCARD, timeout in 0 seconds for #2
-./v1certQI1 initiating Quick Mode RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+SAREFTRACK {using isakmp#1 msgid:03020180 proposal=3DES(3)_192-MD5(1)_128 pfsgroup=OAKLEY_GROUP_MODP1536}
+./v1certQI1 initiating Quick Mode RSASIG+ENCRYPT+TUNNEL+PFS+IKEv2ALLOW+SAREFTRACK {using isakmp#1 msgid:03020180 proposal=3des(3)_192-hmac_md5_96(1)_128 pfsgroup=OAKLEY_GROUP_MODP1536}
 | **emit ISAKMP Message:
 |    initiator cookie:
 |   80 01 02 03  04 05 06 07

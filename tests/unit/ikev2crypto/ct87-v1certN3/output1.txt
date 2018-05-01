@@ -56,7 +56,7 @@ RC=0 "rw":   keys: 1:75B9 7996 96CB FFE9 9CEA F984 D596 602E 42AE 6535 2:none...
 RC=0 "rw":   ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1
 RC=0 "rw":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK; prio: 16,32; interface: eth0; kind=CK_TEMPLATE
 RC=0 "rw":   ESP algorithms wanted: 3des(3)_000-hmac_md5_96(1)_000-MODP1536(5); flags=-strict
-RC=0 "rw":   ESP algorithms loaded: 3DES(3)_192-MD5(1)_128
+RC=0 "rw":   ESP algorithms loaded: 3des(3)_192-hmac_md5_96(1)_128
 | Changed path to directory '../../libpluto/samples/moon/cacerts'
 ./v1certN3   loaded CA cert file 'rootCA.pem' (1525 bytes)
 | Changed path to directory '../../libpluto/samples/moon/aacerts'
@@ -655,7 +655,7 @@ sending 284 bytes for STATE_MAIN_R1 through eth0:500 [192.168.0.1:500] to 93.184
 | find_host_pair: concluded with rw
 | connect_to_host_pair: 192.168.0.1:500 %any 93.184.216.34:500 -> hp:rw
 | instantiated "rw" for 93.184.216.34
-./v1certN3 switched from "rw" to "rw"
+./v1certN3 switched from "rw" to "rw"[1]
 | hashing 48 bytes of SA
 | key issuer CA is 'C=CA, ST=Ontario, L=Ottawa, O=Xelerance Corporation, OU=Doctor Taylor Plumage, CN=testing.xelerance.com, E=mcr@xelerance.com'
 | an RSA Sig check passed with *AwEAAbfz1 [preloaded key]

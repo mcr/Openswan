@@ -119,7 +119,7 @@ RC=0 "rw-any":   keys: 1:75B9 7996 96CB FFE9 9CEA F984 D596 602E 42AE 6535 2:non
 RC=0 "rw-any":   ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1
 RC=0 "rw-any":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+!IKEv1+IKEv2ALLOW+IKEv2Init+SAREFTRACK; prio: 16,32; interface: eth0; kind=CK_TEMPLATE
 RC=0 "rw-any":   ESP algorithms wanted: aes_cbc(12)_128-hmac_sha1_96(2)_000-MODP2048(14); flags=-strict
-RC=0 "rw-any":   ESP algorithms loaded: AES(12)_128-SHA1(2)_160
+RC=0 "rw-any":   ESP algorithms loaded: aes_cbc(12)_128-hmac_sha1_96(2)_160
 | Changed path to directory '../samples/gatewaycert/cacerts'
 ./certreplyR2   loaded CA cert file 'rootCA.pem' (1525 bytes)
 RC=2 IP hostpairs:
