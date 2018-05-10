@@ -32,6 +32,7 @@ processing whack msg time: X size: Y
 | certificate is valid
 | counting wild cards for @moon.testing.openswan.org is 0
 | counting wild cards for (none) is 15
+./certreplydaveR2 their side id: is wildcard
 | based upon ID_wildcard policy, the connection is a template.
 | alg_info_addref() alg_info->ref_cnt=1
 | alg_info_addref() alg_info->ref_cnt=1
