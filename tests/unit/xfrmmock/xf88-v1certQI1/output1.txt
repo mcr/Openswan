@@ -1009,53 +1009,6 @@ RC=118 STATE_QUICK_I1: initiate
 | RCOOKIE:  64 0a 06 43  5c 7c 4b 31
 | state hash entry 5
 | pass 1: considering PARENT SAs to delete
-./v1certQI1 deleting state #1 (STATE_MAIN_I4)
-| **emit ISAKMP Message:
-|    initiator cookie:
-|   80 01 02 03  04 05 06 07
-|    responder cookie:
-|   64 0a 06 43  5c 7c 4b 31
-|    ISAKMP version: ISAKMP Version 1.0 (rfc2407)
-|    exchange type: ISAKMP_XCHG_INFO
-|    flags: ISAKMP_FLAG_ENCRYPTION
-|    message ID:  80 01 02 03
-| ***emit ISAKMP Hash Payload:
-| emitting 16 zero bytes of HASH(1) into ISAKMP Hash Payload
-| emitting length of ISAKMP Hash Payload: 20
-| ***emit ISAKMP Delete Payload:
-|    DOI: ISAKMP_DOI_IPSEC
-|    protocol ID: 1
-|    SPI size: 16
-|    number of SPIs: 1
-| emitting 16 raw bytes of delete payload into ISAKMP Delete Payload
-| delete payload  80 01 02 03  04 05 06 07  64 0a 06 43  5c 7c 4b 31
-| emitting length of ISAKMP Delete Payload: 28
-| HASH(1) computed:
-|   53 31 51 f6  ef 6b 5b 67  9c 53 2b 9d  c3 eb a4 49
-| last Phase 1 IV:  c9 50 37 27  01 e4 2c 15
-| current Phase 1 IV:  c9 50 37 27  01 e4 2c 15
-| computed Phase 2 IV:
-|   41 ce 59 99  ca a7 06 1f  7b 09 44 0e  69 96 94 e7
-| encrypting:
-|   0c 00 00 14  53 31 51 f6  ef 6b 5b 67  9c 53 2b 9d
-|   c3 eb a4 49  00 00 00 1c  00 00 00 01  01 10 00 01
-|   80 01 02 03  04 05 06 07  64 0a 06 43  5c 7c 4b 31
-| IV:
-|   41 ce 59 99  ca a7 06 1f  7b 09 44 0e  69 96 94 e7
-| unpadded size is: 48
-| encrypting 48 using OAKLEY_3DES_CBC
-| crypting using IV:  41 ce 59 99  ca a7 06 1f
-| next IV:  74 9d 23 e1  36 6e ea 60
-| emitting length of ISAKMP Message: 76
-sending 76 bytes for delete notify through eth0:500 [93.184.216.34:55044] to 192.168.0.1:4500 (using #1)
-|   80 01 02 03  04 05 06 07  64 0a 06 43  5c 7c 4b 31
-|   08 10 05 01  80 01 02 03  00 00 00 4c  9b 02 09 f4
-|   8c af eb 8c  84 d6 d6 93  0a 78 2b d2  7d b6 45 f9
-|   55 f7 ad c5  a6 75 a4 ea  71 d2 a4 91  b8 1c 0a bd
-|   ef 8b ab 75  74 9d 23 e1  36 6e ea 60
-| ICOOKIE:  80 01 02 03  04 05 06 07
-| RCOOKIE:  64 0a 06 43  5c 7c 4b 31
-| state hash entry 5
 ./v1certQI1 leak: reply packet from quick_outI1, item size: X
 ./v1certQI1 leak: long term secret, item size: X
 ./v1certQI1 leak: saved gi value, item size: X
@@ -1080,19 +1033,7 @@ sending 76 bytes for delete notify through eth0:500 [93.184.216.34:55044] to 192
 ./v1certQI1 leak: st_skeyseed in duplicate_state, item size: X
 ./v1certQI1 leak: st_enc_key in duplicate_state, item size: X
 ./v1certQI1 leak: struct state in new_state(), item size: X
-./v1certQI1 leak: raw packet, item size: X
-./v1certQI1 leak: calculated enc_keyshared secret, item size: X
-./v1certQI1 leak: calculated skeyid_eshared secret, item size: X
-./v1certQI1 leak: calculated skeyid_ashared secret, item size: X
-./v1certQI1 leak: calculated skeyid_dshared secret, item size: X
-./v1certQI1 leak: calculated skeyidshared secret, item size: X
-./v1certQI1 leak: calculated sharedshared secret, item size: X
 ./v1certQI1 leak: aggr outR1 DH, item size: X
-./v1certQI1 leak: nonce, item size: X
-./v1certQI1 leak: Gr, item size: X
-./v1certQI1 leak: initiator nonce, item size: X
-./v1certQI1 leak: long term secret, item size: X
-./v1certQI1 leak: saved gi value, item size: X
 ./v1certQI1 leak: outI2 KE, item size: X
 ./v1certQI1 leak: msg_digest, item size: X
 ./v1certQI1 leak: 67 * VendorID MD5, item size: X
@@ -1104,16 +1045,6 @@ sending 76 bytes for delete notify through eth0:500 [93.184.216.34:55044] to 192
 ./v1certQI1 leak: vid->data, item size: X
 ./v1certQI1 leak: 23 * VendorID MD5, item size: X
 ./v1certQI1 leak: vid->data, item size: X
-./v1certQI1 leak: sa in main_outI1, item size: X
-./v1certQI1 leak: v1 policy proposal conj, item size: X
-./v1certQI1 leak: db_context->attrs, item size: X
-./v1certQI1 leak: db_context->trans, item size: X
-./v1certQI1 leak: db_context, item size: X
-./v1certQI1 leak: db_context->trans (expand), item size: X
-./v1certQI1 leak: db_context->attrs, item size: X
-./v1certQI1 leak: 2 * db_context->conj, item size: X
-./v1certQI1 leak: v2 policy database, item size: X
-./v1certQI1 leak: struct state in new_state(), item size: X
 ./v1certQI1 leak: rfc3110 format of public key [created], item size: X
 ./v1certQI1 leak: issuer dn, item size: X
 ./v1certQI1 leak: keep id name, item size: X

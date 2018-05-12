@@ -1105,62 +1105,7 @@ sending 76 bytes for delete notify through eth0:4500 [93.184.216.34:55045] to 13
 | RCOOKIE:  64 0a 06 43  5c 7c 4b 31
 | state hash entry 5
 | pass 1: considering PARENT SAs to delete
-./childQI2 deleting state #1 (STATE_MAIN_I4)
-./childQI2 gave up looking for unique msgid; using 0x03020180
-| **emit ISAKMP Message:
-|    initiator cookie:
-|   80 01 02 03  04 05 06 07
-|    responder cookie:
-|   64 0a 06 43  5c 7c 4b 31
-|    ISAKMP version: ISAKMP Version 1.0 (rfc2407)
-|    exchange type: ISAKMP_XCHG_INFO
-|    flags: ISAKMP_FLAG_ENCRYPTION
-|    message ID:  80 01 02 03
-| ***emit ISAKMP Hash Payload:
-| emitting 20 zero bytes of HASH(1) into ISAKMP Hash Payload
-| emitting length of ISAKMP Hash Payload: 24
-| ***emit ISAKMP Delete Payload:
-|    DOI: ISAKMP_DOI_IPSEC
-|    protocol ID: 1
-|    SPI size: 16
-|    number of SPIs: 1
-| emitting 16 raw bytes of delete payload into ISAKMP Delete Payload
-| delete payload  80 01 02 03  04 05 06 07  64 0a 06 43  5c 7c 4b 31
-| emitting length of ISAKMP Delete Payload: 28
-| HASH(1) computed:
-|   89 d6 a6 70  ae 1e 41 cf  91 82 18 f4  36 e2 53 0f
-|   c6 dd ad 66
-| last Phase 1 IV:  2b d6 a9 12  96 6d a8 7f  6e 75 c9 7a  65 0d af fd
-| current Phase 1 IV:  2b d6 a9 12  96 6d a8 7f  6e 75 c9 7a  65 0d af fd
-| computed Phase 2 IV:
-|   0d 11 f3 ec  13 af d9 8e  5f f0 ba b5  31 68 4f 25
-|   1b 87 1e 0b
-| encrypting:
-|   0c 00 00 18  89 d6 a6 70  ae 1e 41 cf  91 82 18 f4
-|   36 e2 53 0f  c6 dd ad 66  00 00 00 1c  00 00 00 01
-|   01 10 00 01  80 01 02 03  04 05 06 07  64 0a 06 43
-|   5c 7c 4b 31
-| IV:
-|   0d 11 f3 ec  13 af d9 8e  5f f0 ba b5  31 68 4f 25
-|   1b 87 1e 0b
-| unpadded size is: 52
-| emitting 12 zero bytes of encryption padding into ISAKMP Message
-| encrypting 64 using OAKLEY_AES_CBC
-| crypting using IV:  0d 11 f3 ec  13 af d9 8e  5f f0 ba b5  31 68 4f 25
-| next IV:  07 63 cc 3a  ef 74 29 11  44 bf 9a be  60 a9 a8 72
-| emitting length of ISAKMP Message: 92
-sending 92 bytes for delete notify through eth0:4500 [93.184.216.34:55045] to 132.213.238.7:4500 (using #1)
-|   80 01 02 03  04 05 06 07  64 0a 06 43  5c 7c 4b 31
-|   08 10 05 01  80 01 02 03  00 00 00 5c  2b 7c f3 35
-|   23 b6 eb c9  84 9e 39 9a  e9 7d 66 64  f2 54 4c 29
-|   86 bb 8b d0  45 d2 9d 04  03 46 13 e7  d9 d7 f3 51
-|   dd f7 cf a9  20 3d 19 0d  39 7b f8 14  07 63 cc 3a
-|   ef 74 29 11  44 bf 9a be  60 a9 a8 72
-| ICOOKIE:  80 01 02 03  04 05 06 07
-| RCOOKIE:  64 0a 06 43  5c 7c 4b 31
-| state hash entry 5
 ./childQI2 leak: reply packet, item size: X
-./childQI2 leak: msgid, item size: X
 ./childQI2 leak: peer_keymat in quick_inI1_outR1(), item size: X
 ./childQI2 leak: keymat in compute_keymat(), item size: X
 ./childQI2 leak: calculated grshared secret, item size: X
@@ -1192,19 +1137,7 @@ sending 92 bytes for delete notify through eth0:4500 [93.184.216.34:55045] to 13
 ./childQI2 leak: st_skeyseed in duplicate_state, item size: X
 ./childQI2 leak: st_enc_key in duplicate_state, item size: X
 ./childQI2 leak: struct state in new_state(), item size: X
-./childQI2 leak: raw packet, item size: X
-./childQI2 leak: calculated enc_keyshared secret, item size: X
-./childQI2 leak: calculated skeyid_eshared secret, item size: X
-./childQI2 leak: calculated skeyid_ashared secret, item size: X
-./childQI2 leak: calculated skeyid_dshared secret, item size: X
-./childQI2 leak: calculated skeyidshared secret, item size: X
-./childQI2 leak: calculated sharedshared secret, item size: X
 ./childQI2 leak: aggr outR1 DH, item size: X
-./childQI2 leak: nonce, item size: X
-./childQI2 leak: Gr, item size: X
-./childQI2 leak: initiator nonce, item size: X
-./childQI2 leak: long term secret, item size: X
-./childQI2 leak: saved gi value, item size: X
 ./childQI2 leak: outI2 KE, item size: X
 ./childQI2 leak: msg_digest, item size: X
 ./childQI2 leak: 67 * VendorID MD5, item size: X
@@ -1216,18 +1149,7 @@ sending 92 bytes for delete notify through eth0:4500 [93.184.216.34:55045] to 13
 ./childQI2 leak: vid->data, item size: X
 ./childQI2 leak: 23 * VendorID MD5, item size: X
 ./childQI2 leak: vid->data, item size: X
-./childQI2 leak: sa in main_outI1, item size: X
-./childQI2 leak: v1 policy proposal conj, item size: X
-./childQI2 leak: db_context->attrs (expand), item size: X
-./childQI2 leak: db_context->trans (expand), item size: X
-./childQI2 leak: db_context, item size: X
-./childQI2 leak: db_context->trans (expand), item size: X
-./childQI2 leak: db_context->conj (expand), item size: X
 ./childQI2 leak: alg_info_ike, item size: X
-./childQI2 leak: db_context->attrs, item size: X
-./childQI2 leak: db_context->conj, item size: X
-./childQI2 leak: v2 policy database, item size: X
-./childQI2 leak: struct state in new_state(), item size: X
 ./childQI2 leak: pubkey entry, item size: X
 ./childQI2 leak: rfc3110 format of public key, item size: X
 ./childQI2 leak: pubkey, item size: X

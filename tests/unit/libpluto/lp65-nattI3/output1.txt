@@ -340,16 +340,6 @@ sending 80 bytes for ikev2_delete_out through eth0:4500 [93.184.216.34:55045] to
 |   b5 fc a4 92  84 aa c2 c2  26 45 c4 84  4b 67 04 77
 |   48 db 1d 2d  1c 08 f9 ca  e1 0c 11 8c  94 72 6e 4c
 | pass 1: considering PARENT SAs to delete
-./nattI3 deleting state #1 (STATE_PARENT_I3)
-| considering request to delete IKE parent state
-| sending IKE SA delete request
-sending 80 bytes for ikev2_delete_out through eth0:4500 [93.184.216.34:55045] to 132.213.238.7:4500 (using #1)
-|   80 01 02 03  04 05 06 07  64 0a 06 43  5c 7c 4b 31
-|   2e 20 25 08  00 00 00 03  00 00 00 50  2a 00 00 34
-|   80 01 02 03  04 05 06 07  08 09 0a 0b  0c 0d 0e 0f
-|   23 56 8c 9a  7c 01 7c 8e  c1 2a 91 9a  c4 da 80 c2
-|   27 c2 35 d0  73 ac 82 92  04 13 01 7a  a4 4d 92 fe
-| inserting event EVENT_SA_DELETE, timeout in 300 seconds for #1
 ./nattI3 leak: skeyseed_t1, item size: X
 ./nattI3 leak: responder keys, item size: X
 ./nattI3 leak: initiator keys, item size: X
