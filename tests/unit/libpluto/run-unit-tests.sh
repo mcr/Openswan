@@ -23,6 +23,7 @@ rm -f */core
 for f in $(make testlist)
 do
     (cd $f; header $f; rm -f core;
+     make pcapupdate
      while ! make check && ! [ -f core ];
      do
          make update && git add -p .
