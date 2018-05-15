@@ -164,7 +164,7 @@ sending 136 bytes for STATE_MAIN_R0 through eth0:500 [192.168.0.2:500] to 192.16
 1: output to OUTPUT/v1rwnatN2.pcap
 1: input from v1rwnatM2.pcap
 |   =========== input from from v1rwnatM2.pcap ========
-| *received 284 bytes from 93.184.216.34:55044 on eth0 (port=500)
+| *received 284 bytes from 192.168.0.1:55044 on eth0 (port=500)
 |   80 01 02 03  04 05 06 07  c4 6d c5 7a  f8 f3 5d 2e
 |   04 10 02 00  00 00 00 00  00 00 01 1c  0a 00 00 c4
 |   ff bc 6a 92  a6 b9 55 9b  05 fa 96 a7  a4 35 07 b4
@@ -181,8 +181,8 @@ sending 136 bytes for STATE_MAIN_R0 through eth0:500 [192.168.0.2:500] to 192.16
 |   23 e1 ec 1e  27 03 31 b2  d0 50 f4 f7  58 f4 99 27
 |   14 00 00 14  b5 ce 84 19  09 5c 6e 2b  6b 62 d3 05
 |   53 05 b3 c4  14 00 00 14  07 05 57 15  6a 97 cf e1
-|   1b 58 0b ab  ba 0e 8b 99  00 00 00 14  b1 79 0b 79
-|   18 fc db ed  71 56 e0 a8  6c 86 23 d4
+|   1b 58 0b ab  ba 0e 8b 99  00 00 00 14  71 3d 62 44
+|   14 d6 b8 7e  ff 3c 6d d2  86 0e c9 ac
 |  processing version=1.0 packet with exchange type=ISAKMP_XCHG_IDPROT (2), msgid: 00000000
 | ICOOKIE:  80 01 02 03  04 05 06 07
 | RCOOKIE:  c4 6d c5 7a  f8 f3 5d 2e
@@ -249,7 +249,7 @@ sending 136 bytes for STATE_MAIN_R0 through eth0:500 [192.168.0.2:500] to 192.16
 |    next-payload: ISAKMP_NEXT_NAT-D [@224=0x14]
 | ***emit ISAKMP NAT-D Payload:
 | emitting 16 raw bytes of NAT-D into ISAKMP NAT-D Payload
-| NAT-D  79 c6 fa 10  28 97 d1 51  fd f2 08 50  42 59 88 9a
+| NAT-D  e2 fa 87 0a  9c d4 48 7f  9c a3 5a aa  ba 13 3e b2
 | emitting length of ISAKMP NAT-D Payload: 20
 | ***emit ISAKMP NAT-D Payload:
 | emitting 16 raw bytes of NAT-D into ISAKMP NAT-D Payload
@@ -260,10 +260,8 @@ sending 136 bytes for STATE_MAIN_R0 through eth0:500 [192.168.0.2:500] to 192.16
 | started dh_secretiv, returned: stf=STF_SUSPEND
 | complete state transition with STF_OK
 ./v1rwnatN2 transition from state STATE_MAIN_R1 to state STATE_MAIN_R2
-| state #1 NAT-T: new mapping 93.184.216.34:55044
-./v1rwnatN2 new NAT mapping for #1, was 192.168.0.1:55044, now 93.184.216.34:55044
-| sending reply packet to 93.184.216.34:55044 (from port 500)
-sending 284 bytes for STATE_MAIN_R1 through eth0:500 [192.168.0.2:500] to 93.184.216.34:55044 (using #1)
+| sending reply packet to 192.168.0.1:55044 (from port 500)
+sending 284 bytes for STATE_MAIN_R1 through eth0:500 [192.168.0.2:500] to 192.168.0.1:55044 (using #1)
 |   80 01 02 03  04 05 06 07  c4 6d c5 7a  f8 f3 5d 2e
 |   04 10 02 00  00 00 00 00  00 00 01 1c  0a 00 00 c4
 |   cd 30 df 6e  c0 85 44 12  53 01 80 d8  7e 1a fb b3
@@ -279,8 +277,8 @@ sending 284 bytes for STATE_MAIN_R1 through eth0:500 [192.168.0.2:500] to 93.184
 |   bf 00 ca fd  ae 6d e7 14  6d 11 35 f6  5d 93 5f 60
 |   b9 73 0f e0  49 2c 2a f8  c9 04 f6 4c  59 16 90 9d
 |   14 00 00 14  47 e9 f9 25  8c a2 38 58  f6 75 b1 66
-|   b0 2c c2 92  14 00 00 14  79 c6 fa 10  28 97 d1 51
-|   fd f2 08 50  42 59 88 9a  00 00 00 14  07 05 57 15
+|   b0 2c c2 92  14 00 00 14  e2 fa 87 0a  9c d4 48 7f
+|   9c a3 5a aa  ba 13 3e b2  00 00 00 14  07 05 57 15
 |   6a 97 cf e1  1b 58 0b ab  ba 0e 8b 99
 | inserting event EVENT_RETRANSMIT, timeout in 10 seconds for #1
 ./v1rwnatN2 STATE_MAIN_R2: sent MR2, expecting MI3
