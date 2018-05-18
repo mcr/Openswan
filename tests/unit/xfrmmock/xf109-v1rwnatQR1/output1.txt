@@ -602,12 +602,19 @@ sending 324 bytes for STATE_MAIN_R2 through eth0:4500 [192.168.0.2:4500] to 192.
 | peer client protocol/port is 0/0
 | our client is subnet 10.2.0.0/16
 | our client protocol/port is 0/0
+<<<<<<< HEAD
 ./v1rwnatQR1 the peer proposed: 10.2.0.0/16:0/0 -> 10.1.0.10/32:0/0 (self=false)
 | find_client_connection starting with bobnet-ikev1
 |   looking for 10.2.0.0/16:0/0 -> 10.1.0.10/32:0/0
 |   concrete checking against sr#0 10.2.0.0/16 -> 0.0.0.0/32
 |     not matched
 |    peer_net: yes
+=======
+./v1rwnatQR1 the peer proposed: 10.2.0.0/16:0/0 -> 10.1.0.10/32:0/0
+| find_client_connection starting with bobnet-ikev1
+|   looking for 10.2.0.0/16:0/0 -> 10.1.0.10/32:0/0
+|   concrete checking against sr#0 10.2.0.0/16 -> 0.0.0.0/32
+>>>>>>> 35fa255... initial work on xf109
 |    match_id a=@alice
 |             b=@alice
 |    results  matched
@@ -824,6 +831,10 @@ writing netlink for esp.12345678@192.168.0.2
 writing netlink policy for tun.10000@192.168.0.2
 0000: fc 00 00 00  19 00 05 00  00 00 00 00  00 00 00 00
 0010: 0a 02 00 00  00 00 00 00  00 00 00 00  00 00 00 00
+<<<<<<< HEAD
+=======
+0020: c0 a8 00 01  00 00 00 00  00 00 00 00  00 00 00 00
+>>>>>>> 35fa255... initial work on xf109
 0030: 00 00 00 00  00 00 00 00  02 00 10 20  00 00 00 00
 0040: 00 00 00 00  00 00 00 00  ff ff ff ff  ff ff ff ff
 0050: ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
@@ -836,6 +847,10 @@ writing netlink policy for tun.10000@192.168.0.2
 writing netlink policy for tun.10000@192.168.0.2
 0000: fc 00 00 00  19 00 05 00  00 00 00 00  00 00 00 00
 0010: 0a 02 00 00  00 00 00 00  00 00 00 00  00 00 00 00
+<<<<<<< HEAD
+=======
+0020: c0 a8 00 01  00 00 00 00  00 00 00 00  00 00 00 00
+>>>>>>> 35fa255... initial work on xf109
 0030: 00 00 00 00  00 00 00 00  02 00 10 20  00 00 00 00
 0040: 00 00 00 00  00 00 00 00  ff ff ff ff  ff ff ff ff
 0050: ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
