@@ -376,6 +376,8 @@ sending 284 bytes for STATE_MAIN_R1 through eth0:500 [192.168.0.2:500] to 192.16
 | rsa key AQOssdnqo found
 | offered CA: '%none'
 | hashing 48 bytes of SA
+| key issuer CA is '%any'
+| an RSA Sig check passed with *AQOHGEUnh [preloaded key]
 | authentication succeeded
 | thinking about whether to send my certificate:
 |   I have RSA key: OAKLEY_RSA_SIG cert.type: CERT_NONE
@@ -488,7 +490,7 @@ sending 324 bytes for STATE_MAIN_R2 through eth0:4500 [192.168.0.2:4500] to 192.
 |   e8 0f 74 f2  7c 04 fa ff  8b 52 95 8b  db 8d 15 a0
 |   7f e5 3b ee
 | inserting event EVENT_SA_REPLACE, timeout in 3510 seconds for #1
-./v1rwnatQR1 STATE_MAIN_R3: sent MR3, ISAKMP SA established {auth=OAKLEY_RSA_SIG oursig= theirsig= cipher=oakley_3des_cbc_192 prf=oakley_md5 group=modp1536}
+./v1rwnatQR1 STATE_MAIN_R3: sent MR3, ISAKMP SA established {auth=OAKLEY_RSA_SIG oursig= theirsig=AQOHGEUnh cipher=oakley_3des_cbc_192 prf=oakley_md5 group=modp1536}
 | modecfg pull: noquirk policy:push not-client
 | phase 1 is done, looking for phase 2 to unpend
 3: output to OUTPUT/v1rwnatQR1.pcap
@@ -771,6 +773,77 @@ sending 324 bytes for STATE_MAIN_R2 through eth0:4500 [192.168.0.2:4500] to 192.
 |   95 5c 28 46  8e bc dc 4b  0a 26 df a3  fe dd 63 9e
 |   83 b1 aa 45  3e fc b6 02  36 3f cd 64  9b 54 83 13
 |   82 5a fd 0a  b2 f3 a6 a9
+| install_inbound_ipsec_sa() checking if we can route
+| route owner of "bobnet-ikev1" unrouted: NULL; eroute owner: NULL
+| could_route called for bobnet-ikev1 (kind=CK_PERMANENT)
+|    routing is easy, or has resolvable near-conflict
+| checking if this is a replacement state
+|   st->serialno=#2 ost->serialno=#0
+| installing outgoing SA now as refhim=0
+| ESP enckey:  95 5c 28 46  8e bc dc 4b  0a 26 df a3  fe dd 63 9e
+|   83 b1 aa 45  3e fc b6 02
+| ESP authkey:  36 3f cd 64  9b 54 83 13  82 5a fd 0a  b2 f3 a6 a9
+writing netlink for esp.12345678@192.168.0.1
+0000: c4 01 00 00  10 00 05 00  00 00 00 00  00 00 00 00
+0040: 00 00 00 00  00 00 00 00  c0 a8 00 01  00 00 00 00
+0050: 00 00 00 00  00 00 00 00  12 34 56 78  32 00 00 00
+0060: c0 a8 00 02  00 00 00 00  00 00 00 00  00 00 00 00
+0070: ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+0080: ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+00e0: 01 40 00 00  02 00 01 20  20 00 00 00  00 00 00 00
+00f0: 58 00 01 00  6d 64 35 00  00 00 00 00  00 00 00 00
+0130: 00 00 00 00  80 00 00 00  36 3f cd 64  9b 54 83 13
+0140: 82 5a fd 0a  b2 f3 a6 a9  60 00 02 00  64 65 73 33
+0150: 5f 65 64 65  00 00 00 00  00 00 00 00  00 00 00 00
+0180: 00 00 00 00  00 00 00 00  00 00 00 00  c0 00 00 00
+0190: 95 5c 28 46  8e bc dc 4b  0a 26 df a3  fe dd 63 9e
+01a0: 83 b1 aa 45  3e fc b6 02  1c 00 04 00  02 00 11 94
+01b0: d7 05 00 00  00 00 00 00  00 00 00 00  00 00 00 00
+| outgoing SA has refhim=4294901761
+| ESP enckey:  95 5c 28 46  8e bc dc 4b  0a 26 df a3  fe dd 63 9e
+|   83 b1 aa 45  3e fc b6 02
+| ESP authkey:  36 3f cd 64  9b 54 83 13  82 5a fd 0a  b2 f3 a6 a9
+writing netlink for esp.12345678@192.168.0.2
+0000: c4 01 00 00  1a 00 05 00  00 00 00 00  00 00 00 00
+0040: 00 00 00 00  00 00 00 00  c0 a8 00 02  00 00 00 00
+0050: 00 00 00 00  00 00 00 00  12 34 56 78  32 00 00 00
+0060: c0 a8 00 01  00 00 00 00  00 00 00 00  00 00 00 00
+0070: ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+0080: ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+00e0: 01 40 00 00  02 00 01 20  20 00 00 00  00 00 00 00
+00f0: 58 00 01 00  6d 64 35 00  00 00 00 00  00 00 00 00
+0130: 00 00 00 00  80 00 00 00  36 3f cd 64  9b 54 83 13
+0140: 82 5a fd 0a  b2 f3 a6 a9  60 00 02 00  64 65 73 33
+0150: 5f 65 64 65  00 00 00 00  00 00 00 00  00 00 00 00
+0180: 00 00 00 00  00 00 00 00  00 00 00 00  c0 00 00 00
+0190: 95 5c 28 46  8e bc dc 4b  0a 26 df a3  fe dd 63 9e
+01a0: 83 b1 aa 45  3e fc b6 02  1c 00 04 00  02 00 d7 05
+01b0: 11 94 00 00  00 00 00 00  00 00 00 00  00 00 00 00
+writing netlink policy for tun.10000@192.168.0.2
+0000: fc 00 00 00  19 00 05 00  00 00 00 00  00 00 00 00
+0010: 0a 02 00 00  00 00 00 00  00 00 00 00  00 00 00 00
+0030: 00 00 00 00  00 00 00 00  02 00 10 20  00 00 00 00
+0040: 00 00 00 00  00 00 00 00  ff ff ff ff  ff ff ff ff
+0050: ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+0060: ff ff ff ff  ff ff ff ff  00 00 00 00  00 00 00 00
+00a0: 00 00 00 00  00 00 00 00  20 0a 00 00  00 00 00 00
+00b0: 00 00 00 00  00 00 00 00  44 00 05 00  c0 a8 00 02
+00d0: 32 00 00 00  02 00 00 00  c0 a8 00 01  00 00 00 00
+00e0: 00 00 00 00  00 00 00 00  01 40 00 00  01 00 00 00
+00f0: ff ff ff ff  ff ff ff ff  ff ff ff ff
+writing netlink policy for tun.10000@192.168.0.2
+0000: fc 00 00 00  19 00 05 00  00 00 00 00  00 00 00 00
+0010: 0a 02 00 00  00 00 00 00  00 00 00 00  00 00 00 00
+0030: 00 00 00 00  00 00 00 00  02 00 10 20  00 00 00 00
+0040: 00 00 00 00  00 00 00 00  ff ff ff ff  ff ff ff ff
+0050: ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
+0060: ff ff ff ff  ff ff ff ff  00 00 00 00  00 00 00 00
+00a0: 00 00 00 00  00 00 00 00  20 0a 00 00  00 00 00 00
+00b0: 02 00 00 00  00 00 00 00  44 00 05 00  c0 a8 00 02
+00d0: 32 00 00 00  02 00 00 00  c0 a8 00 01  00 00 00 00
+00e0: 00 00 00 00  00 00 00 00  01 40 00 00  01 00 00 00
+00f0: ff ff ff ff  ff ff ff ff  ff ff ff ff
+./v1rwnatQR1 add inbound eroute 10.1.0.10/32:0 --0-> 10.2.0.0/16:0 => tun.10000@192.168.0.2 succeeded
 | encrypting:
 |   01 00 00 14  12 15 ea 43  8f 1f 49 25  31 ad 8a cf
 |   55 76 89 57  0a 00 00 34  00 00 00 01  00 00 00 01

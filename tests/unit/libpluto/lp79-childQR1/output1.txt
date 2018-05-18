@@ -626,7 +626,7 @@ sending 332 bytes for STATE_MAIN_R2 through eth0:4500 [132.213.238.7:4500] to 93
 | peer client protocol/port is 0/0
 | our client is subnet 132.213.238.7/32
 | our client protocol/port is 0/0
-./childQR1 the peer proposed: 132.213.238.7/32:0/0 -> 192.168.1.1/32:0/0
+./childQR1 the peer proposed: 132.213.238.7/32:0/0 -> 192.168.1.1/32:0/0 (self=false)
 | find_client_connection starting with t4901
 |   looking for 132.213.238.7/32:0/0 -> 192.168.1.1/32:0/0
 |   concrete checking against sr#0 132.213.238.7/32 -> 0.0.0.0/32
