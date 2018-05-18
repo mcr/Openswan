@@ -49,15 +49,15 @@ processing whack msg time: X size: Y
 | find_ID_host_pair: looking for me=@sun him=@alice (exact)
 |   concluded with <none>
 ./v1rwnatQR1 adding connection: "bobnet-ikev1"
-| 10.2.0.0/16===192.168.0.2[@sun]...%any[@alice]
+| 10.2.0.0/16===192.168.0.2[@sun]...%virtual[@alice]===?
 | ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK
 |   orient bobnet-ikev1 finished with: 1 [0.0.0.0]
-RC=0 "bobnet-ikev1": 10.2.0.0/16===192.168.0.2[@sun]...%any[@alice]; unrouted; eroute owner: #0
+RC=0 "bobnet-ikev1": 10.2.0.0/16===192.168.0.2[@sun]...%virtual[@alice]===?; unrouted; eroute owner: #0
 RC=0 "bobnet-ikev1":     myip=unset; hisip=unset;
 RC=0 "bobnet-ikev1":   keys: 1:D997 E951 9BEB 2CBC 72E7 CED3 EFB5 EFCC 53E5 BA4B 2:none...
 RC=0 "bobnet-ikev1":        ....1:55E4 5DBB 7ED7 525C 38EC 6230 CA06 134C 2B1D 013B 2:none
 RC=0 "bobnet-ikev1":   ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1
-RC=0 "bobnet-ikev1":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK; prio: 16,32; interface: eth0; kind=CK_PERMANENT
+RC=0 "bobnet-ikev1":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK; prio: 16,32; interface: eth0; kind=CK_TEMPLATE
 RC=0 "bobnet-ikev1":   ESP algorithms wanted: 3des(3)_000-hmac_md5_96(1)_000-MODP1536(5); flags=-strict
 RC=0 "bobnet-ikev1":   ESP algorithms loaded: 3des(3)_192-hmac_md5_96(1)_128
 0: input from v1rwnatM1.pcap
@@ -93,13 +93,21 @@ RC=0 "bobnet-ikev1":   ESP algorithms loaded: 3des(3)_192-hmac_md5_96(1)_128
 | searching for connection with policy = /!IKEv1
 | found policy = RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK (bobnet-ikev1)
 | find_host_connection2 returns bobnet-ikev1 (ike=none/none)
+| local endpoint has virt (vnet/vhost) set without wildcards - needs instantiation
+| alg_info_addref() alg_info->ref_cnt=2
+| alg_info_addref() alg_info->ref_cnt=2
+| find_host_pair: looking for me=192.168.0.2:500 %any him=192.168.0.1:500 exact-match
+| find_host_pair: comparing to me=192.168.0.2:500 %any him=0.0.0.0:500
+| find_host_pair: concluded with bobnet-ikev1
+| connect_to_host_pair: 192.168.0.2:500 %any 192.168.0.1:500 -> hp:bobnet-ikev1
+| instantiated "bobnet-ikev1" for 192.168.0.1
 | creating state object #1 at Z
 | ICOOKIE:  80 01 02 03  04 05 06 07
 | RCOOKIE:  c4 6d c5 7a  f8 f3 5d 2e
 | state hash entry 30
 | inserting state object #1 bucket: 30
 | inserting event EVENT_SO_DISCARD, timeout in 0 seconds for #1
-./v1rwnatQR1 responding to Main Mode
+./v1rwnatQR1 responding to Main Mode from unknown peer 192.168.0.1
 | **emit ISAKMP Message:
 |    initiator cookie:
 |   80 01 02 03  04 05 06 07
@@ -607,16 +615,22 @@ sending 324 bytes for STATE_MAIN_R2 through eth0:4500 [192.168.0.2:4500] to 192.
 |   looking for 10.2.0.0/16:0/0 -> 10.1.0.10/32:0/0
 |   concrete checking against sr#0 10.2.0.0/16 -> 0.0.0.0/32
 |     not matched
-|    peer_net: yes
+|    fc_try outer us:192.168.0.2 peer:192.168.0.1
 |    match_id a=@alice
 |             b=@alice
 |    results  matched
 |   trusted_ca called with a=(empty) b=(empty)
-|   fc_try trying bobnet-ikev1:10.2.0.0/16:0/0 -> 10.1.0.10/32:0/0 vs bobnet-ikev1:10.2.0.0/16:0/0 -> %self/3:0/0
+|   fc_try trying bobnet-ikev1:10.2.0.0/16:0/0 -> 10.1.0.10/32:0/0(virt) vs bobnet-ikev1:10.2.0.0/16:0/0 -> 0.0.0.0/32:0/0(virt)
+|    match_id a=@alice
+|             b=@alice
+|    results  matched
+|   trusted_ca called with a=(empty) b=(empty)
+|   fc_try trying bobnet-ikev1:10.2.0.0/16:0/0 -> 10.1.0.10/32:0/0(virt) vs bobnet-ikev1:10.2.0.0/16:0/0 -> 0.0.0.0/32:0/0(virt)
 |   fc_try concluding with bobnet-ikev1 [128]
 |   fc_try bobnet-ikev1 gives bobnet-ikev1
 |   concluding with d = bobnet-ikev1
-| client wildcard: no  port wildcard: no  virtual: no
+| client wildcard: no  port wildcard: no  virtual: yes
+| setting phase 2 virtual values to 10.1.0.10/32===192.168.0.1[@alice]
 | duplicating state object #1
 | creating state object #2 at Z
 | ICOOKIE:  80 01 02 03  04 05 06 07
@@ -738,7 +752,7 @@ sending 324 bytes for STATE_MAIN_R2 through eth0:4500 [192.168.0.2:4500] to 192.
 | emitting length of ISAKMP Security Association Payload: 52
 ./v1rwnatQR1 responding to Quick Mode proposal {msgid:03020180}
 ./v1rwnatQR1     us: 10.2.0.0/16===192.168.0.2[@sun]
-./v1rwnatQR1   them: %any[@alice]
+./v1rwnatQR1   them: 192.168.0.1[@alice]===10.1.0.10/32
 | ***emit ISAKMP Nonce Payload:
 | emitting 16 raw bytes of Nr into ISAKMP Nonce Payload
 | Nr  00 00 00 00  00 00 00 00  00 00 00 00  00 00 00 00
@@ -775,9 +789,10 @@ sending 324 bytes for STATE_MAIN_R2 through eth0:4500 [192.168.0.2:4500] to 192.
 |   95 5c 28 46  8e bc dc 4b  0a 26 df a3  fe dd 63 9e
 |   83 b1 aa 45  3e fc b6 02  36 3f cd 64  9b 54 83 13
 |   82 5a fd 0a  b2 f3 a6 a9
+| route owner of "bobnet-ikev1"[1] 192.168.0.1 unrouted: NULL
 | install_inbound_ipsec_sa() checking if we can route
-| route owner of "bobnet-ikev1" unrouted: NULL; eroute owner: NULL
-| could_route called for bobnet-ikev1 (kind=CK_PERMANENT)
+| route owner of "bobnet-ikev1"[1] 192.168.0.1 unrouted: NULL; eroute owner: NULL
+| could_route called for bobnet-ikev1 (kind=CK_INSTANCE)
 |    routing is easy, or has resolvable near-conflict
 | checking if this is a replacement state
 |   st->serialno=#2 ost->serialno=#0
@@ -792,7 +807,7 @@ writing netlink for esp.12345678@192.168.0.1
 0060: c0 a8 00 02  00 00 00 00  00 00 00 00  00 00 00 00
 0070: ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
 0080: ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
-00e0: 01 40 00 00  02 00 01 20  20 00 00 00  00 00 00 00
+00e0: 05 40 00 00  02 00 01 20  20 00 00 00  00 00 00 00
 00f0: 58 00 01 00  6d 64 35 00  00 00 00 00  00 00 00 00
 0130: 00 00 00 00  80 00 00 00  36 3f cd 64  9b 54 83 13
 0140: 82 5a fd 0a  b2 f3 a6 a9  60 00 02 00  64 65 73 33
@@ -812,7 +827,7 @@ writing netlink for esp.12345678@192.168.0.2
 0060: c0 a8 00 01  00 00 00 00  00 00 00 00  00 00 00 00
 0070: ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
 0080: ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
-00e0: 01 40 00 00  02 00 01 20  20 00 00 00  00 00 00 00
+00e0: 05 40 00 00  02 00 01 20  20 00 00 00  00 00 00 00
 00f0: 58 00 01 00  6d 64 35 00  00 00 00 00  00 00 00 00
 0130: 00 00 00 00  80 00 00 00  36 3f cd 64  9b 54 83 13
 0140: 82 5a fd 0a  b2 f3 a6 a9  60 00 02 00  64 65 73 33
@@ -824,6 +839,7 @@ writing netlink for esp.12345678@192.168.0.2
 writing netlink policy for tun.10000@192.168.0.2
 0000: fc 00 00 00  19 00 05 00  00 00 00 00  00 00 00 00
 0010: 0a 02 00 00  00 00 00 00  00 00 00 00  00 00 00 00
+0020: 0a 01 00 0a  00 00 00 00  00 00 00 00  00 00 00 00
 0030: 00 00 00 00  00 00 00 00  02 00 10 20  00 00 00 00
 0040: 00 00 00 00  00 00 00 00  ff ff ff ff  ff ff ff ff
 0050: ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
@@ -831,11 +847,12 @@ writing netlink policy for tun.10000@192.168.0.2
 00a0: 00 00 00 00  00 00 00 00  20 0a 00 00  00 00 00 00
 00b0: 00 00 00 00  00 00 00 00  44 00 05 00  c0 a8 00 02
 00d0: 32 00 00 00  02 00 00 00  c0 a8 00 01  00 00 00 00
-00e0: 00 00 00 00  00 00 00 00  01 40 00 00  01 00 00 00
+00e0: 00 00 00 00  00 00 00 00  05 40 00 00  01 00 00 00
 00f0: ff ff ff ff  ff ff ff ff  ff ff ff ff
 writing netlink policy for tun.10000@192.168.0.2
 0000: fc 00 00 00  19 00 05 00  00 00 00 00  00 00 00 00
 0010: 0a 02 00 00  00 00 00 00  00 00 00 00  00 00 00 00
+0020: 0a 01 00 0a  00 00 00 00  00 00 00 00  00 00 00 00
 0030: 00 00 00 00  00 00 00 00  02 00 10 20  00 00 00 00
 0040: 00 00 00 00  00 00 00 00  ff ff ff ff  ff ff ff ff
 0050: ff ff ff ff  ff ff ff ff  ff ff ff ff  ff ff ff ff
@@ -843,7 +860,7 @@ writing netlink policy for tun.10000@192.168.0.2
 00a0: 00 00 00 00  00 00 00 00  20 0a 00 00  00 00 00 00
 00b0: 02 00 00 00  00 00 00 00  44 00 05 00  c0 a8 00 02
 00d0: 32 00 00 00  02 00 00 00  c0 a8 00 01  00 00 00 00
-00e0: 00 00 00 00  00 00 00 00  01 40 00 00  01 00 00 00
+00e0: 00 00 00 00  00 00 00 00  05 40 00 00  01 00 00 00
 00f0: ff ff ff ff  ff ff ff ff  ff ff ff ff
 ./v1rwnatQR1 add inbound eroute 10.1.0.10/32:0 --0-> 10.2.0.0/16:0 => tun.10000@192.168.0.2 succeeded
 | encrypting:
@@ -929,6 +946,11 @@ sending 348 bytes for STATE_QUICK_R0 through eth0:4500 [192.168.0.2:4500] to 192
 ./v1rwnatQR1 leak: struct state in new_state(), item size: X
 ./v1rwnatQR1 leak: main_inI2_outR2_tail, item size: X
 ./v1rwnatQR1 leak: inI2_outR2 KE, item size: X
+./v1rwnatQR1 leak: keep id name, item size: X
+./v1rwnatQR1 leak: host ip, item size: X
+./v1rwnatQR1 leak: keep id name, item size: X
+./v1rwnatQR1 leak: connection name, item size: X
+./v1rwnatQR1 leak: temporary connection, item size: X
 ./v1rwnatQR1 leak: 67 * VendorID MD5, item size: X
 ./v1rwnatQR1 leak: 3 * vid->data, item size: X
 ./v1rwnatQR1 leak: 15 * VendorID MD5, item size: X
@@ -946,6 +968,7 @@ sending 348 bytes for STATE_QUICK_R0 through eth0:4500 [192.168.0.2:4500] to 192
 ./v1rwnatQR1 leak: host ip, item size: X
 ./v1rwnatQR1 leak: keep id name, item size: X
 ./v1rwnatQR1 leak: connection name, item size: X
+./v1rwnatQR1 leak: virtual description, item size: X
 ./v1rwnatQR1 leak: alg_info_esp, item size: X
 ./v1rwnatQR1 leak: struct connection, item size: X
 ./v1rwnatQR1 leak: alg_info_ike, item size: X
@@ -957,6 +980,7 @@ sending 348 bytes for STATE_QUICK_R0 through eth0:4500 [192.168.0.2:4500] to 192
 ./v1rwnatQR1 leak: pubkey entry, item size: X
 ./v1rwnatQR1 leak: rfc3110 format of public key, item size: X
 ./v1rwnatQR1 leak: pubkey, item size: X
+./v1rwnatQR1 leak: private_net_ok subnets, item size: X
 ./v1rwnatQR1 leak: 2 * id list, item size: X
 ./v1rwnatQR1 leak: rfc3110 format of public key [created], item size: X
 ./v1rwnatQR1 leak: pubkey, item size: X
