@@ -49,10 +49,10 @@ processing whack msg time: X size: Y
 | find_ID_host_pair: looking for me=@sun him=@alice (exact)
 |   concluded with <none>
 ./v1rwnatN1 adding connection: "bobnet-ikev1"
-| 10.2.0.0/16===192.168.0.2[@sun]...%any[@alice]===10.1.0.10/32
+| 10.2.0.0/16===192.168.0.2[@sun]...%any[@alice]
 | ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK
 |   orient bobnet-ikev1 finished with: 1 [0.0.0.0]
-RC=0 "bobnet-ikev1": 10.2.0.0/16===192.168.0.2[@sun]...%any[@alice]===10.1.0.10/32; unrouted; eroute owner: #0
+RC=0 "bobnet-ikev1": 10.2.0.0/16===192.168.0.2[@sun]...%any[@alice]; unrouted; eroute owner: #0
 RC=0 "bobnet-ikev1":     myip=unset; hisip=unset;
 RC=0 "bobnet-ikev1":   keys: 1:D997 E951 9BEB 2CBC 72E7 CED3 EFB5 EFCC 53E5 BA4B 2:none...
 RC=0 "bobnet-ikev1":        ....1:55E4 5DBB 7ED7 525C 38EC 6230 CA06 134C 2B1D 013B 2:none

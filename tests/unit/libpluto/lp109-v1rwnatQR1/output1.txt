@@ -49,10 +49,10 @@ processing whack msg time: X size: Y
 | find_ID_host_pair: looking for me=@sun him=@alice (exact)
 |   concluded with <none>
 ./v1rwnatQR1 adding connection: "bobnet-ikev1"
-| 10.2.0.0/16===192.168.0.2[@sun]...%any[@alice]===10.1.0.10/32
+| 10.2.0.0/16===192.168.0.2[@sun]...%any[@alice]
 | ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK
 |   orient bobnet-ikev1 finished with: 1 [0.0.0.0]
-RC=0 "bobnet-ikev1": 10.2.0.0/16===192.168.0.2[@sun]...%any[@alice]===10.1.0.10/32; unrouted; eroute owner: #0
+RC=0 "bobnet-ikev1": 10.2.0.0/16===192.168.0.2[@sun]...%any[@alice]; unrouted; eroute owner: #0
 RC=0 "bobnet-ikev1":     myip=unset; hisip=unset;
 RC=0 "bobnet-ikev1":   keys: 1:D997 E951 9BEB 2CBC 72E7 CED3 EFB5 EFCC 53E5 BA4B 2:none...
 RC=0 "bobnet-ikev1":        ....1:55E4 5DBB 7ED7 525C 38EC 6230 CA06 134C 2B1D 013B 2:none
@@ -603,12 +603,12 @@ sending 324 bytes for STATE_MAIN_R2 through eth0:4500 [192.168.0.2:4500] to 192.
 ./v1rwnatQR1 the peer proposed: 10.2.0.0/16:0/0 -> 10.1.0.10/32:0/0
 | find_client_connection starting with bobnet-ikev1
 |   looking for 10.2.0.0/16:0/0 -> 10.1.0.10/32:0/0
-|   concrete checking against sr#0 10.2.0.0/16 -> 10.1.0.10/32
+|   concrete checking against sr#0 10.2.0.0/16 -> 0.0.0.0/32
 |    match_id a=@alice
 |             b=@alice
 |    results  matched
 |   trusted_ca called with a=(empty) b=(empty)
-|   fc_try trying bobnet-ikev1:10.2.0.0/16:0/0 -> 10.1.0.10/32:0/0 vs bobnet-ikev1:10.2.0.0/16:0/0 -> 10.1.0.10/32:0/0
+|   fc_try trying bobnet-ikev1:10.2.0.0/16:0/0 -> 10.1.0.10/32:0/0 vs bobnet-ikev1:10.2.0.0/16:0/0 -> %self/3:0/0
 |   fc_try concluding with bobnet-ikev1 [128]
 |   fc_try bobnet-ikev1 gives bobnet-ikev1
 |   concluding with d = bobnet-ikev1
@@ -734,7 +734,7 @@ sending 324 bytes for STATE_MAIN_R2 through eth0:4500 [192.168.0.2:4500] to 192.
 | emitting length of ISAKMP Security Association Payload: 52
 ./v1rwnatQR1 responding to Quick Mode proposal {msgid:03020180}
 ./v1rwnatQR1     us: 10.2.0.0/16===192.168.0.2[@sun]
-./v1rwnatQR1   them: %any[@alice]===10.1.0.10/32
+./v1rwnatQR1   them: %any[@alice]
 | ***emit ISAKMP Nonce Payload:
 | emitting 16 raw bytes of Nr into ISAKMP Nonce Payload
 | Nr  00 00 00 00  00 00 00 00  00 00 00 00  00 00 00 00
