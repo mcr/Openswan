@@ -606,6 +606,8 @@ sending 324 bytes for STATE_MAIN_R2 through eth0:4500 [192.168.0.2:4500] to 192.
 | find_client_connection starting with bobnet-ikev1
 |   looking for 10.2.0.0/16:0/0 -> 10.1.0.10/32:0/0
 |   concrete checking against sr#0 10.2.0.0/16 -> 0.0.0.0/32
+|     not matched
+|    peer_net: yes
 |    match_id a=@alice
 |             b=@alice
 |    results  matched
