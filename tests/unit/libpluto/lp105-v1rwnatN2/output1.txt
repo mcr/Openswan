@@ -314,6 +314,7 @@ sending 284 bytes for STATE_MAIN_R1 through eth0:500 [192.168.0.2:500] to 192.16
 ./v1rwnatN2 leak: pubkey entry, item size: X
 ./v1rwnatN2 leak: rfc3110 format of public key, item size: X
 ./v1rwnatN2 leak: pubkey, item size: X
+./v1rwnatN2 leak: private_net_ok subnets, item size: X
 ./v1rwnatN2 leak: 2 * id list, item size: X
 ./v1rwnatN2 leak: rfc3110 format of public key [created], item size: X
 ./v1rwnatN2 leak: pubkey, item size: X
