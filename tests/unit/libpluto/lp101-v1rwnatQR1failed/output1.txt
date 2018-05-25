@@ -701,6 +701,7 @@ sending 60 bytes for notification packet through eth0:4500 [192.168.0.2:4500] to
 ./v1rwnatQR1 leak: pubkey entry, item size: X
 ./v1rwnatQR1 leak: rfc3110 format of public key, item size: X
 ./v1rwnatQR1 leak: pubkey, item size: X
+./v1rwnatQR1 leak: private_net_ok subnets, item size: X
 ./v1rwnatQR1 leak: 2 * id list, item size: X
 ./v1rwnatQR1 leak: rfc3110 format of public key [created], item size: X
 ./v1rwnatQR1 leak: pubkey, item size: X
