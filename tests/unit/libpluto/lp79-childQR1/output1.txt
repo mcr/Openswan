@@ -631,7 +631,7 @@ sending 332 bytes for STATE_MAIN_R2 through eth0:4500 [132.213.238.7:4500] to 93
 |   looking for 132.213.238.7/32:0/0 -> 192.168.1.1/32:0/0
 |   concrete checking against sr#0 132.213.238.7/32 -> 0.0.0.0/32
 |     not matched
-|    peer_net: yes
+|    fc_try outer us:132.213.238.7 peer:93.184.216.34
 |    match_id a=@berri.testing.xelerance.com
 |             b=@berri.testing.xelerance.com
 |    results  matched
