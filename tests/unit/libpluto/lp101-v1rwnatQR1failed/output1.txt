@@ -611,7 +611,7 @@ sending 324 bytes for STATE_MAIN_R2 through eth0:4500 [192.168.0.2:4500] to 192.
 |    results  matched
 |   trusted_ca called with a=(empty) b=(empty)
 |   fc_try trying bobnet-ikev1:10.2.0.0/16:0/0 -> 10.1.0.10/32:0/0 vs bobnet-ikev1:10.2.0.0/16:0/0 -> %self/3:0/0
-|    no match, peer proposed net is not proposing host (0.0.0.0 != 10.1.0.10/32:0/0)
+|    no match, peer proposed net is not proposing host (10.1.0.10/32:0/0 != 192.168.0.1)
 |   fc_try concluding with none [0]
 |   fc_try bobnet-ikev1 gives none
 | find_host_pair: looking for me=192.168.0.2:500 %any him=<none>:500 any-match
@@ -624,7 +624,7 @@ sending 324 bytes for STATE_MAIN_R2 through eth0:4500 [192.168.0.2:4500] to 192.
 |    results  matched
 |   trusted_ca called with a=(empty) b=(empty)
 |   fc_try trying bobnet-ikev1:10.2.0.0/16:0/0 -> 10.1.0.10/32:0/0 vs bobnet-ikev1:10.2.0.0/16:0/0 -> %self/3:0/0
-|    no match, peer proposed net is not proposing host (0.0.0.0 != 10.1.0.10/32:0/0)
+|    no match, peer proposed net is not proposing host (10.1.0.10/32:0/0 != 192.168.0.1)
 |   fc_try concluding with none [0]
 |   concluding with d = none
 ./v1rwnatQR1 cannot respond to IPsec SA request because no connection is known for 10.2.0.0/16===192.168.0.2[@sun]...%any[@alice]===10.1.0.10/32
