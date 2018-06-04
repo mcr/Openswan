@@ -52,15 +52,15 @@ processing whack msg time: X size: Y
 | find_ID_host_pair: looking for me=@berri.testing.xelerance.com him=132.213.238.7 (exact)
 |   concluded with <none>
 ./childQI1 adding connection: "t4901"
-| %any[@berri.testing.xelerance.com]...132.213.238.7
+| 2620:120:9000:81::/64===%any[@berri.testing.xelerance.com]...132.213.238.7===2620:120:9000:82::/64
 | ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1; policy: RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK
 |   orient t4901 finished with: 1 [192.168.1.1]
-RC=0 "t4901": %any[@berri.testing.xelerance.com]...132.213.238.7; unrouted; eroute owner: #0
-RC=0 "t4901":     myip=unset; hisip=unset;
+RC=0 "t4901": 2620:120:9000:81::/64===%any[@berri.testing.xelerance.com]...132.213.238.7===2620:120:9000:82::/64; unrouted; eroute owner: #0
+RC=0 "t4901":     myip=2620:120:9000:81::1; hisip=2620:120:9000:82::1;
 RC=0 "t4901":   keys: 1:66A6 7046 BBAB E28F 310E C6C0 80EC 790E F556 2AB9 2:none...
 RC=0 "t4901":        ....1:2A3A 92D4 E0FA 5CD7 8DE1 D133 0C62 6985 2B6E D701 2:none
 RC=0 "t4901":   ike_life: 3600s; ipsec_life: 1200s; rekey_margin: 180s; rekey_fuzz: 100%; keyingtries: 1
-RC=0 "t4901":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK; prio: 32,32; interface: eth0; kind=CK_PERMANENT
+RC=0 "t4901":   policy: RSASIG+ENCRYPT+TUNNEL+PFS+SAREFTRACK; prio: 64,64; interface: eth0; kind=CK_PERMANENT
 | ICOOKIE:  80 01 02 03  04 05 06 07
 | RCOOKIE:  00 00 00 00  00 00 00 00
 | state hash entry 4
@@ -816,34 +816,34 @@ picking: eth0:4500 float outside: 55045 <=> d: 55045
 |   89 f3 20 79  ce ac 1e c2  ec 7d ae 76  94 40 39 a0
 | emitting length of ISAKMP Key Exchange Payload: 260
 | ***emit ISAKMP Identification Payload (IPsec DOI):
-|    ID type: ID_IPV4_ADDR_SUBNET
+|    ID type: ID_IPV6_ADDR_SUBNET
 |    Protocol ID: 0
 |    port: 0
-| emitting 4 raw bytes of client network into ISAKMP Identification Payload (IPsec DOI)
-| client network  c0 a8 01 01
-| emitting 4 raw bytes of client mask into ISAKMP Identification Payload (IPsec DOI)
-| client mask  ff ff ff ff
-| emitting length of ISAKMP Identification Payload (IPsec DOI): 16
+| emitting 16 raw bytes of client network into ISAKMP Identification Payload (IPsec DOI)
+| client network  26 20 01 20  90 00 00 81  00 00 00 00  00 00 00 00
+| emitting 16 raw bytes of client mask into ISAKMP Identification Payload (IPsec DOI)
+| client mask  ff ff ff ff  ff ff ff ff  00 00 00 00  00 00 00 00
+| emitting length of ISAKMP Identification Payload (IPsec DOI): 40
 | ***emit ISAKMP Identification Payload (IPsec DOI):
-|    ID type: ID_IPV4_ADDR_SUBNET
+|    ID type: ID_IPV6_ADDR_SUBNET
 |    Protocol ID: 0
 |    port: 0
-| emitting 4 raw bytes of client network into ISAKMP Identification Payload (IPsec DOI)
-| client network  84 d5 ee 07
-| emitting 4 raw bytes of client mask into ISAKMP Identification Payload (IPsec DOI)
-| client mask  ff ff ff ff
-| emitting length of ISAKMP Identification Payload (IPsec DOI): 16
+| emitting 16 raw bytes of client network into ISAKMP Identification Payload (IPsec DOI)
+| client network  26 20 01 20  90 00 00 82  00 00 00 00  00 00 00 00
+| emitting 16 raw bytes of client mask into ISAKMP Identification Payload (IPsec DOI)
+| client mask  ff ff ff ff  ff ff ff ff  00 00 00 00  00 00 00 00
+| emitting length of ISAKMP Identification Payload (IPsec DOI): 40
 | HASH(1) computed:
-|   00 43 5a 14  62 69 19 5a  ce cb ae 97  86 ab 29 c9
-|   7b a9 ef 15
+|   4f 01 bd af  00 44 0e 1a  e9 a7 99 02  87 c2 67 af
+|   e1 6b 2c a1
 | last Phase 1 IV:  2b d6 a9 12  96 6d a8 7f  6e 75 c9 7a  65 0d af fd
 | current Phase 1 IV:  2b d6 a9 12  96 6d a8 7f  6e 75 c9 7a  65 0d af fd
 | computed Phase 2 IV:
 |   0d 11 f3 ec  13 af d9 8e  5f f0 ba b5  31 68 4f 25
 |   1b 87 1e 0b
 | encrypting:
-|   01 00 00 18  00 43 5a 14  62 69 19 5a  ce cb ae 97
-|   86 ab 29 c9  7b a9 ef 15  0a 00 00 34  00 00 00 01
+|   01 00 00 18  4f 01 bd af  00 44 0e 1a  e9 a7 99 02
+|   87 c2 67 af  e1 6b 2c a1  0a 00 00 34  00 00 00 01
 |   00 00 00 01  00 00 00 28  00 03 04 01  12 34 56 78
 |   00 00 00 1c  00 0c 00 00  80 03 00 0e  80 04 00 03
 |   80 01 00 01  80 02 04 b0  80 05 00 02  04 00 00 14
@@ -864,46 +864,52 @@ picking: eth0:4500 float outside: 55045 <=> d: 55045
 |   a9 81 7f f7  37 4d 7c 41  38 62 a6 39  00 81 ca 3d
 |   1d fc f7 b5  08 38 d4 34  70 22 6c 21  d2 5b 20 a1
 |   d2 ba 2a d1  89 f3 20 79  ce ac 1e c2  ec 7d ae 76
-|   94 40 39 a0  05 00 00 10  04 00 00 00  c0 a8 01 01
-|   ff ff ff ff  00 00 00 10  04 00 00 00  84 d5 ee 07
-|   ff ff ff ff
+|   94 40 39 a0  05 00 00 28  06 00 00 00  26 20 01 20
+|   90 00 00 81  00 00 00 00  00 00 00 00  ff ff ff ff
+|   ff ff ff ff  00 00 00 00  00 00 00 00  00 00 00 28
+|   06 00 00 00  26 20 01 20  90 00 00 82  00 00 00 00
+|   00 00 00 00  ff ff ff ff  ff ff ff ff  00 00 00 00
+|   00 00 00 00
 | IV:
 |   0d 11 f3 ec  13 af d9 8e  5f f0 ba b5  31 68 4f 25
 |   1b 87 1e 0b
-| unpadded size is: 388
+| unpadded size is: 436
 | emitting 12 zero bytes of encryption padding into ISAKMP Message
-| encrypting 400 using OAKLEY_AES_CBC
+| encrypting 448 using OAKLEY_AES_CBC
 | crypting using IV:  0d 11 f3 ec  13 af d9 8e  5f f0 ba b5  31 68 4f 25
-| next IV:  ec 3f fe 55  b2 3f 3d 7a  ab 3a b6 29  c1 54 bc c0
-| emitting length of ISAKMP Message: 428
-sending 428 bytes for quick_outI1 through eth0:4500 [93.184.216.34:55045] to 132.213.238.7:4500 (using #2)
+| next IV:  51 47 e6 d1  35 7d d8 b1  4c 4d 53 2f  f0 2a 33 b8
+| emitting length of ISAKMP Message: 476
+sending 476 bytes for quick_outI1 through eth0:4500 [93.184.216.34:55045] to 132.213.238.7:4500 (using #2)
 |   80 01 02 03  04 05 06 07  64 0a 06 43  5c 7c 4b 31
-|   08 10 20 01  80 01 02 03  00 00 01 ac  4c 27 d2 49
-|   3e 05 d7 b5  35 03 2e ac  11 73 76 57  73 87 54 aa
-|   03 99 98 5f  e4 74 12 15  88 d1 0b 2e  90 d9 43 ed
-|   d8 c3 0c 81  f4 47 4a da  5b 61 37 00  32 b2 5d 5a
-|   f6 6c 98 a3  27 7a 5f ae  2d 92 65 05  a8 67 96 f4
-|   d1 b7 f7 74  6d 8b 48 c9  07 d4 a7 c4  a6 d8 05 c2
-|   b8 39 19 f7  77 80 c4 ce  fa 50 90 4e  52 d9 3d ac
-|   89 61 a9 27  4e 1e d0 ab  a3 f9 67 a2  f5 7a 1c 73
-|   f5 9c 71 97  85 ea 25 67  7d e4 57 c0  95 69 36 f3
-|   56 1a 99 0d  7d ed 35 73  5e 95 48 e5  55 61 0b b5
-|   d0 bb 2b 10  82 73 10 94  6c 7c fe 5d  3e d8 6b c4
-|   1a 23 86 07  35 d8 b5 a9  29 85 f1 f1  18 d7 18 b1
-|   a6 bb 2a 59  81 1e 84 90  28 20 61 9a  96 7c cc 06
-|   06 0e 2d a7  8a c9 2b e1  45 39 6a 48  88 d3 b6 fc
-|   c0 0f 9f a0  58 96 16 4c  40 99 85 1f  e7 5a 7c 7f
-|   57 d4 40 e1  79 a9 f2 4b  6c 2a b4 cb  b2 69 e7 a1
-|   9d 67 d6 4e  05 5f 11 7e  97 27 08 eb  a1 17 02 98
-|   8c 44 b8 4c  35 3d 4e 50  a5 99 46 2d  bc 62 ca fb
-|   f3 c7 98 a8  36 08 e5 e4  58 fc 82 6c  57 b3 19 14
-|   6d 1a f0 5e  64 67 85 20  15 c2 3c 13  8e 76 f4 9c
-|   fe 13 fe d2  8c a2 ec fd  33 02 c8 98  fa e2 b7 4b
-|   ae 1a 2c 07  a5 64 97 a1  eb 81 c0 da  fb 85 05 e7
-|   e2 84 30 31  03 73 a3 96  6d bf 54 80  4f 52 80 56
-|   70 be 2d 07  e0 7a 1e 0f  fb a9 06 19  26 17 8f dc
-|   f2 d8 5e e9  4b 2c f4 d4  74 8c 7c 99  ec 3f fe 55
-|   b2 3f 3d 7a  ab 3a b6 29  c1 54 bc c0
+|   08 10 20 01  80 01 02 03  00 00 01 dc  3b c8 cd dc
+|   16 fb fc 4b  69 86 eb 0e  80 f1 c6 0e  1c cb 2c 43
+|   01 e3 47 b2  80 7e f4 e3  40 38 3a 18  26 c1 26 91
+|   f1 10 e7 e4  92 2e e4 5c  6f 5d b8 88  ed 48 f2 e4
+|   97 cf 62 15  0d 6a 94 51  56 44 ef 36  70 24 74 da
+|   08 ab 7b 64  3b 44 00 77  a5 42 5c d8  c8 53 b5 f1
+|   c8 84 66 49  e9 15 5b 91  13 8b 50 67  2f 3d e4 ee
+|   2c 27 80 8f  f2 16 86 c7  c2 f9 0a c9  e7 47 f6 9a
+|   ff 30 97 0d  7d aa 64 ee  6b 05 31 ff  91 9d e8 d6
+|   3e dd 3d 79  0c a6 f3 2c  d3 da e0 35  d6 68 55 c3
+|   38 48 1d e9  82 9e 66 1c  ea bf 6a 74  da 26 ea 74
+|   5a c2 84 25  40 4d 9f b7  98 77 13 01  63 a5 dd fe
+|   5c ae 91 28  a5 c8 05 fb  aa 48 1b 1f  b0 cc f9 21
+|   07 8c b9 78  23 66 a0 82  b6 99 9a b0  aa 1c b6 a1
+|   72 45 2e b2  66 19 3c d6  b4 6c 39 d8  67 4f 1a 11
+|   bb d1 9a b6  04 0d 10 25  90 24 91 4a  f2 35 bf 26
+|   27 92 c9 d3  9a a0 b7 47  16 06 45 94  19 27 7c f2
+|   48 23 7c dd  76 1e 5f 54  79 be d1 66  02 35 d4 fc
+|   b5 62 a1 cf  48 eb 41 e2  e4 d9 d2 1d  32 66 11 6e
+|   09 56 a7 00  e8 1f 4c 6e  83 92 3f 59  cd ce d3 02
+|   89 ed e4 02  ea 3d ad 6f  dd 8f d0 4e  f0 7e 22 ba
+|   e0 1d cd 75  e8 e3 19 56  67 8f aa ab  9f b2 43 09
+|   f3 55 d6 60  9a d3 d3 11  bc 59 51 cb  e5 a4 61 50
+|   63 43 88 b0  ef 88 cd e2  a8 da 5d 82  59 65 a8 1f
+|   aa b7 e1 0d  16 b4 9d 1a  27 3e 0b 95  37 e1 8d b9
+|   e9 39 c5 73  34 cf 36 02  43 c9 2f 1e  3b 06 b8 89
+|   ac be b2 f8  e5 24 ee de  ef 15 90 77  4f c0 ec 07
+|   1f b2 a0 92  0f 4b 34 2c  c1 9a d1 c1  51 47 e6 d1
+|   35 7d d8 b1  4c 4d 53 2f  f0 2a 33 b8
 | inserting event EVENT_RETRANSMIT, timeout in 10 seconds for #2
 RC=118 STATE_QUICK_I1: initiate
 3: output closed
