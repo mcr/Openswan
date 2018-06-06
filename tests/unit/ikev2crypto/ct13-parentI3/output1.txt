@@ -194,7 +194,7 @@ picking: eth0:500  outside: 55044 <=> d: 500
 | #2 complete v2 state transition with STF_OK
 ./ct13-parentI3 transition from state STATE_PARENT_I1 to state STATE_PARENT_I2
 | v2_state_transition: st is #2; pst is #1; transition_st is #1
-./ct13-parentI3 STATE_PARENT_I2: sent v2I2, expected v2R2 {auth=IKEv2 oursig=AQN7wUerV theirsig= cipher=aes_128 integ=sha256_128 prf=prf-hmac-sha2-256 group=modp2048} (msgid: 00000000/4294967295)
+./ct13-parentI3 STATE_PARENT_I2: sent v2I2, expected v2R2 (msgid: 00000000/4294967295)
 | sending reply packet to 132.213.238.7:500 (from port 500)
 sending 528 bytes for STATE_PARENT_I1 through eth0:500 [93.184.216.34:55044] to 132.213.238.7:500 (using #2)
 |   80 01 02 03  04 05 06 07  de bc 58 3a  8f 40 d0 cf
@@ -326,7 +326,7 @@ picking: eth0:500  outside: 55044 <=> d: 500
 | #2 complete v2 state transition with STF_OK
 ./ct13-parentI3 transition from state STATE_CHILD_C0_KEYING to state STATE_CHILD_C1_KEYED
 | v2_state_transition: st is #2; pst is #0; transition_st is #0
-./ct13-parentI3 STATE_CHILD_C1_KEYED: CHILD SA established (msgid: 00000001/4294967295)
+./ct13-parentI3 STATE_CHILD_C1_KEYED: PARENT SA established {auth=IKEv2 oursig=AQN7wUerV theirsig=AQOg5H7A4 cipher=aes_128 integ=sha256_128 prf=prf-hmac-sha2-256 group=modp2048} (msgid: 00000001/4294967295)
 ./ct13-parentI3 negotiated tunnel [fd68:c9f9:4157:2:0:1::,fd68:c9f9:4157:2:0:1:ffff:ffff proto:0 port:0-65535] -> [fd68:c9f9:4157::,fd68:c9f9:4157:0:ffff:ffff:ffff:ffff proto:0 port:0-65535]
 ./ct13-parentI3 STATE_CHILD_C1_KEYED: CHILD SA established tunnel mode {ESP=>0x12345678 <0x12345678 xfrm=aes_cbc[128]-hmac_sha2_256_128 NATOA=none NATD=none DPD=none}
 | releasing whack for #X (sock=Y)
