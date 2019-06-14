@@ -883,6 +883,7 @@ enum oakley_enc_ikev1 {
  */
 
 /* extern enum_names oakley_hash_names; */
+typedef enum oakley_hash_t oakley_hash_t;
 enum oakley_hash_t {
   OAKLEY_MD5     =1,
   OAKLEY_SHA1    =2,
