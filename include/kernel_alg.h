@@ -31,6 +31,12 @@ struct pluto_sadb_alg {
                                                (aka alg_type) */
   enum   ikev2_trans_type_encr   encr_id;   /* this IKEv2 algorithm number */
   enum   ikev2_trans_type_integ  integ_id;  /* ditto */
+
+  /* this is a hold-over from IKEv1 infested code */
+  uint8_t		         sadb_alg_id;
+  uint8_t		         sadb_alg_ivlen;
+  uint16_t	                 sadb_alg_minbits;
+  uint16_t	                 sadb_alg_maxbits;
 };
 struct sadb_msg; /* forward definition */
 
@@ -75,10 +81,16 @@ extern struct db_context * kernel_alg_db_new(struct alg_info_esp *ai
 					     , bool logit);
 
 /* returns pointer to static buffer, no reentrant */
+extern bool kernel_alg_ikev2_esp_info(struct esp_info *ei
+                                      , enum ikev2_trans_type_encr sadb_ealg
+                                      , u_int16_t keylen
+                                      , enum ikev2_trans_type_integ sadb_aalg);
+
 extern struct esp_info *kernel_alg_esp_info(u_int8_t transid
 					    , u_int16_t keylen
 					    , u_int16_t auth);
 
+/* indexed by kernel algorithm number */
 extern struct pluto_sadb_alg esp_aalg[];
 extern struct pluto_sadb_alg esp_ealg[];
 extern int esp_ealg_num;

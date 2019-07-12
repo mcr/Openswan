@@ -97,7 +97,7 @@ DISTSRC = \
 	hostpair.c \
 	ipsec_doi.c ipsec_doi.h ikev1.c ikev1_quick.c ikev1_continuations.h \
 	ikev1_crypto.c ikev1_nss.c \
-        ikev2.c ikev2_parent.c ikev2_parent_I1.c ikev2_parent_R1.c ikev2_child.c ikev2_derived_keys.c ikev2_notify.c \
+        ikev2.c ikev2_alg.c ikev2_parent.c ikev2_parent_I1.c ikev2_parent_R1.c ikev2_child.c ikev2_derived_keys.c ikev2_notify.c \
 	ikev2_prfplus.c spdb_v2_struct.c \
 	kernel.c kernel.h \
 	${NETKEY_SRCS} \
@@ -143,7 +143,7 @@ OBJSPLUTO += foodgroups.o log.o state.o plutomain.o server.o
 OBJSPLUTO += timer.o replace.o hmac.o hostpair.o
 OBJSPLUTO += myid.o ipsec_doi.o
 OBJSPLUTO += ikev1.o ikev1_main.o   ikev1_quick.o
-OBJSPLUTO += ikev2.o ikev2_parent.o ikev2_child.o spdb_v2_struct.o ikev2_notify.o
+OBJSPLUTO += ikev2.o ikev2_alg.o ikev2_parent.o ikev2_child.o spdb_v2_struct.o ikev2_notify.o
 OBJSPLUTO += ikeping.o kernel.o
 OBJSPLUTO += $(NETKEY_OBJS) $(BSDKAME_OBJS) ${KLIPS_OBJS} ${MAST_OBJS} ${WIN2K_OBJS} ${PFKEYv2_OBJS}
 OBJSPLUTO += kernel_noklips.o rcv_whack.o

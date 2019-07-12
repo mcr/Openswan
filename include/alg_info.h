@@ -32,6 +32,7 @@ struct esp_info {
 	u_int16_t authalg;	/* normally  authalg=auth+1
 				 * Paul: apparently related to magic at
 				 * lib/libopenswan/alg_info.c alg_info_esp_aa2sadb() */
+    int pfs_group;          /* IKEv1 thing */
 
     /*
      * these are filled in when the kernel module is asked if the algorithm
@@ -142,6 +143,16 @@ extern int alg_info_parse_str (struct alg_info *alg_info
 			       , void (*parser_init)(struct parser_context *p_ctx)
                                , alg_info_adder alg_info_add
                                , const struct oakley_group_desc *(*lookup_group)(enum ikev2_trans_type_dh group));
+
+/* translations between IKEv1 and IKEv2 */
+/* this could be table driven */
+extern int v2tov1_encr(enum ikev2_trans_type_encr encr);
+extern enum ikev2_trans_type_encr v1tov2_encr(int encr);
+extern int v2tov1_encr_child(enum ikev2_trans_type_encr encr);
+extern int v2tov1_integ(enum ikev2_trans_type_integ v2integ);
+enum ikev2_trans_type_integ v1tov2_integ(int integ);
+extern int v2tov1_integ_child(enum ikev2_trans_type_integ v2integ);
+
 
 #endif /* ALG_INFO_H */
 

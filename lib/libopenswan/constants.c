@@ -512,7 +512,7 @@ enum_names *oakley_attr_val_descs[] = {
 	NULL,			/* OAKLEY_GROUP_CURVE_B */
 	&oakley_lifetime_names,	/* OAKLEY_LIFE_TYPE */
 	NULL,			/* OAKLEY_LIFE_DURATION */
-	&oakley_prf_names,	/* OAKLEY_PRF */
+	&ikev2_prf_names,	/* OAKLEY_PRF */
 	NULL,			/* OAKLEY_KEY_LENGTH */
 	NULL,			/* OAKLEY_FIELD_SIZE */
 	NULL,			/* OAKLEY_GROUP_ORDER */
@@ -778,11 +778,19 @@ static const char *const ikev2_prf_name[] = {
     "prfaes128cmac"
 };
 
-/* Oakley PRF attribute (none defined) */
+enum_names ikev2_prf_names =
+    { IKEv2_PRF_HMAC_MD5, IKEv2_PRF_AES128_CMAC, ikev2_prf_name, NULL };
 
-enum_names oakley_prf_names =
-    { 1, 0, NULL, NULL };
+const struct keyword_enum_value ikev2_prf_alg_aliases[]={
+    { "sha256",      IKEv2_PRF_HMAC_SHA2_256 },
+    { "sha384",      IKEv2_PRF_HMAC_SHA2_384 },
+    { "sha512",      IKEv2_PRF_HMAC_SHA2_512 },
+};
 
+enum_and_keyword_names ikev2_prf_alg_names = {
+ official_names: &ikev2_prf_names,
+ aliases: { ikev2_prf_alg_aliases, elemsof(ikev2_prf_alg_aliases) },
+};
 /* Oakley Encryption Algorithm attribute */
 
 static const char *const oakley_enc_name[] = {
@@ -935,6 +943,14 @@ enum_names oakley_group_names =
     { OAKLEY_GROUP_MODP768, OAKLEY_GROUP_MODP1536,
 	    oakley_group_name, &oakley_group_names_rfc3526_rfc5114_rfc5903 };
 
+const struct keyword_enum_value ikev2_group_name_aliases[]={
+    { "secp256r1",   OAKLEY_GROUP_ECP256 },
+};
+
+enum_and_keyword_names ikev2_group_names = {
+ official_names: &oakley_group_names,
+ aliases: { ikev2_group_name_aliases, elemsof(ikev2_group_name_aliases) },
+};
 /* Oakley Group Type attribute */
 
 static const char *const oakley_group_type_name[] = {
