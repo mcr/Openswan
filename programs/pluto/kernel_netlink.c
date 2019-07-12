@@ -62,9 +62,6 @@
 #include "kernel_alg.h"
 #include "crypto/aes_cbc.h"
 #include "pluto/ike_alg.h"
-#include "ike_alg.h"
-#include "oswtime.h"
-#include "timer.h"
 
 /* required for Linux 2.6.26 kernel and later */
 #ifndef XFRM_STATE_AF_UNSPEC
