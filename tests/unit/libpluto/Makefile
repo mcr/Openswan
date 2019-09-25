@@ -100,7 +100,7 @@ UNITTESTS_R1+=lp91-h2h-sareplace-R1
 
 UNITTESTS_v1I1+=lp43-parentM1
 #algo UNITTESTS_v1I1+=lp81-ikev1derived
-#algo UNITTESTS_v1I1+=lp82-v1certM1
+UNITTESTS_v1I1+=lp82-v1certM1
 #algo UNITTESTS_v1I1+=lp92-v1sha512M1
 #algo UNITTESTS_v1I1+=lp93-v1emptyM1
 #algo UNITTESTS_v1I1+=lp102-v1rwnatM1
