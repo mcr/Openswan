@@ -106,8 +106,8 @@ UNITTESTS_v1I1+=lp43-parentM1
 #algo UNITTESTS_v1I1+=lp102-v1rwnatM1
 
 UNITTESTS_v1R1+=lp44-h2hR1-deny-ikev1
-#algo UNITTESTS_v1R1+=lp73-parentN1
-#algo UNITTESTS_v1R1+=lp83-v1certN1
+UNITTESTS_v1R1+=lp73-parentN1
+UNITTESTS_v1R1+=lp83-v1certN1
 #broken UNITTESTS_v1R1+=lp103-v1rwnatN1
 
 #algo UNITTESTS_v1I2+=lp74-parentM2
