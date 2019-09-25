@@ -110,7 +110,7 @@ UNITTESTS_v1R1+=lp73-parentN1
 UNITTESTS_v1R1+=lp83-v1certN1
 #broken UNITTESTS_v1R1+=lp103-v1rwnatN1
 
-#algo UNITTESTS_v1I2+=lp74-parentM2
+UNITTESTS_v1I2+=lp74-parentM2
 #algo UNITTESTS_v1I2+=lp84-v1certM2
 UNITTESTS_v1I2+=lp104-v1rwnatM2
 
