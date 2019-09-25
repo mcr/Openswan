@@ -118,7 +118,7 @@ UNITTESTS_v1R2+=lp75-parentN2
 UNITTESTS_v1R2+=lp85-v1certN2
 UNITTESTS_v1R2+=lp105-v1rwnatN2
 
-#algo UNITTESTS_v1I3+=lp76-parentM3
+UNITTESTS_v1I3+=lp76-parentM3
 #algo UNITTESTS_v1I3+=lp86-v1certM3
 UNITTESTS_v1I3+=lp106-v1rwnatM3
 
