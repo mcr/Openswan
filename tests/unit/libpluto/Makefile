@@ -35,9 +35,7 @@ UNITTESTS_0+=lp41-orientmoon
 UNITTESTS_0+=lp42-loadbobdefaultroute
 UNITTESTS_0+=lp50-rekey-no-reply-rekey
 UNITTESTS_0+=lp60-bestif
-#algo UNITTESTS_0+=lp66-db2ops
-#algo UNITTESTS_0+=lp67-ike2ops
-#algo UNITTESTS_0+=lp68-badproposal
+UNITTESTS_0+=lp67-ike2ops
 UNITTESTS_0+=lp70-invalid-init-msg
 
 UNITTESTS_I1+=lp02-parentI1
