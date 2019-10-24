@@ -35,6 +35,7 @@ UNITTESTS_0+=lp41-orientmoon
 UNITTESTS_0+=lp42-loadbobdefaultroute
 UNITTESTS_0+=lp50-rekey-no-reply-rekey
 UNITTESTS_0+=lp60-bestif
+UNITTESTS_0+=lp66-db2ops
 UNITTESTS_0+=lp67-ike2ops
 UNITTESTS_0+=lp70-invalid-init-msg
 
@@ -101,12 +102,12 @@ UNITTESTS_v1I1+=lp81-ikev1derived
 UNITTESTS_v1I1+=lp82-v1certM1
 UNITTESTS_v1I1+=lp92-v1sha512M1
 UNITTESTS_v1I1+=lp93-v1emptyM1
-#algo UNITTESTS_v1I1+=lp102-v1rwnatM1
+UNITTESTS_v1I1+=lp102-v1rwnatM1
 
 UNITTESTS_v1R1+=lp44-h2hR1-deny-ikev1
 UNITTESTS_v1R1+=lp73-parentN1
 UNITTESTS_v1R1+=lp83-v1certN1
-#broken UNITTESTS_v1R1+=lp103-v1rwnatN1
+UNITTESTS_v1R1+=lp103-v1rwnatN1
 
 UNITTESTS_v1I2+=lp74-parentM2
 UNITTESTS_v1I2+=lp84-v1certM2
