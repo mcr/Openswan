@@ -41,8 +41,8 @@ programs ${TESTNAME}: ${TESTNAME}.c $(wildcard ../seam_*.c) ${EXTRAOBJS}
 check: OUTPUT/R1-dump.txt
 OUTPUT/R1-dump.txt:	${WHACKFILE} ${TESTNAME}
 	@mkdir -p OUTPUT
-	@echo "file ${TESTNAME}"          >.gdb2init
-	@echo "set args "${UNITTESTARGS} >>.gdb2init
+	@echo "file ${TESTNAME}"          >.gdb1init
+	@echo "set args "${UNITTESTARGS} >>.gdb1init
 	ulimit -c unlimited && ./${TESTNAME} ${UNITTESTARGS} >OUTPUT/${TESTNAME}_1.txt 2>&1
 	@sed -f ${TESTUTILS}/leak-detective.sed -f ${TESTUTILS}/whack-processing.sed OUTPUT/${TESTNAME}_1.txt | diff - output1.txt
 	@tcpdump -n -t -v -r OUTPUT/parentR1.pcap | tee OUTPUT/R1-dump.txt | sed -f ${TESTUTILS}/sanity.sed | diff - R1-dump.txt
