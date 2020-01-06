@@ -40,7 +40,6 @@ UNITTESTS_0+=lp67-ike2ops
 UNITTESTS_0+=lp70-invalid-init-msg
 
 UNITTESTS_I1+=lp02-parentI1
-UNITTESTS_R1+=lp06-parentR1notchosen
 UNITTESTS_R1+=lp08-parentR1
 UNITTESTS_I2+=lp10-parentI2
 UNITTESTS_I2+=lp11-parentI2dup
