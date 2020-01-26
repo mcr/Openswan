@@ -36,7 +36,7 @@
 #include "demux.h"
 #include "pluto/server.h"
 #include "whack.h"
-#include "vendor.h"
+#include "pluto/vendor.h"
 #include "quirks.h"
 #include "kernel.h"
 #include "pluto/state.h"
