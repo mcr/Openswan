@@ -1,3 +1,8 @@
+/*
+ * This device is behind a NAT, so it has NAPT_ENABLED, which mangles the
+ * packets before they go into the pcap file.
+ */
+#define NAPT_ENABLED 1
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
