@@ -1438,8 +1438,9 @@ parse_isakmp_sa_body(
                         if (ikev1_alg_integ_present(val, 0)) {
                             ta.integ_hasher = ikev1_crypto_get_hasher(val);
                             ta.integ_hash   = ta.integ_hasher->common.algo_v2id;
-                            ta.prf_hash     = v2integ_to_prf(ta.integ_hash);
-                            ta.prf_hasher   = ikev1_crypto_get_prf(ta.prf_hash);
+                            ta.prf_hash     = v2integ_to_prf(ta.integ_hash);  /* returns IKEv2 number */
+                            ta.prf_hasher   = ike_alg_get_prf(ta.prf_hash);   /* so use v2 lookup */
+                            passert(ta.prf_hasher != NULL);
                         } else {
                               ugh = builddiag("%s is not supported"
                                   , enum_show(&oakley_hash_names, val));
