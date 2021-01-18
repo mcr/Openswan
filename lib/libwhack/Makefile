@@ -21,20 +21,20 @@ include ${OPENSWANSRCDIR}/Makefile.ver
 
 MANDIR=$(MANTREE)/man3
 
-SRCS=whacklib.c aliascomp.c
+TC=${OPENSWANSRCDIR}/lib/libwhack/tinycbor
+SRCS=whacklib.c aliascomp.c 	cborerrorstrings.c
+SRCS+=cborencoder.c cborencoder_close_container_checked.c
+SRCS+=cborparser.c  cborpretty.c
 
 OBJS=${SRCS:.c=.o}
 
-KLIPSD=${OPENSWANSRCDIR}/linux/include
-KLIPSSRCDIR=${OPENSWANSRCDIR}/linux/net/ipsec
 MANSRCDIR=${OPENSWANSRCDIR}/lib/libopenswan
-
-VPATH+= ${KLIPSSRCDIR}
+VPATH+= ${TC}/src
 
 LIB=libwhack.a
 
 # Original flags
-INCLUDES=-I. -I${KLIPSSRCDIR} -I${KLIPSD} -I${OPENSWANSRCDIR}
+INCLUDES=-I. -I${OPENSWANSRCDIR} -I${TC}/src
 INCLUDES+=-I${OPENSWANSRCDIR}/include
 CFLAGS+=${PORTINCLUDE} ${INCLUDES}
 CFLAGS+=-DDEBUG
@@ -113,6 +113,10 @@ $(LIB): $(OBJS)
 $(OBJS):	$(HDRS)
 
 %.o: %.c
+	@echo CC $(notdir $<)
+	@$(CC) -c $(CFLAGS) $(CPPFLAGS) -o $@ $<
+
+%.o: ${TC}/src/%.c
 	@echo CC $(notdir $<)
 	@$(CC) -c $(CFLAGS) $(CPPFLAGS) -o $@ $<
 
