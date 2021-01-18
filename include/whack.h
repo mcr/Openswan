@@ -320,18 +320,13 @@ struct whack_message {
 #define REREAD_ALL	LRANGES(REREAD_SECRETS, REREAD_CRLS)  /* all reread options */
 #define REREAD_TPMEVAL    0x40  /* evaluate in Tcl */
 
-
-struct whackpacker {
-    struct whack_message *msg;
-    unsigned char        *str_roof;
-    unsigned char        *str_next;
-    int                   n;
-    int                   cnt;
-};
+struct whackpacker;
 
 extern err_t pack_whack_msg(struct whackpacker *wp);
 extern err_t unpack_whack_msg (struct whackpacker *wp);
 extern void clear_end(struct whack_end *e);
+extern int serialize_whack_msg(struct whack_message *msg);
+extern err_t deserialize_whack_msg(struct whack_message *msg, size_t len);
 
 extern size_t whack_get_secret(char *buf, size_t bufsize);
 extern int whack_get_value(char *buf, size_t bufsize);

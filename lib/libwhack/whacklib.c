@@ -42,6 +42,14 @@
 
 #include "secrets.h"
 
+struct whackpacker {
+    struct whack_message *msg;
+    unsigned char        *str_roof;
+    unsigned char        *str_next;
+    int                   n;
+    int                   cnt;
+};
+
 /**
  * Pack a string to a whack messages
  *
@@ -105,8 +113,6 @@ unpack_str(struct whackpacker *wp, char **p)
 	return TRUE;
     }
 }
-
-
 
 /**
  * Pack a message to be sent to whack
@@ -300,4 +306,47 @@ whack_get_secret(char *buf, size_t bufsize)
 }
 
 
+/* returns length of result... XXX unit test would be good here */
+int serialize_whack_msg(struct whack_message *msg)
+{
+	struct whackpacker wp;
+	ssize_t len;
+	err_t ugh;
 
+	/**
+	 * Pack strings
+	 */
+        wp.cnt = 0;
+	wp.msg = msg;
+	wp.str_next = (unsigned char *)msg->string;
+	wp.str_roof = (unsigned char *)&msg->string[sizeof(msg->string)];
+
+	ugh = pack_whack_msg(&wp);
+
+	if(ugh)
+	{
+	    return -1;
+	}
+
+	len = wp.str_next - (unsigned char *)msg;
+        return len;
+}
+
+/* returns length of result... XXX unit test would be good here */
+err_t deserialize_whack_msg(struct whack_message *msg, size_t len)
+{
+  struct whackpacker wp;
+  err_t e;
+
+  wp.msg = msg;
+  wp.n   = len;
+  wp.cnt = 0;
+  wp.str_next = msg->string;
+  wp.str_roof = (unsigned char *)msg + len;
+
+  e = unpack_whack_msg(&wp);
+  if(e) return e;
+
+  msg->keyval.ptr = wp.str_next;    /* grab chunk */
+  return NULL;
+}

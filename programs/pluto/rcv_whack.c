@@ -633,13 +633,6 @@ whack_handle(int whackctlfd)
     /* sanity check message */
     {
 	err_t ugh = NULL;
-        struct whackpacker wp;
-
-        wp.msg = &msg;
-        wp.n   = n;
-        wp.cnt = 0;
-        wp.str_next = msg.string;
-        wp.str_roof = (unsigned char *)&msg + n;
 
 	if ((size_t)n < offsetof(struct whack_message, whack_shutdown) + sizeof(msg.whack_shutdown))
 	{
@@ -666,13 +659,13 @@ whack_handle(int whackctlfd)
                                 , msg.magic, WHACK_MAGIC);
 	    }
 	}
-        else if ((ugh = unpack_whack_msg(&wp)) != NULL)
+        else if ((ugh = deserialize_whack_msg(&msg, n)) != NULL)
         {
             /* nothing, ugh is already set */
         }
         else
         {
-            msg.keyval.ptr = wp.str_next;    /* grab chunk */
+            /* deserialize has side-effect of: msg.keyval.ptr = wp.str_next;    */
         }
 
 	if (ugh != NULL)
