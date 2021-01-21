@@ -101,6 +101,12 @@ enum whack_opt_set {
     WHACK_STOPWHACKRECORD=3,  /* turn off recording to file */
 };
 
+enum whack_CBOR_actions {
+    WHACK_STATUS =  1,
+    WHACK_SHUTDOWN =2,
+    WHACK_OPTIONS  =3,
+};
+
 /* whack message should be size independant, but it is in host-endian format */
 struct whack_message {
     u_int32_t magic;
@@ -327,6 +333,10 @@ extern err_t unpack_whack_msg (struct whackpacker *wp);
 extern void clear_end(struct whack_end *e);
 extern int serialize_whack_msg(struct whack_message *msg);
 extern err_t deserialize_whack_msg(struct whack_message *msg, size_t len);
+
+/* lower level */
+extern err_t whack_cbor_encode_msg(struct whack_message *wm, unsigned char *buf, size_t *buf_len);
+
 
 extern size_t whack_get_secret(char *buf, size_t bufsize);
 extern int whack_get_value(char *buf, size_t bufsize);

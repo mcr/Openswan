@@ -41,6 +41,7 @@
 #include "oswlog.h"
 
 #include "secrets.h"
+#include "cbor.h"
 
 struct whackpacker {
     struct whack_message *msg;
@@ -50,70 +51,58 @@ struct whackpacker {
     int                   cnt;
 };
 
-/**
- * Pack a string to a whack messages
+/*
+ * The WhackMessage consists of a map embedded into an array.
+ * This is done so that the initial ~8 bytes are typically identical.
  *
- * @param wp
- * @param p a string
- * @return bool True if operation was successful
+ * Some CDDL:
+ *   whackmessage = [ magic:    0x77686B1F,
+ *                    action:   uint,
+ *                    whackdetails: WhackDetails ]
+ *
+ *   action //=       whack_status
+ *   action //=       whack_shutdown
+ *   action //=       whack_options
+ *   action //=       whack_connection
+ *
+ *   WhackDetails //= ...
+ *
  */
-static bool
-pack_str(struct whackpacker *wp, char **p)
-{
-    const char *s = *p == NULL? "" : *p;	/* note: NULL becomes ""! */
-    size_t len = strlen(s) + 1;
 
-    if (wp->str_roof - wp->str_next < (ptrdiff_t)len)
-    {
-	return FALSE;	/* fishy: no end found */
-    }
-    else
-    {
-	strcpy((char *)wp->str_next, s);
-	wp->str_next += len;
-        wp->cnt++;
-#if 0
-        DBG_log("packing: %u", wp->cnt);
-        DBG_dump("str", s, len);
-#endif
-	*p = NULL;	/* don't send pointers on the wire! */
-	return TRUE;
-    }
+static void whack_cbor_encode_empty_map(CborEncoder *ce)
+{
+  CborEncoder ce_map;
+  cbor_encoder_create_map(ce, &ce_map, 0);
+  cbor_encoder_close_container(ce, &ce_map);
 }
 
-
-/**
- * Unpack a whack message into a string
- *
- * @param wp Whack Message
- * @param p a string into which you want the message to be placed into
- * @return bool True if operation successful
- */
-static bool
-unpack_str(struct whackpacker *wp, char **p)
+err_t whack_cbor_encode_msg(struct whack_message *wm, unsigned char *buf, size_t *plen)
 {
-    unsigned char *end;
+  size_t buf_len = *plen;
+  CborEncoder ce, ceA;
+  cbor_encoder_init(&ce, buf, buf_len, 0);
 
-    end = memchr(wp->str_next, '\0', (wp->str_roof - wp->str_next) );
+  cbor_encoder_create_array(&ce, &ceA, 3);
+  cbor_encode_uint(&ceA, WHACK_MAGIC_BASE);   // uses BASE, since CBOR is not byte-order
 
-    if (end == NULL)
-    {
-	return FALSE;	/* fishy: no end found */
-    }
-    else
-    {
-	unsigned char *s = (wp->str_next == end? NULL : wp->str_next);
+  if(wm->whack_status) {
+    cbor_encode_uint(&ceA, WHACK_STATUS);
+    whack_cbor_encode_empty_map(&ceA);
+    goto end;
+  }
 
-	*p = (char *)s;
-        wp->cnt++;
-#if 0
-        fprintf(stderr, "%u: unpacked string: %s\n", wp->cnt, *p);
-#endif
-	wp->str_next = end + 1;
-	return TRUE;
-    }
+
+ end:
+  /* close the array */
+  cbor_encoder_close_container(&ce, &ceA);
+
+  buf_len = cbor_encoder_get_buffer_size(&ce, buf);
+  *plen = buf_len;
+
+  return NULL;
 }
 
+#if 0
 /**
  * Pack a message to be sent to whack
  *
@@ -230,6 +219,7 @@ err_t unpack_whack_msg (struct whackpacker *wp)
 
     return ugh;
 }
+#endif
 
 void
 clear_end(struct whack_end *e)
@@ -305,7 +295,7 @@ whack_get_secret(char *buf, size_t bufsize)
     return len;
 }
 
-
+#if 0
 /* returns length of result... XXX unit test would be good here */
 int serialize_whack_msg(struct whack_message *msg)
 {
@@ -350,3 +340,4 @@ err_t deserialize_whack_msg(struct whack_message *msg, size_t len)
   msg->keyval.ptr = wp.str_next;    /* grab chunk */
   return NULL;
 }
+#endif

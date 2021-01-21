@@ -34,8 +34,8 @@ TESTNAME=msgstop
 EF_DISABLE_BANNER=1
 export EF_DISABLE_BANNER
 
-check: check1 check2 check3
-update: update1 update2 update3
+check: check1
+update: update1
 programs: ${TESTNAME}
 
 OUTPUT:
@@ -60,40 +60,8 @@ check1: OUTPUT ${TESTNAME} .gdb1init
 update1:
 	sed -f ${TESTUTILS}/leak-detective.sed -f ${TESTUTILS}/conndebug.sed OUTPUT/${TESTNAME}1.txt >output1.txt
 
-# --- test 2 ---
-
-.gdb2init:
-	@echo "file ${TESTNAME}"          >$@
-	@echo "set args "${UNITTEST1ARGS} >>$@
-
-check2: OUTPUT ${TESTNAME} .gdb2init
-	@echo "## CHECK 2 :: ${UNITTEST2ARGS}"
-	ulimit -c unlimited && ./${TESTNAME} ${UNITTEST2ARGS} >OUTPUT/${TESTNAME}2.txt 2>&1
-	sed -f ${TESTUTILS}/leak-detective.sed -f ${TESTUTILS}/conndebug.sed OUTPUT/${TESTNAME}2.txt | diff - output2.txt
-	@echo "## 2 OK"
-
-update2:
-	sed -f ${TESTUTILS}/leak-detective.sed -f ${TESTUTILS}/conndebug.sed OUTPUT/${TESTNAME}2.txt >output2.txt
-
-# --- test 3 ---
-
-.gdb3init:
-	@echo "file ${TESTNAME}"          >$@
-	@echo "set args "${UNITTEST1ARGS} >>$@
-
-check3: OUTPUT ${TESTNAME} .gdb3init
-	@echo "## CHECK 3 :: ${UNITTEST3ARGS}"
-	ulimit -c unlimited && ./${TESTNAME} ${UNITTEST3ARGS} >OUTPUT/${TESTNAME}3.txt 2>&1
-	sed -f ${TESTUTILS}/leak-detective.sed -f ${TESTUTILS}/conndebug.sed OUTPUT/${TESTNAME}3.txt | diff - output3.txt
-	@echo "## 3 OK"
-
-update3:
-	sed -f ${TESTUTILS}/leak-detective.sed -f ${TESTUTILS}/conndebug.sed OUTPUT/${TESTNAME}3.txt >output3.txt
-
-# ---
-
 clean:
-	rm -rf OUTPUT
+	rm -rf OUTPUT ${TESTNAME}
 
 pcapupdate:
 	@true
