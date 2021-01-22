@@ -53,7 +53,7 @@ ${TESTNAME}: ${TESTNAME}.c
 
 check1: OUTPUT ${TESTNAME} .gdb1init
 	@echo "## CHECK 1 :: ${UNITTEST1ARGS}"
-	ulimit -c unlimited && ./${TESTNAME} ${UNITTEST1ARGS} >OUTPUT/${TESTNAME}1.txt 2>&1
+	ulimit -c unlimited && ./${TESTNAME} ${UNITTEST1ARGS} 2>&1 && cbor2diag.rb OUTPUT/wm1.bin >OUTPUT/${TESTNAME}1.txt
 	sed -f ${TESTUTILS}/leak-detective.sed -f ${TESTUTILS}/conndebug.sed OUTPUT/${TESTNAME}1.txt | diff - output1.txt
 	@echo "## 1 OK"
 
