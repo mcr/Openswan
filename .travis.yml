@@ -52,7 +52,7 @@ before_script:
   - tests/utils/testsetup.sh
   - "PATH=$HOME/stuff/sbin:$PATH export PATH"
   - which tcpdump
-  - gem install cbor2diag
+  - gem install cbor
 
 install:
   - if [ "$TRAVIS_OS_NAME" = osx ]; then brew install libpcap libgmp flex bison; fi
