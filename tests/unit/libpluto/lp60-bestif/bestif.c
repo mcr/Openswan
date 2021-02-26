@@ -152,9 +152,9 @@ int main(int argc, char *argv[])
         }
     }
 
+    tool_close_log();
     report_leaks();
 
-    tool_close_log();
     exit(0);
 }
 
