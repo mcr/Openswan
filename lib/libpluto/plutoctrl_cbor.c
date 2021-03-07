@@ -540,6 +540,10 @@ void whack_cbor_process_connection(QCBORDecodeContext *qdc
         wm->dpd_count =  item.val.int64;
         break;
 
+      case WHACK_OPT_CONNALIAS:
+        whack_cbor_string2c(qdc, &item, &wm->connalias);
+        break;
+
       default:
         whack_cbor_consume_item(qdc, &item);
         break;
@@ -882,10 +886,6 @@ err_t whack_cbor_decode_msg(struct whack_message *wm, unsigned char *buf, size_t
 
       case WHACK_TERMINATE:
         whack_cbor_process_terminate(&qdc, wm, &item);
-        break;
-
-      case WHACK_CONNALIAS:
-        whack_cbor_string2c(&qdc, &item, &wm->connalias);
         break;
 
       default:

@@ -118,7 +118,6 @@ enum whack_CBOR_actions {
     WHACK_LIST     =15,
     WHACK_PURGE_OCSP=16,
     WHACK_REREAD   =17,
-    WHACK_CONNALIAS= 20,
     WHACK_MYID     = 22,
     WHACK_DELETESTATE=23,
     WHACK_CRASHPEER=24,
@@ -157,6 +156,8 @@ enum whack_cbor_attributes {
       WHACK_OPT_KEYID         = 16,
       WHACK_OPT_KEYALG        = 17,
       WHACK_OPT_END_ADDR_FAMILY=18,
+
+      WHACK_OPT_CONNALIAS      = 20,
 
       WHACK_OPT_DPD_DELAY      = 181,
       WHACK_OPT_DPD_TIMEOUT    = 182,

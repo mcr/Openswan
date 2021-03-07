@@ -246,7 +246,10 @@ err_t whack_cbor_encode_msg(struct whack_message *wm
     whack_cbor_encode_end(&qec, &wm->right);
     QCBOREncode_CloseMap(&qec);
 
-    /* probably belongs within WHACK_CONNECTION */
+    if(wm->connalias) {
+      QCBOREncode_AddSZStringToMapN(&qec, WHACK_OPT_CONNALIAS, wm->connalias);
+    }
+
     if(wm->ike) {
       QCBOREncode_AddSZStringToMapN(&qec, WHACK_OPT_IKE, wm->ike);
     }
@@ -328,6 +331,7 @@ err_t whack_cbor_encode_msg(struct whack_message *wm
     if(wm->name) {
       QCBOREncode_AddSZStringToMapN(&qec, WHACK_OPT_NAME, wm->name);
     } else {
+      /* map must have something in it. */
       QCBOREncode_AddInt64ToMapN(&qec, 0, 1);
     }
     QCBOREncode_CloseMap(&qec);
@@ -356,10 +360,6 @@ err_t whack_cbor_encode_msg(struct whack_message *wm
       QCBOREncode_AddInt64ToMapN(&qec, 0, 1);
     }
     QCBOREncode_CloseMap(&qec);
-  }
-
-  if(wm->connalias) {
-    QCBOREncode_AddSZStringToMapN(&qec, WHACK_CONNALIAS, wm->connalias);
   }
 
   if(wm->whack_key) {
